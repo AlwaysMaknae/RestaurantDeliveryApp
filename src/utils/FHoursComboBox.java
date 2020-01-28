@@ -6,7 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JComboBox;
 
 public class FHoursComboBox extends JComboBox<Object> {
-	public int end = 22;
+	
+	private int end = 22;
 	
 	public FHoursComboBox(){
 		for (int i = 0; i <= end; i++) {
