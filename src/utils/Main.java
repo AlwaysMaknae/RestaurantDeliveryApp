@@ -1,4 +1,4 @@
-package restaurantdeliveryapp;
+package utils;
 
 public class Main {
 
