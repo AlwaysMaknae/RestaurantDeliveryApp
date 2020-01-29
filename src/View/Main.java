@@ -1,4 +1,4 @@
-package utils;
+package View;
 
 public class Main {
 
