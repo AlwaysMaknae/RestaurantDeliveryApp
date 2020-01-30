@@ -21,6 +21,8 @@ public class FTextField extends JFormattedTextField {
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mask = "";
+		private int StringLength;
+		private Boolean Valid = true;
 		
 		public FTextField(int Columns) {
 			this.setColumns(Columns);
@@ -32,7 +34,9 @@ public class FTextField extends JFormattedTextField {
 			this(Colums);
 			this.mask = mask;
 		}
-		
+		public void SetStringLength(int length){
+			this.StringLength = length;
+		}
 		public void SetInteger() {
 			//oof#1
 			this.setFormatterFactory(new DefaultFormatterFactory(new NumberFormatter(NumberFormat.getIntegerInstance())));
@@ -55,16 +59,27 @@ public class FTextField extends JFormattedTextField {
 			}
 		}
 		public String GetMask(){return this.mask;}
+		
+		public Boolean IsValid(){
+			this.GetContent();
+			return this.Valid;
+		}
 		public String GetContent() {
 			
 			String eM = this.mask.replace("#", " ");
 			
 			if( this.getText().equals("")) {
+				this.Valid = false;
 				return "N/A";		
 			} else if(this.getText().equals(eM)) {
+				this.Valid = false;
 				return "N/A";	
-			}else {
+			}else if(this.getText().length() > this.StringLength && this.StringLength > 0) {
+				this.Valid = true;
 				return this.getText();
+			} else{
+				this.Valid = false;
+				return "N/A";
 			}
 		}
 
