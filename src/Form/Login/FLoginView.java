@@ -37,10 +37,6 @@ public class FLoginView extends FForm{
 		TopPan.setPreferredSize(new Dimension(975, 300));
 		
 		FLabel LoginTitleLbl = new FLabel("Delivery System");
-		//LoginTitleLbl.setFont(new Font("Tahoma", Font.BOLD, 40));
-		/*LoginTitleLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		LoginTitleLbl.setPreferredSize(new Dimension(350, 45));
-		LoginTitleLbl.setAlignmentX(Component.CENTER_ALIGNMENT);*/
 		TopPan.add(LoginTitleLbl);
 		
 		JPanel CenterPan = new JPanel();
@@ -61,9 +57,7 @@ public class FLoginView extends FForm{
 		CenterPan.add(LoginPan);
 		LoginPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel UsernameLbl = new JLabel("Username:");
-		UsernameLbl.setFont(new Font("Tahoma", Font.BOLD, 11));
-		UsernameLbl.setPreferredSize(new Dimension(61, 14));
+		FLabel UsernameLbl = new FLabel("Username:");
 		LoginPan.add(UsernameLbl);
 		
 		TFUsername = new FTextField(20);
@@ -75,9 +69,7 @@ public class FLoginView extends FForm{
 		LoginSpacePan.setPreferredSize(new Dimension(500, 5));
 		LoginPan.add(LoginSpacePan);
 		
-		JLabel PasswordLbl = new JLabel("Password:");
-		PasswordLbl.setFont(new Font("Tahoma", Font.BOLD, 11));
-		PasswordLbl.setPreferredSize(new Dimension(60, 14));
+		FLabel PasswordLbl = new FLabel("Password:");
 		LoginPan.add(PasswordLbl);
 		
 		TFPassword = new FTextField(20);
