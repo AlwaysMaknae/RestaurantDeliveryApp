@@ -99,7 +99,7 @@ public class FormEntities extends JFrame {
 			this.add(No);
 		}
 		
-		public Boolean Reponse(){
+		public boolean Reponse(){
 			
 			return YesBtn.isSelected();
 		}

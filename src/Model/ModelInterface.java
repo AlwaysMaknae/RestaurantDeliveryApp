@@ -2,9 +2,9 @@ package Model;
 
 public interface ModelInterface {
 
-	public static Model Create(){ return null;}
-	public static Model Update(){ return null;}
-	public static Model Read(){ return null;}
-	public static boolean Delete(){ return false;}
+	public Model Create();
+	public Model Update();
+	public Model Read();
+	public boolean Delete();
 	
 }

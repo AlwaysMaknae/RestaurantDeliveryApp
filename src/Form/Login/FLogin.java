@@ -8,10 +8,8 @@ public class FLogin extends FLoginView{
 		BTNConnect.addActionListener(this);
 		System.out.println("Form Controller");
 		
-		TFUsername.SetMask("^(.+)@(.+)$");
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//Submit
 		System.out.println(TFUsername.GetContent());
