@@ -14,8 +14,10 @@ import utils.*;
 
 public class FLoginView extends FForm{
 	
-	protected FTextField UsernameTF;
-	protected FTextField PasswordTF;
+	protected FTextField TFUsername;
+	protected FTextField TFPassword;
+	
+	protected JButton BTNConnect, BTNClientNew, BTNQuit;
 	
 	public FLoginView(){
 		
@@ -34,11 +36,11 @@ public class FLoginView extends FForm{
 		TopPan.setBackground(Color.WHITE);
 		TopPan.setPreferredSize(new Dimension(975, 300));
 		
-		JLabel LoginTitleLbl = new JLabel("Delivery System");
-		LoginTitleLbl.setFont(new Font("Tahoma", Font.BOLD, 40));
-		LoginTitleLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		FLabel LoginTitleLbl = new FLabel("Delivery System");
+		//LoginTitleLbl.setFont(new Font("Tahoma", Font.BOLD, 40));
+		/*LoginTitleLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		LoginTitleLbl.setPreferredSize(new Dimension(350, 45));
-		LoginTitleLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+		LoginTitleLbl.setAlignmentX(Component.CENTER_ALIGNMENT);*/
 		TopPan.add(LoginTitleLbl);
 		
 		JPanel CenterPan = new JPanel();
@@ -64,9 +66,9 @@ public class FLoginView extends FForm{
 		UsernameLbl.setPreferredSize(new Dimension(61, 14));
 		LoginPan.add(UsernameLbl);
 		
-		UsernameTF = new FTextField(20);
-		UsernameTF.setPreferredSize(new Dimension(200, 18));
-		LoginPan.add(UsernameTF);
+		TFUsername = new FTextField(20);
+		TFUsername.setPreferredSize(new Dimension(200, 18));
+		LoginPan.add(TFUsername);
 		
 		JPanel LoginSpacePan = new JPanel();
 		LoginSpacePan.setBackground(Color.WHITE);
@@ -78,9 +80,9 @@ public class FLoginView extends FForm{
 		PasswordLbl.setPreferredSize(new Dimension(60, 14));
 		LoginPan.add(PasswordLbl);
 		
-		PasswordTF = new FTextField(20);
-		PasswordTF.setPreferredSize(new Dimension(200, 18));
-		LoginPan.add(PasswordTF);
+		TFPassword = new FTextField(20);
+		TFPassword.setPreferredSize(new Dimension(200, 18));
+		LoginPan.add(TFPassword);
 		
 		JPanel BotPan = new JPanel();
 		BotPan.setPreferredSize(new Dimension(975, 60));
@@ -97,15 +99,15 @@ public class FLoginView extends FForm{
 		BotSpacePan2.setPreferredSize(new Dimension(680, 10));
 		BotPan.add(BotSpacePan2);
 		
-		JButton BTNConnect = new JButton("Connect");
+		BTNConnect = new JButton("Connect");
 		BTNConnect.setPreferredSize(new Dimension(90, 28));
 		BotPan.add(BTNConnect);
 		
-		JButton BTNClientNew = new JButton("New Clients");
+		BTNClientNew = new JButton("New Clients");
 		BTNClientNew.setPreferredSize(new Dimension(120, 28));
 		BotPan.add(BTNClientNew);
 		
-		JButton BTNQuit = new JButton("Quit");
+		BTNQuit = new JButton("Quit");
 		BTNQuit.setPreferredSize(new Dimension(60, 28));
 		BotPan.add(BTNQuit);
 		

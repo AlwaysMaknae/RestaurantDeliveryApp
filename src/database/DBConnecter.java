@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DBConnecter{
 	protected Connection Connect;
 	
-	private String host = "jdbc:mysql://localhost/block3project";
+	private String host = "jdbc:mysql://localhost/block3m1";
 	private String username = "root";
 	private String password = "";
 	
@@ -17,7 +17,7 @@ public class DBConnecter{
 			
 			Connect = DriverManager.getConnection(host, username, password);
 			Statement stmt = Connect.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from clients limit 1");
+			ResultSet rs = stmt.executeQuery("select * from animal limit 1");
 			
 			while (rs.next())
 				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  "
