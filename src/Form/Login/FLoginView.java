@@ -1,7 +1,4 @@
-package View;
-
-import java.util.Observable;
-import java.util.Observer;
+package Form.Login;
 
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
@@ -11,18 +8,16 @@ import javax.swing.JButton;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
 import utils.FForm;
-
 import java.awt.Font;
-import javax.swing.JTextField;
+import utils.*;
 
-public class FLoginPage extends FForm implements Observer{
+public class FLoginView extends FForm{
 	
-	private JTextField UsernameTF;
-	private JTextField PasswordTF;
+	protected FTextField UsernameTF;
+	protected FTextField PasswordTF;
 	
-	public FLoginPage(){
+	public FLoginView(){
 		
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -69,7 +64,7 @@ public class FLoginPage extends FForm implements Observer{
 		UsernameLbl.setPreferredSize(new Dimension(61, 14));
 		LoginPan.add(UsernameLbl);
 		
-		UsernameTF = new JTextField();
+		UsernameTF = new FTextField(20);
 		UsernameTF.setPreferredSize(new Dimension(200, 18));
 		LoginPan.add(UsernameTF);
 		
@@ -83,7 +78,7 @@ public class FLoginPage extends FForm implements Observer{
 		PasswordLbl.setPreferredSize(new Dimension(60, 14));
 		LoginPan.add(PasswordLbl);
 		
-		PasswordTF = new JTextField();
+		PasswordTF = new FTextField(20);
 		PasswordTF.setPreferredSize(new Dimension(200, 18));
 		LoginPan.add(PasswordTF);
 		
@@ -116,11 +111,6 @@ public class FLoginPage extends FForm implements Observer{
 		
 		repaint();
 		revalidate();
-	}
-	
-	public void update(Observable o, Object arg) {
-		
-		
 	}
 
 }
