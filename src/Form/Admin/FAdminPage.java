@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import utils.FForm;
 
-public class FAdminPage extends FForm implements Observer{
+public class FAdminPage extends FForm{
 
 	
 	
@@ -19,15 +19,4 @@ public class FAdminPage extends FForm implements Observer{
 		setTitle("Food Ordering Software");
 		
 	}
-	
-	
-	
-	
-	
-	
-	public void update(Observable o, Object arg) {
-		
-		
-	}
-
 }

@@ -42,7 +42,8 @@ import javax.swing.text.NumberFormatter;
 public class FormEntities extends JFrame {
 	
 	public FormEntities() {
-		this.setTitle("Dental Staffing Application");
+
+		this.setTitle("Entities Testing Playground");
 		this.setSize(800,600);
 		this.setResizable(false);
 
@@ -51,11 +52,30 @@ public class FormEntities extends JFrame {
 		pan.setLayout( new FlowLayout(FlowLayout.LEADING));
 		pan.setBackground(Color.WHITE);
 		
+		
+		
+		FButton testBtn = new FButton("This is a Test");
+		pan.add(testBtn);
+		FButton testBtn2 = new FButton("This is a Test");
+		pan.add(testBtn2);
+		FButton testBtn3 = new FButton("This is a Test");
+		pan.add(testBtn3);
+		FButton testBtn4 = new FButton("This is a Test");
+		pan.add(testBtn4);
+		
+		testBtn2.SetType("Danger");
+		testBtn3.SetType("Warning");
+		testBtn4.SetType("Good");
+		
+		
+		
 		this.setContentPane(pan);
 		this.setLocationRelativeTo(null);  //place frame in the middle of screen
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
 		this.setVisible(true); //display frame
 	}
+	
+	
 	
 	class FormLine extends JPanel{
 		public FormLine() {
@@ -99,7 +119,7 @@ public class FormEntities extends JFrame {
 			this.add(No);
 		}
 		
-		public Boolean Reponse(){
+		public boolean Reponse(){
 			
 			return YesBtn.isSelected();
 		}
