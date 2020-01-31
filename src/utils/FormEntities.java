@@ -68,6 +68,30 @@ public class FormEntities extends JFrame {
 		testBtn4.SetType("Good");
 		
 		
+		FTextField ttx = new FTextField(20);
+		pan.add(ttx);
+		
+		
+		ArrayList<Object> test = new ArrayList<Object>();
+		test.add("Orange");
+		test.add("Banana");
+		test.add("Cherry");
+		test.add("Watermelon");
+		test.add("Zinc");
+		
+		FListView FLV = new FListView(test);
+		pan.add(FLV);
+		FLV.setListScrollerDimension( new Dimension(100,75));
+		
+		testBtn.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(FLV.GetSelectedItem());
+				
+			}
+		});
+		
 		
 		this.setContentPane(pan);
 		this.setLocationRelativeTo(null);  //place frame in the middle of screen
