@@ -200,7 +200,7 @@ public class FAddRestaurantPage extends FForm{
 			DayPan.add(new FLabel(days[i]));
 			JPanel FcbSpacer0 = new JPanel();
 			FcbSpacer0.setPreferredSize(new Dimension(100, 23));
-			FcbSpacer0.setBackground(Color.RED);
+			FcbSpacer0.setBackground(Color.WHITE);
 			DayPan.add(FcbSpacer0);
 		}
 		
@@ -219,7 +219,7 @@ public class FAddRestaurantPage extends FForm{
 			OpeningTimePan.add(Fcb[i]);
 			JPanel FcbSpacer = new JPanel();
 			FcbSpacer.setPreferredSize(new Dimension(100, 8));
-			FcbSpacer.setBackground(Color.RED);
+			FcbSpacer.setBackground(Color.WHITE);
 			OpeningTimePan.add(FcbSpacer);
 		}
 		
@@ -238,7 +238,7 @@ public class FAddRestaurantPage extends FForm{
 			ClosingTimePan.add(Fcb[i]);
 			JPanel FcbSpacer2 = new JPanel();
 			FcbSpacer2.setPreferredSize(new Dimension(100, 8));
-			FcbSpacer2.setBackground(Color.RED);
+			FcbSpacer2.setBackground(Color.WHITE);
 			ClosingTimePan.add(FcbSpacer2);
 		}
 		
