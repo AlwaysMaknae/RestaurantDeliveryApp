@@ -19,8 +19,8 @@ public class DBUser{
 		
 	}
 	//function to add user
-	public static void AddUser(String username, String password, int access_lvl){
-		String MyQuery = "INSERT INTO users VALUES (DEFAULT, '" + username + "', '" + password + "', '" + access_lvl + "', 1);" ;
+	public static void AddUser(UserModel user){
+		String MyQuery = "INSERT INTO users VALUES (DEFAULT, '" + user.getUsername() + "', '" + user.getPassword() + "', '" + user.getAccess_lvl() + "', 1);" ;
 		try{
 			DBConnecter.Connect.createStatement().executeUpdate(MyQuery);
 		}catch (SQLException e) {
