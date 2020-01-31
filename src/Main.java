@@ -1,6 +1,7 @@
 import Form.AddClient.FAddClient;
 import Form.AddClient.FAddClientPage;
 import Form.Login.FLogin;
+import Form.Restaurant.FAddRestaurant;
 import database.*;
 import utils.FormEntities;
 
@@ -10,7 +11,8 @@ public class Main {
 
 		new DBConnecter();
 		// new FLogin();
-		new FAddClient();
+		//new FAddClient();
+		new FAddRestaurant();
 
 		DBConnecter.OpenConnection();
 
