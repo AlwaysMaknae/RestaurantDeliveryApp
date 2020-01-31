@@ -21,14 +21,17 @@ public class FTextField extends JFormattedTextField {
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mask = "";
-		private int StringLength;
+		private int StringLength = 0;
 		private Boolean Valid = true;
 		
 		public FTextField(int Columns) {
 			this.setColumns(Columns);
 			this.setFont(new Font(this.getFont().getFontName(), Font.PLAIN, 12));
 			this.setPreferredSize( new Dimension(20,29));
+			
 			this.mask = "";
+			this.Valid = false;
+			this.StringLength = 0;
 		}
 		public FTextField(int Colums, String mask){
 			this(Colums);
@@ -74,14 +77,17 @@ public class FTextField extends JFormattedTextField {
 			} else if(this.getText().equals(eM)) {
 				this.Valid = false;
 				return "";	
+			}else if(this.StringLength > 0) {
+				if( this.getText().length() >= this.StringLength){
+					this.Valid = true;
+					return this.getText();
+				} else {
+					this.Valid = false;
+					return "";	
+				}
 			}else {
 				this.Valid = true;
 				return this.getText();
 			}
 		}
-
-	
-	
-	
-
 }

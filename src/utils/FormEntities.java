@@ -69,6 +69,8 @@ public class FormEntities extends JFrame {
 		
 		
 		FTextField ttx = new FTextField(20);
+		ttx.SetInteger();
+		ttx.SetStringLength(5);
 		pan.add(ttx);
 		
 		
@@ -84,10 +86,9 @@ public class FormEntities extends JFrame {
 		FLV.setListScrollerDimension( new Dimension(100,75));
 		
 		testBtn.addActionListener( new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(FLV.GetSelectedItem());
+				System.out.println(ttx.IsValid() + ":" + ttx.GetContent());
 				
 			}
 		});
