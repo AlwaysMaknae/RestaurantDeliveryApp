@@ -69,6 +69,13 @@ public class UserModel extends Model {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getAccess_lvl() {
+		return access_lvl;
+	}
+	public void setAccess_lvl(int access_lvl) {
+		this.access_lvl = access_lvl;
+	}
+	
 	
 
 

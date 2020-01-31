@@ -36,7 +36,7 @@ public class DBUser{
 		ResultSet stmt;
 		try{
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			return new UserModel(stmt.getInt(0), stmt.getString(1));
+			return new UserModel(stmt.getString(1));
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -48,7 +48,7 @@ public class DBUser{
 		ResultSet stmt;
 		try{
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			return new UserModel(stmt.getInt(0));
+			return new UserModel(stmt.getString(1));
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
