@@ -69,7 +69,7 @@ public class FormEntities extends JFrame {
 		
 		
 		FTextField ttx = new FTextField(20);
-		ttx.SetInteger();
+		//ttx.SetInteger();
 		ttx.SetStringLength(5);
 		pan.add(ttx);
 		

@@ -1,5 +1,6 @@
 package utils;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DateFormat;
@@ -7,6 +8,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
@@ -24,6 +26,8 @@ public class FTextField extends JFormattedTextField {
 		private int StringLength = 0;
 		private Boolean Valid = true;
 		
+		
+		
 		public FTextField(int Columns) {
 			this.setColumns(Columns);
 			this.setFont(new Font(this.getFont().getFontName(), Font.PLAIN, 12));
@@ -32,6 +36,9 @@ public class FTextField extends JFormattedTextField {
 			this.mask = "";
 			this.Valid = false;
 			this.StringLength = 0;
+			
+			this.setBorder( BorderFactory.createLineBorder(Color.GRAY) );
+			
 		}
 		public FTextField(int Colums, String mask){
 			this(Colums);
@@ -65,6 +72,14 @@ public class FTextField extends JFormattedTextField {
 		
 		public Boolean IsValid(){
 			this.GetContent();
+			
+			if(this.Valid){
+				this.setBorder( BorderFactory.createLineBorder(Color.GREEN) );
+			} else {
+				this.setBorder( BorderFactory.createLineBorder(Color.RED) );
+			}
+			
+			
 			return this.Valid;
 		}
 		public String GetContent() {
