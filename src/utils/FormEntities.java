@@ -43,7 +43,7 @@ public class FormEntities extends JFrame {
 	
 	public FormEntities() {
 		this.setTitle("Dental Staffing Application");
-		this.setSize(984,1010);
+		this.setSize(800,600);
 		this.setResizable(false);
 
 		//--Main Panel
