@@ -74,6 +74,7 @@ public class FTextField extends JFormattedTextField {
 			} else if(this.getText().equals(eM)) {
 				this.Valid = false;
 				return "N/A";	
+
 			}else if(this.getText().length() > this.StringLength) {
 				this.Valid = true;
 				return this.getText();

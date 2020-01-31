@@ -10,6 +10,7 @@ public class FLogin extends FLoginView {
 		BTNConnect.addActionListener(this);
 		System.out.println("Form Controller");
 
+
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*
@@ -17,9 +18,7 @@ public class FLogin extends FLoginView {
 		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
 		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
 		 */
-
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// Submit
