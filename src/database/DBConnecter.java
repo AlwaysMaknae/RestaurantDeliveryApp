@@ -2,16 +2,14 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DBConnecter{
 	public static Object stmt;
 
 	public static Connection Connect;
 	
-	private static String host = "jdbc:mysql://localhost/block3m1";
+	private static String host = "jdbc:mysql://localhost/restaurantdelivery";
 	private static String username = "root";
 	private static String password = "";
 	
