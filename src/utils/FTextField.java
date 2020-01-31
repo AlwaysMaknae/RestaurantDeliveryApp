@@ -70,17 +70,13 @@ public class FTextField extends JFormattedTextField {
 			
 			if( this.getText().equals("")) {
 				this.Valid = false;
-				return "N/A";		
+				return "";		
 			} else if(this.getText().equals(eM)) {
 				this.Valid = false;
-				return "N/A";	
-
-			}else if(this.getText().length() > this.StringLength) {
+				return "";	
+			}else {
 				this.Valid = true;
 				return this.getText();
-			} else{
-				this.Valid = false;
-				return "N/A";
 			}
 		}
 

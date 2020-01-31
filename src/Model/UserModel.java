@@ -33,20 +33,20 @@ public class UserModel extends Model {
 
 	
 	//functions to call DBUser functions
-	public Model Create() {
-		return DBUser.AddUser(this.username, this.password, this.access_lvl);
+	public void Create() {
+		DBUser.AddUser(this.username, this.password, this.access_lvl);
 	}
 
-	public Model Update() {
-		return DBUser.UpdateUser(this.id, this.username, this.password);
+	public void Update() {
+		DBUser.UpdateUser(this.id, this.username, this.password);
 	}
 
 	public Model Read() {
 		return DBUser.GetUser(this.username);
 	}
 
-	public Model Delete() {
-		return DBUser.DeleteUser(this.id);
+	public void Delete() {
+		DBUser.DeleteUser(this.id);
 	}	
 	
 	//Getters and setters ( NO GET PASSWORD BECAUSE LOGIC)

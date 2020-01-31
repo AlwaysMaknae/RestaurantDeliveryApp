@@ -39,20 +39,20 @@ public class RestaurantModel extends Model{
 	}
 	
 	
-	public Model Create() {
-		return DBRestaurant.AddRestaurant(this.name, this.address, this.number, this.hours, this.areas);
+	public void Create() {
+		DBRestaurant.AddRestaurant(this.name, this.address, this.number, this.hours, this.areas);
 	}
 
-	public Model Update() {
-		return DBRestaurant.UpdateUser(this.id, this.name, this.address, this.number, this.hours, this.areas);
+	public void Update() {
+		DBRestaurant.UpdateUser(this.id, this.name, this.address, this.number, this.hours, this.areas);
 	}
 
 	public Model Read() {
 		return DBRestaurant.GetRestaurant(this.name);
 	}
 
-	public Model Delete() {
-		return DBRestaurant.DeleteUser(this.id);
+	public void Delete() {
+		DBRestaurant.DeleteUser(this.id);
 	}
 	
 	//Getters and Setters

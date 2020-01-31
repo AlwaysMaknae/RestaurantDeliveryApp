@@ -19,8 +19,10 @@ public class FForm extends JFrame implements ActionListener{
 		this.setVisible(true); //display frame
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		//Submit
+		// TODO Auto-generated method stub
+		
 	}
 
 }

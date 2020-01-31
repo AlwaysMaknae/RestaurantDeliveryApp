@@ -19,15 +19,12 @@ public class DBUser{
 		
 	}
 	//function to add user
-	public static UserModel AddUser(String username, String password, int access_lvl){
-		String MyQuery = "INSERT INTO users VALUES ('" + username + "', '" + password + "', " + access_lvl + "';" ;
-		ResultSet stmt;
+	public static void AddUser(String username, String password, int access_lvl){
+		String MyQuery = "INSERT INTO users VALUES (DEFAULT, '" + username + "', '" + password + "', '" + access_lvl + "', 1);" ;
 		try{
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			return new UserModel(stmt.getString(1));
+			DBConnecter.Connect.createStatement().executeUpdate(MyQuery);
 		}catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
 	}
 	// function to update user

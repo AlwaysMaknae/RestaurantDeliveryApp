@@ -2,9 +2,9 @@ package Model;
 
 public interface ModelInterface {
 
-	public Model Create();
-	public Model Update();
+	public void Create();
+	public void Update();
 	public Model Read();
-	public Model Delete();
+	public void Delete();
 	
 }

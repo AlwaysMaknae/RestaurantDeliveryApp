@@ -15,14 +15,15 @@ import javax.swing.SwingConstants;
 
 public class FAddClientPage extends FForm{
 	
-	private JTextField TFNewUsername;
-	private JTextField TFNewPassword;
-	private JTextField TFConfirmPass;
-	private JTextField TFLastName;
-	private JTextField TFFirstName;
-	private JTextField TFAddress;
-	private JTextField TFEmail;
-	private JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected JTextField TFNewUsername;
+	protected JTextField TFNewPassword;
+	protected JTextField TFConfirmPass;
+	protected JTextField TFLastName;
+	protected JTextField TFFirstName;
+	protected JTextField TFAddress;
+	protected JTextField TFEmail;
+	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected JButton BTNSave;
 	
 	
 	public FAddClientPage() {
@@ -220,7 +221,7 @@ public class FAddClientPage extends FForm{
 		SpacePan12.setPreferredSize(new Dimension(680, 15));
 		BotPan.add(SpacePan12);
 		
-		JButton BTNSave = new JButton("Save");
+		BTNSave = new JButton("Save");
 		BTNSave.setPreferredSize(new Dimension(89, 28));
 		BotPan.add(BTNSave);
 		
