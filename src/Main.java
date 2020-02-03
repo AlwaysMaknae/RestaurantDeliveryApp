@@ -1,4 +1,7 @@
 import Form.Login.FLogin;
+import Form.Menu.FAddMenu;
+import Form.Menu.FDeleteMenu;
+import Form.Menu.FEditMenu;
 import Form.Restaurant.FAddRestaurant;
 import Form.Restaurant.FAddRestaurantMenu;
 import Form.Restaurant.FDeleteRestaurant;
@@ -9,7 +12,6 @@ import utils.FormEntities;
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
 
 		new DBConnecter();
 		//new FLogin();
@@ -17,10 +19,11 @@ public class Main {
 		//new FAddRestaurant();
 		//new FEditRestaurant();
 		//new FDeleteRestaurant();
-		new FAddRestaurantMenu();
+		//new FAddRestaurantMenu();
+		//new FAddMenu();
+		//new FEditMenu();
+		//new FDeleteMenu();
 
-=======
->>>>>>> 9d3440d95194e79441e9b86e7aefd165abe1478a
 		DBConnecter.OpenConnection();
 	}
 
