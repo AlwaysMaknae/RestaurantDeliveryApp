@@ -34,7 +34,7 @@ public class UserModel extends Model {
 	
 	//functions to call DBUser functions
 	public void Create() {
-		DBUser.AddUser(this.username, this.password, this.access_lvl);
+		DBUser.AddUser(this);
 	}
 
 	public void Update() {
@@ -60,6 +60,9 @@ public class UserModel extends Model {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getPassword() {
+		return password;
 	}
 	
 	public String getId() {
