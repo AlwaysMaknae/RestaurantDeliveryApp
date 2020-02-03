@@ -2,6 +2,7 @@ import Form.AddClient.FAddClient;
 import Form.AddClient.FAddClientPage;
 import Form.Login.FLogin;
 import Form.Restaurant.FAddRestaurant;
+import Form.Restaurant.FAddRestaurantMenu;
 import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import database.*;
@@ -17,6 +18,7 @@ public class Main {
 		//new FAddRestaurant();
 		//new FEditRestaurant();
 		//new FDeleteRestaurant();
+		new FAddRestaurantMenu();
 
 		DBConnecter.OpenConnection();
 
