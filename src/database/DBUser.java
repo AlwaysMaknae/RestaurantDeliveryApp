@@ -24,10 +24,10 @@ public class DBUser{
 	}
 	//function to add user
 	public static UserModel AddUser(String username, String password, int access_lvl){
-		String MyQuery = "INSERT INTO users VALUES (DEFAULT, ?, ?, ?, DEFAULT);" ;
+		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setInt(3, access_lvl);
@@ -39,11 +39,11 @@ public class DBUser{
 		}
 	}
 	// function to update user
-	public static UserModel UpdateUser(int id, String username, String password){
-		String MyQuery = "UPDATE users SET username=?, password=? WHERE user_id=?" ;
+	public static UserModel UpdateUser(int id, String username, String password, int access_lvl){
+		String MyQuery = "{CALL update_user(?, ?, ?, ?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setInt(3, id);
@@ -55,14 +55,30 @@ public class DBUser{
 		}
 	}
 	//function to soft delete user
-	public static UserModel DeleteUser(int id){
-		String MyQuery = "UPDATE users SET status='0' WHERE user_id=?" ;
+	public static void DeleteUser(int id){
+		String MyQuery = "{CALL delete_user(?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static String AddUser(UserModel userModel) {
+		String username = userModel.getUsername();
+		String password = userModel.getPassword();
+		int access_lvl = userModel.getAccess_lvl();
+		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+		java.sql.PreparedStatement stmt;
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setInt(3, access_lvl);
+			stmt.executeUpdate();
+			return "" + username + " has been successfully addded";
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
