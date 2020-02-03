@@ -3,7 +3,7 @@ package database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.PreparedStatement;
+//import com.mysql.jdbc.PreparedStatement;
 
 import Model.UserModel;
 public class DBUser{
@@ -27,7 +27,7 @@ public class DBUser{
 		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setInt(3, access_lvl);
@@ -44,9 +44,10 @@ public class DBUser{
 		java.sql.PreparedStatement stmt;
 		try{
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, username);
-			stmt.setString(2, password);
-			stmt.setInt(3, id);
+			stmt.setInt(1, id);
+			stmt.setString(2, username);
+			stmt.setString(3, password);
+			stmt.setInt(4, access_lvl);
 			stmt.executeUpdate();
 			return new UserModel(stmt.toString());
 		}catch (SQLException e) {

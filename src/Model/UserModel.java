@@ -49,7 +49,7 @@ public class UserModel extends Model {
 		DBUser.DeleteUser(this.id);
 	}	
 	
-	//Getters and setters ( NO GET PASSWORD BECAUSE LOGIC)
+	//Getters and Setters
 	public String getUsername() {
 		return username;
 	}
