@@ -201,6 +201,11 @@ CREATE PROCEDURE update_user(IN id INT, IN username VARCHAR(20), IN psswrd VARCH
 BEGIN
 	UPDATE users SET users.username=username, users.password=psswrd, users.access_lvl=access_lvl WHERE user_id=id;
     END ☻
+    
+CREATE PROCEDURE update_user1(IN id INT, IN psswrd VARCHAR(50))
+BEGIN
+	UPDATE users SET users.password=psswrd WHERE user_id=id;
+    END ☻
 
 -- CALL update_user(13, "Yeeet", "YAAAAH", 1); 
 

@@ -55,6 +55,22 @@ public class DBUser{
 			return null;
 		}
 	}
+	
+	public static UserModel UpdateUser(int id,  String password){
+		String MyQuery = "{CALL update_user1(?, ?)}" ;
+		java.sql.PreparedStatement stmt;
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.setString(2, password);
+			stmt.executeUpdate();
+			return new UserModel(stmt.toString());
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	//function to soft delete user
 	public static void DeleteUser(int id){
 		String MyQuery = "{CALL delete_user(?)}" ;
