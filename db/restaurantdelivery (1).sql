@@ -192,7 +192,7 @@ COMMIT;
 DELIMITER ☻
 CREATE PROCEDURE create_user(IN username VARCHAR(20), IN psswrd VARCHAR(50), IN access_lvl INT(11))
 BEGIN
-	INSERT INTO users VALUES (DEFAULT, username, psswrd, access_lvl, DEFAULT);
+	INSERT INTO users(username, password, access_lvl) VALUES (username, psswrd, access_lvl);
 	END ☻
     
 -- CALL create_user("Jose", "123", 3);
