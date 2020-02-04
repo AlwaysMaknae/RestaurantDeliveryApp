@@ -5,6 +5,7 @@ import Form.DeliveryGuy.FAcceptDelivery;
 import Form.DeliveryGuy.FDoneDelivery;
 import Form.DeliveryGuy.FViewDelivery;
 import Form.Login.FLogin;
+import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
 import Form.Menu.FDeleteMenu;
 import Form.Menu.FEditMenu;
@@ -74,6 +75,12 @@ public class Main {
 		
 		//new FAcceptOrder();
 		//new FOrderReady();
+		
+		/*
+		 * MANAGER ACCOUNT FORM
+		 */
+		
+		//new FViewRestaurantOrder();
 
 		DBConnecter.OpenConnection();
 	}
