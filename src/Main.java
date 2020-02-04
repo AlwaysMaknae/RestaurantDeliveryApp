@@ -12,6 +12,8 @@ import Form.Restaurant.FAddRestaurant;
 import Form.Restaurant.FAddRestaurantMenu;
 import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
+import Form.Restauranteur.FAcceptOrder;
+import Form.Restauranteur.FOrderReady;
 import database.*;
 import utils.FormEntities;
 
@@ -66,6 +68,12 @@ public class Main {
 		//new FAcceptDelivery();
 		//new FDoneDelivery();
 		
+		/*
+		 * RESTAURANTEUR ACCOUNT FORM
+		 */
+		
+		//new FAcceptOrder();
+		//new FOrderReady();
 
 		DBConnecter.OpenConnection();
 	}
