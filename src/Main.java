@@ -1,3 +1,6 @@
+import Form.Delivery.FAddDeliveryGuy;
+import Form.Delivery.FDeleteDeliveryGuy;
+import Form.Delivery.FEditDeliveryGuy;
 import Form.Login.FLogin;
 import Form.Menu.FAddMenu;
 import Form.Menu.FDeleteMenu;
@@ -23,6 +26,10 @@ public class Main {
 		//new FAddMenu();
 		//new FEditMenu();
 		//new FDeleteMenu();
+		//new FAddDeliveryGuy();
+		//new FEditDeliveryGuy();
+		//new FDeleteDeliveryGuy();
+		
 
 		DBConnecter.OpenConnection();
 	}
