@@ -6,7 +6,6 @@ import java.sql.SQLException;
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.ItemModel;
-import Model.UserModel;
 
 public class DBItem {
 	// function to read item
@@ -62,7 +61,7 @@ public class DBItem {
 		}
 	}
 
-	// function to soft delete user
+	// function to soft delete item
 	public static void DeleteItem(int id) {
 		String MyQuery = "{CALL delete_item(?)}";
 		java.sql.PreparedStatement stmt;
