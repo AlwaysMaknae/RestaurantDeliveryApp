@@ -220,7 +220,8 @@ BEGIN
 
 --   CLIENT PROCEDURES BELOW
 
-CREATE PROCEDURE create_client(IN client_username VARCHAR(20), IN client_password VARCHAR(50), IN client_last_name VARCHAR(50), IN client_first_name VARCHAR(50), IN client_address VARCHAR(50), IN client_email VARCHAR(64), IN client_number VARCHAR(12), IN status INT)
+CREATE PROCEDURE create_client(IN client_username VARCHAR(20), IN client_password VARCHAR(50), IN client_last_name VARCHAR(50),
+								IN client_first_name VARCHAR(50), IN client_address VARCHAR(50), IN client_email VARCHAR(64), IN client_number VARCHAR(12), IN status INT)
 BEGIN
 	INSERT INTO clients(client_username, client_password, client_last_name, client_first_name, client_address, client_email, client_number, status)
 		VALUES (client_username, client_password, client_last_name, client_first_name, client_address, client_email, client_number, status);

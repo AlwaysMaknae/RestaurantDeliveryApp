@@ -71,15 +71,15 @@ public class DBUser{
 		}
 	}
 	
-	//function to soft delete user
-	public static void DeleteUser(int id){
-		String MyQuery = "{CALL delete_user(?)}" ;
+	// function to soft delete user
+	public static void DeleteUser(int id) {
+		String MyQuery = "{CALL delete_user(?)}";
 		java.sql.PreparedStatement stmt;
-		try{
+		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
