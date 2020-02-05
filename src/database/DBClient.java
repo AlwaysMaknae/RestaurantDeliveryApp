@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 //import com.mysql.jdbc.PreparedStatement;
 
-import Model.UserModel;
+import Model.ClientModel;
 
 public class DBClient {
 
-	public static UserModel GetClient(String username) {
+	public static ClientModel GetClient(String username) {
 		String MyQuery = "SELECT * from clients WHERE client_username='"
 				+ username + "'";
 		ResultSet stmt;
@@ -17,7 +17,7 @@ public class DBClient {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			stmt.next();
 			System.out.println(stmt.getString(2));
-			return new UserModel(stmt.getString(1));
+			return new CLientModel(stmt.getString(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -25,8 +25,8 @@ public class DBClient {
 
 	}
 
-	// function to add user
-	public static UserModel addClient(String username, String password,
+	// function to add client
+	public static ClientModel addClient(String username, String password,
 			String last_name, String first_name, String address, String email,
 			String number, int status) {
 		String MyQuery = "{CALL create_client(?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -42,15 +42,15 @@ public class DBClient {
 			stmt.setString(7, number);
 			stmt.setInt(8, status);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
+			return new ClientModel(stmt.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	// function to update user
-	public static UserModel UpdateClient(int id, String username,
+	// function to update client
+	public static ClientModel UpdateClient(int id, String username,
 			String password, String last_name, String first_name,
 			String address, String email, String number) {
 		String MyQuery = "{CALL update_client(?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -66,14 +66,14 @@ public class DBClient {
 			stmt.setString(7, email);
 			stmt.setString(8, number);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
+			return new ClientModel(stmt.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	// function to soft delete user
+	// function to soft delete client
 	public static void DeleteClient(int id) {
 		String MyQuery = "{CALL delete_client(?)}";
 		java.sql.PreparedStatement stmt;
@@ -86,9 +86,15 @@ public class DBClient {
 		}
 	}
 
-	/*public static String AddClient(UserModel userModel) {
+	public static String AddClient(ClientModel clientModel) {
 		String username = clientModel.getUsername();
 		String password = clientModel.getPassword();
+		String last_name = clientModel.getLast_name();
+		String first_name = clientModel.getFirst_name();
+		String address = clientModel.getAddress();
+		String email = clientModel.getEmail();
+		String number = clientModel.getNumber();
+		int status = clientModel.getStatus();
 
 		String MyQuery = "{CALL create_client(?, ?, ?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
@@ -102,10 +108,11 @@ public class DBClient {
 			stmt.setString(6, email);
 			stmt.setString(7, number);
 			stmt.setInt(8, status);
-			stmt.executeUpdate();return "" + username + " has been successfully addded";
+			stmt.executeUpdate();
+			return "" + username + " has been successfully addded";
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-	}*/
+	}
 }
