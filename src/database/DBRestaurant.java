@@ -84,7 +84,7 @@ public class DBRestaurant {
 		String address = restaurantModel.getAddress();
 		String number = restaurantModel.getNumber();
 		String hours = restaurantModel.getHours();
-		String areas = restaurantModel.getHours();
+		String areas = restaurantModel.getAreas();
 		int status = restaurantModel.getStatus();
 
 		String MyQuery = "{CALL create_restuarant(?, ?, ?, ?, ?, ?, ?, ?)}";
