@@ -3,6 +3,8 @@ package database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//import com.mysql.jdbc.PreparedStatement;
+
 import Model.UserModel;
 public class DBUser{
 	//function to read user
@@ -11,6 +13,8 @@ public class DBUser{
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			stmt.next();
+			System.out.println(stmt.getString(2));
 			return new UserModel(stmt.getString(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -19,33 +23,79 @@ public class DBUser{
 		
 	}
 	//function to add user
-	public static void AddUser(UserModel user){
-		String MyQuery = "INSERT INTO users VALUES (DEFAULT, '" + user.getUsername() + "', '" + user.getPassword() + "', '" + user.getAccess_lvl() + "', 1);" ;
+	public static UserModel AddUser(String username, String password, int access_lvl){
+		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+		java.sql.PreparedStatement stmt;
 		try{
-			DBConnecter.Connect.createStatement().executeUpdate(MyQuery);
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	// function to update user
-	public static UserModel UpdateUser(int id, String username, String password){
-		String MyQuery = "UPDATE users SET username='" + username + "', password='" + password + "' WHERE user_id='" + id + "'" ;
-		ResultSet stmt;
-		try{
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			return new UserModel(stmt.getString(1));
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setInt(3, access_lvl);
+			stmt.executeUpdate();
+			return new UserModel(stmt.toString());
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	//function to soft delete user
-	public static UserModel DeleteUser(int id){
-		String MyQuery = "UPDATE users SET status='0' WHERE user_id='" + id + "'" ;
-		ResultSet stmt;
+	// function to update user
+	public static UserModel UpdateUser(int id, String username, String password, int access_lvl){
+		String MyQuery = "{CALL update_user(?, ?, ?, ?)}" ;
+		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			return new UserModel(stmt.getString(1));
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.setString(2, username);
+			stmt.setString(3, password);
+			stmt.setInt(4, access_lvl);
+			stmt.executeUpdate();
+			return new UserModel(stmt.toString());
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static UserModel UpdateUser(int id,  String password){
+		String MyQuery = "{CALL update_user1(?, ?)}" ;
+		java.sql.PreparedStatement stmt;
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.setString(2, password);
+			stmt.executeUpdate();
+			return new UserModel(stmt.toString());
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	// function to soft delete user
+	public static void DeleteUser(int id) {
+		String MyQuery = "{CALL delete_user(?)}";
+		java.sql.PreparedStatement stmt;
+		try {
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static String AddUser(UserModel userModel) {
+		String username = userModel.getUsername();
+		String password = userModel.getPassword();
+		int access_lvl = userModel.getAccess_lvl();
+		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+		java.sql.PreparedStatement stmt;
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setInt(3, access_lvl);
+			stmt.executeUpdate();
+			return "" + username + " has been successfully addded";
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;

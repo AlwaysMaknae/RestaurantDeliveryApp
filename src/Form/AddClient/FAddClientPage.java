@@ -15,50 +15,45 @@ import javax.swing.SwingConstants;
 
 public class FAddClientPage extends FForm{
 	
-	protected JTextField TFNewUsername;
-	protected JTextField TFNewPassword;
-	protected JTextField TFConfirmPass;
-	protected JTextField TFLastName;
-	protected JTextField TFFirstName;
-	protected JTextField TFAddress;
-	protected JTextField TFEmail;
+	protected JTextField TFNewUsername, TFNewPassword, TFConfirmPass, TFLastName, TFFirstName, TFAddress, TFEmail;
 	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	
 	protected JButton BTNSave;
 	
 	
 	public FAddClientPage() {
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("New Client Account");
 		
 		JPanel MainPan = new JPanel();
-		MainPan.setBackground(Color.WHITE);
+		MainPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.setPreferredSize(new Dimension(975, 975));
 		getContentPane().add(MainPan);
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel TopPan = new JPanel();
-		MainPan.add(TopPan);
-		TopPan.setBackground(Color.WHITE);
-		TopPan.setPreferredSize(new Dimension(975, 300));
+		JPanel TitlePan = new JPanel();
+		MainPan.add(TitlePan);
+		TitlePan.setBackground(Color.LIGHT_GRAY);
+		TitlePan.setPreferredSize(new Dimension(975, 300));
 		
 		FLabel LoginTitleLbl = new FLabel("Open New Account");
-		TopPan.add(LoginTitleLbl);
+		TitlePan.add(LoginTitleLbl);
 		
-		JPanel CenterPan = new JPanel();
-		CenterPan.setBackground(Color.WHITE);
-		CenterPan.setPreferredSize(new Dimension(975, 600));
-		MainPan.add(CenterPan);
-		CenterPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		JPanel AccountDetailsPan = new JPanel();
+		AccountDetailsPan.setBackground(Color.LIGHT_GRAY);
+		AccountDetailsPan.setPreferredSize(new Dimension(975, 600));
+		MainPan.add(AccountDetailsPan);
+		AccountDetailsPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		
 		JPanel CreateAccountPan = new JPanel();
 		CreateAccountPan.setPreferredSize(new Dimension(650, 500));
-		CreateAccountPan.setBackground(Color.WHITE);
-		CenterPan.add(CreateAccountPan);
+		CreateAccountPan.setBackground(Color.LIGHT_GRAY);
+		AccountDetailsPan.add(CreateAccountPan);
 		
 		JPanel SpacePan0 = new JPanel();
-		SpacePan0.setBackground(Color.WHITE);
+		SpacePan0.setBackground(Color.LIGHT_GRAY);
 		SpacePan0.setPreferredSize(new Dimension(105, 10));
 		CreateAccountPan.add(SpacePan0);
 		
@@ -72,7 +67,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFNewUsername);
 		
 		JPanel SpacePan1 = new JPanel();
-		SpacePan1.setBackground(Color.WHITE);
+		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(30, 10));
 		CreateAccountPan.add(SpacePan1);
 		
@@ -81,7 +76,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(BTNVerify);
 		
 		JPanel SpacePan2 = new JPanel();
-		SpacePan2.setBackground(Color.WHITE);
+		SpacePan2.setBackground(Color.LIGHT_GRAY);
 		SpacePan2.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan2);
 		
@@ -95,7 +90,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFNewPassword);
 		
 		JPanel SpacePan3 = new JPanel();
-		SpacePan3.setBackground(Color.WHITE);
+		SpacePan3.setBackground(Color.LIGHT_GRAY);
 		SpacePan3.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan3);
 		
@@ -109,7 +104,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFConfirmPass);
 		
 		JPanel SpacePan4 = new JPanel();
-		SpacePan4.setBackground(Color.WHITE);
+		SpacePan4.setBackground(Color.LIGHT_GRAY);
 		SpacePan4.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan4);
 		
@@ -123,7 +118,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFLastName);
 		
 		JPanel SpacePan5 = new JPanel();
-		SpacePan5.setBackground(Color.WHITE);
+		SpacePan5.setBackground(Color.LIGHT_GRAY);
 		CreateAccountPan.add(SpacePan5);
 		SpacePan5.setPreferredSize(new Dimension(600, 15));
 		
@@ -137,7 +132,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFFirstName);
 		
 		JPanel SpacePan6 = new JPanel();
-		SpacePan6.setBackground(Color.WHITE);
+		SpacePan6.setBackground(Color.LIGHT_GRAY);
 		SpacePan6.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan6);
 		
@@ -151,7 +146,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFAddress);
 		
 		JPanel SpacePan7 = new JPanel();
-		SpacePan7.setBackground(Color.WHITE);
+		SpacePan7.setBackground(Color.LIGHT_GRAY);
 		SpacePan7.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan7);
 		
@@ -165,7 +160,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFEmail);
 		
 		JPanel SpacePan8 = new JPanel();
-		SpacePan8.setBackground(Color.WHITE);
+		SpacePan8.setBackground(Color.LIGHT_GRAY);
 		SpacePan8.setPreferredSize(new Dimension(600, 15));
 		CreateAccountPan.add(SpacePan8);
 		
@@ -193,7 +188,7 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFPhoneNum_2);
 		
 		JPanel SpacePan9 = new JPanel();
-		SpacePan9.setBackground(Color.WHITE);
+		SpacePan9.setBackground(Color.LIGHT_GRAY);
 		SpacePan9.setPreferredSize(new Dimension(5, 15));
 		CreateAccountPan.add(SpacePan9);
 		
@@ -202,36 +197,33 @@ public class FAddClientPage extends FForm{
 		CreateAccountPan.add(TFPhoneNum_3);
 		
 		JPanel SpacePan10 = new JPanel();
-		SpacePan10.setBackground(Color.WHITE);
+		SpacePan10.setBackground(Color.LIGHT_GRAY);
 		SpacePan10.setPreferredSize(new Dimension(125, 15));
 		CreateAccountPan.add(SpacePan10);
 		
-		JPanel BotPan = new JPanel();
-		BotPan.setPreferredSize(new Dimension(975, 60));
-		BotPan.setBackground(Color.WHITE);
-		MainPan.add(BotPan);
+		JPanel ButtonPan = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) ButtonPan.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+		ButtonPan.setPreferredSize(new Dimension(975, 60));
+		ButtonPan.setBackground(Color.LIGHT_GRAY);
+		MainPan.add(ButtonPan);
 		
 		JPanel SpacePan11 = new JPanel();
-		SpacePan11.setBackground(Color.WHITE);
+		SpacePan11.setBackground(Color.LIGHT_GRAY);
 		SpacePan11.setPreferredSize(new Dimension(900, 15));
-		BotPan.add(SpacePan11);
-		
-		JPanel SpacePan12 = new JPanel();
-		SpacePan12.setBackground(Color.WHITE);
-		SpacePan12.setPreferredSize(new Dimension(680, 15));
-		BotPan.add(SpacePan12);
+		ButtonPan.add(SpacePan11);
 		
 		BTNSave = new JButton("Save");
 		BTNSave.setPreferredSize(new Dimension(89, 28));
-		BotPan.add(BTNSave);
+		ButtonPan.add(BTNSave);
 		
 		JButton BTNReturn = new JButton("Return");
 		BTNReturn.setPreferredSize(new Dimension(89, 28));
-		BotPan.add(BTNReturn);
+		ButtonPan.add(BTNReturn);
 		
 		JButton BTNQuit = new JButton("Quit");
 		BTNQuit.setPreferredSize(new Dimension(89, 28));
-		BotPan.add(BTNQuit);
+		ButtonPan.add(BTNQuit);
 		
 		repaint();
 		revalidate();

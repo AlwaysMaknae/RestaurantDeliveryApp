@@ -52,8 +52,6 @@ public class FormEntities extends JFrame {
 		pan.setLayout( new FlowLayout(FlowLayout.LEADING));
 		pan.setBackground(Color.WHITE);
 		
-		
-		
 		FButton testBtn = new FButton("This is a Test");
 		pan.add(testBtn);
 		FButton testBtn2 = new FButton("This is a Test");
@@ -89,7 +87,6 @@ public class FormEntities extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(ttx.IsValid() + ":" + ttx.GetContent());
-				
 			}
 		});
 		
