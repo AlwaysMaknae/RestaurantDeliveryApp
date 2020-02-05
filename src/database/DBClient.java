@@ -26,7 +26,7 @@ public class DBClient {
 	}
 
 	// function to add client
-	public static ClientModel addClient(String username, String password,
+	public static ClientModel AddClient(String username, String password,
 			String last_name, String first_name, String address, String email,
 			String number, int status) {
 		String MyQuery = "{CALL create_client(?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -87,14 +87,14 @@ public class DBClient {
 	}
 
 	public static String AddClient(ClientModel clientModel) {
-		String username = clientModel.getUsername();
-		String password = clientModel.getPassword();
-		String last_name = clientModel.getLast_name();
-		String first_name = clientModel.getFirst_name();
-		String address = clientModel.getAddress();
-		String email = clientModel.getEmail();
-		String number = clientModel.getNumber();
-		int status = clientModel.getStatus();
+		String username = clientModel.getClient_username();
+		String password = clientModel.getClient_password();
+		String last_name = clientModel.getClient_last_name();
+		String first_name = clientModel.getClient_first_name();
+		String address = clientModel.getClient_address();
+		String email = clientModel.getClient_email();
+		String number = clientModel.getClient_number();
+		int status = clientModel.getClient_status();
 
 		String MyQuery = "{CALL create_client(?, ?, ?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;

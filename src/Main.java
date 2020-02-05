@@ -1,5 +1,15 @@
 import Form.AddClient.FAddClient;
 import Form.Login.FLogin;
+import Form.Manager.FViewRestaurantOrder;
+import Form.Menu.FAddMenu;
+import Form.Menu.FDeleteMenu;
+import Form.Menu.FEditMenu;
+import Form.Restaurant.FAddRestaurant;
+import Form.Restaurant.FAddRestaurantMenu;
+import Form.Restaurant.FDeleteRestaurant;
+import Form.Restaurant.FEditRestaurant;
+import Form.Restauranteur.FAcceptOrder;
+import Form.Restauranteur.FOrderReady;
 import Model.UserModel;
 import database.*;
 import utils.FormEntities;
