@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //import com.mysql.jdbc.PreparedStatement;
-
 import Model.ItemModel;
 
 public class DBItem {
@@ -54,7 +53,7 @@ public class DBItem {
 			stmt.setString(2, dish);
 			stmt.setFloat(3, price);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
+			return new ItemModel(stmt.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

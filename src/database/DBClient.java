@@ -17,7 +17,7 @@ public class DBClient {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			stmt.next();
 			System.out.println(stmt.getString(2));
-			return new CLientModel(stmt.getString(1));
+			return new ClientModel(stmt.getString(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
