@@ -1,10 +1,10 @@
-package Form.Delivery;
+package Form.DeliveryGuy;
 
 import java.awt.event.ActionEvent;
 
-public class FEditDeliveryGuy extends FEditDeliveryGuyPage{
-
-	public FEditDeliveryGuy() {
+public class FViewDeliveryGuy extends FViewDeliveryGuyPage{
+	
+	public FViewDeliveryGuy() {
 		System.out.println("Form Controller");
 
 
@@ -21,5 +21,5 @@ public class FEditDeliveryGuy extends FEditDeliveryGuyPage{
 		
 
 	}
-	
+
 }

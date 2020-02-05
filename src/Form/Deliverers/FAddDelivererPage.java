@@ -1,4 +1,4 @@
-package Form.Delivery;
+package Form.Deliverers;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,14 +16,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-public class FAddDeliveryGuyPage extends FForm{
+public class FAddDelivererPage extends FForm{
 	
 	protected JTextField TFName, TFDeliveryArea;
 	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
 	protected JButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
 
-	public FAddDeliveryGuyPage() {
+	public FAddDelivererPage() {
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

@@ -12,14 +12,14 @@ import javax.swing.SwingConstants;
 import utils.FForm;
 import utils.FLabel;
 
-public class FAcceptDeliveryPage extends FForm {
+public class FAcceptDeliveryGuyPage extends FForm {
 
 	protected JButton BTNSelect, BTNAccept;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
-	public FAcceptDeliveryPage() {
+	public FAcceptDeliveryGuyPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

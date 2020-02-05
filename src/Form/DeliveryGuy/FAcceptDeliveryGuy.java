@@ -2,9 +2,9 @@ package Form.DeliveryGuy;
 
 import java.awt.event.ActionEvent;
 
-public class FAcceptDelivery extends FAcceptDeliveryPage{
+public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage{
 
-	public FAcceptDelivery() {
+	public FAcceptDeliveryGuy() {
 		System.out.println("Form Controller");
 
 

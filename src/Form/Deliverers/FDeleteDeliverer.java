@@ -1,10 +1,10 @@
-package Form.DeliveryGuy;
+package Form.Deliverers;
 
 import java.awt.event.ActionEvent;
 
-public class FDoneDelivery extends FDoneDeliveryPage{
-	
-	public FDoneDelivery() {
+public class FDeleteDeliverer extends FDeleteDelivererPage{
+
+	public FDeleteDeliverer() {
 		System.out.println("Form Controller");
 
 
@@ -21,5 +21,5 @@ public class FDoneDelivery extends FDoneDeliveryPage{
 		
 
 	}
-
+	
 }

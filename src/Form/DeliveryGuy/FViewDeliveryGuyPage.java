@@ -7,19 +7,21 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import utils.FForm;
 import utils.FLabel;
 
-public class FDoneDeliveryPage extends FForm {
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
-	protected JButton BTNSelect, BTNDone;
+public class FViewDeliveryGuyPage extends FForm {
+	
+	protected JButton BTNSelect, BTNComplete;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
-	public FDoneDeliveryPage() {
+	public FViewDeliveryGuyPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -76,8 +78,8 @@ public class FDoneDeliveryPage extends FForm {
 		TitlePan.setPreferredSize(new Dimension(250, 35));
 		InnerPan.add(TitlePan);
 		
-		FLabel DeliveryMadeLbl = new FLabel("Delivery Made");
-		TitlePan.add(DeliveryMadeLbl);
+		FLabel ViewDeliveryLbl = new FLabel("View Delivery");
+		TitlePan.add(ViewDeliveryLbl);
 		
 		JPanel ViewDeliveryInfoPan = new JPanel();
 		ViewDeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
@@ -128,9 +130,9 @@ public class FDoneDeliveryPage extends FForm {
 		ButtonPan.setPreferredSize(new Dimension(250, 25));
 		InnerPan.add(ButtonPan);
 		
-		BTNDone = new JButton("Delivery Done");
-		BTNDone.setPreferredSize(new Dimension(150, 25));
-		ButtonPan.add(BTNDone);
+		BTNComplete = new JButton("Complete Consultation");
+		BTNComplete.setPreferredSize(new Dimension(200, 25));
+		ButtonPan.add(BTNComplete);
 		
 		JPanel MainSpacePan2 = new JPanel();
 		MainSpacePan2.setPreferredSize(new Dimension(160, 975));
@@ -139,7 +141,6 @@ public class FDoneDeliveryPage extends FForm {
 
 		repaint();
 		revalidate();
-
 
 	}
 
