@@ -38,7 +38,7 @@ public class UserModel extends Model {
 	}
 
 	public void Update() {
-		DBUser.UpdateUser(this.id, this.username, this.password);
+		DBUser.UpdateUser(this.id, this.username, this.password, this.access_lvl);
 	}
 
 	public Model Read() {
@@ -49,7 +49,7 @@ public class UserModel extends Model {
 		DBUser.DeleteUser(this.id);
 	}	
 	
-	//Getters and setters ( NO GET PASSWORD BECAUSE LOGIC)
+	//Getters and Setters
 	public String getUsername() {
 		return username;
 	}
@@ -65,8 +65,8 @@ public class UserModel extends Model {
 		return password;
 	}
 	
-	public String getId() {
-		return username;
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {

@@ -11,6 +11,7 @@ import Form.DeliveryGuy.FAcceptDelivery;
 import Form.DeliveryGuy.FDoneDelivery;
 import Form.DeliveryGuy.FViewDelivery;
 import Form.Login.FLogin;
+<<<<<<< HEAD
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
 import Form.Menu.FDeleteMenu;
@@ -21,6 +22,9 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+=======
+import Model.UserModel;
+>>>>>>> 7c047e6d0baffbfb5cda4f6e3d4998caf6422408
 import database.*;
 import utils.FormEntities;
 
@@ -105,6 +109,14 @@ public class Main {
 		
 		
 		DBConnecter.OpenConnection();
+		UserModel jose = new UserModel("JJJJ", "yeey", 3);
+		UserModel Tester2 = new UserModel("tester2", "terst", 2);
+		
+		//DBUser.AddUser("Jose", "123", 3);
+		DBUser.UpdateUser(2, "hhhhhhhm");
+		
+		//DBUser.DeleteUser(jose.getId());
+		//DBUser.AddUser("Test", "123", 2);
 	}
 
 }
