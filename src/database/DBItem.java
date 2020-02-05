@@ -6,6 +6,7 @@ import java.sql.SQLException;
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.ItemModel;
+import Model.UserModel;
 
 public class DBItem {
 	// function to read item
@@ -54,7 +55,7 @@ public class DBItem {
 			stmt.setString(2, dish);
 			stmt.setFloat(3, price);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
+			return new ItemModel(stmt.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -75,8 +76,8 @@ public class DBItem {
 	}
 
 	public static String AddItem(ItemModel itemModel) {
-		String dish = itemModel.getDish();
-		float price = itemModel.getPrice();
+		String dish = itemModel.getItem_dish();
+		float price = itemModel.getItem_price();
 		int restaurant_id = itemModel.getRestaurant_id();
 		int status = itemModel.getStatus();
 		String MyQuery = "{CALL create_item(?, ?, ?, ?)}";
