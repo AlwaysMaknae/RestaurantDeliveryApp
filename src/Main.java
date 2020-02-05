@@ -1,3 +1,7 @@
+import Form.Client.FDeleteAccount;
+import Form.Client.FEditAccount;
+import Form.Client.FOrderFood;
+import Form.Client.FViewOrderFoodHistory;
 import Form.Delivery.FAddDeliveryGuy;
 import Form.Delivery.FDeleteDeliveryGuy;
 import Form.Delivery.FEditDeliveryGuy;
@@ -24,7 +28,7 @@ public class Main {
 
 		new DBConnecter();
 		/*
-		 * LOGIN & CREATE/EDIT/DELETE ACCOUNT
+		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
 		//new FLogin();
@@ -81,7 +85,17 @@ public class Main {
 		 */
 		
 		//new FViewRestaurantOrder();
+		
+		/*
+		 * CLIENT ACCOUNT FORM
+		 */
 
+		//new FEditAccount();
+		//new FDeleteAccount();
+		//new FOrderFood();
+		//new FViewOrderFoodHistory();
+		
+		
 		DBConnecter.OpenConnection();
 	}
 
