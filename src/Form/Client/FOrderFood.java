@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FOrderFood extends FOrderFoodPage{
 
 	public FOrderFood() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

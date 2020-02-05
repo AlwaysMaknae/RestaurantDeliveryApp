@@ -18,7 +18,7 @@ public class FListView extends JPanel {
 	private Dimension ListScrollerDimension;
 	
 	public FListView( ArrayList<Object> data ){
-		List = data;
+		this.List = data;
 		
 		ListElements = new DefaultListModel<Object>();
 		for (Object o : List) {
@@ -27,8 +27,6 @@ public class FListView extends JPanel {
 		
 		
 		TheView = new JList<Object>(ListElements);
-		
-		
 		ScrollPane = new JScrollPane(TheView);
 		
 		ListScrollerDimension = new Dimension(100,100);
@@ -45,7 +43,8 @@ public class FListView extends JPanel {
 	
 	public void SetList(ArrayList<Object> data){
 		ListElements.clear();
-		for (Object o : List) {
+		this.List = data;
+		for (Object o : data) {
 			ListElements.addElement(o);
 		}
 	}
@@ -53,9 +52,12 @@ public class FListView extends JPanel {
 	public Object GetSelectedItem(){
 		
 		if(TheView.getSelectedIndex() > -1 )
-			return List.get( TheView.getSelectedIndex());
+			return List.get( TheView.getSelectedIndex() );
 		else
 			return null;
+	}
+	public int GetSelectedIndex(){
+		return TheView.getSelectedIndex();
 	}
 	public Dimension getListScrollerDimension() {
 		return ListScrollerDimension;

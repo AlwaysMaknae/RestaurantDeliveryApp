@@ -93,6 +93,9 @@ public class Main {
 		//new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
+		new FEditRestaurant();
+		//new FormEntities();
+		
 		
 		DBConnecter.OpenConnection();
 

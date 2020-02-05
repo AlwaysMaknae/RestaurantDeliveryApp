@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 import utils.FForm;
 import utils.FHoursComboBox;
 import utils.FLabel;
+import utils.FListView;
 
 public class FEditRestaurantPage extends FForm{
 	
@@ -29,6 +30,7 @@ public class FEditRestaurantPage extends FForm{
 	protected JComboBox Fcb[] = new JComboBox[7];
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
+	protected FListView ListPan = new FListView();
 	
 	public FEditRestaurantPage() {
 		
@@ -55,8 +57,7 @@ public class FEditRestaurantPage extends FForm{
 		FLabel RestaurantListLbl = new FLabel("Restaurant");
 		ListTitlePan.add(RestaurantListLbl);
 		
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(220, 895));
 		RestaurantListPan.add(ListPan);
 		
