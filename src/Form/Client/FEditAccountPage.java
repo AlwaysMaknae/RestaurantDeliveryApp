@@ -22,7 +22,7 @@ public class FEditAccountPage extends FForm{
 	
 	public FEditAccountPage() {
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Service");
 		
@@ -303,7 +303,7 @@ public class FEditAccountPage extends FForm{
 		BotButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(BotButtonPan);
 		
-		BTNSave = new JButton("Delete");
+		BTNSave = new JButton("Save");
 		BTNSave.setPreferredSize(new Dimension(90, 25));
 		BotButtonPan.add(BTNSave);
 		

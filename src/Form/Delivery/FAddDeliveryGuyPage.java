@@ -25,7 +25,7 @@ public class FAddDeliveryGuyPage extends FForm{
 
 	public FAddDeliveryGuyPage() {
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 		
@@ -45,7 +45,7 @@ public class FAddDeliveryGuyPage extends FForm{
 		TitleSpacePan.setPreferredSize(new Dimension(425, 1));
 		TitlePan.add(TitleSpacePan);
 		
-		JLabel TitleLbl = new JLabel("Add new Delivery Man");
+		FLabel TitleLbl = new FLabel("Add new Delivery Man");
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -58,7 +58,7 @@ public class FAddDeliveryGuyPage extends FForm{
 		InfoPan.setPreferredSize(new Dimension(425, 65));
 		MainPan.add(InfoPan);
 		
-		JLabel NameLbl = new JLabel("Name:");
+		FLabel NameLbl = new FLabel("Name:");
 		NameLbl.setPreferredSize(new Dimension(110, 14));
 		InfoPan.add(NameLbl);
 		
@@ -118,7 +118,7 @@ public class FAddDeliveryGuyPage extends FForm{
 		DeliveryInfoPan.setPreferredSize(new Dimension(425, 440));
 		MainPan.add(DeliveryInfoPan);
 		
-		JLabel DeliveryAreaTitleLbl = new JLabel("Delivery Area");
+		FLabel DeliveryAreaTitleLbl = new FLabel("Delivery Area");
 		DeliveryInfoPan.add(DeliveryAreaTitleLbl);
 		
 		JPanel DeliveryInfoSpacePan = new JPanel();

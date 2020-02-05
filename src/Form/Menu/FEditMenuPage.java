@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import utils.FForm;
+import utils.FLabel;
 
 public class FEditMenuPage extends FForm{
 
@@ -19,7 +20,7 @@ public class FEditMenuPage extends FForm{
 	
 	public FEditMenuPage(){
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 		
@@ -39,7 +40,7 @@ public class FEditMenuPage extends FForm{
 		ListTitlePan.setBackground(Color.LIGHT_GRAY);
 		RestaurantListPan.add(ListTitlePan);
 		
-		JLabel ListRestaurantTitleLbl = new JLabel("Restaurant");
+		FLabel ListRestaurantTitleLbl = new FLabel("Restaurant");
 		ListTitlePan.add(ListRestaurantTitleLbl);
 		
 		JPanel ListPan = new JPanel();
@@ -72,7 +73,7 @@ public class FEditMenuPage extends FForm{
 		TitleSpacePan.setPreferredSize(new Dimension(325, 3));
 		TitlePan.add(TitleSpacePan);
 		
-		JLabel TitleLbl = new JLabel("Edit Menu");
+		FLabel TitleLbl = new FLabel("Edit Menu");
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -109,7 +110,7 @@ public class FEditMenuPage extends FForm{
 		EditItemPan.setPreferredSize(new Dimension(325, 210));
 		InnerPan.add(EditItemPan);
 		
-		JLabel EditItemLbl = new JLabel("Edit Item");
+		FLabel EditItemLbl = new FLabel("Edit Item");
 		EditItemPan.add(EditItemLbl);
 		
 		JPanel ItemSpacePan = new JPanel();

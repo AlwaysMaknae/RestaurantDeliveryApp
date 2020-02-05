@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
 import utils.FForm;
+import utils.FLabel;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -18,7 +20,8 @@ public class FAddMenuPage extends FForm{
 	protected JButton BTNAddItem, BTNSelect, BTNCreateMenu;
 
 	public FAddMenuPage() {
-	getContentPane().setBackground(Color.WHITE);
+		
+	getContentPane().setBackground(Color.LIGHT_GRAY);
 	getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	setTitle("Food Ordering Software");
 	
@@ -38,7 +41,7 @@ public class FAddMenuPage extends FForm{
 	ListTitlePan.setBackground(Color.LIGHT_GRAY);
 	RestaurantListPan.add(ListTitlePan);
 	
-	JLabel ListRestaurantTitleLbl = new JLabel("Restaurant");
+	FLabel ListRestaurantTitleLbl = new FLabel("Restaurant");
 	ListTitlePan.add(ListRestaurantTitleLbl);
 	
 	JPanel ListPan = new JPanel();
@@ -71,7 +74,7 @@ public class FAddMenuPage extends FForm{
 	TitleSpacePan.setPreferredSize(new Dimension(325, 3));
 	TitlePan.add(TitleSpacePan);
 	
-	JLabel TitleLbl = new JLabel("Create Menu");
+	FLabel TitleLbl = new FLabel("Create Menu");
 	TitlePan.add(TitleLbl);
 	
 	JPanel SpacePan0 = new JPanel();
@@ -108,7 +111,7 @@ public class FAddMenuPage extends FForm{
 	AddItemPan.setPreferredSize(new Dimension(325, 210));
 	InnerPan.add(AddItemPan);
 	
-	JLabel AddItemLbl = new JLabel("Add Item");
+	FLabel AddItemLbl = new FLabel("Add Item");
 	AddItemPan.add(AddItemLbl);
 	
 	JPanel ItemSpacePan = new JPanel();
@@ -116,7 +119,7 @@ public class FAddMenuPage extends FForm{
 	ItemSpacePan.setPreferredSize(new Dimension(325, 1));
 	AddItemPan.add(ItemSpacePan);
 	
-	JLabel ItemLbl = new JLabel("Item:");
+	FLabel ItemLbl = new FLabel("Item:");
 	ItemLbl.setPreferredSize(new Dimension(45, 14));
 	AddItemPan.add(ItemLbl);
 	
@@ -124,7 +127,7 @@ public class FAddMenuPage extends FForm{
 	TFItem.setPreferredSize(new Dimension(250, 20));
 	AddItemPan.add(TFItem);
 	
-	JLabel PriceLbl = new JLabel("Price $:");
+	FLabel PriceLbl = new FLabel("Price $:");
 	PriceLbl.setPreferredSize(new Dimension(45, 14));
 	AddItemPan.add(PriceLbl);
 	

@@ -1,3 +1,5 @@
+import Form.AddClient.FAddClient;
+import Form.Admin.FAdmin;
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
@@ -61,6 +63,12 @@ public class Main {
 		//new FAddDeliveryGuy();
 		//new FEditDeliveryGuy();
 		//new FDeleteDeliveryGuy();
+		
+		/*
+		 * ADMIN ACCOUNT FORM
+		 */
+		
+		//new FAdmin();
 		
 		/*
 		 * DELIVERYGUY ACCOUNT FORM

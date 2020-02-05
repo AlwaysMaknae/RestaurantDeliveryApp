@@ -16,14 +16,14 @@ import javax.swing.SwingConstants;
 
 public class FViewDeliveryPage extends FForm {
 	
-	protected JButton BTNSelect;
+	protected JButton BTNSelect, BTNComplete;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
 	public FViewDeliveryPage() {
 
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 
@@ -130,7 +130,7 @@ public class FViewDeliveryPage extends FForm {
 		ButtonPan.setPreferredSize(new Dimension(250, 25));
 		InnerPan.add(ButtonPan);
 		
-		JButton BTNComplete = new JButton("Complete Consultation");
+		BTNComplete = new JButton("Complete Consultation");
 		BTNComplete.setPreferredSize(new Dimension(200, 25));
 		ButtonPan.add(BTNComplete);
 		

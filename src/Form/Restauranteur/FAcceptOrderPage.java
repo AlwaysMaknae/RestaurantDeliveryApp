@@ -21,6 +21,10 @@ public class FAcceptOrderPage extends FForm {
 
 	public FAcceptOrderPage() {
 
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setTitle("Food Ordering Software");
+		
 		JPanel MainPan = new JPanel();
 		MainPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.setPreferredSize(new Dimension(975, 975));
@@ -92,6 +96,7 @@ public class FAcceptOrderPage extends FForm {
 		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
 		
 		JPanel SpacePan0 = new JPanel();
+		SpacePan0.setBackground(Color.LIGHT_GRAY);
 		SpacePan0.setPreferredSize(new Dimension(250, 1));
 		ViewOrderInfoPan1.add(SpacePan0);
 		
@@ -116,6 +121,7 @@ public class FAcceptOrderPage extends FForm {
 		ViewOrderInfoPan1.add(MinuteLbl);
 		
 		JPanel SpacePan1 = new JPanel();
+		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(250, 1));
 		ViewOrderInfoPan1.add(SpacePan1);
 		

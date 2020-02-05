@@ -10,13 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import utils.FForm;
+import utils.FLabel;
 
 public class FDeleteMenuPage extends FForm{
 	protected JButton BTNSelect, BTNDeleteMenu;
 	
 	public FDeleteMenuPage() {
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 		
@@ -36,7 +37,7 @@ public class FDeleteMenuPage extends FForm{
 		ListTitlePan.setBackground(Color.LIGHT_GRAY);
 		RestaurantListPan.add(ListTitlePan);
 		
-		JLabel ListRestaurantTitleLbl = new JLabel("Restaurant");
+		FLabel ListRestaurantTitleLbl = new FLabel("Restaurant");
 		ListTitlePan.add(ListRestaurantTitleLbl);
 		
 		JPanel ListPan = new JPanel();
@@ -69,7 +70,7 @@ public class FDeleteMenuPage extends FForm{
 		TitleSpacePan.setPreferredSize(new Dimension(325, 3));
 		TitlePan.add(TitleSpacePan);
 		
-		JLabel TitleLbl = new JLabel("Delete Menu");
+		FLabel TitleLbl = new FLabel("Delete Menu");
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();

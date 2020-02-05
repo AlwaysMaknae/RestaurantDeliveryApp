@@ -21,7 +21,7 @@ public class FOrderFoodPage extends FForm {
 
 	public FOrderFoodPage() {
 
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 

@@ -21,40 +21,40 @@ public class FLoginView extends FForm{
 	
 	public FLoginView(){
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("User Authentification");
 		
 		JPanel MainPan = new JPanel();
-		MainPan.setBackground(Color.WHITE);
+		MainPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.setPreferredSize(new Dimension(975, 975));
 		getContentPane().add(MainPan);
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel TopPan = new JPanel();
-		MainPan.add(TopPan);
-		TopPan.setBackground(Color.WHITE);
-		TopPan.setPreferredSize(new Dimension(975, 300));
+		JPanel TitlePan = new JPanel();
+		MainPan.add(TitlePan);
+		TitlePan.setBackground(Color.LIGHT_GRAY);
+		TitlePan.setPreferredSize(new Dimension(975, 300));
 		
 		FLabel LoginTitleLbl = new FLabel("Delivery System");
-		TopPan.add(LoginTitleLbl);
+		TitlePan.add(LoginTitleLbl);
 		
-		JPanel CenterPan = new JPanel();
-		CenterPan.setBackground(Color.WHITE);
-		CenterPan.setPreferredSize(new Dimension(975, 600));
-		MainPan.add(CenterPan);
-		CenterPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		JPanel InfoPan = new JPanel();
+		InfoPan.setBackground(Color.LIGHT_GRAY);
+		InfoPan.setPreferredSize(new Dimension(975, 600));
+		MainPan.add(InfoPan);
+		InfoPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		
 		JPanel SpacePan = new JPanel();
-		SpacePan.setBackground(Color.WHITE);
+		SpacePan.setBackground(Color.LIGHT_GRAY);
 		SpacePan.setPreferredSize(new Dimension(975, 150));
-		CenterPan.add(SpacePan);
+		InfoPan.add(SpacePan);
 		SpacePan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel LoginPan = new JPanel();
-		LoginPan.setBackground(Color.WHITE);
+		LoginPan.setBackground(Color.LIGHT_GRAY);
 		LoginPan.setPreferredSize(new Dimension(350, 100));
-		CenterPan.add(LoginPan);
+		InfoPan.add(LoginPan);
 		LoginPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		FLabel UsernameLbl = new FLabel("Username:");
@@ -65,7 +65,7 @@ public class FLoginView extends FForm{
 		LoginPan.add(TFUsername);
 		
 		JPanel LoginSpacePan = new JPanel();
-		LoginSpacePan.setBackground(Color.WHITE);
+		LoginSpacePan.setBackground(Color.LIGHT_GRAY);
 		LoginSpacePan.setPreferredSize(new Dimension(500, 5));
 		LoginPan.add(LoginSpacePan);
 		
@@ -76,32 +76,29 @@ public class FLoginView extends FForm{
 		TFPassword.setPreferredSize(new Dimension(200, 18));
 		LoginPan.add(TFPassword);
 		
-		JPanel BotPan = new JPanel();
-		BotPan.setPreferredSize(new Dimension(975, 60));
-		BotPan.setBackground(Color.WHITE);
-		MainPan.add(BotPan);
+		JPanel ButtonPan = new JPanel();
+		FlowLayout fl_ButtonPan = (FlowLayout) ButtonPan.getLayout();
+		fl_ButtonPan.setAlignment(FlowLayout.RIGHT);
+		ButtonPan.setPreferredSize(new Dimension(975, 60));
+		ButtonPan.setBackground(Color.LIGHT_GRAY);
+		MainPan.add(ButtonPan);
 		
-		JPanel BotSpacePan = new JPanel();
-		BotSpacePan.setBackground(Color.WHITE);
-		BotSpacePan.setPreferredSize(new Dimension(975, 20));
-		BotPan.add(BotSpacePan);
-		
-		JPanel BotSpacePan2 = new JPanel();
-		BotSpacePan2.setBackground(Color.WHITE);
-		BotSpacePan2.setPreferredSize(new Dimension(680, 10));
-		BotPan.add(BotSpacePan2);
+		JPanel ButtonSpacePan = new JPanel();
+		ButtonSpacePan.setBackground(Color.LIGHT_GRAY);
+		ButtonSpacePan.setPreferredSize(new Dimension(975, 20));
+		ButtonPan.add(ButtonSpacePan);
 		
 		BTNConnect = new JButton("Connect");
 		BTNConnect.setPreferredSize(new Dimension(90, 28));
-		BotPan.add(BTNConnect);
+		ButtonPan.add(BTNConnect);
 		
 		BTNClientNew = new JButton("New Clients");
 		BTNClientNew.setPreferredSize(new Dimension(120, 28));
-		BotPan.add(BTNClientNew);
+		ButtonPan.add(BTNClientNew);
 		
 		BTNQuit = new JButton("Quit");
 		BTNQuit.setPreferredSize(new Dimension(60, 28));
-		BotPan.add(BTNQuit);
+		ButtonPan.add(BTNQuit);
 		
 		repaint();
 		revalidate();

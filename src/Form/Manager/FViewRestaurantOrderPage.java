@@ -19,6 +19,10 @@ public class FViewRestaurantOrderPage extends FForm {
 	protected JTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
 
 	public FViewRestaurantOrderPage() {
+		
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setTitle("Food Ordering Software");
 
 		JPanel MainPan = new JPanel();
 		MainPan.setBackground(Color.LIGHT_GRAY);
@@ -121,6 +125,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
 
 		JPanel SpacePan0 = new JPanel();
+		SpacePan0.setBackground(Color.LIGHT_GRAY);
 		SpacePan0.setPreferredSize(new Dimension(250, 1));
 		ViewOrderInfoPan1.add(SpacePan0);
 
@@ -145,6 +150,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		ViewOrderInfoPan1.add(MinuteLbl);
 
 		JPanel SpacePan1 = new JPanel();
+		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(250, 1));
 		ViewOrderInfoPan1.add(SpacePan1);
 

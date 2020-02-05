@@ -32,28 +32,28 @@ public class FAddRestaurantPage extends FForm{
 	
 	public FAddRestaurantPage() {
 		
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 		
 		JPanel MainPan = new JPanel();
-		MainPan.setBackground(Color.WHITE);
+		MainPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.setPreferredSize(new Dimension(975, 975));
 		getContentPane().add(MainPan);
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel InnerPan = new JPanel();
 		MainPan.add(InnerPan);
-		InnerPan.setBackground(Color.WHITE);
+		InnerPan.setBackground(Color.LIGHT_GRAY);
 		InnerPan.setPreferredSize(new Dimension(600, 970));
 		
 		JPanel TitlePan = new JPanel();
-		TitlePan.setBackground(Color.WHITE);
+		TitlePan.setBackground(Color.LIGHT_GRAY);
 		TitlePan.setPreferredSize(new Dimension(600, 40));
 		InnerPan.add(TitlePan);
 		
 		JPanel TitleSpacePan = new JPanel();
-		TitleSpacePan.setBackground(Color.WHITE);
+		TitleSpacePan.setBackground(Color.LIGHT_GRAY);
 		TitleSpacePan.setPreferredSize(new Dimension(600, 5));
 		TitlePan.add(TitleSpacePan);
 		
@@ -61,7 +61,7 @@ public class FAddRestaurantPage extends FForm{
 		TitlePan.add(TitleLbl);
 		
 		JPanel RestaurantInfoPan = new JPanel();
-		RestaurantInfoPan.setBackground(Color.WHITE);
+		RestaurantInfoPan.setBackground(Color.LIGHT_GRAY);
 		RestaurantInfoPan.setPreferredSize(new Dimension(600, 100));
 		InnerPan.add(RestaurantInfoPan);
 		
@@ -74,7 +74,7 @@ public class FAddRestaurantPage extends FForm{
 		RestaurantInfoPan.add(TFRestaurantName);
 		
 		JPanel SpacePan1 = new JPanel();
-		SpacePan1.setBackground(Color.WHITE);
+		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(600, 3));
 		RestaurantInfoPan.add(SpacePan1);
 		
@@ -87,12 +87,12 @@ public class FAddRestaurantPage extends FForm{
 		RestaurantInfoPan.add(TFRestaurantAddress);
 		
 		JPanel SpacePan2 = new JPanel();
-		SpacePan2.setBackground(Color.WHITE);
+		SpacePan2.setBackground(Color.LIGHT_GRAY);
 		SpacePan2.setPreferredSize(new Dimension(600, 3));
 		RestaurantInfoPan.add(SpacePan2);
 		
 		FLabel PhoneNumLbl = new FLabel("Phone Number:");
-		PhoneNumLbl.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		PhoneNumLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		PhoneNumLbl.setPreferredSize(new Dimension(120, 14));
 		PhoneNumLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		RestaurantInfoPan.add(PhoneNumLbl);
@@ -116,7 +116,7 @@ public class FAddRestaurantPage extends FForm{
 		RestaurantInfoPan.add(TFPhoneNum_2);
 		
 		JPanel SpacePan3 = new JPanel();
-		SpacePan3.setBackground(Color.WHITE);
+		SpacePan3.setBackground(Color.LIGHT_GRAY);
 		SpacePan3.setPreferredSize(new Dimension(5, 15));
 		RestaurantInfoPan.add(SpacePan3);
 		
@@ -126,16 +126,16 @@ public class FAddRestaurantPage extends FForm{
 		
 		JPanel SpacePan4 = new JPanel();
 		SpacePan4.setPreferredSize(new Dimension(90, 15));
-		SpacePan4.setBackground(Color.WHITE);
+		SpacePan4.setBackground(Color.LIGHT_GRAY);
 		RestaurantInfoPan.add(SpacePan4);
 		
 		JPanel TitlePan2 = new JPanel();
-		TitlePan2.setBackground(Color.WHITE);
+		TitlePan2.setBackground(Color.LIGHT_GRAY);
 		TitlePan2.setPreferredSize(new Dimension(600, 35));
 		InnerPan.add(TitlePan2);
 		
 		JPanel TitleSpacePan2 = new JPanel();
-		TitleSpacePan2.setBackground(Color.WHITE);
+		TitleSpacePan2.setBackground(Color.LIGHT_GRAY);
 		TitleSpacePan2.setPreferredSize(new Dimension(600, 3));
 		TitlePan2.add(TitleSpacePan2);
 		
@@ -143,17 +143,17 @@ public class FAddRestaurantPage extends FForm{
 		TitlePan2.add(OpenTimeLbl);
 		
 		JPanel OpenTimePan = new JPanel();
-		OpenTimePan.setBackground(Color.WHITE);
+		OpenTimePan.setBackground(Color.LIGHT_GRAY);
 		OpenTimePan.setPreferredSize(new Dimension(600, 400));
 		InnerPan.add(OpenTimePan);
 		
 		JPanel OpenTimeTitlePan = new JPanel();
-		OpenTimeTitlePan.setBackground(Color.WHITE);
+		OpenTimeTitlePan.setBackground(Color.LIGHT_GRAY);
 		OpenTimeTitlePan.setPreferredSize(new Dimension(600, 25));
 		OpenTimePan.add(OpenTimeTitlePan);
 		
 		JPanel OpenTimeSpacePan0 = new JPanel();
-		OpenTimeSpacePan0.setBackground(Color.WHITE);
+		OpenTimeSpacePan0.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan0.setPreferredSize(new Dimension(50, 10));
 		OpenTimeTitlePan.add(OpenTimeSpacePan0);
 		
@@ -161,7 +161,7 @@ public class FAddRestaurantPage extends FForm{
 		OpenTimeTitlePan.add(DayLbl);
 		
 		JPanel OpenTimeSpacePan1 = new JPanel();
-		OpenTimeSpacePan1.setBackground(Color.WHITE);
+		OpenTimeSpacePan1.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan1.setPreferredSize(new Dimension(75, 10));
 		OpenTimeTitlePan.add(OpenTimeSpacePan1);
 		
@@ -169,7 +169,7 @@ public class FAddRestaurantPage extends FForm{
 		OpenTimeTitlePan.add(OpeningTimeLbl);
 		
 		JPanel OpenTimeSpacePan2 = new JPanel();
-		OpenTimeSpacePan2.setBackground(Color.WHITE);
+		OpenTimeSpacePan2.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan2.setPreferredSize(new Dimension(135, 10));
 		OpenTimeTitlePan.add(OpenTimeSpacePan2);
 		
@@ -177,40 +177,40 @@ public class FAddRestaurantPage extends FForm{
 		OpenTimeTitlePan.add(ClosingTimeLbl);
 		
 		JPanel OpenTimeSpacePan22 = new JPanel();
-		OpenTimeSpacePan22.setBackground(Color.WHITE);
+		OpenTimeSpacePan22.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan22.setPreferredSize(new Dimension(60, 10));
 		OpenTimeTitlePan.add(OpenTimeSpacePan22);
 		
 		JPanel OpenTimeSpacePan3 = new JPanel();
-		OpenTimeSpacePan3.setBackground(Color.WHITE);
+		OpenTimeSpacePan3.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan3.setPreferredSize(new Dimension(20, 10));
 		OpenTimePan.add(OpenTimeSpacePan3);
 		
 		JPanel DayPan = new JPanel();
-		DayPan.setBackground(Color.WHITE);
+		DayPan.setBackground(Color.LIGHT_GRAY);
 		DayPan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(DayPan);
 		
 		JPanel FcbSpacer00 = new JPanel();
 		FcbSpacer00.setPreferredSize(new Dimension(100, 8));
-		FcbSpacer00.setBackground(Color.WHITE);
+		FcbSpacer00.setBackground(Color.LIGHT_GRAY);
 		DayPan.add(FcbSpacer00);
 		
 		for(int i = 0; i < days.length; i++) {
 			DayPan.add(new FLabel(days[i]));
 			JPanel FcbSpacer0 = new JPanel();
 			FcbSpacer0.setPreferredSize(new Dimension(100, 23));
-			FcbSpacer0.setBackground(Color.WHITE);
+			FcbSpacer0.setBackground(Color.LIGHT_GRAY);
 			DayPan.add(FcbSpacer0);
 		}
 		
 		JPanel OpenTimeSpacePan4 = new JPanel();
-		OpenTimeSpacePan4.setBackground(Color.WHITE);
+		OpenTimeSpacePan4.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan4.setPreferredSize(new Dimension(20, 10));
 		OpenTimePan.add(OpenTimeSpacePan4);
 		
 		JPanel OpeningTimePan = new JPanel();
-		OpeningTimePan.setBackground(Color.WHITE);
+		OpeningTimePan.setBackground(Color.LIGHT_GRAY);
 		OpeningTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(OpeningTimePan);
 		
@@ -219,17 +219,17 @@ public class FAddRestaurantPage extends FForm{
 			OpeningTimePan.add(Fcb[i]);
 			JPanel FcbSpacer = new JPanel();
 			FcbSpacer.setPreferredSize(new Dimension(100, 8));
-			FcbSpacer.setBackground(Color.WHITE);
+			FcbSpacer.setBackground(Color.LIGHT_GRAY);
 			OpeningTimePan.add(FcbSpacer);
 		}
 		
 		JPanel OpenTimeSpacePan5 = new JPanel();
-		OpenTimeSpacePan5.setBackground(Color.WHITE);
+		OpenTimeSpacePan5.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan5.setPreferredSize(new Dimension(110, 10));
 		OpenTimePan.add(OpenTimeSpacePan5);
 		
 		JPanel ClosingTimePan = new JPanel();
-		ClosingTimePan.setBackground(Color.WHITE);
+		ClosingTimePan.setBackground(Color.LIGHT_GRAY);
 		ClosingTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(ClosingTimePan);
 		
@@ -238,17 +238,17 @@ public class FAddRestaurantPage extends FForm{
 			ClosingTimePan.add(Fcb[i]);
 			JPanel FcbSpacer2 = new JPanel();
 			FcbSpacer2.setPreferredSize(new Dimension(100, 8));
-			FcbSpacer2.setBackground(Color.WHITE);
+			FcbSpacer2.setBackground(Color.LIGHT_GRAY);
 			ClosingTimePan.add(FcbSpacer2);
 		}
 		
 		JPanel OpenTimeSpacePan6 = new JPanel();
-		OpenTimeSpacePan6.setBackground(Color.WHITE);
+		OpenTimeSpacePan6.setBackground(Color.LIGHT_GRAY);
 		OpenTimeSpacePan6.setPreferredSize(new Dimension(50, 10));
 		OpenTimePan.add(OpenTimeSpacePan6);
 		
 		JPanel ButtonPanel = new JPanel();
-		ButtonPanel.setBackground(Color.WHITE);
+		ButtonPanel.setBackground(Color.LIGHT_GRAY);
 		ButtonPanel.setPreferredSize(new Dimension(600, 40));
 		InnerPan.add(ButtonPanel);
 		
@@ -257,12 +257,12 @@ public class FAddRestaurantPage extends FForm{
 		ButtonPanel.add(BTNModifyAll);
 		
 		JPanel ButtonSpacerPan = new JPanel();
-		ButtonSpacerPan.setBackground(Color.WHITE);
+		ButtonSpacerPan.setBackground(Color.LIGHT_GRAY);
 		ButtonSpacerPan.setPreferredSize(new Dimension(22, 10));
 		ButtonPanel.add(ButtonSpacerPan);
 		
 		JPanel DeliveryPan = new JPanel();
-		DeliveryPan.setBackground(Color.WHITE);
+		DeliveryPan.setBackground(Color.LIGHT_GRAY);
 		DeliveryPan.setPreferredSize(new Dimension(600, 325));
 		InnerPan.add(DeliveryPan);
 		
@@ -270,7 +270,7 @@ public class FAddRestaurantPage extends FForm{
 		DeliveryPan.add(lblNewLabel);
 		
 		JPanel DeliverySpacePan = new JPanel();
-		DeliverySpacePan.setBackground(Color.WHITE);
+		DeliverySpacePan.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
@@ -280,12 +280,12 @@ public class FAddRestaurantPage extends FForm{
 		DeliveryPan.add(textArea);
 		
 		JPanel JTASpacePan2 = new JPanel();
-		JTASpacePan2.setBackground(Color.WHITE);
+		JTASpacePan2.setBackground(Color.LIGHT_GRAY);
 		JTASpacePan2.setPreferredSize(new Dimension(22, 10));
 		DeliveryPan.add(JTASpacePan2);
 		
 		JPanel DeliverySpacePan2 = new JPanel();
-		DeliverySpacePan2.setBackground(Color.WHITE);
+		DeliverySpacePan2.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan2.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan2);
 		
@@ -302,7 +302,7 @@ public class FAddRestaurantPage extends FForm{
 		DeliveryPan.add(BTNAddDeliveryArea);
 		
 		JPanel DeliverySpacePan3 = new JPanel();
-		DeliverySpacePan3.setBackground(Color.WHITE);
+		DeliverySpacePan3.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan3);
 		
@@ -311,7 +311,7 @@ public class FAddRestaurantPage extends FForm{
 		DeliveryPan.add(BTNDeleteDeliveryArea);
 		
 		JPanel DeliverySpacePan4 = new JPanel();
-		DeliverySpacePan4.setBackground(Color.WHITE);
+		DeliverySpacePan4.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan4.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan4);
 		

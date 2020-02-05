@@ -14,14 +14,14 @@ import utils.FLabel;
 
 public class FAcceptDeliveryPage extends FForm {
 
-	protected JButton BTNSelect;
+	protected JButton BTNSelect, BTNAccept;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
 	public FAcceptDeliveryPage() {
 
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 
@@ -128,7 +128,7 @@ public class FAcceptDeliveryPage extends FForm {
 		ButtonPan.setPreferredSize(new Dimension(250, 25));
 		InnerPan.add(ButtonPan);
 		
-		JButton BTNAccept = new JButton("Accept Delivery");
+		BTNAccept = new JButton("Accept Delivery");
 		BTNAccept.setPreferredSize(new Dimension(200, 25));
 		ButtonPan.add(BTNAccept);
 		

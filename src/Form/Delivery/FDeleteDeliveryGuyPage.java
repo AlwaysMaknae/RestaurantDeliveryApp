@@ -24,7 +24,7 @@ public class FDeleteDeliveryGuyPage extends FForm {
 
 	public FDeleteDeliveryGuyPage() {
 
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
 
@@ -44,7 +44,7 @@ public class FDeleteDeliveryGuyPage extends FForm {
 		ListTitlePan.setBackground(Color.LIGHT_GRAY);
 		RestaurantListPan.add(ListTitlePan);
 
-		JLabel ListDeliveryGuyTitleLbl = new JLabel("Delivery Man");
+		FLabel ListDeliveryGuyTitleLbl = new FLabel("Delivery Man");
 		ListTitlePan.add(ListDeliveryGuyTitleLbl);
 
 		JPanel ListPan = new JPanel();
@@ -82,7 +82,7 @@ public class FDeleteDeliveryGuyPage extends FForm {
 		TitleSpacePan.setPreferredSize(new Dimension(425, 1));
 		TitlePan.add(TitleSpacePan);
 
-		JLabel TitleLbl = new JLabel("Edit Delivery Man");
+		FLabel TitleLbl = new FLabel("Delete Delivery Man");
 		TitlePan.add(TitleLbl);
 
 		JPanel SpacePan0 = new JPanel();
@@ -95,7 +95,7 @@ public class FDeleteDeliveryGuyPage extends FForm {
 		InfoPan.setPreferredSize(new Dimension(425, 65));
 		InnerPan.add(InfoPan);
 
-		JLabel NameLbl = new JLabel("Name:");
+		FLabel NameLbl = new FLabel("Name:");
 		NameLbl.setPreferredSize(new Dimension(110, 14));
 		InfoPan.add(NameLbl);
 
@@ -159,7 +159,7 @@ public class FDeleteDeliveryGuyPage extends FForm {
 		DeliveryInfoPan.setPreferredSize(new Dimension(425, 440));
 		InnerPan.add(DeliveryInfoPan);
 
-		JLabel DeliveryAreaTitleLbl = new JLabel("Delivery Area");
+		FLabel DeliveryAreaTitleLbl = new FLabel("Delivery Area");
 		DeliveryInfoPan.add(DeliveryAreaTitleLbl);
 
 		JPanel DeliveryInfoSpacePan = new JPanel();

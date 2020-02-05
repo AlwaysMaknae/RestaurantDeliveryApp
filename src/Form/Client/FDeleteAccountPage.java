@@ -22,7 +22,7 @@ public class FDeleteAccountPage extends FForm {
 	
 	public FDeleteAccountPage() {
 
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Service");
 		
