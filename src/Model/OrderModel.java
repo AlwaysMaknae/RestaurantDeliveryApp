@@ -1,8 +1,8 @@
 package Model;
 
-import database.DBDeliverer;
+import database.DBOrder;
 
-public class DelivererModel extends Model{
+public class OrderModel extends Model {
 
 	public void Create() {
 		// TODO Auto-generated method stub
