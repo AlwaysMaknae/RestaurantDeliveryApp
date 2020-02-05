@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FAdmin extends FAdminPage{
 
 	public FAdmin() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

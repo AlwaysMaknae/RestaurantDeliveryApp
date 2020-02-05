@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FEditDeliverer extends FEditDelivererPage{
 
 	public FEditDeliverer() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

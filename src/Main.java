@@ -1,4 +1,5 @@
 import Form.AddClient.FAddClient;
+import Form.Admin.FAdmin;
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -29,10 +30,10 @@ public class Main {
 		 * RESTAURANT FORM
 		 */
 		
-		//new FAddRestaurant();
-		//new FEditRestaurant();
-		//new FDeleteRestaurant();
-		//new FAddRestaurantMenu();
+		/*new FAddRestaurant();
+		new FEditRestaurant();
+		new FDeleteRestaurant();
+		new FAddRestaurantMenu();*/
 		
 		/*
 		 * MENU FORM

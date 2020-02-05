@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FDeleteRestaurant extends FDeleteRestaurantPage{
 
 	public FDeleteRestaurant() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

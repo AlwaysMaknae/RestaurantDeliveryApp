@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 	
 	public FDoneDeliveryGuy() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

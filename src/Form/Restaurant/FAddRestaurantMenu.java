@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FAddRestaurantMenu extends FAddRestaurantMenuPage{
 	
 	public FAddRestaurantMenu() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

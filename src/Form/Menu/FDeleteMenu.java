@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FDeleteMenu extends FDeleteMenuPage{
 
 	public FDeleteMenu() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

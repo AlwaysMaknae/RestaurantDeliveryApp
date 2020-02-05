@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FEditRestaurant extends FEditRestaurantPage{
 	
 	public FEditRestaurant() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

@@ -8,9 +8,6 @@ public class FLogin extends FLoginView {
 
 	public FLogin() {
 		BTNConnect.addActionListener(this);
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*

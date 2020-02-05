@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 public class FDeleteAccount extends FDeleteAccountPage{
 
 	public FDeleteAccount() {
-		System.out.println("Form Controller");
-
-
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*
