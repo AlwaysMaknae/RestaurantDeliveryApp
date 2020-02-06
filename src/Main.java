@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 import Form.AddClient.FAddClient;
 import Form.Admin.FAdmin;
 import Form.Client.FEditAccount;
@@ -22,8 +24,9 @@ public class Main {
 		new DBConnecter();
 		
 		
-		new FEditRestaurant();
-		new FormEntities();
+		FormEntities ff = new FormEntities();
+		
+		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		DBConnecter.OpenConnection();
 

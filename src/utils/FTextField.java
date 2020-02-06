@@ -85,24 +85,28 @@ public class FTextField extends JFormattedTextField {
 		public String GetContent() {
 			
 			String eM = this.mask.replace("#", " ");
+			String History = this.getText().replaceAll("\\p{Blank}","");
+			//System.out.println("Cleaned Text->" + History + ";");
 			
-			if( this.getText().equals("")) {
+			if( History.equals("")) {
 				this.Valid = false;
 				return "";		
-			} else if(this.getText().equals(eM)) {
+			} else if(History.equals(eM)) {
 				this.Valid = false;
 				return "";	
 			}else if(this.StringLength > 0) {
-				if( this.getText().trim().length() >= this.StringLength){
+				if( History.length() >= this.StringLength){
 					this.Valid = true;
-					return this.getText();
+					this.setText(History);
+					return History;
 				} else {
 					this.Valid = false;
 					return "";	
 				}
 			}else {
 				this.Valid = true;
-				return this.getText();
+				this.setText(History);
+				return History;
 			}
 		}
 }
