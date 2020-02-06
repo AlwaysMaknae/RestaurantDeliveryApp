@@ -1,5 +1,8 @@
+import javax.swing.JFrame;
+
 import Form.AddClient.FAddClient;
 import Form.Admin.FAdmin;
+<<<<<<< HEAD
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
@@ -10,6 +13,9 @@ import Form.Deliverers.FEditDeliverer;
 import Form.DeliveryGuy.FAcceptDeliveryGuy;
 import Form.DeliveryGuy.FDoneDeliveryGuy;
 import Form.DeliveryGuy.FViewDeliveryGuy;
+=======
+import Form.Client.FEditAccount;
+>>>>>>> 71c9c1d7afadb39f6c1f16d1b724437641c378a9
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -29,6 +35,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		new DBConnecter();
+<<<<<<< HEAD
 		/*
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
@@ -100,7 +107,13 @@ public class Main {
 		
 		
 		//new FormEntities();
+
 		
+		
+		FormEntities ff = new FormEntities();
+
+		
+		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		DBConnecter.OpenConnection();
 
