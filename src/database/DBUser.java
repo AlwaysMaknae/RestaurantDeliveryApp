@@ -1,15 +1,18 @@
 package database;
 
 import java.sql.ResultSet;
+//import java.util.ArrayList;
 import java.sql.SQLException;
 
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.UserModel;
 public class DBUser{
+	//private ArrayList<String> users = new ArrayList<String>();
+	
 	//function to read user
-	public static UserModel GetUser(String username){
-		String MyQuery = "SELECT * from users WHERE username='" + username +"'";
+	public static UserModel GetUser(String username, String password){
+		String MyQuery = "SELECT * from users WHERE username='" + username +"' AND password='" + password + "'";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);

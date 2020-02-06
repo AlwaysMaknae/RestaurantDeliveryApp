@@ -9,9 +9,8 @@ import Model.ClientModel;
 
 public class DBClient {
 
-	public static ClientModel GetClient(int id) {
-		String MyQuery = "SELECT * from clients WHERE client_id='"
-				+ id + "'";
+	public static ClientModel GetClient(String username, String password) {
+		String MyQuery = "SELECT * from clients WHERE client_username='" + username +"' AND client_password='" + password + "'";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);

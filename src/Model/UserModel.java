@@ -24,10 +24,9 @@ public class UserModel extends Model {
 		this.password = password;
 		this.access_lvl = access_lvl;
 	}
-	public UserModel(int id, String username, String password){
+	public UserModel(String username, String password){
 		this.username = username;
 		this.password = password;
-		this.id = id;
 	}
 
 
@@ -42,7 +41,7 @@ public class UserModel extends Model {
 	}
 
 	public Model Read() {
-		return DBUser.GetUser(this.username);
+		return DBUser.GetUser(this.username, this.password);
 	}
 
 	public void Delete() {

@@ -66,7 +66,7 @@ public class ClientModel extends Model {
 
 	public Model Read() {
 		
-		return DBClient.GetClient(this.client_id);
+		return DBClient.GetClient(this.client_username, this.client_password);
 	}
 
 	public void Delete() {
