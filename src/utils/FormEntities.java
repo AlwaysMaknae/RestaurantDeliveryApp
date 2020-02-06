@@ -39,7 +39,7 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
-public class FormEntities extends JFrame {
+public class FormEntities extends FForm {
 	
 	public FormEntities() {
 
@@ -68,7 +68,7 @@ public class FormEntities extends JFrame {
 		
 		FTextField ttx = new FTextField(20);
 		//ttx.SetInteger();
-		ttx.SetStringLength(5);
+		//ttx.SetStringLength(5);
 		pan.add(ttx);
 		
 		
@@ -92,8 +92,6 @@ public class FormEntities extends JFrame {
 		
 		
 		this.setContentPane(pan);
-		this.setLocationRelativeTo(null);  //place frame in the middle of screen
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
 		this.setVisible(true); //display frame
 	}
 	
@@ -142,10 +140,9 @@ public class FormEntities extends JFrame {
 		}
 		
 		public boolean Reponse(){
-			
 			return YesBtn.isSelected();
 		}
-		public String Awnser() {
+		public String Answer() {
 			return this.Reponse() ? "Yes" : "No";
 		}
 	}

@@ -93,7 +93,7 @@ public class FTextField extends JFormattedTextField {
 				this.Valid = false;
 				return "";	
 			}else if(this.StringLength > 0) {
-				if( this.getText().length() >= this.StringLength){
+				if( this.getText().trim().length() >= this.StringLength){
 					this.Valid = true;
 					return this.getText();
 				} else {
