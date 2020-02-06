@@ -10,7 +10,7 @@ import Model.OrderModel;
 
 public class DBOrder {
 	// function to read item
-	public static ItemModel GetItem(int id) {
+	public static OrderModel GetItem(int id) {
 		String MyQuery = "SELECT * from orders WHERE order_id='" + id + "'";
 		ResultSet stmt;
 		try {
