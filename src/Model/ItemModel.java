@@ -41,11 +41,11 @@ public class ItemModel extends Model{
 	
 	
 	public void Create() {
-		DBItem.AddItem(this.item_dish, this.item_price, this.restaurant_id, this.status);	
+		DBItem.AddItem(this);	
 	}
 
 	public void Update() {
-		DBItem.UpdateItem(this.item_id, this.item_dish, this.item_price);
+		DBItem.UpdateItem(this);
 	}
 
 	public Model Read() {
