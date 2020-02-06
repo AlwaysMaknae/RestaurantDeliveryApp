@@ -21,6 +21,7 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
 import utils.FormEntities;
@@ -107,13 +108,11 @@ public class Main {
 		
 		DBConnecter.OpenConnection();
 		UserModel jose = new UserModel("JJJJ", "yeey", 3);
-		UserModel Tester2 = new UserModel("tester2", "terst", 2);
+		RestaurantModel tester = new RestaurantModel("CHeese factory");
 		
-		//DBUser.AddUser("Jose", "123", 3);
-		DBUser.UpdateUser(2, "hhhhhhhm");
+		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
+		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
 		
-		//DBUser.DeleteUser(jose.getId());
-		//DBUser.AddUser("Test", "123", 2);
 	}
 
 }

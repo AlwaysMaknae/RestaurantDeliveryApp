@@ -2,14 +2,37 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Model.RestaurantModel;
 
 public class DBRestaurant {
+	
+	//function for get all restaurants for displaying
+	public static ArrayList<RestaurantModel> getAllRestaurants(){
+		String MyQuery = "SELECT * FROM restaurants WHERE status=1";
+		ResultSet stmt;
+		ArrayList<RestaurantModel> restaurants = new ArrayList<RestaurantModel>();
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			
+			while(stmt.next()){
+				restaurants.add(new RestaurantModel(stmt.getInt(1), stmt.getString(2)));
+			}
+			
+			
+			
+			return restaurants;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	// function to read restaurant
-	public static RestaurantModel GetRestaurant(String restaurant_name) {
+	public static RestaurantModel GetRestaurant(String restaurant_id) {
 		String MyQuery = "SELECT * FROM restaurants WHERE restaurant_name='"
-				+ restaurant_name + "'";
+				+ restaurant_id + "'";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);

@@ -1,14 +1,13 @@
 package database;
 
 import java.sql.ResultSet;
-//import java.util.ArrayList;
 import java.sql.SQLException;
 
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.UserModel;
 public class DBUser{
-	//private ArrayList<String> users = new ArrayList<String>();
+	
 	
 	//function to read user
 	public static UserModel GetUser(String username, String password){
