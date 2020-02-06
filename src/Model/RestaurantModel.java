@@ -48,7 +48,7 @@ public class RestaurantModel extends Model{
 	}
 
 	public Model Read() {
-		return DBRestaurant.GetRestaurant(this.name);
+		return DBRestaurant.GetRestaurant(this.id);
 	}
 
 	public void Delete() {

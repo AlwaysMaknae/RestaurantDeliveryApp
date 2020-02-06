@@ -30,7 +30,7 @@ public class DBRestaurant {
 	}
 	
 	// function to read restaurant
-	public static RestaurantModel GetRestaurant(String restaurant_id) {
+	public static RestaurantModel GetRestaurant(int restaurant_id) {
 		String MyQuery = "SELECT * FROM restaurants WHERE restaurant_name='"
 				+ restaurant_id + "'";
 		ResultSet stmt;
