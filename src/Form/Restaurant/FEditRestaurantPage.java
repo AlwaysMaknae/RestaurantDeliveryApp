@@ -14,23 +14,25 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FHoursComboBox;
 import utils.FLabel;
 import utils.FListView;
+import utils.FTextField;
 
 public class FEditRestaurantPage extends FForm{
 	
-	protected JTextField TFRestaurantName;
-	protected JTextField TFRestaurantAddress;
-	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
-	protected JTextField TFDeliveryArea;
-	protected JButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliverySave;
+	protected FTextField TFRestaurantName;
+	protected FTextField TFRestaurantAddress;
+	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFDeliveryArea;
+	protected FButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliverySave;
 	
 	protected JComboBox Fcb[] = new JComboBox[7];
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
-	protected FListView ListPan = new FListView();
+	protected FListView ListPan;
 	
 	public FEditRestaurantPage() {
 		
@@ -68,7 +70,7 @@ public class FEditRestaurantPage extends FForm{
 		ListButtonPan.setPreferredSize(new Dimension(220, 33));
 		RestaurantListPan.add(ListButtonPan);
 		
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(220, 30));
 		ListButtonPan.add(BTNSelect);
 		
@@ -99,7 +101,7 @@ public class FEditRestaurantPage extends FForm{
 		RestaurantNameLbl.setPreferredSize(new Dimension(120, 14));
 		RestaurantInfoPan.add(RestaurantNameLbl);
 		
-		TFRestaurantName = new JTextField();
+		TFRestaurantName = new FTextField(0);
 		TFRestaurantName.setPreferredSize(new Dimension(215, 20));
 		RestaurantInfoPan.add(TFRestaurantName);
 		
@@ -112,7 +114,7 @@ public class FEditRestaurantPage extends FForm{
 		RestaurantAddressLbl.setPreferredSize(new Dimension(120, 14));
 		RestaurantInfoPan.add(RestaurantAddressLbl);
 		
-		TFRestaurantAddress = new JTextField();
+		TFRestaurantAddress = new FTextField(0);
 		TFRestaurantAddress.setPreferredSize(new Dimension(215, 20));
 		RestaurantInfoPan.add(TFRestaurantAddress);
 		
@@ -131,7 +133,7 @@ public class FEditRestaurantPage extends FForm{
 		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		RestaurantInfoPan.add(BracketLbl);
 		
-		TFPhoneNum_1 = new JTextField();
+		TFPhoneNum_1 = new FTextField(0);
 		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
 		RestaurantInfoPan.add(TFPhoneNum_1);
 		
@@ -140,7 +142,7 @@ public class FEditRestaurantPage extends FForm{
 		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
 		RestaurantInfoPan.add(BracketLbl2);
 		
-		TFPhoneNum_2 = new JTextField();
+		TFPhoneNum_2 = new FTextField(0);
 		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
 		RestaurantInfoPan.add(TFPhoneNum_2);
 		
@@ -149,7 +151,7 @@ public class FEditRestaurantPage extends FForm{
 		SpacePan3.setPreferredSize(new Dimension(5, 15));
 		RestaurantInfoPan.add(SpacePan3);
 		
-		TFPhoneNum_3 = new JTextField();
+		TFPhoneNum_3 = new FTextField(0);
 		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
 		RestaurantInfoPan.add(TFPhoneNum_3);
 		
@@ -281,7 +283,7 @@ public class FEditRestaurantPage extends FForm{
 		ButtonPanel.setPreferredSize(new Dimension(600, 40));
 		InnerPan.add(ButtonPanel);
 		
-		BTNModifyAll = new JButton("Modify all the time at once");
+		BTNModifyAll = new FButton("Modify all the time at once");
 		BTNModifyAll.setPreferredSize(new Dimension(460, 30));
 		ButtonPanel.add(BTNModifyAll);
 		
@@ -322,11 +324,11 @@ public class FEditRestaurantPage extends FForm{
 		DeliveryAreaLbl.setPreferredSize(new Dimension(80, 14));
 		DeliveryPan.add(DeliveryAreaLbl);
 		
-		TFDeliveryArea = new JTextField();
+		TFDeliveryArea = new FTextField(0);
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryPan.add(TFDeliveryArea);
 		
-		BTNAddDeliveryArea = new JButton("Add Delivery Area");
+		BTNAddDeliveryArea = new FButton("Add Delivery Area");
 		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryPan.add(BTNAddDeliveryArea);
 		
@@ -335,7 +337,7 @@ public class FEditRestaurantPage extends FForm{
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan3);
 		
-		BTNDeleteDeliveryArea = new JButton("Delete Delivery Area");
+		BTNDeleteDeliveryArea = new FButton("Delete Delivery Area");
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryPan.add(BTNDeleteDeliveryArea);
 		
@@ -344,7 +346,7 @@ public class FEditRestaurantPage extends FForm{
 		DeliverySpacePan4.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan4);
 		
-		BTNDeliverySave = new JButton("Save");
+		BTNDeliverySave = new FButton("Save");
 		BTNDeliverySave.setPreferredSize(new Dimension(75, 28));
 		DeliveryPan.add(BTNDeliverySave);
 		

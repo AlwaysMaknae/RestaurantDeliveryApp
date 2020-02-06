@@ -1,5 +1,15 @@
 import Form.AddClient.FAddClient;
 import Form.Admin.FAdmin;
+import Form.Client.FDeleteAccount;
+import Form.Client.FEditAccount;
+import Form.Client.FOrderFood;
+import Form.Client.FViewOrderFoodHistory;
+import Form.Deliverers.FAddDeliverer;
+import Form.Deliverers.FDeleteDeliverer;
+import Form.Deliverers.FEditDeliverer;
+import Form.DeliveryGuy.FAcceptDeliveryGuy;
+import Form.DeliveryGuy.FDoneDeliveryGuy;
+import Form.DeliveryGuy.FViewDeliveryGuy;
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -30,10 +40,10 @@ public class Main {
 		 * RESTAURANT FORM
 		 */
 		
-		/*new FAddRestaurant();
-		new FEditRestaurant();
-		new FDeleteRestaurant();
-		new FAddRestaurantMenu();*/
+		//new FAddRestaurant();
+		//new FEditRestaurant();
+		//new FDeleteRestaurant();
+		//new FAddRestaurantMenu();
 		
 		/*
 		 * MENU FORM
@@ -45,14 +55,11 @@ public class Main {
 		
 		/*
 		 * DELIVERY FORM
-		 * ***NOTE*** FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY" WHILE
-		 * FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVERY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FAddDeliveryGuy();
-		//new FEditDeliveryGuy();
-		//new FDeleteDeliveryGuy();
+		//new FAddDeliverer();
+		//new FDeleteDeliverer();
+		//new FEditDeliverer();
 		
 		/*
 		 * ADMIN ACCOUNT FORM
@@ -62,14 +69,11 @@ public class Main {
 		
 		/*
 		 * DELIVERYGUY ACCOUNT FORM
-		 * ***NOTE*** FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVER" WHILE
-		 * FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FViewDelivery();
-		//new FAcceptDelivery();
-		//new FDoneDelivery();
+		//new FViewDeliveryGuy();
+		//new FAcceptDeliveryGuy();
+		//new FDoneDeliveryGuy();
 		
 		/*
 		 * RESTAURANTEUR ACCOUNT FORM
@@ -93,7 +97,8 @@ public class Main {
 		//new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
-		new FEditRestaurant();
+		
+		
 		//new FormEntities();
 		
 		
@@ -103,7 +108,7 @@ public class Main {
 		UserModel Tester2 = new UserModel("tester2", "terst", 2);
 		
 		//DBUser.AddUser("Jose", "123", 3);
-		DBUser.UpdateUser(2, "hhhhhhhm");
+		//DBUser.UpdateUser(2, "hhhhhhhm");
 		
 		//DBUser.DeleteUser(jose.getId());
 		//DBUser.AddUser("Test", "123", 2);

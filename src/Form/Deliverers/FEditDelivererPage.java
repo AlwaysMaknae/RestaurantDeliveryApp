@@ -12,16 +12,21 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
+import utils.FTextField;
 
 public class FEditDelivererPage extends FForm {
 
-	protected JTextField TFName, TFDeliveryArea;
-	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFName, TFDeliveryArea;
+	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 
-	protected JButton BTNSelect, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
+	protected FButton BTNSelect, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
 
+	protected FListView ListPan;
+	
 	public FEditDelivererPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -47,8 +52,7 @@ public class FEditDelivererPage extends FForm {
 		FLabel ListDeliveryGuyTitleLbl = new FLabel("Delivery Man");
 		ListTitlePan.add(ListDeliveryGuyTitleLbl);
 		
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(300, 905));
 		RestaurantListPan.add(ListPan);
 		
@@ -58,7 +62,7 @@ public class FEditDelivererPage extends FForm {
 		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantListPan.add(RestaurantListButtonPan);
 		
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(300, 26));
 		RestaurantListButtonPan.add(BTNSelect);
 		
@@ -100,7 +104,7 @@ public class FEditDelivererPage extends FForm {
 		NameLbl.setPreferredSize(new Dimension(110, 14));
 		InfoPan.add(NameLbl);
 
-		TFName = new JTextField();
+		TFName = new FTextField(0);
 		TFName.setPreferredSize(new Dimension(285, 20));
 		InfoPan.add(TFName);
 
@@ -119,7 +123,7 @@ public class FEditDelivererPage extends FForm {
 		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		InfoPan.add(BracketLbl);
 
-		TFPhoneNum_1 = new JTextField();
+		TFPhoneNum_1 = new FTextField(0);
 		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
 		InfoPan.add(TFPhoneNum_1);
 
@@ -128,7 +132,7 @@ public class FEditDelivererPage extends FForm {
 		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
 		InfoPan.add(BracketLbl2);
 
-		TFPhoneNum_2 = new JTextField();
+		TFPhoneNum_2 = new FTextField(0);
 		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
 		InfoPan.add(TFPhoneNum_2);
 
@@ -137,7 +141,7 @@ public class FEditDelivererPage extends FForm {
 		InfoSpacePan2.setPreferredSize(new Dimension(5, 15));
 		InfoPan.add(InfoSpacePan2);
 
-		TFPhoneNum_3 = new JTextField();
+		TFPhoneNum_3 = new FTextField(0);
 		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
 		InfoPan.add(TFPhoneNum_3);
 
@@ -179,11 +183,11 @@ public class FEditDelivererPage extends FForm {
 		DeliveryAreaLbl.setPreferredSize(new Dimension(80, 14));
 		DeliveryInfoPan.add(DeliveryAreaLbl);
 
-		TFDeliveryArea = new JTextField();
+		TFDeliveryArea = new FTextField(0);
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryInfoPan.add(TFDeliveryArea);
 
-		BTNAddDeliveryArea = new JButton("Add Delivery Area");
+		BTNAddDeliveryArea = new FButton("Add Delivery Area");
 		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNAddDeliveryArea);
 
@@ -192,7 +196,7 @@ public class FEditDelivererPage extends FForm {
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
 		DeliveryInfoPan.add(DeliverySpacePan3);
 
-		BTNDeleteDeliveryArea = new JButton("Delete Delivery Area");
+		BTNDeleteDeliveryArea = new FButton("Delete Delivery Area");
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNDeleteDeliveryArea);
 
@@ -206,7 +210,7 @@ public class FEditDelivererPage extends FForm {
 		DeliverySpacePan5.setBackground(Color.LIGHT_GRAY);
 		DeliveryInfoPan.add(DeliverySpacePan5);
 
-		BTNSaveDeliveryArea = new JButton("Save");
+		BTNSaveDeliveryArea = new FButton("Save");
 		BTNSaveDeliveryArea.setPreferredSize(new Dimension(80, 28));
 		DeliveryInfoPan.add(BTNSaveDeliveryArea);
 		

@@ -9,16 +9,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
 
 public class FAcceptDeliveryGuyPage extends FForm {
 
-	protected JButton BTNSelect, BTNAccept;
+	protected FButton BTNSelect, BTNAccept;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
+	protected FListView ListPan;
+	
 	public FAcceptDeliveryGuyPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -44,8 +48,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		FLabel ListOrderTitleLbl = new FLabel("Order");
 		ListTitlePan.add(ListOrderTitleLbl);
 
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(300, 905));
 		RestaurantListPan.add(ListPan);
 
@@ -55,7 +58,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(300, 26));
 		RestaurantListButtonPan.add(BTNSelect);
 
@@ -128,7 +131,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		ButtonPan.setPreferredSize(new Dimension(250, 25));
 		InnerPan.add(ButtonPan);
 		
-		BTNAccept = new JButton("Accept Delivery");
+		BTNAccept = new FButton("Accept Delivery");
 		BTNAccept.setPreferredSize(new Dimension(200, 25));
 		ButtonPan.add(BTNAccept);
 		
