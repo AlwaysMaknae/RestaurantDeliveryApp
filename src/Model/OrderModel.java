@@ -8,6 +8,7 @@ public class OrderModel extends Model {
 	private String postal_code;
 	private String date;
 	private String items;
+	private String delivery_time;
 	private float price;
 	private int status;
 	private int restaurant_id;
@@ -48,23 +49,19 @@ public class OrderModel extends Model {
 		this.order_delivered = order_delivered;
 						}
 	public void Create() {
-		// TODO Auto-generated method stub
-		
+		DBOrder.AddOrder(this);	
 	}
 
 	public void Update() {
-		// TODO Auto-generated method stub
-		
+		DBOrder.UpdareOrder(this);
 	}
 
 	public Model Read() {
-		// TODO Auto-generated method stub
-		return null;
+		return DBOrder.GetOrder(id);
 	}
 
 	public void Delete() {
-		// TODO Auto-generated method stub
-		
+		DBOrder.DeleteOrder(id);
 	}
 
 	public int getId() {
@@ -113,6 +110,14 @@ public class OrderModel extends Model {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public String getDelivery_time() {
+		return delivery_time;
+	}
+
+	public void setDelivery_time(String delivery_time) {
+		this.delivery_time = delivery_time;
 	}
 
 	public int getStatus() {

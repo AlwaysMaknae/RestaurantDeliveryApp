@@ -9,8 +9,8 @@ import Model.DelivererModel;
 
 public class DBDeliverer {
 	// function to read deliverer
-	public static DelivererModel GetDeliverer(String deliverer_name) {
-		String MyQuery = "SELECT * from deliverers WHERE deliverer_name='" + deliverer_name
+	public static DelivererModel GetDeliverer(int deliverer_id) {
+		String MyQuery = "SELECT * from deliverers WHERE deliverer_id='" + deliverer_id
 				+ "'";
 		ResultSet stmt;
 		try {
@@ -31,7 +31,28 @@ public class DBDeliverer {
 		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setString(1, name);
+			stmt.setString(2, number);
+			stmt.setString(3, area);
+			stmt.setInt(4, status);
+			stmt.executeUpdate();
+			return new DelivererModel(stmt.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static DelivererModel AddDeliverer(DelivererModel delivererModel) {
+		String name = delivererModel.getName();
+		String number = delivererModel.getNumber();
+		String area = delivererModel.getArea();
+		int status = delivererModel.getStatus();
+		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?)}";
+		java.sql.PreparedStatement stmt;
+		try {
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, name);
 			stmt.setString(2, number);
 			stmt.setString(3, area);
@@ -62,6 +83,27 @@ public class DBDeliverer {
 			return null;
 		}
 	}
+	
+	public static DelivererModel UpdateDeliverer(DelivererModel delivererModel) {
+		int id = delivererModel.getId();
+		String name = delivererModel.getName();
+		String number = delivererModel.getNumber();
+		String area = delivererModel.getArea();
+		String MyQuery = "{CALL update_deliverer(?, ?, ?, ?)}";
+		java.sql.PreparedStatement stmt;
+		try {
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.setString(2, name);
+			stmt.setString(3, number);
+			stmt.setString(4, area);
+			stmt.executeUpdate();
+			return new DelivererModel(stmt.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	// function to soft delete deliverer
 	public static void DeleteDeliverer(int id) {
@@ -77,24 +119,5 @@ public class DBDeliverer {
 	}
 
 
-	public static String AddDeliverer(DelivererModel delivererModel) {
-		String name = delivererModel.getName();
-		String number = delivererModel.getNumber();
-		String area = delivererModel.getArea();
-		int status = delivererModel.getStatus();
-		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, name);
-			stmt.setString(2, number);
-			stmt.setString(3, area);
-			stmt.setInt(4, status);
-			stmt.executeUpdate();
-			return "" + name + " has been successfully addded";
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	
 }

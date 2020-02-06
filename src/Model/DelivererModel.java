@@ -31,23 +31,19 @@ public class DelivererModel extends Model{
 	}
 
 	public void Create() {
-		// TODO Auto-generated method stub
-		
+		DBDeliverer.AddDeliverer(this);
 	}
 
 	public void Update() {
-		// TODO Auto-generated method stub
-		
+		DBDeliverer.UpdateDeliverer(this);
 	}
 
 	public Model Read() {
-		// TODO Auto-generated method stub
-		return null;
+		return DBDeliverer.GetDeliverer(id);
 	}
 
 	public void Delete() {
-		// TODO Auto-generated method stub
-		
+		DBDeliverer.DeleteDeliverer(id);
 	}
 
 	public int getId() {

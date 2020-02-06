@@ -6,7 +6,6 @@ import java.sql.SQLException;
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.ItemModel;
-import Model.UserModel;
 
 public class DBItem {
 	// function to read item
@@ -32,7 +31,28 @@ public class DBItem {
 		String MyQuery = "{CALL create_item(?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setString(1, dish);
+			stmt.setFloat(2, price);
+			stmt.setInt(3, restaurant_id);
+			stmt.setInt(4, status);
+			stmt.executeUpdate();
+			return new ItemModel(stmt.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ItemModel AddItem(ItemModel itemModel) {
+		String dish = itemModel.getItem_dish();
+		float price = itemModel.getItem_price();
+		int restaurant_id = itemModel.getRestaurant_id();
+		int status = itemModel.getStatus();
+		String MyQuery = "{CALL create_item(?, ?, ?, ?)}";
+		java.sql.PreparedStatement stmt;
+		try {
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, dish);
 			stmt.setFloat(2, price);
 			stmt.setInt(3, restaurant_id);
@@ -61,6 +81,26 @@ public class DBItem {
 			return null;
 		}
 	}
+	
+	public static ItemModel UpdateItem(ItemModel itemModel){
+		int id = itemModel.getItem_id();
+		String dish = itemModel.getItem_dish();
+		float price = itemModel.getItem_price();
+		String MyQuery = "{CALL update_item(?,?,?)}";
+		java.sql.PreparedStatement stmt;
+		
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setInt(1, id);
+			stmt.setString(2, dish);
+			stmt.setFloat(3, price);
+			stmt.executeUpdate();
+			return new ItemModel(stmt.toString());
+		} catch (SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	// function to soft delete item
 	public static void DeleteItem(int id) {
@@ -75,24 +115,5 @@ public class DBItem {
 		}
 	}
 
-	public static String AddItem(ItemModel itemModel) {
-		String dish = itemModel.getItem_dish();
-		float price = itemModel.getItem_price();
-		int restaurant_id = itemModel.getRestaurant_id();
-		int status = itemModel.getStatus();
-		String MyQuery = "{CALL create_item(?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, dish);
-			stmt.setFloat(2, price);
-			stmt.setInt(3, restaurant_id);
-			stmt.setInt(4, status);
-			stmt.executeUpdate();
-			return "" + dish + " has been successfully addded";
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	
 }

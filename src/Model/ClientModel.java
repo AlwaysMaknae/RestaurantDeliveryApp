@@ -57,18 +57,16 @@ public class ClientModel extends Model {
 	}
 
 	public void Create() {
-		DBClient.AddClient(this.client_username, this.client_password, this.client_last_name, this.client_first_name, this.client_address, this.client_email, this.client_number, this.client_status);
-
+		DBClient.AddClient(this);
 	}
 
 	public void Update() {
-		DBClient.UpdateClient(this.client_id, this.client_username, this.client_password, this.client_last_name, this.client_first_name, this.client_address, this.client_email, this.client_number);
-
+		DBClient.UpdateClient(this);
 	}
 
 	public Model Read() {
 		
-		return DBClient.GetClient(this.client_username);
+		return DBClient.GetClient(this.client_id);
 	}
 
 	public void Delete() {

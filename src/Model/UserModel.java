@@ -38,7 +38,7 @@ public class UserModel extends Model {
 	}
 
 	public void Update() {
-		DBUser.UpdateUser(this.id, this.username, this.password, this.access_lvl);
+		DBUser.UpdateUser(this);
 	}
 
 	public Model Read() {
