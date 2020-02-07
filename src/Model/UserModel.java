@@ -29,8 +29,6 @@ public class UserModel extends Model {
 		this.password = password;
 	}
 
-
-	
 	//functions to call DBUser functions
 	public void Create() {
 		DBUser.AddUser(this);

@@ -29,6 +29,7 @@ import Form.Restauranteur.FOrderReady;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
+import utils.FAlerts;
 import utils.FormEntities;
 
 public class Main {
@@ -113,6 +114,20 @@ public class Main {
 		FDashboard ff = new FDashboard();
 		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//new FormEntities();
+		
+		FAlerts.Error("Error Test", "Testing the errors.");
+		
+		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
+			System.out.println("Yes");
+		} else {
+			System.out.println("No.");
+		}
+		
+		FAlerts.Say("title", "message");
+		
+		System.out.println(FAlerts.Ask("Question", "Why ?"));
+		
+		
 		DBConnecter.OpenConnection();
 		
 		
