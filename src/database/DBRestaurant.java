@@ -20,8 +20,6 @@ public class DBRestaurant {
 				restaurants.add(new RestaurantModel(stmt.getInt(1), stmt.getString(2)));
 			}
 			
-			
-			
 			return restaurants;
 		} catch (SQLException e) {
 			e.printStackTrace();

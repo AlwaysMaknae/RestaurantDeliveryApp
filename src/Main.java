@@ -1,21 +1,20 @@
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
-
 import Form.AddClient.FAddClient;
-import Form.Admin.FAdmin;
-
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
 import Form.Client.FViewOrderFoodHistory;
+import Form.Dashboard.FDashboard;
 import Form.Deliverers.FAddDeliverer;
 import Form.Deliverers.FDeleteDeliverer;
 import Form.Deliverers.FEditDeliverer;
 import Form.DeliveryGuy.FAcceptDeliveryGuy;
 import Form.DeliveryGuy.FDoneDeliveryGuy;
 import Form.DeliveryGuy.FViewDeliveryGuy;
-
 import Form.Client.FEditAccount;
-
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -111,16 +110,12 @@ public class Main {
 
 		
 		
-		FormEntities ff = new FormEntities();
-		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		FDashboard ff = new FDashboard();
+		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//new FormEntities();
 		DBConnecter.OpenConnection();
-
-		UserModel jose = new UserModel("JJJJ", "yeey", 3);
-		RestaurantModel tester = new RestaurantModel("Cheese factory");
-
-		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
-		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
+		
+		
 		
 	}
 
