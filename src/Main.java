@@ -98,7 +98,7 @@ public class Main {
 		DBConnecter.OpenConnection();
 
 		UserModel jose = new UserModel("JJJJ", "yeey", 3);
-		RestaurantModel tester = new RestaurantModel("CHeese factory");
+		RestaurantModel tester = new RestaurantModel("Cheese factory");
 		
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
