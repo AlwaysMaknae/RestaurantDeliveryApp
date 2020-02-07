@@ -44,11 +44,11 @@ public class RestaurantModel extends Model{
 	}
 
 	public void Update() {
-		DBRestaurant.UpdateRestaurant(this.id, this.name, this.address, this.number, this.hours, this.areas);
+		DBRestaurant.UpdateRestaurant(this);
 	}
 
 	public Model Read() {
-		return DBRestaurant.GetRestaurant(this.name);
+		return DBRestaurant.GetRestaurant(this.id);
 	}
 
 	public void Delete() {
@@ -57,6 +57,12 @@ public class RestaurantModel extends Model{
 	
 	//Getters and Setters
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
