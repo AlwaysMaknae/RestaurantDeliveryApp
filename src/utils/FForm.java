@@ -7,15 +7,19 @@ import javax.swing.JFrame;
 
 public class FForm extends JFrame implements ActionListener{
 	
+	protected FMainMenu MenuBar;
+	
 	public FForm(){
 		this.setTitle("New FForm");
-		this.setSize(984,1010);
+		this.setSize(984,1080);
 		this.setResizable(false);
 		
+		MenuBar = new FMainMenu();
+		this.setJMenuBar( MenuBar );
 		
 		
 		this.setLocationRelativeTo(null);  //place frame in the middle of screen
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
 		this.setVisible(true); //display frame
 	}
 

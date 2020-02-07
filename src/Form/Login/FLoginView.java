@@ -17,7 +17,7 @@ public class FLoginView extends FForm{
 	protected FTextField TFUsername;
 	protected FTextField TFPassword;
 	
-	protected JButton BTNConnect, BTNClientNew, BTNQuit;
+	protected FButton BTNConnect, BTNClientNew, BTNQuit;
 	
 	public FLoginView(){
 		
@@ -88,15 +88,15 @@ public class FLoginView extends FForm{
 		ButtonSpacePan.setPreferredSize(new Dimension(975, 20));
 		ButtonPan.add(ButtonSpacePan);
 		
-		BTNConnect = new JButton("Connect");
+		BTNConnect = new FButton("Connect");
 		BTNConnect.setPreferredSize(new Dimension(90, 28));
 		ButtonPan.add(BTNConnect);
 		
-		BTNClientNew = new JButton("New Clients");
+		BTNClientNew = new FButton("New Clients");
 		BTNClientNew.setPreferredSize(new Dimension(120, 28));
 		ButtonPan.add(BTNClientNew);
 		
-		BTNQuit = new JButton("Quit");
+		BTNQuit = new FButton("Quit");
 		BTNQuit.setPreferredSize(new Dimension(60, 28));
 		ButtonPan.add(BTNQuit);
 		

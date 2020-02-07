@@ -1,6 +1,7 @@
 package Form.AddClient;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import Model.UserModel;
 
@@ -10,7 +11,40 @@ public class FAddClient extends FAddClientPage{
 	
 	public FAddClient() {
 		CurrentUser = new UserModel("");
-		BTNSave.addActionListener(this);
+		
+		
+		
+		BTNVerify.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		BTNSave.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		BTNReturn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		BTNQuit.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 	

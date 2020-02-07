@@ -1,5 +1,21 @@
+import javax.swing.JFrame;
+
 import Form.AddClient.FAddClient;
 import Form.Admin.FAdmin;
+
+import Form.Client.FDeleteAccount;
+import Form.Client.FEditAccount;
+import Form.Client.FOrderFood;
+import Form.Client.FViewOrderFoodHistory;
+import Form.Deliverers.FAddDeliverer;
+import Form.Deliverers.FDeleteDeliverer;
+import Form.Deliverers.FEditDeliverer;
+import Form.DeliveryGuy.FAcceptDeliveryGuy;
+import Form.DeliveryGuy.FDoneDeliveryGuy;
+import Form.DeliveryGuy.FViewDeliveryGuy;
+
+import Form.Client.FEditAccount;
+
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -20,6 +36,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		new DBConnecter();
+
 		/*
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
@@ -31,10 +48,10 @@ public class Main {
 		 * RESTAURANT FORM
 		 */
 		
-		/*new FAddRestaurant();
-		new FEditRestaurant();
-		new FDeleteRestaurant();
-		new FAddRestaurantMenu();*/
+		//new FAddRestaurant();
+		//new FEditRestaurant();
+		//new FDeleteRestaurant();
+		//new FAddRestaurantMenu();
 		
 		/*
 		 * MENU FORM
@@ -46,14 +63,11 @@ public class Main {
 		
 		/*
 		 * DELIVERY FORM
-		 * ***NOTE*** FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY" WHILE
-		 * FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVERY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FAddDeliveryGuy();
-		//new FEditDeliveryGuy();
-		//new FDeleteDeliveryGuy();
+		//new FAddDeliverer();
+		//new FDeleteDeliverer();
+		//new FEditDeliverer();
 		
 		/*
 		 * ADMIN ACCOUNT FORM
@@ -63,14 +77,11 @@ public class Main {
 		
 		/*
 		 * DELIVERYGUY ACCOUNT FORM
-		 * ***NOTE*** FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVER" WHILE
-		 * FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FViewDelivery();
-		//new FAcceptDelivery();
-		//new FDoneDelivery();
+		//new FViewDeliveryGuy();
+		//new FAcceptDeliveryGuy();
+		//new FDoneDeliveryGuy();
 		
 		/*
 		 * RESTAURANTEUR ACCOUNT FORM
@@ -95,11 +106,19 @@ public class Main {
 		//new FViewOrderFoodHistory();
 		
 		
+		
+		//new FormEntities();
+
+		
+		
+		FormEntities ff = new FormEntities();
+		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		DBConnecter.OpenConnection();
 
 		UserModel jose = new UserModel("JJJJ", "yeey", 3);
 		RestaurantModel tester = new RestaurantModel("Cheese factory");
-		
+
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
 		
