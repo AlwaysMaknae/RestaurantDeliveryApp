@@ -9,7 +9,7 @@ import javax.swing.JButton;
 public class FButton extends JButton {
 	public FButton(String text){
 		this.setText(text);
-		this.setBackground(Color.LIGHT_GRAY);
+		this.setBackground(Color.WHITE);
 		this.setBorder( BorderFactory.createLineBorder(Color.BLACK) );
 		this.setPreferredSize( new Dimension(100,29));
 	}
@@ -27,7 +27,7 @@ public class FButton extends JButton {
 			this.setBackground(Color.GREEN);
 			break;
 		default:
-			this.setBackground(Color.LIGHT_GRAY);
+			this.setBackground(Color.WHITE);
 			break;
 		}
 	}

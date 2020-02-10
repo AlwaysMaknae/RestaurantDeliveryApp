@@ -10,13 +10,18 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
+import utils.FTextField;
 
 public class FViewRestaurantOrderPage extends FForm {
 
-	protected JButton BTNSelect, BTNSelect2;
-	protected JTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	protected FButton BTNSelect, BTNSelect2;
+	protected FTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	
+	protected FListView ListPan, ListPan2;
 
 	public FViewRestaurantOrderPage() {
 		
@@ -44,8 +49,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		ListRestaurantTitleLbl.setText("Restaurant");
 		ListTitlePan.add(ListRestaurantTitleLbl);
 
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(300, 905));
 		RestaurantListPan.add(ListPan);
 
@@ -55,7 +59,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(300, 26));
 		RestaurantListButtonPan.add(BTNSelect);
 
@@ -73,9 +77,8 @@ public class FViewRestaurantOrderPage extends FForm {
 		ListRestaurantOrderTitleLbl.setText("Restaurant's Order");
 		ListTitlePan2.add(ListRestaurantOrderTitleLbl);
 		
-		JPanel ListPan2 = new JPanel();
+		ListPan2 = new FListView();
 		ListPan2.setPreferredSize(new Dimension(300, 905));
-		ListPan2.setBackground(Color.RED);
 		RestaurantOrderListPan.add(ListPan2);
 		
 		JPanel RestaurantOrderListButtonPan = new JPanel();
@@ -84,7 +87,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		RestaurantOrderListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantOrderListPan.add(RestaurantOrderListButtonPan);
 		
-		BTNSelect2 = new JButton("Select");
+		BTNSelect2 = new FButton("Select");
 		BTNSelect2.setPreferredSize(new Dimension(300, 26));
 		RestaurantOrderListButtonPan.add(BTNSelect2);
 
@@ -119,7 +122,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
 		ViewOrderInfoPan1.add(DeliveryTimeYMDLbl);
 
-		TFDeliveryTimeYMD = new JTextField();
+		TFDeliveryTimeYMD = new FTextField(0);
 		TFDeliveryTimeYMD.setEnabled(false);
 		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
 		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
@@ -133,7 +136,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
 		ViewOrderInfoPan1.add(DeliveryTimeLbl);
 
-		TFHour = new JTextField();
+		TFHour = new FTextField(0);
 		TFHour.setEnabled(false);
 		TFHour.setPreferredSize(new Dimension(20, 20));
 		ViewOrderInfoPan1.add(TFHour);
@@ -141,7 +144,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		FLabel HourLbl = new FLabel("H");
 		ViewOrderInfoPan1.add(HourLbl);
 
-		TFMinute = new JTextField();
+		TFMinute = new FTextField(0);
 		TFMinute.setEnabled(false);
 		TFMinute.setPreferredSize(new Dimension(20, 20));
 		ViewOrderInfoPan1.add(TFMinute);
@@ -158,7 +161,7 @@ public class FViewRestaurantOrderPage extends FForm {
 		PostalCodeLbl.setPreferredSize(new Dimension(160, 14));
 		ViewOrderInfoPan1.add(PostalCodeLbl);
 
-		TFPostalCode = new JTextField();
+		TFPostalCode = new FTextField(0);
 		TFPostalCode.setEnabled(false);
 		TFPostalCode.setPreferredSize(new Dimension(75, 20));
 		ViewOrderInfoPan1.add(TFPostalCode);

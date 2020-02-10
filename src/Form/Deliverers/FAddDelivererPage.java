@@ -6,8 +6,10 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FTextField;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,10 +20,10 @@ import javax.swing.border.LineBorder;
 
 public class FAddDelivererPage extends FForm{
 	
-	protected JTextField TFName, TFDeliveryArea;
-	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFName, TFDeliveryArea;
+	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
-	protected JButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
+	protected FButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
 
 	public FAddDelivererPage() {
 		
@@ -62,7 +64,7 @@ public class FAddDelivererPage extends FForm{
 		NameLbl.setPreferredSize(new Dimension(110, 14));
 		InfoPan.add(NameLbl);
 		
-		TFName = new JTextField();
+		TFName = new FTextField(0);
 		TFName.setPreferredSize(new Dimension(285, 20));
 		InfoPan.add(TFName);
 		
@@ -81,7 +83,7 @@ public class FAddDelivererPage extends FForm{
 		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		InfoPan.add(BracketLbl);
 		
-		TFPhoneNum_1 = new JTextField();
+		TFPhoneNum_1 = new FTextField(0);
 		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
 		InfoPan.add(TFPhoneNum_1);
 		
@@ -90,7 +92,7 @@ public class FAddDelivererPage extends FForm{
 		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
 		InfoPan.add(BracketLbl2);
 		
-		TFPhoneNum_2 = new JTextField();
+		TFPhoneNum_2 = new FTextField(0);
 		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
 		InfoPan.add(TFPhoneNum_2);
 		
@@ -99,7 +101,7 @@ public class FAddDelivererPage extends FForm{
 		InfoSpacePan2.setPreferredSize(new Dimension(5, 15));
 		InfoPan.add(InfoSpacePan2);
 		
-		TFPhoneNum_3 = new JTextField();
+		TFPhoneNum_3 = new FTextField(0);
 		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
 		InfoPan.add(TFPhoneNum_3);
 		
@@ -141,11 +143,11 @@ public class FAddDelivererPage extends FForm{
 		DeliveryAreaLbl.setPreferredSize(new Dimension(80, 14));
 		DeliveryInfoPan.add(DeliveryAreaLbl);
 		
-		TFDeliveryArea = new JTextField();
+		TFDeliveryArea = new FTextField(0);
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryInfoPan.add(TFDeliveryArea);
 		
-		BTNAddDeliveryArea = new JButton("Add Delivery Area");
+		BTNAddDeliveryArea = new FButton("Add Delivery Area");
 		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNAddDeliveryArea);
 		
@@ -154,7 +156,7 @@ public class FAddDelivererPage extends FForm{
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
 		DeliveryInfoPan.add(DeliverySpacePan3);
 		
-		BTNDeleteDeliveryArea = new JButton("Delete Delivery Area");
+		BTNDeleteDeliveryArea = new FButton("Delete Delivery Area");
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNDeleteDeliveryArea);
 		
@@ -168,7 +170,7 @@ public class FAddDelivererPage extends FForm{
 		DeliverySpacePan5.setBackground(Color.LIGHT_GRAY);
 		DeliveryInfoPan.add(DeliverySpacePan5);
 		
-		BTNSaveDeliveryArea = new JButton("Save");
+		BTNSaveDeliveryArea = new FButton("Save");
 		BTNSaveDeliveryArea.setPreferredSize(new Dimension(80, 28));
 		DeliveryInfoPan.add(BTNSaveDeliveryArea);
 

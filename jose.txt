@@ -1,0 +1,30 @@
+ ==== Orders ====
+According to Restaurant
+According to Delivery Guys
+According to Client
+
+Order Status 0-4 
+	0 - > Pending
+	1 - > Accepted by Restaurant
+	2 - > Ready by Restaurant, Ready for Pickup
+	3 - > Accepted by DeliveryGuy
+	4 - > Delivered
+
+
+
+
+Resturanta by Like Area Where Available
+Restaurant Model add ArrayList<String> of Areas ( split from string in Areas )
+DeliveryGuys Query with Area Like
+DeliveryGuys Model add ArrayList<String> of Areas ( split from string in Areas )
+
+
+Loop on Restaurant each split area to LIKE delivery guys Area with LIKE on ther Area
+//Get all Resto, List of Areas
+
+
+Resturant by Area Like
+
+Testing DB insert Examples ( Pretty ) 
+
+Complete Orders

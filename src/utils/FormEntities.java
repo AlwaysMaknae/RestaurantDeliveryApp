@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,8 @@ import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
+
+import Form.Login.FLogin;
 
 public class FormEntities extends FForm {
 	
@@ -90,9 +93,16 @@ public class FormEntities extends FForm {
 			}
 		});
 		
+
 		
 		this.setContentPane(pan);
 		this.setVisible(true); //display frame
+	}
+	
+	@Override
+	public void windowClosing(WindowEvent e) {
+		
+		
 	}
 	
 	
