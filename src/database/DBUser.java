@@ -32,8 +32,8 @@ public class DBUser {
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new UserModel(stmt.getString(2));
+			System.out.println(stmt.getString(1));
+			return new UserModel(stmt.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
