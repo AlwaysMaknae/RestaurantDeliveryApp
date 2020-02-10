@@ -1,21 +1,20 @@
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
-
 import Form.AddClient.FAddClient;
-import Form.Admin.FAdmin;
-
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
 import Form.Client.FViewOrderFoodHistory;
+import Form.Dashboard.FDashboard;
 import Form.Deliverers.FAddDeliverer;
 import Form.Deliverers.FDeleteDeliverer;
 import Form.Deliverers.FEditDeliverer;
 import Form.DeliveryGuy.FAcceptDeliveryGuy;
 import Form.DeliveryGuy.FDoneDeliveryGuy;
 import Form.DeliveryGuy.FViewDeliveryGuy;
-
 import Form.Client.FEditAccount;
-
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -27,8 +26,10 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
+import utils.FAlerts;
 import utils.FormEntities;
 
 public class Main {
@@ -110,19 +111,27 @@ public class Main {
 
 		
 		
-		FormEntities ff = new FormEntities();
-		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FDashboard ff = new FDashboard();
+		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//new FormEntities();
+		
+		FAlerts.Error("Error Test", "Testing the errors.");
+		
+		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
+			System.out.println("Yes");
+		} else {
+			System.out.println("No.");
+		}
+		
+		FAlerts.Say("title", "message");
+		
+		System.out.println(FAlerts.Ask("Question", "Why ?"));
+		
 		
 		DBConnecter.OpenConnection();
-
-		UserModel jose = new UserModel("JJJJ", "yeey", 3);
-		UserModel Tester2 = new UserModel("tester2", "terst", 2);
 		
-		//DBUser.AddUser("Jose", "123", 3);
-		//DBUser.UpdateUser(2, "hhhhhhhm");
 		
-		//DBUser.DeleteUser(jose.getId());
-		//DBUser.AddUser("Test", "123", 2);
+		
 	}
 
 }

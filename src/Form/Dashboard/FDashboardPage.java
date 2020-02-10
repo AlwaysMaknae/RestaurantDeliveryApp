@@ -1,4 +1,4 @@
-package Form.Admin;
+package Form.Dashboard;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,12 +10,12 @@ import javax.swing.JPanel;
 
 import utils.FForm;
 
-public class FAdminPage extends FForm{
+public class FDashboardPage extends FForm{
 
 	
 	
 	
-	public FAdminPage(){
+	public FDashboardPage(){
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
