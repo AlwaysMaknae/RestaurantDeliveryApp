@@ -32,7 +32,7 @@ public class DBOrder {
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			//stmt.setInt(1, id);
+			stmt.setInt(1, id);
 			while (stmt.next()) {
 				orders.add(new OrderModel(stmt.getInt(1), stmt.getString(2),
 						stmt.getString(3), stmt.getString(4),

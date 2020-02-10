@@ -26,7 +26,7 @@ public class DBUser{
 	}
 	
 	public static void getAllUsers(String username){
-		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+		String MyQuery = "{CALL get_all_users(?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
