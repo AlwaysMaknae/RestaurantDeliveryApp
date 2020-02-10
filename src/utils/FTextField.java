@@ -26,8 +26,6 @@ public class FTextField extends JFormattedTextField {
 		private int StringLength = 0;
 		private Boolean Valid = true;
 		
-		
-		
 		public FTextField(int Columns) {
 			this.setColumns(Columns);
 			this.setFont(new Font(this.getFont().getFontName(), Font.PLAIN, 12));
