@@ -1,0 +1,18 @@
+ ==== Orders ====
+According to Restaurant
+According to Delivery Guys
+According to Client
+
+Order Status 0-4 
+	0 - > Pending
+	1 - > Accepted by Restaurant
+	2 - > Ready by Restaurant, Ready for Pickup
+	3 - > Accepted by DeliveryGuy
+	4 - > Delivered
+
+DeliveryGuy by Area Like With Available
+Resturant by Area Like
+
+Testing DB insert Examples ( Pretty ) 
+
+Complete Orders
