@@ -108,8 +108,7 @@ public class Main {
 		
 		
 		//new FormEntities();
-
-		
+		Session.AccesType = "Deliverer";
 		
 		FDashboard ff = new FDashboard();
 		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

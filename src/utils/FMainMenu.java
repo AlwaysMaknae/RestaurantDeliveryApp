@@ -4,9 +4,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import database.Session;
+
 public class FMainMenu extends JMenuBar {
 	
+	
+	private static String UserType = "";
+	
+	
 	public FMainMenu(){
+		
+		UserType = Session.AccesType;
 		
 		//file menu
 		JMenu file = new JMenu("File");
@@ -14,7 +22,10 @@ public class FMainMenu extends JMenuBar {
 		JMenuItem file_quit = new JMenuItem("Quit");
 		file.add(file_disconnect);
 		file.add(file_quit);
+		this.add(file);
 		
+		
+		if(UserType.equals("Admin")){
 		
 		//rest menu
 		JMenu restaurant = new JMenu("Restaurant");
@@ -48,13 +59,14 @@ public class FMainMenu extends JMenuBar {
 		
 		
 		//AdminMenu
-		this.add(file);
+		
 		this.add(restaurant);
 		this.add(mmenu);
 		this.add(deliveryGuy);
 		
 		
 		
+		} else if(UserType.equals("Deliverer")) {
 		
 		//DeliveryGuyMenu
 		//File
@@ -72,6 +84,7 @@ public class FMainMenu extends JMenuBar {
 		d_livery.add(dl_conf);
 		this.add(d_livery);
 		
+		} else if(UserType.equals("Restaurateur")) {
 		
 		//Restaurateur
 		//File
@@ -86,6 +99,7 @@ public class FMainMenu extends JMenuBar {
 		r_order.add(ro_ready);
 		this.add(r_order);
 		
+		} else if (UserType.equals("Manager") ) {
 		//Manager
 		//File
 		/*Order
@@ -107,6 +121,10 @@ public class FMainMenu extends JMenuBar {
 		 * 	Order Food
 		 * 	Order History
 		 * */
+		
+		} else if(UserType.equals("Client") ){
+			
+		
 		JMenu c_account = new JMenu("Client:Account");
 		JMenuItem ca_edit = new JMenuItem("Edit Account");
 		JMenuItem ca_close = new JMenuItem("Close Account");
@@ -121,7 +139,12 @@ public class FMainMenu extends JMenuBar {
 		c_orders.add(co_history);
 		this.add(c_orders);
 		
+		} else {
+			//Going Out
+			FAlerts.Error("User Error", "User not found.");
+		}
 		
+		//End
 		
 		
 	}
