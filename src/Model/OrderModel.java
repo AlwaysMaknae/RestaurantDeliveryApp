@@ -10,46 +10,65 @@ public class OrderModel extends Model {
 	private String items;
 	private String delivery_time;
 	private float price;
-	private int status;
+	private String status;
 	private int restaurant_id;
 	private int deliverer_id;
 	private int client_id;
 	private int order_delivered;
-	
-	public OrderModel(int id){
+
+	public OrderModel(int id) {
 		this.id = id;
 	}
-	
-	public OrderModel(String address){
+
+	public OrderModel(String address) {
 		this.address = address;
 	}
-	
-	public OrderModel(String address, String postal_code, String items){
+
+	public OrderModel(String address, String postal_code, String items) {
 		this.address = address;
 		this.postal_code = postal_code;
 		this.items = items;
 	}
-	
-	public OrderModel(int id, int order_delivered){
+
+	public OrderModel(int id, int order_delivered) {
 		this.id = id;
 		this.order_delivered = order_delivered;
 	}
-	
-	public OrderModel(int id, String address, String posta_code, String date, String items, float price, int status, int restaurant_id,
-						 int deliverer_id, int client_id, int order_delivered){
+
+	public OrderModel( String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			int deliverer_id, int client_id, int order_delivered) {
+		this.address = address;
+		this.postal_code = posta_code;
+		this.date = date;
+		this.items = items;
+		this.delivery_time = time;
+		this.price = price;
+		this.status = status;
+		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
+		this.client_id = client_id;
+		this.order_delivered = order_delivered;
+	}
+
+	public OrderModel(int id, String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			int deliverer_id, int client_id, int order_delivered) {
 		this.id = id;
 		this.address = address;
 		this.postal_code = posta_code;
 		this.date = date;
 		this.items = items;
+		this.delivery_time = time;
 		this.price = price;
 		this.status = status;
 		this.restaurant_id = restaurant_id;
 		this.client_id = client_id;
 		this.order_delivered = order_delivered;
-						}
+	}
+
 	public void Create() {
-		DBOrder.AddOrder(this);	
+		DBOrder.AddOrder(this);
 	}
 
 	public void Update() {
@@ -120,11 +139,11 @@ public class OrderModel extends Model {
 		this.delivery_time = delivery_time;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -159,7 +178,5 @@ public class OrderModel extends Model {
 	public void setOrder_delivered(int order_delivered) {
 		this.order_delivered = order_delivered;
 	}
-	
-	
 
 }

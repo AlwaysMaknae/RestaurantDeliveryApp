@@ -24,22 +24,20 @@ public class DBUser{
 		}
 		
 	}
-	//function to add user
-	public static UserModel AddUser(String username, String password, int access_lvl){
-		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+	
+	public static void getAllUsers(String username){
+		String MyQuery = "{CALL get_all_users(?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, username);
-			stmt.setString(2, password);
-			stmt.setInt(3, access_lvl);
 			stmt.executeUpdate();
-			return new UserModel(stmt.toString());
 		}catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
 	}
+	//function to add user
+	
 	public static void AddUser(UserModel userModel) {
 		String username = userModel.getUsername();
 		String password = userModel.getPassword();
