@@ -5,52 +5,62 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import utils.FAlerts;
+
 public class FLogin extends FLoginView {
 
 	public FLogin() {
-		BTNConnect.addActionListener(this);
-		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
+		
+//				if (TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
+//					FAlerts.Error("Login Error", "Invalid Username or Password");
+//				}else{
+//					FAlerts.Say("Good!", "TEST");
+//				}
 		
 		BTNConnect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				// Empty Login Error Validation.
+				
+				if (TFUsername.isValid()) {
+					//Incorrect Login Info Validation.
+					
+//					if() {
+//					FAlerts.Say("Good!", "TEST");	
+//					}else{
+//					FAlerts.Error("Login Error", "Invalid Username or Password");
+//				    }
+				} else {
+					FAlerts.Error("Login Error", "Invalid Username or Password");
+				}
 				
 			}
 		});
-		
-		BTNClientNew.addActionListener(new ActionListener() {		
+
+		BTNClientNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
+				//Opens the AddClientClass
+
 			}
 		});
-		
+
 		BTNQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
+				//Closes Application
+
 			}
 		});
-		
+
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// Submit
-
-		if (TFUsername.isValid()) {
-			System.out.println("good");
-		} else {
-			System.out.println("not good");
-		}
 
 	}
 

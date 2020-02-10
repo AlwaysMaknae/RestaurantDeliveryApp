@@ -111,10 +111,11 @@ public class Main {
 
 		
 		
-		FDashboard ff = new FDashboard();
+		//FDashboard ff = new FDashboard();
 		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//new FormEntities();
 		
+		/*
 		FAlerts.Error("Error Test", "Testing the errors.");
 		
 		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
@@ -129,7 +130,7 @@ public class Main {
 		
 		
 		DBConnecter.OpenConnection();
-		
+		*/
 		
 		
 	}

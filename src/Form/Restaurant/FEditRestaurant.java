@@ -38,7 +38,7 @@ public class FEditRestaurant extends FEditRestaurantPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(ListPan.GetSelectedIndex() + " : " + ListPan.GetSelectedItem());
-
+				
 			}
 		});
 		

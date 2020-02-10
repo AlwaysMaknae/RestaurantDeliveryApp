@@ -28,6 +28,8 @@ public class FAddRestaurantPage extends FForm{
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	protected FTextField TFDeliveryArea;
 	
+	protected JTextArea JTADeliveryArea;
+	
 	protected FButton BTNDeliverySave, BTNDeleteDeliveryArea, BTNAddDeliveryArea, BTNModifyAll; 
 	
 	protected JComboBox Fcb[] = new JComboBox[7];
@@ -277,7 +279,8 @@ public class FAddRestaurantPage extends FForm{
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
-		JTextArea JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea.setEnabled(false);
 		JTADeliveryArea.setBorder(new LineBorder(Color.GRAY));
 		JTADeliveryArea.setPreferredSize(new Dimension(460, 125));
 		DeliveryPan.add(JTADeliveryArea);
