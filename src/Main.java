@@ -21,6 +21,7 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.ManagerModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
@@ -109,6 +110,10 @@ public class Main {
 		DBConnecter.OpenConnection();
 		UserModel jose = new UserModel("JJJJ", "yeey", 3);
 		RestaurantModel tester = new RestaurantModel("CHeese factory");
+		
+		ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
+		
+		//DBManager.AddManager(tester2);
 		
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());

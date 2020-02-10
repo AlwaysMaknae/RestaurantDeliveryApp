@@ -28,6 +28,7 @@ public class UserModel extends Model {
 		this.username = username;
 		this.password = password;
 	}
+	
 
 
 	
