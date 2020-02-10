@@ -123,7 +123,8 @@ public class Main {
 		
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
-		System.out.println(DBOrder.getOrderbyClient(3));
+	//	System.out.println(DBOrder.getOrderbyClient(3));
+		DBUser.getAllUsers("JJJ");
 		
 	}
 
