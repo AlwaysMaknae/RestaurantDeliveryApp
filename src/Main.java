@@ -108,22 +108,22 @@ public class Main {
 		
 		
 		//new FormEntities();
-		Session.AccesType = "Deliverer";
+		Session.AccesType = "";
 		
-		FDashboard ff = new FDashboard();
+		
+		
+		//FDashboard ff = new FDashboard();
 		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//new FormEntities();
 		
 		
 		DBConnecter.OpenConnection();
+		new FLogin();
 		
 		
 		//ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
 		
 		//DBManager.AddManager(tester2);
-		
-		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
-		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
 		
 	}
 

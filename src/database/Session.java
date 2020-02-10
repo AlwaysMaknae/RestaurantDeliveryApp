@@ -11,6 +11,11 @@ public abstract class Session {
 		Session.Client = Client;
 		//AccesType = Client.getAccess_lvl();
 	}
+	public static void Quit(){
+		Session.Client = null;
+		AccesType = "";
+		//AccesType = Client.getAccess_lvl();
+	}
 	
 	
 	

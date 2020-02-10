@@ -141,7 +141,7 @@ public class FMainMenu extends JMenuBar {
 		
 		} else {
 			//Going Out
-			FAlerts.Error("User Error", "User not found.");
+			//FAlerts.Error("User Error", "User not found.");
 		}
 		
 		//End
