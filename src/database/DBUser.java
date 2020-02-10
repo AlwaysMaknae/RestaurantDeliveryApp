@@ -7,9 +7,11 @@ import java.sql.SQLException;
 
 import Model.UserModel;
 public class DBUser{
+	
+	
 	//function to read user
-	public static UserModel GetUser(String username){
-		String MyQuery = "SELECT * from users WHERE username='" + username +"'";
+	public static UserModel GetUser(String username, String password){
+		String MyQuery = "SELECT * from users WHERE username='" + username +"' AND password='" + password + "'";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
@@ -27,7 +29,7 @@ public class DBUser{
 		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
-			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setInt(3, access_lvl);
@@ -36,6 +38,22 @@ public class DBUser{
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	public static void AddUser(UserModel userModel) {
+		String username = userModel.getUsername();
+		String password = userModel.getPassword();
+		int access_lvl = userModel.getAccess_lvl();
+		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
+		java.sql.PreparedStatement stmt;
+		try{
+			stmt = DBConnecter.Connect.prepareCall(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setInt(3, access_lvl);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	// function to update user
@@ -56,13 +74,19 @@ public class DBUser{
 		}
 	}
 	
-	public static UserModel UpdateUser(int id,  String password){
-		String MyQuery = "{CALL update_user1(?, ?)}" ;
+	public static UserModel UpdateUser(UserModel userModel){
+		int id = userModel.getId();
+		String username = userModel.getUsername();
+		String password = userModel.getPassword();
+		int access_lvl = userModel.getAccess_lvl();
+		String MyQuery = "{CALL update_user(?, ?, ?, ?)}" ;
 		java.sql.PreparedStatement stmt;
 		try{
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setInt(1, id);
-			stmt.setString(2, password);
+			stmt.setString(2, username);
+			stmt.setString(3, password);
+			stmt.setInt(4, access_lvl);
 			stmt.executeUpdate();
 			return new UserModel(stmt.toString());
 		}catch (SQLException e) {
@@ -83,23 +107,6 @@ public class DBUser{
 			e.printStackTrace();
 		}
 	}
-	public static String AddUser(UserModel userModel) {
-		String username = userModel.getUsername();
-		String password = userModel.getPassword();
-		int access_lvl = userModel.getAccess_lvl();
-		String MyQuery = "{CALL create_user(?, ?, ?)}" ;
-		java.sql.PreparedStatement stmt;
-		try{
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, username);
-			stmt.setString(2, password);
-			stmt.setInt(3, access_lvl);
-			stmt.executeUpdate();
-			return "" + username + " has been successfully addded";
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	
 }
 
