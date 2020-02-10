@@ -14,7 +14,7 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
-import Model.ManagerModel;
+//import Model.ManagerModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
@@ -25,7 +25,6 @@ public class Main {
 
 		new DBConnecter();
 		
-		
 		FormEntities ff = new FormEntities();
 		
 		ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +34,7 @@ public class Main {
 		UserModel jose = new UserModel("JJJJ", "yeey", 3);
 		RestaurantModel tester = new RestaurantModel("CHeese factory");
 		
-		ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
+		//ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
 		
 		//DBManager.AddManager(tester2);
 		
