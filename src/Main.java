@@ -22,6 +22,7 @@ import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
 import Model.ManagerModel;
+import Model.OrderModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
@@ -112,11 +113,17 @@ public class Main {
 		RestaurantModel tester = new RestaurantModel("CHeese factory");
 		
 		ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
+
+		OrderModel tester3 = new OrderModel("address2" , "postal", "2020-02-10 12:12:00", "items", "12:12:12", 32.2f, "NOT READY", 1, 1, 3, 0);
 		
 		//DBManager.AddManager(tester2);
 		
+		
+		DBOrder.AddOrder(tester3);
+		
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
+		System.out.println(DBOrder.getOrderbyClient(3));
 		
 	}
 

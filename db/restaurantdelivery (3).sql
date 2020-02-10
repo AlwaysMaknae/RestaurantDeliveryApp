@@ -169,6 +169,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_users` (IN `username` VARCH
 	SELECT clients.client_username, managers.username, restaurateurs.username,	users.username FROM clients, managers, restaurateurs, users
     WHERE clients.client_username=username || managers.username=username || restaurateurs.username=username ||	users.username=username;
     END$$
+    
+-- PROC TO SEE ALL orders BY CLIENT_ID
+DROP PROCEDURE IF EXISTS `get_order_by_client`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_order_by_client` (IN client_id INT) BEGIN
+	SELECT * FROM orders WHERE orders.client_id=client_id;
+    END$$
 
 DELIMITER ;
 
