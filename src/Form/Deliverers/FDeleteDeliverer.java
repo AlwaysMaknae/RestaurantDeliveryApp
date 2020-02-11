@@ -6,34 +6,33 @@ import java.util.ArrayList;
 
 import Model.DelivererModel;
 import Model.RestaurantModel;
+import utils.FAlerts;
 
 public class FDeleteDeliverer extends FDeleteDelivererPage{
 
+	private DelivererModel DeleteDeliveryMan;
+	
 	public FDeleteDeliverer() {
-		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
 		
-//		ArrayList<DelivererModel> RestaurantList = new ArrayList<DelivererModel>();
+		ArrayList<DelivererModel> DelivererList = new ArrayList<DelivererModel>();
 
-//		ArrayList<Object> Deliverer = new ArrayList<Object>();
+		ArrayList<Object> Deliverer = new ArrayList<Object>();
 
-//		Deliverer.add("Jeff");
-//		Deliverer.add("Geoff");
-//		Deliverer.add("Jeph");
-//		Deliverer.add("Geoph");
+		Deliverer.add("Jeff");
+		Deliverer.add("Geoff");
+		Deliverer.add("Jeph");
+		Deliverer.add("Geoph");
 
 
-//		ListPan.SetList(Deliverer);
+		ListPan.SetList(Deliverer);
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+//				Select a delivery guy and press SELECT. This transfers the info into the correct textfields.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected delivery guy and display the info in the textfields
 				
 			}
 		});
@@ -41,7 +40,27 @@ public class FDeleteDeliverer extends FDeleteDelivererPage{
 		BTNDeleteAll.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//Delivery man is selected validation
+				
+//				if(DELIVERY MAN IS SELECTED) {
+//					if(FAlerts.Confirm("Deletion Confirmation", "Would you like to fire: " + ListPan.GetSelectedItem().toString() + "?")) {
+						
+//						int ID = ListPan.GetSelectedIndex();				
+//						DeleteDeliveryMan.Delete(ID);		
+//						ListPan.remove(ID);
+					
+//						repaint();
+//						revalidate();
+//						FAlerts.Say("Deletion Complete", "Delivery Man successfully fired!");
+						
+//					}else {
+//						FAlerts.Say("Deletion Cancelled", "Deletion has been successfully cancelled!");
+//					}
+					
+//				}else {
+//					FAlerts.Error("Selection Error", "Please select a Delivery Man to delete.");
+//				}
 				
 			}
 		});

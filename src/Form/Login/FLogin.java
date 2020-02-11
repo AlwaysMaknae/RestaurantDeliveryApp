@@ -10,39 +10,40 @@ import utils.FAlerts;
 public class FLogin extends FLoginView {
 
 	public FLogin() {
-		
+
 //				if (TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
 //					FAlerts.Error("Login Error", "Invalid Username or Password");
 //				}else{
 //					FAlerts.Say("Good!", "TEST");
 //				}
-		
+
 		BTNConnect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				// Empty Login Error Validation.
-				
-				if (TFUsername.isValid()) {
-					//Incorrect Login Info Validation.
-					
+
+				if (!TFUsername.IsValid() || !TFPassword.IsValid()) {
+					// Incorrect Login Info Validation.
+
 //					if() {
 //					FAlerts.Say("Good!", "TEST");	
 //					}else{
 //					FAlerts.Error("Login Error", "Invalid Username or Password");
 //				    }
-				} else {
 					FAlerts.Error("Login Error", "Invalid Username or Password");
+				} else {
+					FAlerts.Say("Test", "This is just an RP message saying it works @ 60%! efficency!");
 				}
-				
+
 			}
 		});
 
 		BTNClientNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//Opens the AddClientClass
+
+				// Opens the AddClientClass
 
 			}
 		});
@@ -50,8 +51,8 @@ public class FLogin extends FLoginView {
 		BTNQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//Closes Application
+
+				// Closes Application
 
 			}
 		});

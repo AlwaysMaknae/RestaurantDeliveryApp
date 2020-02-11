@@ -69,7 +69,7 @@ public class FAddRestaurant extends FAddRestaurantPage {
 			public void actionPerformed(ActionEvent e) {
 
 				// Empty Fields verification
-//				if(!TFRestaurantName.isValid() || !TFRestaurantAddress.isValid() || !TFPhoneNum_1.isValid() && !TFPhoneNum_2.isValid() && !TFPhoneNum_3.isValid() ) {
+//				if(!TFRestaurantName.IsValid() || !TFRestaurantAddress.IsValid() || !TFPhoneNum_1.IsValid() && !TFPhoneNum_2.IsValid() && !TFPhoneNum_3.IsValid() ) {
 //					FAlerts.Error("Add Restaurant Error", "Missing Fields");
 
 				//Non selected Comboboxes verification	
@@ -77,7 +77,7 @@ public class FAddRestaurant extends FAddRestaurantPage {
 //					FAlerts.Error("Restaurant Time Error", "Please select an appropriate Opening/Closing time");
 
 				//Empty JTA Delivery Area verification	
-//				}else if(!JTADeliveryArea.isValid()){
+//				}else if(JTADeliveryArea.getText().trim().length() == 0){
 //					FAlerts.Error("Delivery Area Error", "Missing Delivery Area");
 
 //				}else {

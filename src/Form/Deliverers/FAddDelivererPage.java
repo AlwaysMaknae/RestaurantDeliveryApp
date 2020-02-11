@@ -23,6 +23,8 @@ public class FAddDelivererPage extends FForm{
 	protected FTextField TFName, TFDeliveryArea;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
+	protected JTextArea JTADeliveryArea;
+	
 	protected FButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
 
 	public FAddDelivererPage() {
@@ -128,7 +130,7 @@ public class FAddDelivererPage extends FForm{
 		DeliveryInfoSpacePan.setPreferredSize(new Dimension(425, 1));
 		DeliveryInfoPan.add(DeliveryInfoSpacePan);
 		
-		JTextArea JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new JTextArea();
 		JTADeliveryArea.setPreferredSize(new Dimension(400, 100));
 		JTADeliveryArea.setBorder(new LineBorder(new Color(128, 128, 128)));
 		JTADeliveryArea.setLineWrap(true);

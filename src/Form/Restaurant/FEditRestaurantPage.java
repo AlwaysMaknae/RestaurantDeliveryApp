@@ -29,6 +29,8 @@ public class FEditRestaurantPage extends FForm{
 	protected FTextField TFDeliveryArea;
 	protected FButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliverySave;
 	
+	protected JTextArea JTADeliveryArea;
+	
 	protected JComboBox Fcb[] = new JComboBox[7];
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
@@ -305,10 +307,10 @@ public class FEditRestaurantPage extends FForm{
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBorder(new LineBorder(Color.GRAY));
-		textArea.setPreferredSize(new Dimension(460, 125));
-		DeliveryPan.add(textArea);
+		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea.setBorder(new LineBorder(Color.GRAY));
+		JTADeliveryArea.setPreferredSize(new Dimension(460, 125));
+		DeliveryPan.add(JTADeliveryArea);
 		
 		JPanel JTASpacePan2 = new JPanel();
 		JTASpacePan2.setBackground(Color.LIGHT_GRAY);

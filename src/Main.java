@@ -51,7 +51,9 @@ public class Main {
 		//new FAddRestaurant();
 		//new FEditRestaurant();
 		//new FDeleteRestaurant();
-		//new FAddRestaurantMenu();
+		//new FAddRestaurantMenu();//VVVVVV
+		//TODO SHOW THIS JOPTION IF THE RESTAURANT HAS NO MENU!
+		//FAlerts.Error("Menu Error", "All restaurants do not have a Menu. \n Please select a restaurant to add a Menu.");
 		
 		/*
 		 * MENU FORM
@@ -67,7 +69,7 @@ public class Main {
 		
 		//new FAddDeliverer();
 		//new FDeleteDeliverer();
-		//new FEditDeliverer();
+		new FEditDeliverer();
 		
 		/*
 		 * ADMIN ACCOUNT FORM
