@@ -25,7 +25,7 @@ public class DBUser {
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			if (stmt.next())
-				return new UserModel(stmt.getString(2), stmt.getString(3), stmt.getInt(4));
+				return new UserModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4));
 			else
 				return null;
 		} catch (SQLException e) {

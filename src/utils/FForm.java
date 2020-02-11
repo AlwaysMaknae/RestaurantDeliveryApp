@@ -7,9 +7,14 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
+import Form.Dashboard.FDashboard;
+import Form.Login.FLogin;
+import database.Session;
+
 public class FForm extends JFrame implements ActionListener, WindowListener{
 	
 	protected FMainMenu MenuBar;
+	private FForm Me;
 	
 	public FForm(){
 		this.setTitle("New FForm");
@@ -19,11 +24,34 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 		MenuBar = new FMainMenu();
 		
 		this.addWindowListener(this);
-		
 		this.setJMenuBar( MenuBar );
-		this.setLocationRelativeTo(null);  //place frame in the middle of screen
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
-		this.setVisible(true); //display frame
+		this.setLocationRelativeTo(null); 
+		
+		Me = this;
+		
+		MenuBar.file_disconnect.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Session.Quit();
+				new FLogin();
+				Me.dispose();
+			}
+		});
+		
+		MenuBar.file_quit.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(FAlerts.Confirm("Quit", "Close the application ?")){
+					Session.Quit();
+					System.exit(0);
+				}
+			}
+			
+		});
+		
+		this.setVisible(true);
 	}
 
 	@Override
@@ -33,7 +61,10 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 	public void windowActivated(WindowEvent e) {}
 
 	@Override
-	public void windowClosed(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {
+		Me.dispose();
+		new FDashboard();
+	}
 
 	@Override
 	public void windowClosing(WindowEvent e) {}

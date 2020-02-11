@@ -55,6 +55,12 @@ public class ClientModel extends Model {
 		this.client_id = client_id;
 		this.client_username = client_username;
 	}
+	
+	private void ReadClientModel(ClientModel Me){
+		this.client_id = Me.client_id;
+		
+		//todo
+	}
 
 	public void Create() {
 		DBClient.AddClient(this);
@@ -65,6 +71,8 @@ public class ClientModel extends Model {
 	}
 
 	public Model Read() {
+		
+		//ReadClientModel(DBClient.GetClient(this.getClient_id()));
 		
 		return DBClient.GetClient(this.client_username, this.client_password);
 	}

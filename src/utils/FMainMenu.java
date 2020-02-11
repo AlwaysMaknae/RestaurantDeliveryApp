@@ -1,5 +1,8 @@
 package utils;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -11,6 +14,29 @@ public class FMainMenu extends JMenuBar {
 	
 	private static String UserType = "";
 	
+	//File Menu
+	protected JMenuItem file_disconnect, file_quit;
+	
+	//Admin Menu
+	protected JMenuItem r_add, r_edit, r_delete;
+	protected JMenuItem m_add, m_edit, m_delete;
+	protected JMenuItem d_add, d_edit, d_delete;
+	
+	//Restaurater
+	protected JMenuItem ro_accept, ro_ready;
+	
+	//Manager
+	protected JMenuItem ma_vorder;
+	
+	
+	//Deli Menu
+	protected JMenuItem dl_view, dl_accept, dl_conf;
+	
+
+	//Client
+	protected JMenuItem ca_edit, ca_close, c_orders, co_order, co_history;
+	
+	
 	
 	public FMainMenu(){
 		
@@ -18,21 +44,20 @@ public class FMainMenu extends JMenuBar {
 		
 		//file menu
 		JMenu file = new JMenu("File");
-		JMenuItem file_disconnect = new JMenuItem("Disconnect");
-		JMenuItem file_quit = new JMenuItem("Quit");
+		file_disconnect = new JMenuItem("Disconnect");
+		file_quit = new JMenuItem("Quit");
 		file.add(file_disconnect);
 		file.add(file_quit);
 		this.add(file);
 		
 		
 		if(UserType.equals("Admin")){
-		
 		//rest menu
 		JMenu restaurant = new JMenu("Restaurant");
 		//add,edit,delelte
-		JMenuItem r_add = new JMenuItem("Add Restaurant");
-		JMenuItem r_edit = new JMenuItem("Edit Restaurant");
-		JMenuItem r_delete = new JMenuItem("Delete Restaurant");
+		r_add = new JMenuItem("Add Restaurant");
+		r_edit = new JMenuItem("Edit Restaurant");
+		r_delete = new JMenuItem("Delete Restaurant");
 		restaurant.add(r_add);
 		restaurant.add(r_edit);
 		restaurant.add(r_delete);
@@ -40,9 +65,9 @@ public class FMainMenu extends JMenuBar {
 		//menu menu
 		JMenu mmenu = new JMenu("Menu");
 		//add,edit,delete
-		JMenuItem m_add = new JMenuItem("Add Menu");
-		JMenuItem m_edit = new JMenuItem("Edit Menu");
-		JMenuItem m_delete = new JMenuItem("Delete Menu");
+		m_add = new JMenuItem("Add Menu");
+		m_edit = new JMenuItem("Edit Menu");
+		m_delete = new JMenuItem("Delete Menu");
 		mmenu.add(m_add);
 		mmenu.add(m_edit);
 		mmenu.add(m_delete);
@@ -50,16 +75,14 @@ public class FMainMenu extends JMenuBar {
 		//dman
 		JMenu deliveryGuy = new JMenu("Delivery Guy");
 		//add,edit,delete
-		JMenuItem d_add = new JMenuItem("Add Delivery Guy");
-		JMenuItem d_edit = new JMenuItem("Edit Delivery Guy");
-		JMenuItem d_delete = new JMenuItem("Delete Delivery Guy");
+		d_add = new JMenuItem("Add Delivery Guy");
+		d_edit = new JMenuItem("Edit Delivery Guy");
+		d_delete = new JMenuItem("Delete Delivery Guy");
 		deliveryGuy.add(d_add);
 		deliveryGuy.add(d_edit);
 		deliveryGuy.add(d_delete);
 		
-		
 		//AdminMenu
-		
 		this.add(restaurant);
 		this.add(mmenu);
 		this.add(deliveryGuy);
@@ -76,9 +99,9 @@ public class FMainMenu extends JMenuBar {
 		 * 	Delivery Made
 		 * */
 		JMenu d_livery = new JMenu("Deliverer:Delivery");
-		JMenuItem dl_view= new JMenuItem("View Delivery");
-		JMenuItem dl_accept = new JMenuItem("Accept Delivery");
-		JMenuItem dl_conf = new JMenuItem("Delivery Made");
+		dl_view= new JMenuItem("View Delivery");
+		dl_accept = new JMenuItem("Accept Delivery");
+		dl_conf = new JMenuItem("Delivery Made");
 		d_livery.add(dl_view);
 		d_livery.add(dl_accept);
 		d_livery.add(dl_conf);
@@ -93,8 +116,8 @@ public class FMainMenu extends JMenuBar {
 		 * Order Ready
 		 * */
 		JMenu r_order = new JMenu("Restaurateur:Order");
-		JMenuItem ro_accept = new JMenuItem("Accept Order");
-		JMenuItem ro_ready = new JMenuItem("Order Ready");
+		ro_accept = new JMenuItem("Accept Order");
+		ro_ready = new JMenuItem("Order Ready");
 		r_order.add(ro_accept);
 		r_order.add(ro_ready);
 		this.add(r_order);
@@ -106,7 +129,7 @@ public class FMainMenu extends JMenuBar {
 		 * View Restaurant Orders
 		 * */
 		JMenu manager_order = new JMenu("Manager:Order");
-		JMenuItem ma_vorder = new JMenuItem("View Restaurant Orders");
+		ma_vorder = new JMenuItem("View Restaurant Orders");
 		manager_order.add(ma_vorder);
 		this.add(manager_order);
 		
@@ -126,15 +149,15 @@ public class FMainMenu extends JMenuBar {
 			
 		
 		JMenu c_account = new JMenu("Client:Account");
-		JMenuItem ca_edit = new JMenuItem("Edit Account");
-		JMenuItem ca_close = new JMenuItem("Close Account");
+		ca_edit = new JMenuItem("Edit Account");
+		ca_close = new JMenuItem("Close Account");
 		c_account.add(ca_edit);
 		c_account.add(ca_close);
 		this.add(c_account);
 		
 		JMenu c_orders = new JMenu("Client:Orders");
-		JMenuItem co_order = new JMenuItem("Order Food");
-		JMenuItem co_history = new JMenuItem("Order History");
+		co_order = new JMenuItem("Order Food");
+		co_history = new JMenuItem("Order History");
 		c_orders.add(co_order);
 		c_orders.add(co_history);
 		this.add(c_orders);
@@ -145,8 +168,6 @@ public class FMainMenu extends JMenuBar {
 		}
 		
 		//End
-		
-		
 	}
 
 }

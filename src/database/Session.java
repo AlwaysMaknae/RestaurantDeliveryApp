@@ -1,15 +1,15 @@
 package database;
 
+import Model.Model;
 import Model.UserModel;
 
 public abstract class Session {
 
-	private static UserModel Client;
+	private static Model Client;
 	public static String AccesType;
 	
-	public static void Create(UserModel Client){
+	public static void Create(Model Client){
 		Session.Client = Client;
-		//AccesType = Client.getAccess_lvl();
 	}
 	public static void Quit(){
 		Session.Client = null;
