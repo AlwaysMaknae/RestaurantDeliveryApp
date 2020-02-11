@@ -37,7 +37,7 @@ public class Main {
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
-		//new FLogin();
+		new FLogin();
 		//new FAddClient();
 		
 		/*
@@ -119,10 +119,10 @@ public class Main {
 		//DBManager.AddManager(tester2);
 		
 		
-		DBOrder.AddOrder(tester3);
+	//	DBOrder.AddOrder(tester3);
 		
 		
-		DBUser.getAllUsers("JJJ");
+		//DBUser.getAllUsers("JJJ");
 		
 	}
 
