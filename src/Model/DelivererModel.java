@@ -55,6 +55,8 @@ public class DelivererModel extends Model{
 		//	this.arealist.add(x);
 		//}
 	}
+	
+	
 
 	public void Create() {
 		DBDeliverer.AddDeliverer(this);
@@ -64,8 +66,8 @@ public class DelivererModel extends Model{
 		DBDeliverer.UpdateDeliverer(this);
 	}
 
-	public Model Read() {
-		return DBDeliverer.GetDeliverer(id);
+	public void Read() {
+		
 	}
 
 	public void Delete() {

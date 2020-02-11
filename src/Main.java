@@ -21,6 +21,7 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.ClientModel;
 import Model.ManagerModel;
 import Model.OrderModel;
 import Model.RestaurantModel;
@@ -37,7 +38,7 @@ public class Main {
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
-		new FLogin();
+		//new FLogin();
 		//new FAddClient();
 		
 		/*
@@ -129,8 +130,9 @@ public class Main {
 		
 		//DBRestaurant.UpdateRestaurant(tester);
 		
-		
-		
+		ClientModel moodle = new ClientModel(10);
+		moodle.Read();
+		System.out.println(moodle.getClient_email());
 	}
 
 }

@@ -55,6 +55,19 @@ public class ClientModel extends Model {
 		this.client_id = client_id;
 		this.client_username = client_username;
 	}
+	
+	private void ReadClientModel(ClientModel Me){
+		this.client_id = Me.getClient_id();
+		this.client_username = Me.getClient_username();
+		this.client_password = Me.getClient_password();
+		this.client_last_name = Me.getClient_last_name();
+		this.client_first_name = Me.getClient_first_name();
+		this.client_address = Me.getClient_address();
+		this.client_email = Me.getClient_email();
+		this.client_number = Me.getClient_number();
+		this.client_status = Me.getClient_status();
+	}
+	
 
 	public void Create() {
 		DBClient.AddClient(this);
@@ -64,9 +77,9 @@ public class ClientModel extends Model {
 		DBClient.UpdateClient(this);
 	}
 
-	public Model Read() {
-		
-		return DBClient.GetClient(this.client_username, this.client_password);
+	public void Read() {
+		ReadClientModel(DBClient.GetAllClient(this.client_id));
+				
 	}
 
 	public void Delete() {
