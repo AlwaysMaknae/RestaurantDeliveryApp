@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +21,26 @@ public class DBRestaurant {
 				restaurants.add(new RestaurantModel(stmt.getInt(1), stmt.getString(2)));
 			}		
 			return restaurants;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ArrayList<RestaurantModel> getRestaurantArea(String area){
+		String MyQuery = "SELECT * FROM restaurants WHERE status=1 AND restaurant_areas LIKE ?";
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<RestaurantModel> restaurant = new ArrayList<RestaurantModel>();
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				restaurant.add(new RestaurantModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return restaurant;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

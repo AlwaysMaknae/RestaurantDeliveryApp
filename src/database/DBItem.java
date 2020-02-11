@@ -2,6 +2,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 //import com.mysql.jdbc.PreparedStatement;
 
@@ -23,6 +24,23 @@ public class DBItem {
 			return null;
 		}
 
+	}
+	
+	public static ArrayList<ItemModel> getAllItems(int restaurant_id){
+		String MyQuery = "SELECT * FROM items WHERE status=1 AND restaurant_id='" + restaurant_id + "'";
+		ResultSet stmt;
+		ArrayList<ItemModel> items = new ArrayList<ItemModel>();
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			
+			while(stmt.next()){
+				items.add(new ItemModel(stmt.getInt(1), stmt.getString(2), stmt.getFloat(3)));
+			}		
+			return items;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	// function to add item
