@@ -26,7 +26,7 @@ public class DBDeliverer {
 
 	}
 	
-	public static ArrayList<DelivererModel> getDelivererArea(String area){
+	public static ArrayList<DelivererModel> getDelivererByArea(String area){
 		String MyQuery = "SELECT * FROM deliverers WHERE status=1 AND deliverer_area LIKE ?";
 		ResultSet resultset;	
 		PreparedStatement stmt;

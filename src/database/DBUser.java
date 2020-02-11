@@ -1,7 +1,9 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 //import com.mysql.jdbc.PreparedStatement;
 
@@ -16,22 +18,45 @@ public class DBUser {
 				+ username + "' AND clients.client_password='" + password
 				+ "' AND clients.status=1 OR deliverers_login.username='" + username
 				+ "' AND deliverers_login.password='" + password
-				+ "' AND deliverers_login.status=1 OR managers.username='" + username
-				+ "' AND managers.password='" + password + "' AND managers.status=1 OR restaurateurs.username='" + username
-				+ "' AND restaurateurs.password='" + password +"' AND restaurateurs.status=1";
+				+ "' AND deliverers_login.status=1 OR managers.username='" + username + "' AND managers.password='"
+				+ password + "' AND managers.status=1 OR restaurateurs.username='" + username
+				+ "' AND restaurateurs.password='" + password + "' AND restaurateurs.status=1";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			if (stmt.next())
-				return new UserModel(stmt.getString(2), stmt.getString(3));
+				return new UserModel(stmt.getString(2), stmt.getString(3), stmt.getInt(4));
 			else
 				return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
+
+	// check if username exists
+	/*public static UserModel CheckUser(String username) {
+		String MyQuery = "SELECT * FROM users, clients, deliverers_login, managers, restaurateurs WHERE users.username=? AND users.status=1 OR clients.client_username=? AND clients.status=1 OR deliverers_login.username=? AND deliverers_login.status=1 OR managers.username=? AND managers.status=1 OR restaurateurs.username=? AND restaurateurs.status=1";
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(1, username);
+			stmt.setString(1, username);
+			stmt.setString(1, username);
+			stmt.setString(1, username);
+
+			resultset = stmt.executeQuery();
+			if(resultset.next())
+				return new UserModel(resultset.getInt(1), resultset.getString(2));
+			else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}*/
 
 	// function to add user
 

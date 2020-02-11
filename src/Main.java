@@ -37,7 +37,7 @@ public class Main {
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
-		//new FLogin();
+		new FLogin();
 		//new FAddClient();
 		
 		/*
@@ -123,9 +123,9 @@ public class Main {
 		
 		
 		//System.out.println(DBOrder.getOrderbyClient(3).get(1).getPostal_code());
-		System.out.println(DBRestaurant.getRestaurantArea("H6K").get(0).getName());
-		System.out.println(DBDeliverer.getDelivererArea("H5K").get(0).getName());
-		System.out.println(DBDeliverer.CompareArea(2, "J2K").get(0).getName());
+		//System.out.println(DBRestaurant.getRestaurantArea("H6K").get(0).getArealist());
+		//System.out.println(DBDeliverer.getDelivererArea("H5K").get(0).getName());
+		//System.out.println(DBDeliverer.CompareArea(2, "J2K").get(0).getName());
 		
 		//DBRestaurant.UpdateRestaurant(tester);
 		
