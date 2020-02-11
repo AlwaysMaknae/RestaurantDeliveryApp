@@ -11,33 +11,26 @@ public class DBUser {
 
 	// function to read user
 	public static UserModel GetUser(String username, String password) {
-		String MyQuery = "SELECT * from users WHERE username='" + username
-				+ "' AND password='" + password + "'";
+		String MyQuery = "SELECT * FROM users, clients, deliverers_login, managers, restaurateurs WHERE users.username='"
+				+ username + "' AND users.password='" + password + "' AND users.status=1 OR clients.client_username='"
+				+ username + "' AND clients.client_password='" + password
+				+ "' AND clients.status=1 OR deliverers_login.username='" + username
+				+ "' AND deliverers_login.password='" + password
+				+ "' AND deliverers_login.status=1 OR managers.username='" + username
+				+ "' AND managers.password='" + password + "' AND managers.status=1 OR restaurateurs.username='" + username
+				+ "' AND restaurateurs.password='" + password +"' AND restaurateurs.status=1";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new UserModel(stmt.getString(1));
+			if (stmt.next())
+				return new UserModel(stmt.getString(2), stmt.getString(3));
+			else
+				return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 
-	}
-
-	public static UserModel getAllUsers(String username) {
-		String MyQuery = "SELECT clients.client_username, managers.username, restaurateurs.username,users.username FROM clients, managers, restaurateurs, users WHERE clients.client_username='" + username + "' || managers.username= '" + username + "' || restaurateurs.username='" + username + "' ||	users.username='" + username + "'";
-		ResultSet stmt;
-		try {
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new UserModel(stmt.getString(2));
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 
 	// function to add user
@@ -60,8 +53,7 @@ public class DBUser {
 	}
 
 	// function to update user
-	public static UserModel UpdateUser(int id, String username,
-			String password, int access_lvl) {
+	public static UserModel UpdateUser(int id, String username, String password, int access_lvl) {
 		String MyQuery = "{CALL update_user(?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {

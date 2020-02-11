@@ -123,16 +123,34 @@ public class Main {
 		
 
 		ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
-
 		OrderModel tester3 = new OrderModel("address2" , "postal", "2020-02-10 12:12:00", "items", "12:12:12", 32.2f, "NOT READY", 1, 1, 3, 0);
 
 		//ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
 
+
+		//UserModel jose = new UserModel("JJJJ", "yeey", 3);
+		//RestaurantModel tester = DBRestaurant.GetRestaurant(2);
+		//tester.setAreas("J2K K9K J8A O9Q Q5A");
+		
+		//ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
+
+		//OrderModel tester3 = new OrderModel("address2" , "postal", "2020-02-10 12:12:00", "items", "12:12:12", 32.2f, "NOT READY", 1, 1, 3, 0);
+		
+		//System.out.println(DBItem.getAllItems(3).get(0).getItem_dish());
+		
+
 		//DBManager.AddManager(tester2);
 
 		
-		DBOrder.AddOrder(tester3);
+		//System.out.println(DBOrder.getOrderbyClient(3).get(1).getPostal_code());
+		System.out.println(DBRestaurant.getRestaurantArea("H6K").get(0).getName());
+		System.out.println(DBDeliverer.getDelivererArea("H5K").get(0).getName());
+		System.out.println(DBDeliverer.CompareArea(2, "J2K").get(0).getName());
 		
+		//DBRestaurant.UpdateRestaurant(tester);
+		
+		
+
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
 	//	System.out.println(DBOrder.getOrderbyClient(3));

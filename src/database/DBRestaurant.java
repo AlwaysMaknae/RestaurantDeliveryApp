@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,16 +28,54 @@ public class DBRestaurant {
 		}
 	}
 	
+	public static RestaurantModel GetRestaurant(String restaurant_name) {
+		String MyQuery = "SELECT * from restaurants WHERE restaurant_name='" + restaurant_name
+				+ "'";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			if (stmt.next())
+				return new RestaurantModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getString(4), stmt.getString(5), stmt.getString(6), stmt.getInt(7));
+			else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	public static ArrayList<RestaurantModel> getRestaurantArea(String area){
+		String MyQuery = "SELECT * FROM restaurants WHERE status=1 AND restaurant_areas LIKE ?";
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<RestaurantModel> restaurant = new ArrayList<RestaurantModel>();
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				restaurant.add(new RestaurantModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return restaurant;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 	// function to read restaurant
 	public static RestaurantModel GetRestaurant(int restaurant_id) {
-		String MyQuery = "SELECT * FROM restaurants WHERE restaurant_name='"
+		String MyQuery = "SELECT * FROM restaurants WHERE restaurant_id='"
 				+ restaurant_id + "'";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new RestaurantModel(stmt.getString(1));
+			if (stmt.next())
+				return new RestaurantModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getString(4), stmt.getString(5), stmt.getString(6), stmt.getInt(7));
+			else return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -45,25 +84,7 @@ public class DBRestaurant {
 	}
 
 	// function to add restaurant
-	public static RestaurantModel AddRestaurant(String name, String address,
-			String number, String hours, String areas, int status) {
-		String MyQuery = "{CALL create_restaurant(?, ?, ?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, name);
-			stmt.setString(2, address);
-			stmt.setString(3, number);
-			stmt.setString(4, hours);
-			stmt.setString(5, areas);
-			stmt.setInt(6, status);
-			stmt.executeUpdate();
-			return new RestaurantModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+
 	
 	public static RestaurantModel AddRestaurant(RestaurantModel restaurantModel) {
 		String name = restaurantModel.getName();
@@ -92,25 +113,7 @@ public class DBRestaurant {
 	}
 
 	// function to update restaurant
-	public static RestaurantModel UpdateRestaurant(int id, String name,
-			String address, String number, String hours, String areas) {
-		String MyQuery = "{CALL update_restaurant(?, ?, ?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setInt(1, id);
-			stmt.setString(2, name);
-			stmt.setString(3, address);
-			stmt.setString(4, number);
-			stmt.setString(5, hours);
-			stmt.setString(6, areas);
-			stmt.executeUpdate();
-			return new RestaurantModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+
 	
 	public static RestaurantModel UpdateRestaurant(RestaurantModel restaurantModel) {
 		int id = restaurantModel.getId();
@@ -120,7 +123,7 @@ public class DBRestaurant {
 		String hours = restaurantModel.getHours();
 		String areas = restaurantModel.getAreas();
 
-		String MyQuery = "{CALL update_restuarant(?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL update_restaurant(?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);

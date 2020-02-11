@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 import database.DBRestaurant;
 
 public class RestaurantModel extends Model{
@@ -9,16 +11,23 @@ public class RestaurantModel extends Model{
 	private String number;
 	private String hours;
 	private String areas;
+	//private ArrayList<String> arealist;
 	private int status;
 	
 	//constructors and overloads
-	public RestaurantModel(int id, String name, String address, String number, String hours, String areas){
+	public RestaurantModel(int id, String name, String address, String number, String hours, String areas, int status){
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.number = number;
 		this.hours = hours;
 		this.areas = areas;
+		this.status = status;
+		/*this.arealist = new ArrayList<String>();
+		String[] tareas = this.areas.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}*/
 	}
 	public RestaurantModel(String name, String address, String number, String hours, String areas){
 		this.name = name;
@@ -26,6 +35,11 @@ public class RestaurantModel extends Model{
 		this.number = number;
 		this.hours = hours;
 		this.areas = areas;
+		/*this.arealist = new ArrayList<String>();
+		String[] tareas = this.areas.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}*/
 	}
 	public RestaurantModel(int id){
 		this.id = id;
@@ -33,6 +47,17 @@ public class RestaurantModel extends Model{
 	public RestaurantModel(String name){
 		this.name = name;
 	}
+	/*public RestaurantModel(int id, String name, int yes){
+		this.id = id;
+		this.name = name;
+		this.arealist = new ArrayList<String>();
+		String[] tareas = this.areas.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
+	}*/
+	
+	
 	public RestaurantModel(int id, String name){
 		this.id = id;
 		this.name = name;

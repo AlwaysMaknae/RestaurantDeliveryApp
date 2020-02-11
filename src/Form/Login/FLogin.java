@@ -13,13 +13,16 @@ import utils.FAlerts;
 public class FLogin extends FLoginView {
 
 	public FLogin() {
+		BTNConnect.addActionListener(this);
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		BTNConnect.addActionListener(this);
 		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
+		 * if(TFUsername.getText().equals("") ||
+		 * TFPassword.getText().equals("")) {
+		 * JOptionPane.showMessageDialog(this,
+		 * "Username or Password is incorrect!", "Login Error",
+		 * JOptionPane.ERROR_MESSAGE); }
 		 */
 		
 		BTNClientNew.addActionListener(new ActionListener() {		
@@ -39,21 +42,23 @@ public class FLogin extends FLoginView {
 		});
 		
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// Submit
+
+		System.out.println(TFPassword.getPassword().toString());
 		
-		if (TFUsername.isValid()) {
-			try {
-				UserModel Trying = DBUser.getAllUsers(TFUsername.getText());
-				if(Trying.getPassword().equals(TFPassword.getPassword())){
-					System.out.println(Trying.getUsername());
-				}
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-				FAlerts.Error("Login Failed", "Login Failed. Try again.");
-			}
+		try {
+			UserModel Trying = DBUser.GetUser(TFUsername.getText(), TFPassword.getPassword().toString());
+			if (Trying.getUsername() == null) {
+				System.out.println("Username does not exist!");
+			} else if (Trying.getPassword() == null) {
+				System.out.println("Account did not match with password");
+			} else
+				System.out.println("Login Successful!");
+		} catch (Exception e2) {
+			System.out.println(("Login Failed" + "Login Failed. Try again."));
 		}
 
 	}

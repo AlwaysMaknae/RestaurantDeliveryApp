@@ -9,29 +9,33 @@ public class DelivererModel extends Model{
 	private String name;
 	private String number;
 	private String area;
-	private ArrayList<String> arealist;
+	//private ArrayList<String> arealist;
 	private int status;
 	
 	public DelivererModel(int id){
 		this.id = id;
-		this.arealist = new ArrayList<String>();
+		//this.arealist = new ArrayList<String>();
 	}
 	
 	public DelivererModel(String name){
 		this.name = name;
-		this.arealist = new ArrayList<String>();
+		//this.arealist = new ArrayList<String>();
 	}
 	
+	public DelivererModel(int id, String name){
+		this.id = id;
+		this.name = name;
+	}
 	
 	public DelivererModel(String name, String number, String area){
 		this.name = name;
 		this.number = number;
 		this.area = area;
-		this.arealist = new ArrayList<String>();
-		String[] tareas = this.area.split(" ");
-		for (String x : tareas) {
-			this.arealist.add(x);
-		}
+		//this.arealist = new ArrayList<String>();
+		//String[] tareas = this.area.split(" ");
+		//for (String x : tareas) {
+		//	this.arealist.add(x);
+		//}
 	}
 	
 	public DelivererModel(int id, String name, String number, String area){
@@ -39,11 +43,11 @@ public class DelivererModel extends Model{
 		this.name = name;
 		this.number = number;
 		this.area = area;
-		this.arealist = new ArrayList<String>();
-		String[] tareas = this.area.split(" ");
-		for (String x : tareas) {
-			this.arealist.add(x);
-		}
+		//this.arealist = new ArrayList<String>();
+		//String[] tareas = this.area.split(" ");
+		//for (String x : tareas) {
+		//	this.arealist.add(x);
+		//}
 	}
 
 	public void Create() {

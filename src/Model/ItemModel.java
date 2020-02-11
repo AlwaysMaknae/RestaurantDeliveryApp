@@ -26,6 +26,11 @@ public class ItemModel extends Model{
 		this.status = status;
 	}
 
+	public ItemModel(int restaurant_id, String item_dish, float item_price){
+		this.restaurant_id = restaurant_id;
+		this.item_dish = item_dish;
+		this.item_price = item_price;
+	}
 	public ItemModel(int item_id) {
 		this.item_id = item_id;
 	}
