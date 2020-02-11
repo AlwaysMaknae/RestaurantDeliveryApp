@@ -1,12 +1,13 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.DelivererModel;
-
 public class DBDeliverer {
 	// function to read deliverer
 	public static DelivererModel GetDeliverer(int deliverer_id) {
@@ -23,6 +24,49 @@ public class DBDeliverer {
 			return null;
 		}
 
+	}
+	
+	public static ArrayList<DelivererModel> getDelivererArea(String area){
+		String MyQuery = "SELECT * FROM deliverers WHERE status=1 AND deliverer_area LIKE ?";
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<DelivererModel> deliverer = new ArrayList<DelivererModel>();
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				deliverer.add(new DelivererModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return deliverer;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ArrayList<DelivererModel> CompareArea(int restaurant_id, String area){
+		String MyQuery = "SELECT * FROM deliverers, restaurants WHERE restaurants.restaurant_id=? AND restaurants.restaurant_areas LIKE ?  AND deliverers.deliverer_area LIKE ?";
+		
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<DelivererModel> deliverer = new ArrayList<DelivererModel>();
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setInt(1, restaurant_id);
+			stmt.setString(2, "%" + area + "%");
+			stmt.setString(3, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				deliverer.add(new DelivererModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return deliverer;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	// function to add deliverer
