@@ -11,14 +11,19 @@ public class DBUser {
 
 	// function to read user
 	public static UserModel GetUser(String username, String password) {
-		String MyQuery = "SELECT * from users WHERE username='" + username
-				+ "' AND password='" + password + "'";
+		String MyQuery = "SELECT * from users, clients WHERE users.username='" + username + "' AND users.password='" + password + "' OR clients.client_username='" + username + "' "
+				+ " AND clients.client_password='" + password + "'" ;
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new UserModel(stmt.getString(1));
+			
+			//
+			
+			if (stmt.next()) {
+				//System.out.println(stmt.getString(6) +  " | " + stmt.getString(7));
+				return new UserModel(stmt.getString(2), stmt.getString(3));
+			}else
+				return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -26,19 +31,6 @@ public class DBUser {
 
 	}
 
-	public static UserModel getAllUsers(String username) {
-		String MyQuery = "SELECT clients.client_username, managers.username, restaurateurs.username,users.username FROM clients, managers, restaurateurs, users WHERE clients.client_username='" + username + "' || managers.username= '" + username + "' || restaurateurs.username='" + username + "' ||	users.username='" + username + "'";
-		ResultSet stmt;
-		try {
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(1));
-			return new UserModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	// function to add user
 
@@ -60,8 +52,7 @@ public class DBUser {
 	}
 
 	// function to update user
-	public static UserModel UpdateUser(int id, String username,
-			String password, int access_lvl) {
+	public static UserModel UpdateUser(int id, String username, String password, int access_lvl) {
 		String MyQuery = "{CALL update_user(?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {

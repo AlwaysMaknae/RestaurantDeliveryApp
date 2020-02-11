@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
+import Model.UserModel;
+import database.DBUser;
+
 public class FLogin extends FLoginView {
 
 	public FLogin() {
@@ -24,9 +27,18 @@ public class FLogin extends FLoginView {
 		// Submit
 
 		if (TFUsername.isValid()) {
-			System.out.println("good");
-		} else {
-			System.out.println("not good");
+			try {
+				UserModel Trying = DBUser.GetUser(TFUsername.getText(), TFPassword.getText());
+				if (Trying.getUsername()==null) {
+					System.out.println("Username does not exist!");
+				}else if (Trying.getPassword()==null) {
+					System.out.println("Account did not match with password");
+				}else
+					System.out.println("Login Successful!");
+			} catch (Exception e2) {
+				// TODO: handle exception
+				System.out.println(("Login Failed" + "Login Failed. Try again."));
+			}
 		}
 
 	}
