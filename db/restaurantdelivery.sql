@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2020 at 02:34 AM
+-- Generation Time: Feb 11, 2020 at 02:52 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -296,8 +296,7 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `restaurant_id` int(10) UNSIGNED NOT NULL,
   `access_lvl` int(11) NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`manager_id`),
-  KEY `restaurant_id` (`restaurant_id`)
+  PRIMARY KEY (`manager_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
@@ -328,11 +327,17 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `deliverer_id` int(10) UNSIGNED NOT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
   `order_delivered` tinyint(4) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`order_id`),
-  KEY `restaurant_id` (`restaurant_id`),
-  KEY `deliverer_id` (`deliverer_id`),
-  KEY `client_id` (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_address`, `order_postal_code`, `order_date`, `order_items`, `order_delivery_time`, `order_price`, `order_status`, `restaurant_id`, `deliverer_id`, `client_id`, `order_delivered`) VALUES
+(58, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
+(59, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
+(60, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -374,9 +379,8 @@ CREATE TABLE IF NOT EXISTS `restaurateurs` (
   `restaurant_id` int(10) UNSIGNED NOT NULL,
   `access_lvl` int(11) NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`restaurateur_id`),
-  KEY `restaurant_id` (`restaurant_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`restaurateur_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `restaurateurs`
@@ -384,7 +388,8 @@ CREATE TABLE IF NOT EXISTS `restaurateurs` (
 
 INSERT INTO `restaurateurs` (`restaurateur_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
 (11, 'Gordon', '123123', 1, 1, 1),
-(12, 'Ramesoy', '123', 2, 1, 1);
+(12, 'Ramesoy', '123', 2, 1, 1),
+(13, 'Carl', '1232', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -419,26 +424,6 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `access_lvl`, `status`) 
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`);
-
---
--- Constraints for table `managers`
---
-ALTER TABLE `managers`
-  ADD CONSTRAINT `managers_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`deliverer_id`) REFERENCES `deliverers` (`deliverer_id`),
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`client_id`) REFERENCES `clients` (`client_id`);
-
---
--- Constraints for table `restaurateurs`
---
-ALTER TABLE `restaurateurs`
-  ADD CONSTRAINT `restaurateurs_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
