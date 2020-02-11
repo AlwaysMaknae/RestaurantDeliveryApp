@@ -119,6 +119,7 @@ public class Main {
 		
 		
 		DBConnecter.OpenConnection();
+		
 		new FLogin();
 		
 
@@ -143,16 +144,19 @@ public class Main {
 
 		
 		//System.out.println(DBOrder.getOrderbyClient(3).get(1).getPostal_code());
-		System.out.println(DBRestaurant.getRestaurantArea("H6K").get(0).getName());
-		System.out.println(DBDeliverer.getDelivererArea("H5K").get(0).getName());
-		System.out.println(DBDeliverer.CompareArea(2, "J2K").get(0).getName());
-		
+		/*
+		System.out.println(DBRestaurant.getRestaurantByArea("H6K"));
+		System.out.println(DBDeliverer.getDelivererByArea("H5K").get(0).getName());
+		System.out.println(DBDeliverer.CompareArea(2, "J2K"));
+		*/
 		//DBRestaurant.UpdateRestaurant(tester);
 		
 		
-
+		/*
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
+		*/
+		
 	//	System.out.println(DBOrder.getOrderbyClient(3));
 		//DBUser.getAllUsers("JJJ");
 		

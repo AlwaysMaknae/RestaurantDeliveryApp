@@ -45,20 +45,18 @@ public class FLogin extends FLoginView {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// Submit
-
-		System.out.println(TFPassword.getPassword().toString());
 		
 		try {
-			UserModel Trying = DBUser.GetUser(TFUsername.getText(), TFPassword.getPassword().toString());
-			if (Trying.getUsername() == null) {
-				System.out.println("Username does not exist!");
-			} else if (Trying.getPassword() == null) {
-				System.out.println("Account did not match with password");
-			} else
+			UserModel Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
+			if (Trying.getPassword() == null || Trying.getUsername() == null) {
+				FAlerts.Error("Login", "Login Failed, chek credentials.");
+			} else {
 				System.out.println("Login Successful!");
+				
+				System.out.println(Trying.getAccess_lvl());
+			}
 		} catch (Exception e2) {
-			System.out.println(("Login Failed" + "Login Failed. Try again."));
+			FAlerts.Error("Login", "Login Failed, chek credentials.");
 		}
 
 	}

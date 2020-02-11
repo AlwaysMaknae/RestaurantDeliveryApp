@@ -45,7 +45,7 @@ public class DBRestaurant {
 
 	}
 	
-	public static ArrayList<RestaurantModel> getRestaurantArea(String area){
+	public static ArrayList<RestaurantModel> getRestaurantByArea(String area){
 		String MyQuery = "SELECT * FROM restaurants WHERE status=1 AND restaurant_areas LIKE ?";
 		ResultSet resultset;	
 		PreparedStatement stmt;
