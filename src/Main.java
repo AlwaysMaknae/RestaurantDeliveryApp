@@ -130,7 +130,6 @@ public class Main {
 		//DBRestaurant.UpdateRestaurant(tester);
 		
 		
-		//DBUser.getAllUsers("JJJ");
 		
 	}
 

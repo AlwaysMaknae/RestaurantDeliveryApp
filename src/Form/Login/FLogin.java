@@ -34,8 +34,10 @@ public class FLogin extends FLoginView {
 				System.out.println("Username does not exist!");
 			} else if (Trying.getPassword() == null) {
 				System.out.println("Account did not match with password");
-			} else
+			} else{
 				System.out.println("Login Successful!");
+				System.out.println(Trying.getAccess_lvl());
+			}
 		} catch (Exception e2) {
 			System.out.println(("Login Failed" + "Login Failed. Try again."));
 		}

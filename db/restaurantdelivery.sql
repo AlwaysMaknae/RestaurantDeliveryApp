@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2020 at 02:52 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Feb 11, 2020 at 04:25 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,9 +33,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_client` (IN `client_username
     END$$
 
 DROP PROCEDURE IF EXISTS `create_deliverer`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_deliverer` (IN `deliverer_name` VARCHAR(50), IN `deliverer_number` VARCHAR(12), IN `deliverer_area` VARCHAR(200), IN `status` INT)  BEGIN
-	INSERT INTO deliverers(deliverer_name, deliverer_number, deliverer_area, status)
-		VALUES(deliverer_name, deliverer_number, deliverer_area, status);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_deliverer` (IN `username` VARCHAR(20), IN `password` VARCHAR(50), IN `deliverer_name` VARCHAR(50), IN `deliverer_number` VARCHAR(12), IN `deliverer_area` VARCHAR(200), IN `status` INT)  BEGIN
+	INSERT INTO deliverers(username, password, deliverer_name, deliverer_number, deliverer_area, status)
+		VALUES(username, password, deliverer_name, deliverer_number, deliverer_area, status);
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_item`$$
@@ -45,8 +45,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_item` (IN `item_dish` VARCHA
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_manager`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_manager` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` VARCHAR(50), IN `access_lvl` INT(11))  BEGIN
-	INSERT INTO managers(username, password, restaurant_id, access_lvl) VALUES (username, psswrd, restaurant_id, access_lvl);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_manager` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` VARCHAR(50))  BEGIN
+	INSERT INTO managers(username, password, restaurant_id) VALUES (username, psswrd, restaurant_id);
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_order`$$
@@ -64,13 +64,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_restaurant` (IN `restaurant_
     END$$
 
 DROP PROCEDURE IF EXISTS `create_restaurateur`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_restaurateur` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` VARCHAR(50), IN `access_lvl` INT(11))  BEGIN
-	INSERT INTO restaurateurs(username, password, restaurant_id, access_lvl) VALUES (username, psswrd, restaurant_id, access_lvl);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_restaurateur` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` VARCHAR(50))  BEGIN
+	INSERT INTO restaurateurs(username, password, restaurant_id) VALUES (username, psswrd, restaurant_id);
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_user`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `access_lvl` INT(11))  BEGIN
-	INSERT INTO users(username, password, access_lvl) VALUES (username, psswrd, access_lvl);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user` (IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50))  BEGIN
+	INSERT INTO users(username, password) VALUES (username, psswrd);
 	END$$
 
 DROP PROCEDURE IF EXISTS `delete_client`$$
@@ -131,8 +131,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `update_client` (IN `client_id` INT,
     END$$
 
 DROP PROCEDURE IF EXISTS `update_deliverer`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_deliverer` (IN `deliverer_id` INT, IN `deliverer_name` VARCHAR(50), IN `deliverer_number` VARCHAR(12), IN `deliverer_area` VARCHAR(200))  BEGIN
-	UPDATE deliverers SET deliverers.deliverer_name=deliverer_name, deliverers.deliverer_number=deliverer_number, deliverers.deliverer_area=deliverer_area
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_deliverer` (IN `deliverer_id` INT, IN `deliverer_name` VARCHAR(50), IN `deliverer_number` VARCHAR(12), IN `deliverer_area` VARCHAR(200), IN `username` VARCHAR(20), IN `password` VARCHAR(50))  BEGIN
+	UPDATE deliverers SET deliverers.username=username, deliverers.password=password, deliverers.deliverer_name=deliverer_name, deliverers.deliverer_number=deliverer_number, deliverers.deliverer_area=deliverer_area
 		WHERE deliverers.deliverer_id=deliverer_id;
 	END$$
 
@@ -142,8 +142,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `update_item` (IN `item_id` INT, IN 
     END$$
 
 DROP PROCEDURE IF EXISTS `update_manager`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_manager` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` INT, IN `access_lvl` INT(11))  BEGIN
-	UPDATE managers SET managers.username=username, managers.password=psswrd, managers.restaurant_id=restaurant_id, managers.access_lvl=access_lvl WHERE manager_id=id;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_manager` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` INT)  BEGIN
+	UPDATE managers SET managers.username=username, managers.password=psswrd, managers.restaurant_id=restaurant_id WHERE manager_id=id;
     END$$
 
 DROP PROCEDURE IF EXISTS `update_order`$$
@@ -160,13 +160,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `update_restaurant` (IN `restaurant_
 	END$$
 
 DROP PROCEDURE IF EXISTS `update_restaurateurs`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_restaurateurs` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` INT, IN `access_lvl` INT(11))  BEGIN
-	UPDATE restaurateurs SET restaurateurs.username=username, restaurateurs.password=psswrd, restaurateurs.restaurant_id=restaurant_id, restaurateurs.access_lvl=access_lvl WHERE restaurateur_id=id;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_restaurateurs` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `restaurant_id` INT)  BEGIN
+	UPDATE restaurateurs SET restaurateurs.username=username, restaurateurs.password=psswrd, restaurateurs.restaurant_id=restaurant_id WHERE restaurateur_id=id;
     END$$
 
 DROP PROCEDURE IF EXISTS `update_user`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_user` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50), IN `access_lvl` INT(11))  BEGIN
-	UPDATE users SET users.username=username, users.password=psswrd, users.access_lvl=access_lvl WHERE user_id=id;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_user` (IN `id` INT, IN `username` VARCHAR(20), IN `psswrd` VARCHAR(50))  BEGIN
+	UPDATE users SET users.username=username, users.password=psswrd WHERE user_id=id;
     END$$
 
 DROP PROCEDURE IF EXISTS `update_user1`$$
@@ -192,7 +192,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `client_address` varchar(50) NOT NULL,
   `client_email` varchar(64) NOT NULL,
   `client_number` varchar(12) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `access_lvl` int(11) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
@@ -200,10 +201,10 @@ CREATE TABLE IF NOT EXISTS `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `client_last_name`, `client_first_name`, `client_address`, `client_email`, `client_number`, `status`) VALUES
-(10, 'JJJ', '123123', 'Wen', 'Jose', '6565 Rue Bye Bitch', 'email@myemail.com', '545-555-5555', 1),
-(11, 'Jose', '1234', 'Wenny', 'Joses', '6565 Rue Bye Bitches', 'email@myemail.com', '544-544-5444', 1),
-(12, 'Frank', '123123', 'Frank', 'Franku', '6565 Rue Bye Bitchesas', 'myhotmail@outdated.ca', '555-999-9999', 1);
+INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `client_last_name`, `client_first_name`, `client_address`, `client_email`, `client_number`, `access_lvl`, `status`) VALUES
+(10, 'JJJ', '123123', 'Wen', 'Jose', '6565 Rue Bye Bitch', 'email@myemail.com', '545-555-5555', 0, 1),
+(11, 'Jose', '1234', 'Wenny', 'Joses', '6565 Rue Bye Bitches', 'email@myemail.com', '544-544-5444', 0, 1),
+(12, 'Frank', '123123', 'Frank', 'Franku', '6565 Rue Bye Bitchesas', 'myhotmail@outdated.ca', '555-999-9999', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -214,10 +215,13 @@ INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `clien
 DROP TABLE IF EXISTS `deliverers`;
 CREATE TABLE IF NOT EXISTS `deliverers` (
   `deliverer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `access_lvl` int(11) NOT NULL DEFAULT '3',
   `deliverer_name` varchar(50) NOT NULL,
   `deliverer_number` varchar(12) NOT NULL,
   `deliverer_area` varchar(200) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`deliverer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -225,36 +229,10 @@ CREATE TABLE IF NOT EXISTS `deliverers` (
 -- Dumping data for table `deliverers`
 --
 
-INSERT INTO `deliverers` (`deliverer_id`, `deliverer_name`, `deliverer_number`, `deliverer_area`, `status`) VALUES
-(1, 'James', '333-333-3333', 'H1L', 1),
-(2, 'Kaid', '545-673-3234', 'H5K I0O K2L L6P A8A A7A', 1),
-(3, 'kLAUS', '232-222-2322', 'H4K I5O K1L L2P A5A A6A', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `deliverers_login`
---
-
-DROP TABLE IF EXISTS `deliverers_login`;
-CREATE TABLE IF NOT EXISTS `deliverers_login` (
-  `login_deliverer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `access_lvl` int(11) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  `deliverer_id` int(11) NOT NULL,
-  PRIMARY KEY (`login_deliverer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `deliverers_login`
---
-
-INSERT INTO `deliverers_login` (`login_deliverer_id`, `username`, `password`, `access_lvl`, `status`, `deliverer_id`) VALUES
-(1, 'Klaus', '123123', 1, 1, 3),
-(2, 'Kaid', '1234', 1, 1, 2),
-(3, 'James', '123123', 1, 1, 1);
+INSERT INTO `deliverers` (`deliverer_id`, `username`, `password`, `access_lvl`, `deliverer_name`, `deliverer_number`, `deliverer_area`, `status`) VALUES
+(1, 'Klaus', '123', 3, 'James', '333-333-3333', 'H1L', 1),
+(2, 'Santa', '123', 3, 'Kaid', '545-673-3234', 'H5K I0O K2L L6P A8A A7A J2K', 1),
+(3, 'Claus', '123123', 3, 'kLAUS', '232-222-2322', 'H4K I5O K1L L2P A5A A6A', 1);
 
 -- --------------------------------------------------------
 
@@ -268,9 +246,8 @@ CREATE TABLE IF NOT EXISTS `items` (
   `item_dish` varchar(35) NOT NULL,
   `item_price` float NOT NULL,
   `restaurant_id` int(10) UNSIGNED NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`item_id`),
-  KEY `restaurant_id` (`restaurant_id`)
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -294,8 +271,8 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `restaurant_id` int(10) UNSIGNED NOT NULL,
-  `access_lvl` int(11) NOT NULL DEFAULT 1,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `access_lvl` int(11) NOT NULL DEFAULT '1',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`manager_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
@@ -305,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `managers` (
 
 INSERT INTO `managers` (`manager_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
 (11, 'Santa', '123123', 2, 1, 1),
-(12, 'Claus', '1234', 2, 1, 1);
+(12, 'Claus', '1234', 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_address` varchar(200) NOT NULL,
   `order_postal_code` varchar(7) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `order_items` text NOT NULL,
   `order_delivery_time` time DEFAULT NULL,
   `order_price` float NOT NULL,
@@ -326,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `restaurant_id` int(11) UNSIGNED NOT NULL,
   `deliverer_id` int(10) UNSIGNED NOT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
-  `order_delivered` tinyint(4) NOT NULL DEFAULT 0,
+  `order_delivered` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
@@ -353,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `restaurants` (
   `restaurant_number` varchar(12) NOT NULL,
   `restaurant_hours` varchar(200) NOT NULL,
   `restaurant_areas` varchar(200) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`restaurant_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -362,8 +339,8 @@ CREATE TABLE IF NOT EXISTS `restaurants` (
 --
 
 INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_address`, `restaurant_number`, `restaurant_hours`, `restaurant_areas`, `status`) VALUES
-(1, 'Master Shef', '5555 Rue Master, J2J 1K6, SH, CA', '151-655-2131', '', 'Montreal, Not Laval, Not Longueuil', 1),
-(2, 'PASTA TOWN', '222 REU WHY NOT', '555-555-5555', '00-00H | 22-30H | ...', 'Longueueil, Montreal', 1);
+(1, 'Master Shef', '5555 Rue Master, J2J 1K6, SH, CA', '151-655-2131', '', 'H6K H2K H9K K9K A0A A9A F9A F1A G9W X9A', 1),
+(2, 'CHeese factory', '', '', '', 'J2K K9K J8A O9Q Q5A', 1);
 
 -- --------------------------------------------------------
 
@@ -377,8 +354,8 @@ CREATE TABLE IF NOT EXISTS `restaurateurs` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `restaurant_id` int(10) UNSIGNED NOT NULL,
-  `access_lvl` int(11) NOT NULL DEFAULT 1,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `access_lvl` int(11) NOT NULL DEFAULT '2',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`restaurateur_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
@@ -402,8 +379,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `access_lvl` int(11) NOT NULL DEFAULT 1,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `access_lvl` int(11) NOT NULL DEFAULT '4',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
@@ -414,16 +391,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `username`, `password`, `access_lvl`, `status`) VALUES
 (15, 'JJJ', '123123', 1, 1),
 (16, 'admin', 'admin', 1, 1);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `items`
---
-ALTER TABLE `items`
-  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
