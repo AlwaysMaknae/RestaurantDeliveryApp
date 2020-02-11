@@ -11,7 +11,7 @@ public class RestaurantModel extends Model{
 	private String number;
 	private String hours;
 	private String areas;
-	//private ArrayList<String> arealist;
+	private ArrayList<String> arealist;
 	private int status;
 	
 	//constructors and overloads
@@ -23,11 +23,11 @@ public class RestaurantModel extends Model{
 		this.hours = hours;
 		this.areas = areas;
 		this.status = status;
-		/*this.arealist = new ArrayList<String>();
+		this.arealist = new ArrayList<String>();
 		String[] tareas = this.areas.split(" ");
 		for (String x : tareas) {
 			this.arealist.add(x);
-		}*/
+		}
 	}
 	public RestaurantModel(String name, String address, String number, String hours, String areas){
 		this.name = name;
@@ -134,6 +134,12 @@ public class RestaurantModel extends Model{
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public ArrayList<String> getArealist() {
+		return arealist;
+	}
+	public void setArealist(ArrayList<String> arealist) {
+		this.arealist = arealist;
 	}
 
 }
