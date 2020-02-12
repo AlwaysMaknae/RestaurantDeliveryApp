@@ -17,7 +17,7 @@ public class DBDeliverer {
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			while (stmt.next()){
-				return new DelivererModel(stmt.getString(2));
+				return new DelivererModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getString(5), stmt.getString(6), stmt.getString(7), stmt.getInt(8));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
