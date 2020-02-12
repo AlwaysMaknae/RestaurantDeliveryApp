@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 
 import Form.Dashboard.FDashboard;
 import Form.Login.FLogin;
@@ -21,36 +22,14 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 		this.setSize(984,1080);
 		this.setResizable(false);
 		
-		MenuBar = new FMainMenu();
+		MenuBar = new FMainMenu(this);
 		
 		this.addWindowListener(this);
 		this.setJMenuBar( MenuBar );
 		this.setLocationRelativeTo(null); 
-		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		 
 		Me = this;
-		
-		MenuBar.file_disconnect.addActionListener( new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Session.Quit();
-				new FLogin();
-				Me.dispose();
-			}
-		});
-		
-		MenuBar.file_quit.addActionListener( new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(FAlerts.Confirm("Quit", "Close the application ?")){
-					Session.Quit();
-					System.exit(0);
-				}
-			}
-			
-		});
-		
 		this.setVisible(true);
 	}
 
@@ -61,13 +40,10 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 	public void windowActivated(WindowEvent e) {}
 
 	@Override
-	public void windowClosed(WindowEvent e) {
-		Me.dispose();
-		new FDashboard();
-	}
+	public void windowClosed(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {}
+	public void windowClosing(WindowEvent e) { Navigator.Quit(); }
 
 	@Override
 	public void windowDeactivated(WindowEvent e) {}

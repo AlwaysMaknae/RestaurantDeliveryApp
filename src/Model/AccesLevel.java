@@ -29,22 +29,29 @@ public abstract class AccesLevel {
 	 
 	 
 	 public static Model GetInstance(int level, int id){
-		 /*
+		 
+		 Model oo;
+		 
 		 switch (level) {
 			case AccesLevel.CLIENT:
-				return new ClientModel(id).Read();
+				oo =  new ClientModel(id);
+				((ClientModel)oo).Read();
 			case AccesLevel.MANAGER:
-				return new ManagerModel(id).Read();
+				oo =  new ManagerModel(id);
+				((ManagerModel)oo).Read();
 			case AccesLevel.RESTAURATEUR:
-				return new RestaurateurModel(id).Read();
+				oo = new RestaurateurModel(id);
+				((RestaurateurModel)oo).Read();
 			case AccesLevel.DELIVERY_GUY:
-				return new DelivererModel(id).Read();
+				oo = new DelivererModel(id);
+				((DelivererModel)oo).Read();
 			case AccesLevel.ADMIN:
-				return new UserModel(id).Read();
+				oo = new UserModel(id);
+				((UserModel)oo).Read();
 			default:
-				return null;
+				oo = null;
 		}
-		 */
-		 return null;
+		 
+		 return oo;
 	 }
 }

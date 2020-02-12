@@ -18,6 +18,9 @@ public class RestaurateurModel extends UserModel {
 	public RestaurateurModel(String username) {
 		super(username);
 	}
+	public RestaurateurModel(int id) {
+		super(id);
+	}
 	
 	private void ReadRestaurateurModel(RestaurateurModel Me){
 		this.id = Me.getId();

@@ -70,7 +70,7 @@ public class FLogin extends FLoginView {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
+
 		if(TFUsername.getText().length() > 0){
 			try {
 				UserModel Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
@@ -78,10 +78,10 @@ public class FLogin extends FLoginView {
 					FAlerts.Error("Login", "Login Failed, chek credentials.");
 				} else {
 					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
-					System.out.println(Session.AccesType);
+					Session.Login(AccesLevel.GetInstance(Trying.getAccess_lvl(), Trying.getId()) );
 					
-					// Create model and redn from login;
-					Model CurrentUser;
+					System.out.println();
+					
 					this.dispose();
 					new FDashboard();
 	

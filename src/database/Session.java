@@ -1,5 +1,6 @@
 package database;
 
+import Model.AccesLevel;
 import Model.Model;
 import Model.UserModel;
 
@@ -14,7 +15,14 @@ public abstract class Session {
 	public static void Quit(){
 		Session.Client = null;
 		AccesType = "";
-		//AccesType = Client.getAccess_lvl();
+	}
+	
+	public static void Login(Model Client){
+		Session.Client = Client;
+	}
+	
+	public static Model User(){
+		return Client;
 	}
 	
 	

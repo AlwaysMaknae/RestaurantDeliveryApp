@@ -38,7 +38,7 @@ public class FMainMenu extends JMenuBar {
 	
 	
 	
-	public FMainMenu(){
+	public FMainMenu(FForm link){
 		
 		UserType = Session.AccesType;
 		
@@ -48,7 +48,28 @@ public class FMainMenu extends JMenuBar {
 		file_quit = new JMenuItem("Quit");
 		file.add(file_disconnect);
 		file.add(file_quit);
+		
 		this.add(file);
+		
+		// File Menu
+		file_disconnect.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Navigator.Disconnect(link);
+			}
+		});
+		
+		file_quit.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Navigator.Quit();
+			}
+		});
+		
+		
+		
+		
 		
 		
 		if(UserType.equals("Admin")){
@@ -61,6 +82,18 @@ public class FMainMenu extends JMenuBar {
 		restaurant.add(r_add);
 		restaurant.add(r_edit);
 		restaurant.add(r_delete);
+		
+		r_add.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		
+		
+		
 		
 		//menu menu
 		JMenu mmenu = new JMenu("Menu");

@@ -22,6 +22,9 @@ public class ManagerModel extends UserModel {
 	public ManagerModel(String username) {
 		super(username);
 	}
+	public ManagerModel(int id){
+		super(id);
+	}
 	
 	private void ReadManagerModel(ManagerModel Me){
 		this.id = Me.getId();
