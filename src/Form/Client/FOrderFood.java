@@ -4,24 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import Model.ItemModel;
+import Model.OrderModel;
 import Model.RestaurantModel;
+import utils.FAlerts;
 
-public class FOrderFood extends FOrderFoodPage{
+public class FOrderFood extends FOrderFoodPage {
 
 	public FOrderFood() {
-		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
-		
-		
 		
 		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		// ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
-		// ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
+		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
 
 
 		// RM = DBRestaurant.GetAllRestaurants();
@@ -38,20 +32,20 @@ public class FOrderFood extends FOrderFoodPage{
 		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
 		 */
 		
-		// ArrayList<Object> Order = new ArrayList<Object>();
+		ArrayList<Object> Order = new ArrayList<Object>();
 
 				// Order.add("Enter date here");
 		
 		
-		// ArrayList<Object> Menu = new ArrayList<Object>();
+		ArrayList<Object> Menu = new ArrayList<Object>();
 
-				// Menu.add("Hot Dog");
-				// Menu.add("Pufferfish");
+				Menu.add("Hot Dog");
+				Menu.add("Pufferfish");
 		
 		
 		ListPan.SetList(Restaurant);
-		//ListPan2.SetList(Menu);
-		//ListPan3.SetList(Order);
+		ListPan2.SetList(Menu);
+		ListPan3.SetList(Order);
 		
 		
 		
@@ -60,7 +54,28 @@ public class FOrderFood extends FOrderFoodPage{
 		BTNAdd.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				
+				//Restaurant Selection validation
+//				if(RESTAURANT IS SELECTED) {
+					//Menu Selection validation
+//					if(MENU IS SELECTED) {
+						//Quantity validation
+//						if(TFQuantity.getText().equals("") || TFQuantity.getText().matches("[a-zA-Z]+") || !TFQuantity.getText().matches("[0-9]+")) {
+//							FAlerts.Error("Quantity Error", "Please enter an appropriate number of meals.");
+//						}else {
+							//TODO ADD ORDER TO ORDERLIST
+							//TODO ADD PRICE TO TOTAL TEXTFIELDS
+//							FAlerts.Say("Add Meal Success", "Meal has been added to Order!");
+//						}
+						
+//					}else {
+//						FAlerts.Error("Selection Error", "Please select a Menu to order from.");
+//					}
+					
+//				}else {
+//					FAlerts.Error("Selection Error", "Please select a Restaurant to order from.");
+//				}
 				
 			}
 		});
@@ -68,7 +83,25 @@ public class FOrderFood extends FOrderFoodPage{
 		BTNOrder.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//Empty Info Validation
+				
+//				if(!TFDeliveryTimeYMD.IsValid() || !TFHour.isValid() || !TFMinute.IsValid() || !TFPostalCode.isValid()) {
+//					FAlerts.Error("Missing Info Error", "Missing Fields.");
+//				}else {
+//					if(ListPan3 != null && ListPan3.isEmpty()) {
+//						FAlerts.Error("Missing Order Error", "Missing Orders.");
+//					}else {
+//						if(FAlerts.Confirm("Order Confirmation", "Would you like to Order?")) {
+							
+							//SEND THE ORDER TO THE RESTAURANTER ORDER AND TO ORDER HISTORY LIKE UBEREATS HAHAHAHHAHA
+//							FAlerts.Say("Order Successful", "Your Order was successful!");
+//						}else {
+//							FAlerts.Say("Order Cancelled", "Your Order was cancelled successfully!");
+//						}
+						
+//					}
+//				}
 				
 			}
 		});
@@ -76,15 +109,30 @@ public class FOrderFood extends FOrderFoodPage{
 		BTNDelete.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//TODO BTNDELETE DELETES THE MOST RECENT ORDER (WILL CHANGE. MAYBE).
+				
+				//Empty List Validation
+//				if(ListPan3 != null && ListPan3.isEmpty()) {
+//					FAlerts.Error("Missing Order Error", "Missing Orders.");
+//				}else {
+//					if(FAlerts.Confirm("Order Deletion Confirmation", "Would you like to delete your recent Order?")) {
+						
+						//TODO REMOVE ORDER FROM ORDERLIST AND ORDERLIST ARRAY.
+						//TODO REMOVE PRICE FROM TOTAL TEXTFIELD
+//						FAlerts.Say("Order Deleted", "Your Order was deleted!");
+//					}else {
+//						FAlerts.Say("Order Deletion Cancelled", "Deletion was cancelled successfully!");
+//					}
+//				}
 				
 			}
 		});
 		
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
 
 	}
 }

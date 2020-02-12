@@ -34,6 +34,7 @@ public class FAddRestaurantMenuPage extends FForm{
 	
 	public FAddRestaurantMenuPage() {
 		
+		setSize(984, 1040);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");

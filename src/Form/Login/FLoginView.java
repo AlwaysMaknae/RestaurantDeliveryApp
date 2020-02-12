@@ -34,22 +34,16 @@ public class FLoginView extends FForm{
 		JPanel TitlePan = new JPanel();
 		MainPan.add(TitlePan);
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(975, 300));
+		TitlePan.setPreferredSize(new Dimension(975, 200));
 		
 		FLabel LoginTitleLbl = new FLabel("Delivery System");
 		TitlePan.add(LoginTitleLbl);
 		
 		JPanel InfoPan = new JPanel();
 		InfoPan.setBackground(Color.LIGHT_GRAY);
-		InfoPan.setPreferredSize(new Dimension(975, 600));
+		InfoPan.setPreferredSize(new Dimension(975, 265));
 		MainPan.add(InfoPan);
 		InfoPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		
-		JPanel SpacePan = new JPanel();
-		SpacePan.setBackground(Color.LIGHT_GRAY);
-		SpacePan.setPreferredSize(new Dimension(975, 150));
-		InfoPan.add(SpacePan);
-		SpacePan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel LoginPan = new JPanel();
 		LoginPan.setBackground(Color.LIGHT_GRAY);
@@ -79,7 +73,7 @@ public class FLoginView extends FForm{
 		JPanel ButtonPan = new JPanel();
 		FlowLayout fl_ButtonPan = (FlowLayout) ButtonPan.getLayout();
 		fl_ButtonPan.setAlignment(FlowLayout.RIGHT);
-		ButtonPan.setPreferredSize(new Dimension(975, 60));
+		ButtonPan.setPreferredSize(new Dimension(800, 60));
 		ButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(ButtonPan);
 		

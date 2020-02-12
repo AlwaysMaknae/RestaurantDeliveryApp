@@ -39,19 +39,19 @@ public class FAddClientPage extends FForm{
 		JPanel TitlePan = new JPanel();
 		MainPan.add(TitlePan);
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(975, 300));
+		TitlePan.setPreferredSize(new Dimension(975, 50));
 		
 		FLabel LoginTitleLbl = new FLabel("Open New Account");
 		TitlePan.add(LoginTitleLbl);
 		
 		JPanel AccountDetailsPan = new JPanel();
 		AccountDetailsPan.setBackground(Color.LIGHT_GRAY);
-		AccountDetailsPan.setPreferredSize(new Dimension(975, 600));
+		AccountDetailsPan.setPreferredSize(new Dimension(975, 420));
 		MainPan.add(AccountDetailsPan);
 		AccountDetailsPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		
 		JPanel CreateAccountPan = new JPanel();
-		CreateAccountPan.setPreferredSize(new Dimension(650, 500));
+		CreateAccountPan.setPreferredSize(new Dimension(650, 350));
 		CreateAccountPan.setBackground(Color.LIGHT_GRAY);
 		AccountDetailsPan.add(CreateAccountPan);
 		
@@ -207,7 +207,7 @@ public class FAddClientPage extends FForm{
 		JPanel ButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) ButtonPan.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
-		ButtonPan.setPreferredSize(new Dimension(975, 60));
+		ButtonPan.setPreferredSize(new Dimension(800, 60));
 		ButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(ButtonPan);
 		

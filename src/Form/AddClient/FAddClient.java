@@ -76,7 +76,7 @@ public class FAddClient extends FAddClientPage {
 					FAlerts.Error("New Account Error", "New Account missing information");
 
 				}else{
-//					FAlerts.Say("New Account", "Account has been made!");
+
 //					CurrentClient.setClient_username(TFNewUsername.getText());
 //					CurrentClient.setClient_password(TFNewPassword.getText());
 //					CurrentClient.setClient_password(TFConfirmPass.getText());
@@ -89,9 +89,10 @@ public class FAddClient extends FAddClientPage {
 //				 	private int id;
 //					database query
 //					CurrentClient.Create();
+//					FAlerts.Say("New Account", "Account has been made!");
 				// MAKE THE FRAME AND GO BACK TO LOGIN SCREEN
 
-					FAlerts.Say("Test", "This is just an RP message saying it works @ 60%! efficency!");
+					FAlerts.Say("Test", "This is just an RP message saying it works @ 10%! efficency!");
 				}
 
 				// Bypassing Existing Account verification...verification.

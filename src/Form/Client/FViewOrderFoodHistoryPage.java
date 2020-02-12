@@ -25,6 +25,7 @@ public class FViewOrderFoodHistoryPage extends FForm{
 	
 	public FViewOrderFoodHistoryPage() {
 		
+		setSize(984, 1040);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");

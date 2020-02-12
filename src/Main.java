@@ -34,8 +34,10 @@ import utils.FormEntities;
 
 public class Main {
 	public static void main(String[] args) {
+		DBConnecter.OpenConnection();
 
-		new DBConnecter();
+		//new DBConnecter();
+		
 
 		/*
 		 * LOGIN & CREATE NEW ACCOUNT
@@ -69,13 +71,13 @@ public class Main {
 		
 		//new FAddDeliverer();
 		//new FDeleteDeliverer();
-		new FEditDeliverer();
+		//new FEditDeliverer();
 		
 		/*
-		 * ADMIN ACCOUNT FORM
+		 * DASHBOARD ACCOUNT FORM
 		 */
 		
-		//new FAdmin();
+		//new FDashboard();
 		
 		/*
 		 * DELIVERYGUY ACCOUNT FORM

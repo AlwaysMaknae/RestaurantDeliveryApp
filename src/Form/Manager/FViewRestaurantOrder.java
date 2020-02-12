@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import Model.OrderModel;
 import Model.RestaurantModel;
 
 public class FViewRestaurantOrder extends FViewRestaurantOrderPage{
@@ -18,7 +19,7 @@ public class FViewRestaurantOrder extends FViewRestaurantOrderPage{
 		 */
 		
 		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		//		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
 
 		// RM = DBRestaurant.GetAllRestaurants();
 
@@ -34,19 +35,24 @@ public class FViewRestaurantOrder extends FViewRestaurantOrderPage{
 		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
 		 */
 		
-		//		ArrayList<Object> Order = new ArrayList<Object>();
+		ArrayList<Object> Order = new ArrayList<Object>();
 
-		//		Order.add("Enter date here");
+		//Order.add(ENTER ORDER DATE HERE);
 		
 		
 		ListPan.SetList(Restaurant);
-		//ListPan2.SetList(Order);
+		ListPan2.SetList(Order);
 
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//FOR RESTAURANT
+				
+//				Select a Restaurant and press SELECT. This correlates with the Orderlist.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected restaurant and display the Orders tied with the specific Restaurant.
 				
 			}
 		});
@@ -54,7 +60,12 @@ public class FViewRestaurantOrder extends FViewRestaurantOrderPage{
 		BTNSelect2.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//FOR ORDER
+				
+//				Select an Order and press SELECT. This transfers the info into the correct textfields.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected order and display the info in the textfields.
 				
 			}
 		});
