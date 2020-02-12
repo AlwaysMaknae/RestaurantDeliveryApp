@@ -11,12 +11,6 @@ public class FLogin extends FLoginView {
 
 	public FLogin() {
 
-//				if (TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-//					FAlerts.Error("Login Error", "Invalid Username or Password");
-//				}else{
-//					FAlerts.Say("Good!", "TEST");
-//				}
-
 		BTNConnect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -26,10 +20,10 @@ public class FLogin extends FLoginView {
 				if (!TFUsername.IsValid() || !TFPassword.IsValid()) {
 					// Incorrect Login Info Validation.
 
-//					if() {
-//					FAlerts.Say("Good!", "TEST");	
+//					if(USERNAME MATCHES DATABASE NAME) {
+//						FAlerts.Say("Good!", "TEST");	
 //					}else{
-//					FAlerts.Error("Login Error", "Invalid Username or Password");
+//						FAlerts.Error("Login Error", "Invalid Username or Password");
 //				    }
 					FAlerts.Error("Login Error", "Invalid Username or Password");
 				} else {

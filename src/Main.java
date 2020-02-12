@@ -106,7 +106,7 @@ public class Main {
 
 		//new FEditAccount();
 		//new FDeleteAccount();
-		//new FOrderFood();
+		new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
 		
