@@ -46,22 +46,7 @@ public class DBRestaurant {
 
 	}
 	
-	public static RestaurantModel getRestaurant(int id) {
-		String MyQuery = "SELECT * from restaurants WHERE restaurant_id='" + id
-				+ "'";
-		ResultSet stmt;
-		try {
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			if (stmt.next())
-				return new RestaurantModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getString(4), stmt.getString(5), stmt.getString(6), stmt.getInt(7));
-			else
-				return null;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-	}
+	
 	
 	public static ArrayList<RestaurantModel> getRestaurantByArea(String area){
 		String MyQuery = "SELECT * FROM restaurants WHERE status=1 AND restaurant_areas LIKE ?";
