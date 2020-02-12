@@ -42,7 +42,11 @@ public class FOrderFood extends FOrderFoodPage {
 				BTNRestaurant.setEnabled(false);
 
 				MenuList = DBItem.getAllItems(RestaurantList.get(ListPan.GetSelectedIndex()).getId());
-				
+
+				for (int i = 0; i < MenuList.size(); i++) {
+					Menu.add(MenuList.get(i).getItem_dish());
+				}
+
 				ListPan2.SetList(Menu);
 
 			}
@@ -102,7 +106,6 @@ public class FOrderFood extends FOrderFoodPage {
 		BTNOrder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 
 			}
 		});
