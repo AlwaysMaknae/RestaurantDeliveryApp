@@ -12,6 +12,7 @@ public class DelivererModel extends Model{
 	private String number;
 	private String area;
 	//private ArrayList<String> arealist;
+	private int access_lvl;
 	private int status;
 	
 	public DelivererModel(int id){
@@ -42,13 +43,15 @@ public class DelivererModel extends Model{
 		//}
 	}
 	
-	public DelivererModel(String username, String password,int id, String name, String number, String area){
+	public DelivererModel(int id, String username, String password, int access_lvl, String name, String number, String area, int status){
 		this.username = username;
 		this.password = password;
 		this.id = id;
 		this.name = name;
 		this.number = number;
 		this.area = area;
+		this.access_lvl = access_lvl;
+		this.status = status;
 		//this.arealist = new ArrayList<String>();
 		//String[] tareas = this.area.split(" ");
 		//for (String x : tareas) {
@@ -56,6 +59,16 @@ public class DelivererModel extends Model{
 		//}
 	}
 	
+	private void ReadDelivererModel(DelivererModel Me){
+		this.id = Me.getId();
+		this.username = Me.getUsername();
+		this.password = Me.getPassword();
+		this.access_lvl = Me.getAccess_lvl();
+		this.name = Me.getName();
+		this.number = Me.getName();
+		this.area = Me.getArea();
+		this.status = Me.getStatus();
+	}
 	
 
 	public void Create() {
@@ -67,7 +80,7 @@ public class DelivererModel extends Model{
 	}
 
 	public void Read() {
-		
+		ReadDelivererModel(DBDeliverer.GetDeliverer(this.id));
 	}
 
 	public void Delete() {
@@ -128,6 +141,14 @@ public class DelivererModel extends Model{
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public int getAccess_lvl() {
+		return access_lvl;
+	}
+
+	public void setAccess_lvl(int access_lvl) {
+		this.access_lvl = access_lvl;
 	}
 	
 	

@@ -25,7 +25,8 @@ public abstract class Navigator {
 	
 	public static void Login(FForm link){
 		new FLogin();
-		link.dispose();
+		if(link != null)
+			link.dispose();
 	}
 	public static void Dashboard(FForm link){
 		new FDashboard();

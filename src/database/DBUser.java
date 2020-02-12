@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Model.ClientModel;
+
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.UserModel;
@@ -45,6 +47,21 @@ public class DBUser {
 				return new UserModel(resultset.getInt(1), resultset.getString(2), resultset.getString(3), resultset.getInt("access_lvl"));
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
+	
+	public static UserModel getUser(int id) {
+		String MyQuery = "SELECT * from users WHERE user_id='" + id +"' AND clients.status=1";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			while (stmt.next()){
+				return new UserModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getInt(5));
+			}
+			} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}

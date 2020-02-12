@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,18 +13,22 @@ import Model.OrderModel;
 public class DBOrder {
 	// function to read orders
 	public static OrderModel GetOrder(int id) {
-		String MyQuery = "SELECT * from users WHERE order_id='" + id + "'";
-		ResultSet stmt;
+		String MyQuery = "SELECT * from orders WHERE order_id=?";
+		ResultSet resultset;
+		PreparedStatement stmt;
 		try {
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new OrderModel(stmt.getString(1));
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setInt(1, id);
+
+			resultset = stmt.executeQuery();
+			while (resultset.next()){
+				return new OrderModel(resultset.getString(2));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-
+		return null;
 	}
 
 	public static ArrayList<OrderModel> getOrderbyClient(int id) {

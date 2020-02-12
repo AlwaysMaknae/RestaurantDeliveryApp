@@ -40,6 +40,14 @@ public class UserModel extends Model {
 		this.password = password;
 	}
 	
+	private void ReadUserModel(UserModel Me){
+		this.id = Me.getId();
+		this.username = Me.getUsername();
+		this.password = Me.getPassword();
+		this.access_lvl = Me.getAccess_lvl();
+		this.status = Me.getStatus();
+	}
+	
 
 	//functions to call DBUser functions
 	public void Create() {
@@ -51,7 +59,7 @@ public class UserModel extends Model {
 	}
 
 	public void Read() {
-		
+		ReadUserModel(DBUser.getUser(this.id));
 	}
 
 	public void Delete() {

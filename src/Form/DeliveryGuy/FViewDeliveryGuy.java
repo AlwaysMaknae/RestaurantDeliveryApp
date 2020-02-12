@@ -10,28 +10,22 @@ import Model.RestaurantModel;
 public class FViewDeliveryGuy extends FViewDeliveryGuyPage{
 	
 	public FViewDeliveryGuy() {
-		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
 		
-//		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
 
 
-//		ArrayList<Object> Order = new ArrayList<Object>();
-
-//		Order.add("Enter date here");
+		ArrayList<Object> Order = new ArrayList<Object>();
 
 
-//		ListPan.SetList(Order);
+		ListPan.SetList(Order);
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+//				Select aN Order and press SELECT. This transfers the info into the correct Labels.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected restaurant and display the info in the Labels.
 				
 			}
 		});
@@ -39,7 +33,23 @@ public class FViewDeliveryGuy extends FViewDeliveryGuyPage{
 		BTNComplete.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
+				//Selected Order Verification
+				
+//				if(ORDER IS SELECTED) {
+					
+//					if(FAlerts.Confirm("Complete Order Confirmation", "Would you like to complete consultation on this order?")) {
+						
+						//TODO SEND THE ORDER TO ACCEPT ORDERLIST IN THE FAcceptDeliveryGuy.java
+						
+//						FAlerts.Say("Completed Order", "Order has been Completed!");
+//					}else {
+//						FAlerts.Say("Complete Order Cancelled", "Complete consultation for Order has been successfully cancelled!");
+//					}
+					
+//				}else {
+//					FAlerts.Error("Selection Error", "Please select an Order.");
+//				}
 				
 			}
 		});

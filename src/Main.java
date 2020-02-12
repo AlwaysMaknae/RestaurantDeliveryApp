@@ -34,6 +34,7 @@ import Model.UserModel;
 import database.*;
 //import utils.FAlerts;
 import utils.FormEntities;
+import utils.Navigator;
 
 public class Main {
 	public static void main(String[] args) {
@@ -41,7 +42,9 @@ public class Main {
 		DBConnecter.OpenConnection();
 		Session.AccesType = "";
 		
-		new FLogin();
+		Navigator.Login(null);
+
+	
 	}
 
 }
