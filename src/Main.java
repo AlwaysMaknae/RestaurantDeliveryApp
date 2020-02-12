@@ -39,10 +39,9 @@ import utils.Navigator;
 public class Main {
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
 		//new FEditAccount();
 		//new FDeleteAccount();
-		new FOrderFood();
+		//new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
 		
@@ -67,10 +66,7 @@ public class Main {
 		FAlerts.Say("title", "message");
 		
 		System.out.println(FAlerts.Ask("Question", "Why ?"));
-		
-		
-=======
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+*/
 		DBConnecter.OpenConnection();
 		Session.AccesType = "";
 		

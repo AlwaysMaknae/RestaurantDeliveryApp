@@ -17,39 +17,37 @@ import utils.FAlerts;
 import utils.FTextField;
 
 public class FOrderFood extends FOrderFoodPage {
-<<<<<<< HEAD
-	
+
 	private FTextField address = new FTextField(20);
-	
-	private Object[] message = {"Please enter the full address of delivery", address};
+
+	private Object[] message = { "Please enter the full address of delivery", address };
 	private boolean exit = false;
 	private int InitFlag, Flag;
 
-	public FOrderFood() {
+//	public FOrderFood() {
+//
+//		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
+//		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+//		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
+//
+//		// RM = DBRestaurant.GetAllRestaurants();
+//
+//		ArrayList<Object> Restaurant = new ArrayList<Object>();
+//
+//		Restaurant.add("Orange");
+//		Restaurant.add("Apple");
+//		Restaurant.add("Cherry");
+//		Restaurant.add("Melon");
+//		Restaurant.add("Cheese");
+//
+//		/*
+//		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
+//		 */
+//
+//		ArrayList<Object> Order = new ArrayList<Object>();
+//
+//		// Order.add("Enter date here");
 
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
-		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
-
-		// RM = DBRestaurant.GetAllRestaurants();
-
-		ArrayList<Object> Restaurant = new ArrayList<Object>();
-
-		Restaurant.add("Orange");
-		Restaurant.add("Apple");
-		Restaurant.add("Cherry");
-		Restaurant.add("Melon");
-		Restaurant.add("Cheese");
-
-		/*
-		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-		 */
-
-		ArrayList<Object> Order = new ArrayList<Object>();
-
-		// Order.add("Enter date here");
-
-=======
 	private ArrayList<ItemModel> MenuList;
 	private String order_items;
 	private float sum;
@@ -66,45 +64,16 @@ public class FOrderFood extends FOrderFoodPage {
 			Restaurant.add(RestaurantList.get(i).getName());
 		}
 
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
 		ArrayList<Object> Menu = new ArrayList<Object>();
 		ArrayList<Object> Order = new ArrayList<Object>();
 
-<<<<<<< HEAD
 		Menu.add("Hot Dog");
 		Menu.add("Pufferfish");
 
 		ListPan.SetList(Restaurant);
 		ListPan2.SetList(Menu);
 		ListPan3.SetList(Order);
-
-		BTNAdd.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				// Restaurant Selection validation
-//				if(RESTAURANT IS SELECTED) {
-				// Menu Selection validation
-//					if(MENU IS SELECTED) {
-				// Quantity validation
-//						if(TFQuantity.getText().equals("") || TFQuantity.getText().matches("[a-zA-Z]+") || !TFQuantity.getText().matches("[0-9]+")) {
-//							FAlerts.Error("Quantity Error", "Please enter an appropriate number of meals.");
-//						}else {
-				// TODO ADD ORDER TO ORDERLIST
-				// TODO ADD PRICE TO TOTAL TEXTFIELDS
-//							FAlerts.Say("Add Meal Success", "Meal has been added to Order!");
-//						}
-
-//					}else {
-//						FAlerts.Error("Selection Error", "Please select a Menu to order from.");
-//					}
-
-//				}else {
-//					FAlerts.Error("Selection Error", "Please select a Restaurant to order from.");
-//				}
-=======
-		ListPan.SetList(Restaurant);
-		// ListPan3.SetList(Order);
 
 		BTNRestaurant.addActionListener(new ActionListener() {
 			@Override
@@ -128,13 +97,13 @@ public class FOrderFood extends FOrderFoodPage {
 
 				TFMeal.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_dish() + "");
 				TFPrice.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_price() + "");
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
 
 			}
 
 		});
 
-<<<<<<< HEAD
+
 		BTNOrder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -207,8 +176,8 @@ public class FOrderFood extends FOrderFoodPage {
 			}
 		});
 
-	}
-=======
+	
+
 		BTNAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -255,7 +224,7 @@ public class FOrderFood extends FOrderFoodPage {
 
 			}
 		});
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
 
 		BTNDelete.addActionListener(new ActionListener() {
 			@Override

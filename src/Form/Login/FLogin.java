@@ -17,15 +17,7 @@ public class FLogin extends FLoginView {
 
 	public FLogin() {
 
-<<<<<<< HEAD
-		BTNConnect.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-=======
 		BTNConnect.addActionListener(this);
-
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
-
 
 		// Empty Login Error Validation once actionlistener is implemented.
 		/*
@@ -36,20 +28,20 @@ public class FLogin extends FLoginView {
 		 * JOptionPane.ERROR_MESSAGE); }
 		 */
 
-<<<<<<< HEAD
+
 //					if(USERNAME MATCHES DATABASE NAME) {
 //						FAlerts.Say("Good!", "TEST");	
 //					}else{
 //						FAlerts.Error("Login Error", "Invalid Username or Password");
 //				    }
-					FAlerts.Error("Login Error", "Invalid Username or Password");
-				} else {
-					FAlerts.Say("Test", "This is just an RP message saying it works @ 60%! efficency!");
-				}
-=======
+//					FAlerts.Error("Login Error", "Invalid Username or Password");
+//				} else {
+//					FAlerts.Say("Test", "This is just an RP message saying it works @ 60%! efficency!");
+//				}
+
 		
 		BTNClientNew.addActionListener(new ActionListener() {
->>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -93,7 +85,7 @@ public class FLogin extends FLoginView {
 			try {
 				UserModel Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
 				if (Trying.getPassword() == null || Trying.getUsername() == null) {
-					FAlerts.Error("Login", "Login Failed, chek credentials.");
+					FAlerts.Error("Login", "Login Failed, check credentials.");
 				} else {
 					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
 					Session.Login(AccesLevel.GetInstance(Trying.getAccess_lvl(), Trying.getId()) );
@@ -105,7 +97,7 @@ public class FLogin extends FLoginView {
 	
 				}
 			} catch (Exception e2) {
-				FAlerts.Error("Login", "Login Failed, chek credentials.");
+				FAlerts.Error("Login", "Login Failed, check credentials.");
 			}
 
 		}
