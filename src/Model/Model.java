@@ -1,11 +1,11 @@
 package Model;
 
 public abstract class Model implements ModelInterface{
-	
+
+	protected int id;
 	protected String username;
 	protected String password;
 	protected int access_lvl;
-	protected int id;
 	protected int status;
 	
 	

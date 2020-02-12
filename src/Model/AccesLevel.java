@@ -27,31 +27,4 @@ public abstract class AccesLevel {
 		 
 	 }
 	 
-	 
-	 public static Model GetInstance(int level, int id){
-		 
-		 Model oo;
-		 
-		 switch (level) {
-			case AccesLevel.CLIENT:
-				oo =  new ClientModel(id);
-				((ClientModel)oo).Read();
-			case AccesLevel.MANAGER:
-				oo =  new ManagerModel(id);
-				((ManagerModel)oo).Read();
-			case AccesLevel.RESTAURATEUR:
-				oo = new RestaurateurModel(id);
-				((RestaurateurModel)oo).Read();
-			case AccesLevel.DELIVERY_GUY:
-				oo = new DelivererModel(id);
-				((DelivererModel)oo).Read();
-			case AccesLevel.ADMIN:
-				oo = new UserModel(id);
-				((UserModel)oo).Read();
-			default:
-				oo = null;
-		}
-		 
-		 return oo;
-	 }
 }

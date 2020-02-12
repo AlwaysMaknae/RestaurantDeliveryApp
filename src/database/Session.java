@@ -1,28 +1,37 @@
 package database;
 
-import Model.AccesLevel;
+import Model.ManagerModel;
 import Model.Model;
-import Model.UserModel;
 
 public abstract class Session {
 
-	private static Model Client;
+	private static Model User;
 	public static String AccesType;
 	
 	public static void Create(Model Client){
-		Session.Client = Client;
+		Session.User = Client;
 	}
 	public static void Quit(){
-		Session.Client = null;
+		Session.User = null;
 		AccesType = "";
 	}
 	
 	public static void Login(Model Client){
-		Session.Client = Client;
+		Session.User = Client;
+		
+		/*
+		 * TransTyping 
+		 * 
+		 * ManagerModel m = new ManagerModel(User.getId());
+		 * m.Read();
+		 * System.out.println(m.getRestaurant_id());
+		 * 
+		*/
+		
 	}
 	
-	public static Model User(){
-		return Client;
+	public static Model GetUser(){
+		return User;
 	}
 	
 	

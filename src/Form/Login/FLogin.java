@@ -73,20 +73,20 @@ public class FLogin extends FLoginView {
 
 		if(TFUsername.getText().length() > 0){
 			try {
-				UserModel Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
-				if (Trying.getPassword() == null || Trying.getUsername() == null) {
+				Model Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
+				if (Trying == null) {
 					FAlerts.Error("Login", "Login Failed, chek credentials.");
 				} else {
-					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
-					Session.Login(AccesLevel.GetInstance(Trying.getAccess_lvl(), Trying.getId()) );
 					
-					System.out.println();
+					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
+					Session.Login(Trying);
 					
 					this.dispose();
 					new FDashboard();
 	
 				}
 			} catch (Exception e2) {
+				e2.printStackTrace();
 				FAlerts.Error("Login", "Login Failed, chek credentials.");
 			}
 
