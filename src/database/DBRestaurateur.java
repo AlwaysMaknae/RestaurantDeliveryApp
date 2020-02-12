@@ -23,6 +23,23 @@ public class DBRestaurateur {
 		}
 
 	}
+	
+	public static RestaurateurModel getRestaurant(int id) {
+		String MyQuery = "SELECT * from restaurants WHERE restaurant_id='" + id
+				+ "'";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			if (stmt.next())
+				return new RestaurateurModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getInt(5), stmt.getInt(6));
+			else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	// function to add restaurateur
 
@@ -30,15 +47,13 @@ public class DBRestaurateur {
 		String username = restaurateurModel.getUsername();
 		String password = restaurateurModel.getPassword();
 		int restaurant_id = restaurateurModel.getRestaurant_id();
-		int access_lvl = restaurateurModel.getAccess_lvl();
-		String MyQuery = "{CALL create_restaurateur(?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_restaurateur(?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setInt(3, restaurant_id);
-			stmt.setInt(4, access_lvl);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,8 +67,7 @@ public class DBRestaurateur {
 		String username = restaurateurModel.getUsername();
 		String password = restaurateurModel.getPassword();
 		int restaurant_id = restaurateurModel.getRestaurant_id();
-		int access_lvl = restaurateurModel.getAccess_lvl();
-		String MyQuery = "{CALL update_restaurateur(?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL update_restaurateur(?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
@@ -61,7 +75,6 @@ public class DBRestaurateur {
 			stmt.setString(2, username);
 			stmt.setString(3, password);
 			stmt.setInt(4, restaurant_id);
-			stmt.setInt(5, access_lvl);
 			stmt.executeUpdate();
 			return new RestaurateurModel(stmt.toString());
 		} catch (SQLException e) {

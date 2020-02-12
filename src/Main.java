@@ -26,6 +26,7 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.ClientModel;
 import Model.ManagerModel;
 import Model.OrderModel;
 import Model.RestaurantModel;
@@ -42,7 +43,6 @@ public class Main {
 		/*
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
-
 		//new FAddClient();
 		
 		/*
@@ -52,7 +52,9 @@ public class Main {
 		//new FAddRestaurant();
 		//new FEditRestaurant();
 		//new FDeleteRestaurant();
-		//new FAddRestaurantMenu();
+		//new FAddRestaurantMenu();//VVVVVV
+		//TODO SHOW THIS JOPTION IF THE RESTAURANT HAS NO MENU!
+		//FAlerts.Error("Menu Error", "All restaurants do not have a Menu. \n Please select a restaurant to add a Menu.");
 		
 		/*
 		 * MENU FORM
@@ -68,7 +70,7 @@ public class Main {
 		
 		//new FAddDeliverer();
 		//new FDeleteDeliverer();
-		//new FEditDeliverer();
+		new FEditDeliverer();
 		
 		/*
 		 * ADMIN ACCOUNT FORM
@@ -103,7 +105,7 @@ public class Main {
 
 		//new FEditAccount();
 		//new FDeleteAccount();
-		//new FOrderFood();
+		new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
 		
@@ -111,12 +113,7 @@ public class Main {
 		//new FormEntities();
 		Session.AccesType = "";
 		
-		
-		
-		//FDashboard ff = new FDashboard();
-		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//new FormEntities();
-		
+
 		
 		DBConnecter.OpenConnection();
 		
@@ -129,6 +126,23 @@ public class Main {
 		//ManagerModel tester2 = new ManagerModel("Jose", "123", 1, 1);
 
 
+
+		/*
+		FAlerts.Error("Error Test", "Testing the errors.");
+		
+		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
+			System.out.println("Yes");
+		} else {
+			System.out.println("No.");
+		}
+		
+		FAlerts.Say("title", "message");
+		
+		System.out.println(FAlerts.Ask("Question", "Why ?"));
+		
+		
+		DBConnecter.OpenConnection();
+>>>>>>> 528ac22e3f55b9662a7c73b91ea08303cd5ac7e5
 		//UserModel jose = new UserModel("JJJJ", "yeey", 3);
 		//RestaurantModel tester = DBRestaurant.GetRestaurant(2);
 		//tester.setAreas("J2K K9K J8A O9Q Q5A");
@@ -157,8 +171,7 @@ public class Main {
 		
 
 		//DBRestaurant.UpdateRestaurant(tester);
-		
-		
+
 		/*
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getName());
 		System.out.println(DBRestaurant.getAllRestaurants().get(0).getId());
@@ -167,6 +180,11 @@ public class Main {
 	//	System.out.println(DBOrder.getOrderbyClient(3));
 		//DBUser.getAllUsers("JJJ");
 		
+
+		//ClientModel moodle = new ClientModel(10);
+		//moodle.Read();
+		//System.out.println(moodle.getClient_email());
+
 	}
 
 }

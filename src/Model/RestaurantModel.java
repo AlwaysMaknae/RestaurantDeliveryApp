@@ -64,16 +64,27 @@ public class RestaurantModel extends Model{
 	}
 	
 	
+	private void ReadRestaurantModel(RestaurantModel Me){
+		this.id = Me.getId();
+		this.name = Me.getName();
+		this.address = Me.getAddress();
+		this.number = Me.getNumber();
+		this.hours = Me.getHours();
+		this.areas = Me.getAreas();
+		this.status = Me.getStatus();
+		
+	}
+	
 	public void Create() {
 		DBRestaurant.AddRestaurant(this);
 	}
 
 	public void Update() {
-		DBRestaurant.UpdateRestaurant(this);
+		ReadRestaurantModel(DBRestaurant.UpdateRestaurant(this));
 	}
 
-	public Model Read() {
-		return DBRestaurant.GetRestaurant(this.id);
+	public void Read() {
+		ReadRestaurantModel(DBRestaurant.GetRestaurant(this.id));
 	}
 
 	public void Delete() {

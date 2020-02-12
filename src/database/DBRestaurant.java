@@ -19,6 +19,7 @@ public class DBRestaurant {
 			
 			while(stmt.next()){
 				restaurants.add(new RestaurantModel(stmt.getInt(1), stmt.getString(2)));
+
 			}
 
 			return restaurants;
@@ -27,6 +28,8 @@ public class DBRestaurant {
 			return null;
 		}
 	}
+	
+	
 	
 	public static RestaurantModel GetRestaurant(String restaurant_name) {
 		String MyQuery = "SELECT * from restaurants WHERE restaurant_name='" + restaurant_name
@@ -44,6 +47,8 @@ public class DBRestaurant {
 		}
 
 	}
+	
+	
 	
 	public static ArrayList<RestaurantModel> getRestaurantByArea(String area){
 		String MyQuery = "SELECT * FROM restaurants WHERE status=1 AND restaurant_areas LIKE ?";

@@ -44,6 +44,14 @@ public class ItemModel extends Model{
 		this.item_dish = item_dish;
 	}
 	
+	private void ReadItemModel(ItemModel Me){
+		this.item_id = Me.getItem_id();
+		this.item_dish = Me.getItem_dish();
+		this.item_price = Me.getItem_price();
+		this.restaurant_id = Me.getRestaurant_id();
+		this.status = Me.getStatus();
+	}
+	
 	
 	public void Create() {
 		DBItem.AddItem(this);	
@@ -53,8 +61,8 @@ public class ItemModel extends Model{
 		DBItem.UpdateItem(this);
 	}
 
-	public Model Read() {
-		return DBItem.GetItem(this.item_dish);
+	public void Read() {
+		ReadItemModel(DBItem.getItem(this.restaurant_id));
 	}
 
 	public void Delete() {

@@ -16,7 +16,11 @@ import utils.FAlerts;
 public class FLogin extends FLoginView {
 
 	public FLogin() {
+
 		BTNConnect.addActionListener(this);
+
+
+
 		// Empty Login Error Validation once actionlistener is implemented.
 		/*
 		 * if(TFUsername.getText().equals("") ||
@@ -25,22 +29,43 @@ public class FLogin extends FLoginView {
 		 * "Username or Password is incorrect!", "Login Error",
 		 * JOptionPane.ERROR_MESSAGE); }
 		 */
+
 		
-		BTNClientNew.addActionListener(new ActionListener() {		
+		BTNClientNew.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
+//				if (TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
+//					FAlerts.Error("Login Error", "Invalid Username or Password");
+//				}else{
+//					FAlerts.Say("Good!", "TEST");
+//				}
 		});
-		
+
+		BTNClientNew.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// Opens the AddClientClass
+
+			}
+		});
+
 		BTNQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				Session.Quit();
+
+
+				// Closes Application
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -64,7 +89,7 @@ public class FLogin extends FLoginView {
 			} catch (Exception e2) {
 				FAlerts.Error("Login", "Login Failed, chek credentials.");
 			}
+
 		}
 	}
-
 }

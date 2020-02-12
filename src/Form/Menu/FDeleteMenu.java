@@ -6,20 +6,16 @@ import java.util.ArrayList;
 
 import Model.ItemModel;
 import Model.RestaurantModel;
+import utils.FAlerts;
 
 public class FDeleteMenu extends FDeleteMenuPage {
 
+	private ItemModel DeleteMenu;
+	
 	public FDeleteMenu() {
-		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
 
 		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		// ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
+		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
 
 		// RM = DBRestaurant.GetAllRestaurants();
 
@@ -35,18 +31,21 @@ public class FDeleteMenu extends FDeleteMenuPage {
 		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
 		 */
 
-		// ArrayList<Object> Menu = new ArrayList<Object>();
+		ArrayList<Object> Menu = new ArrayList<Object>();
 
-		// Menu.add("Hot Dog");
-		// Menu.add("Pufferfish");
+		Menu.add("Hot Dog");
+		Menu.add("Pufferfish");
 
 		ListPan.SetList(Restaurant);
-		// MenuItemListPan.SetList(Menu);
+		MenuItemListPan.SetList(Menu);
 
 		BTNSelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+//				Select a restaurant and press SELECT. This transfers the info into the correct textfields which can be edited.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected restaurant and the appropriate Menu items
 
 			}
 		});
@@ -54,7 +53,30 @@ public class FDeleteMenu extends FDeleteMenuPage {
 		BTNDeleteMenu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//Restaurant is selected validation
+//				if(RESTAURANT IS SELECTED) {
+					//Menu is selected validation
+//					if(MENU IS SELECTED) {
+//						if(FAlerts.Confirm("Deletion Confirmation", "Would you like to delete the Menu of: " + ListPan.GetSelectedItem().toString() + "?")){
+							
+//							int ID = MenuItemListPan.GetSelectedIndex();				
+//							DeleteMenu.Delete(ID);		
+//							MenuItemListPan.remove(ID);
+						
+//							repaint();
+//							revalidate();
+							
+//						}else {
+//							FAlerts.Say("Deletion Cancelled", "Deletion has been successfully cancelled!");
+//						}
+//					}else{
+//						FAlerts.Error("Selection Error", "Please select Menu to delete.");
+//					}
+//				}else {
+//					FAlerts.Error("Selection Error", "Please select Restaurant.");
+
+//				}
 
 			}
 		});

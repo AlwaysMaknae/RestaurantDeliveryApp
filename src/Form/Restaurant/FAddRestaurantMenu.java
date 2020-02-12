@@ -39,13 +39,18 @@ public class FAddRestaurantMenu extends FAddRestaurantMenuPage{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(ListPan.GetSelectedIndex() + " : " + ListPan.GetSelectedItem());
 
+//				Select a restaurant and press SELECT. This transfers the info into the correct textfields which can be edited.
+//				TODO: Make the Listpan, get selected item (& index if needed). 
+//				When BTNSelect is clicked, get data of the selected restaurant and display the info in the textfields
+				
 			}
 		});
 		
 		BTNRestaurantCreateMenu.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				//TODO Opens a create Menu for the selected Restaurant
 				
 			}
 		});

@@ -6,6 +6,8 @@ import database.DBDeliverer;
 
 public class DelivererModel extends Model{
 	private int id;
+	private String username;
+	private String password;
 	private String name;
 	private String number;
 	private String area;
@@ -27,7 +29,9 @@ public class DelivererModel extends Model{
 		this.name = name;
 	}
 	
-	public DelivererModel(String name, String number, String area){
+	public DelivererModel(String username, String password, String name, String number, String area){
+		this.username = username;
+		this.password = password;
 		this.name = name;
 		this.number = number;
 		this.area = area;
@@ -38,7 +42,9 @@ public class DelivererModel extends Model{
 		//}
 	}
 	
-	public DelivererModel(int id, String name, String number, String area){
+	public DelivererModel(String username, String password,int id, String name, String number, String area){
+		this.username = username;
+		this.password = password;
 		this.id = id;
 		this.name = name;
 		this.number = number;
@@ -49,6 +55,8 @@ public class DelivererModel extends Model{
 		//	this.arealist.add(x);
 		//}
 	}
+	
+	
 
 	public void Create() {
 		DBDeliverer.AddDeliverer(this);
@@ -58,8 +66,8 @@ public class DelivererModel extends Model{
 		DBDeliverer.UpdateDeliverer(this);
 	}
 
-	public Model Read() {
-		return DBDeliverer.GetDeliverer(id);
+	public void Read() {
+		
 	}
 
 	public void Delete() {
@@ -72,6 +80,22 @@ public class DelivererModel extends Model{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
