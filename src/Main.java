@@ -26,84 +26,20 @@ import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
+import Model.ClientModel;
+import Model.ManagerModel;
+import Model.OrderModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
-import utils.FAlerts;
+//import utils.FAlerts;
 import utils.FormEntities;
+import utils.Navigator;
 
 public class Main {
 	public static void main(String[] args) {
-		DBConnecter.OpenConnection();
 
-		//new DBConnecter();
-		
-
-		/*
-		 * LOGIN & CREATE NEW ACCOUNT
-		 */
-		
-		//new FLogin();
-		//new FAddClient();
-		
-		/*
-		 * RESTAURANT FORM
-		 */
-		
-		//new FAddRestaurant();
-		//new FEditRestaurant();
-		//new FDeleteRestaurant();
-		//new FAddRestaurantMenu();//VVVVVV
-		//TODO SHOW THIS JOPTION IF THE RESTAURANT HAS NO MENU!
-		//FAlerts.Error("Menu Error", "All restaurants do not have a Menu. \n Please select a restaurant to add a Menu.");
-		
-		/*
-		 * MENU FORM
-		 */
-		
-		//new FAddMenu();
-		//new FEditMenu();
-		//new FDeleteMenu();
-		
-		/*
-		 * DELIVERY FORM
-		 */
-		
-		//new FAddDeliverer();
-		//new FDeleteDeliverer();
-		//new FEditDeliverer();
-		
-		/*
-		 * DASHBOARD ACCOUNT FORM
-		 */
-		
-		//new FDashboard();
-		
-		/*
-		 * DELIVERYGUY ACCOUNT FORM
-		 */
-		
-		//new FViewDeliveryGuy();
-		//new FAcceptDeliveryGuy();
-		//new FDoneDeliveryGuy();
-		
-		/*
-		 * RESTAURANTEUR ACCOUNT FORM
-		 */
-		
-		//new FAcceptOrder();
-		//new FOrderReady();
-		
-		/*
-		 * MANAGER ACCOUNT FORM
-		 */
-		
-		//new FViewRestaurantOrder();
-		
-		/*
-		 * CLIENT ACCOUNT FORM
-		 */
-
+<<<<<<< HEAD
 		//new FEditAccount();
 		//new FDeleteAccount();
 		new FOrderFood();
@@ -133,10 +69,14 @@ public class Main {
 		System.out.println(FAlerts.Ask("Question", "Why ?"));
 		
 		
+=======
+>>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
 		DBConnecter.OpenConnection();
-		*/
+		Session.AccesType = "";
 		
-		
+		Navigator.Login(null);
+
+	
 	}
 
 }

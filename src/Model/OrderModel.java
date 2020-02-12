@@ -10,54 +10,89 @@ public class OrderModel extends Model {
 	private String items;
 	private String delivery_time;
 	private float price;
-	private int status;
+	private String order_status;
 	private int restaurant_id;
 	private int deliverer_id;
 	private int client_id;
 	private int order_delivered;
-	
-	public OrderModel(int id){
+
+	public OrderModel(int id) {
 		this.id = id;
 	}
-	
-	public OrderModel(String address){
+
+	public OrderModel(String address) {
 		this.address = address;
 	}
-	
-	public OrderModel(String address, String postal_code, String items){
+
+	public OrderModel(String address, String postal_code, String items) {
 		this.address = address;
 		this.postal_code = postal_code;
 		this.items = items;
 	}
-	
-	public OrderModel(int id, int order_delivered){
+
+	public OrderModel(int id, int order_delivered) {
 		this.id = id;
 		this.order_delivered = order_delivered;
 	}
-	
-	public OrderModel(int id, String address, String posta_code, String date, String items, float price, int status, int restaurant_id,
-						 int deliverer_id, int client_id, int order_delivered){
+
+	public OrderModel( String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			int deliverer_id, int client_id, int order_delivered) {
+		this.address = address;
+		this.postal_code = posta_code;
+		this.date = date;
+		this.items = items;
+		this.delivery_time = time;
+		this.price = price;
+		this.order_status = status;
+		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
+		this.client_id = client_id;
+		this.order_delivered = order_delivered;
+	}
+
+	public OrderModel(int id, String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			int deliverer_id, int client_id, int order_delivered) {
 		this.id = id;
 		this.address = address;
 		this.postal_code = posta_code;
 		this.date = date;
 		this.items = items;
+		this.delivery_time = time;
 		this.price = price;
-		this.status = status;
+		this.order_status = status;
 		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
 		this.client_id = client_id;
 		this.order_delivered = order_delivered;
-						}
+	}
+	
+	private void ReadOrderModel(OrderModel Me){
+		this.id = Me.getId();
+		this.address = Me.getAddress();
+		this.postal_code = Me.getPostal_code();
+		this.date = Me.getDate();
+		this.items = Me.getItems();
+		this.delivery_time = Me.getDelivery_time();
+		this.price = Me.getPrice();
+		this.order_status = Me.getOrder_status();
+		this.restaurant_id = Me.getRestaurant_id();
+		this.deliverer_id = Me.getDeliverer_id();
+		this.client_id = Me.getClient_id();
+		this.order_delivered = Me.getOrder_delivered();
+	}
+
 	public void Create() {
-		DBOrder.AddOrder(this);	
+		DBOrder.AddOrder(this);
 	}
 
 	public void Update() {
-		DBOrder.UpdareOrder(this);
+		ReadOrderModel(DBOrder.UpdareOrder(this));
 	}
 
-	public Model Read() {
-		return DBOrder.GetOrder(id);
+	public void Read() {
+		ReadOrderModel(DBOrder.GetOrder(this.id));
 	}
 
 	public void Delete() {
@@ -120,12 +155,12 @@ public class OrderModel extends Model {
 		this.delivery_time = delivery_time;
 	}
 
-	public int getStatus() {
-		return status;
+	public String getOrder_status() {
+		return order_status;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setOrder_status(String status) {
+		this.order_status = status;
 	}
 
 	public int getRestaurant_id() {
@@ -159,7 +194,5 @@ public class OrderModel extends Model {
 	public void setOrder_delivered(int order_delivered) {
 		this.order_delivered = order_delivered;
 	}
-	
-	
 
 }

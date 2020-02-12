@@ -1,12 +1,13 @@
 package database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 //import com.mysql.jdbc.PreparedStatement;
 
 import Model.DelivererModel;
-
 public class DBDeliverer {
 	// function to read deliverer
 	public static DelivererModel GetDeliverer(int deliverer_id) {
@@ -15,48 +16,79 @@ public class DBDeliverer {
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			stmt.next();
-			System.out.println(stmt.getString(2));
-			return new DelivererModel(stmt.getString(2));
+			while (stmt.next()){
+				return new DelivererModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getString(5), stmt.getString(6), stmt.getString(7), stmt.getInt(8));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
+		return null;
 
 	}
-
-	// function to add deliverer
-	public static DelivererModel AddDeliverer(String name, String number,
-			String area, int status) {
-		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
+	
+	public static ArrayList<DelivererModel> getDelivererByArea(String area){
+		String MyQuery = "SELECT * FROM deliverers WHERE status=1 AND deliverer_area LIKE ?";
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<DelivererModel> deliverer = new ArrayList<DelivererModel>();
 		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, name);
-			stmt.setString(2, number);
-			stmt.setString(3, area);
-			stmt.setInt(4, status);
-			stmt.executeUpdate();
-			return new DelivererModel(stmt.toString());
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				deliverer.add(new DelivererModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return deliverer;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
+	public static ArrayList<DelivererModel> CompareArea(int restaurant_id, String area){
+		String MyQuery = "SELECT * FROM deliverers, restaurants WHERE restaurants.restaurant_id=? AND restaurants.restaurant_areas LIKE ?  AND deliverers.deliverer_area LIKE ?";
+		
+		ResultSet resultset;	
+		PreparedStatement stmt;
+		ArrayList<DelivererModel> deliverer = new ArrayList<DelivererModel>();
+		try {
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setInt(1, restaurant_id);
+			stmt.setString(2, "%" + area + "%");
+			stmt.setString(3, "%" + area + "%");
+
+			resultset = stmt.executeQuery();
+			while(resultset.next()){
+				deliverer.add(new DelivererModel(resultset.getInt(1), resultset.getString(2)));
+			}		
+			return deliverer;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	// function to add deliverer
+	
 	public static DelivererModel AddDeliverer(DelivererModel delivererModel) {
+		String username = delivererModel.getUsername();
+		String password = delivererModel.getPassword();
 		String name = delivererModel.getName();
 		String number = delivererModel.getNumber();
 		String area = delivererModel.getArea();
 		int status = delivererModel.getStatus();
-		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, name);
-			stmt.setString(2, number);
-			stmt.setString(3, area);
-			stmt.setInt(4, status);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setString(3, name);
+			stmt.setString(4, number);
+			stmt.setString(5, area);
+			stmt.setInt(6, status);
 			stmt.executeUpdate();
 			return new DelivererModel(stmt.toString());
 		} catch (SQLException e) {
@@ -66,37 +98,24 @@ public class DBDeliverer {
 	}
 
 	// function to update deliverer
-	public static DelivererModel UpdateDeliverer(int id, String name, String number,
-			String area) {
-		String MyQuery = "{CALL update_deliverer(?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setInt(1, id);
-			stmt.setString(2, name);
-			stmt.setString(3, number);
-			stmt.setString(4, area);
-			stmt.executeUpdate();
-			return new DelivererModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	public static DelivererModel UpdateDeliverer(DelivererModel delivererModel) {
 		int id = delivererModel.getId();
+		String username = delivererModel.getUsername();
+		String password = delivererModel.getPassword();
 		String name = delivererModel.getName();
 		String number = delivererModel.getNumber();
 		String area = delivererModel.getArea();
-		String MyQuery = "{CALL update_deliverer(?, ?, ?, ?)}";
+		String MyQuery = "{CALL update_deliverer(?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setInt(1, id);
-			stmt.setString(2, name);
-			stmt.setString(3, number);
-			stmt.setString(4, area);
+			stmt.setString(2, username);
+			stmt.setString(3, password);
+			stmt.setString(4, name);
+			stmt.setString(5, number);
+			stmt.setString(6, area);
 			stmt.executeUpdate();
 			return new DelivererModel(stmt.toString());
 		} catch (SQLException e) {

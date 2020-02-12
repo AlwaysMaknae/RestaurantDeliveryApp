@@ -23,6 +23,21 @@ public class DBClient {
 		}
 
 	}
+	
+	public static ClientModel GetAllClient(int id) {
+		String MyQuery = "SELECT * from clients WHERE client_id='" + id +"' AND clients.status=1";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			while (stmt.next()){
+				return new ClientModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getString(4), stmt.getString(5), stmt.getString(6), stmt.getString(7), stmt.getString(8), stmt.getInt(9));
+			}
+			} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
 
 	// function to add client
 	public static ClientModel AddClient(String username, String password,
@@ -79,28 +94,6 @@ public class DBClient {
 	}
 
 	// function to update client
-	public static ClientModel UpdateClient(int id, String username,
-			String password, String last_name, String first_name,
-			String address, String email, String number) {
-		String MyQuery = "{CALL update_client(?, ?, ?, ?, ?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setInt(1, id);
-			stmt.setString(2, username);
-			stmt.setString(3, password);
-			stmt.setString(4, last_name);
-			stmt.setString(5, first_name);
-			stmt.setString(6, address);
-			stmt.setString(7, email);
-			stmt.setString(8, number);
-			stmt.executeUpdate();
-			return new ClientModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	public static ClientModel UpdateClient(ClientModel clientModel) {
 		int id = clientModel.getClient_id();

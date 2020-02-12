@@ -15,12 +15,14 @@ import utils.FTextField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
 
 public class FOrderFoodPage extends FForm {
 	
 	protected FTextField TFDeliveryTimeYMD, TFHour, TFMinute, TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
 	
-	protected FButton BTNAdd, BTNDelete, BTNOrder;
+	protected FButton BTNAdd, BTNDelete, BTNOrder, BTNRestaurant, BTNMenu, BTNCancel;
 
 	protected FListView ListPan, ListPan2, ListPan3;
 	
@@ -122,6 +124,9 @@ public class FOrderFoodPage extends FForm {
 		ListPan.setPreferredSize(new Dimension(200, 350));
 		RestaurantListPan.add(ListPan);
 		
+		BTNRestaurant = new FButton("SELECT");
+		ListPan.add(BTNRestaurant, BorderLayout.SOUTH);
+		
 		JPanel MenuListPan = new JPanel();
 		MenuListPan.setPreferredSize(new Dimension(200, 380));
 		MenuListPan.setBackground(Color.LIGHT_GRAY);
@@ -139,6 +144,9 @@ public class FOrderFoodPage extends FForm {
 		ListPan2 = new FListView();
 		ListPan2.setPreferredSize(new Dimension(200, 350));
 		MenuListPan.add(ListPan2);
+		
+		BTNMenu = new FButton("SELECT");
+		ListPan2.add(BTNMenu, BorderLayout.SOUTH);
 		
 		JPanel OrderInfoPan = new JPanel();
 		OrderInfoPan.setPreferredSize(new Dimension(175, 380));
@@ -239,6 +247,9 @@ public class FOrderFoodPage extends FForm {
 		BTNOrder = new FButton("Order");
 		BTNOrder.setPreferredSize(new Dimension(75, 25));
 		PaymentPan.add(BTNOrder);
+		
+		BTNCancel = new FButton("Cancel");
+		PaymentPan.add(BTNCancel);
 		
 		repaint();
 		revalidate();

@@ -6,24 +6,31 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+
+import Form.Dashboard.FDashboard;
+import Form.Login.FLogin;
+import database.Session;
 
 public class FForm extends JFrame implements ActionListener, WindowListener{
 	
 	protected FMainMenu MenuBar;
+	private FForm Me;
 	
 	public FForm(){
 		this.setTitle("New FForm");
 		this.setSize(800,600);
 		this.setResizable(false);
 		
-		MenuBar = new FMainMenu();
+		MenuBar = new FMainMenu(this);
 		
 		this.addWindowListener(this);
-		
 		this.setJMenuBar( MenuBar );
-		this.setLocationRelativeTo(null);  //place frame in the middle of screen
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application when frame closes
-		this.setVisible(true); //display frame
+		this.setLocationRelativeTo(null); 
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		 
+		Me = this;
+		this.setVisible(true);
 	}
 
 	@Override
@@ -36,7 +43,7 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 	public void windowClosed(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {}
+	public void windowClosing(WindowEvent e) { Navigator.Quit(); }
 
 	@Override
 	public void windowDeactivated(WindowEvent e) {}

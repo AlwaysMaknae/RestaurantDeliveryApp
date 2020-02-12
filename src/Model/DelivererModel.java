@@ -1,34 +1,75 @@
 package Model;
 
+import java.util.ArrayList;
+
 import database.DBDeliverer;
 
 public class DelivererModel extends Model{
 	private int id;
+	private String username;
+	private String password;
 	private String name;
 	private String number;
 	private String area;
+	//private ArrayList<String> arealist;
+	private int access_lvl;
 	private int status;
 	
 	public DelivererModel(int id){
 		this.id = id;
+		//this.arealist = new ArrayList<String>();
 	}
 	
 	public DelivererModel(String name){
 		this.name = name;
+		//this.arealist = new ArrayList<String>();
 	}
 	
-	public DelivererModel(String name, String number, String area){
+	public DelivererModel(int id, String name){
+		this.id = id;
+		this.name = name;
+	}
+	
+	public DelivererModel(String username, String password, String name, String number, String area){
+		this.username = username;
+		this.password = password;
 		this.name = name;
 		this.number = number;
 		this.area = area;
+		//this.arealist = new ArrayList<String>();
+		//String[] tareas = this.area.split(" ");
+		//for (String x : tareas) {
+		//	this.arealist.add(x);
+		//}
 	}
 	
-	public DelivererModel(int id, String name, String number, String area){
+	public DelivererModel(int id, String username, String password, int access_lvl, String name, String number, String area, int status){
+		this.username = username;
+		this.password = password;
 		this.id = id;
 		this.name = name;
 		this.number = number;
 		this.area = area;
+		this.access_lvl = access_lvl;
+		this.status = status;
+		//this.arealist = new ArrayList<String>();
+		//String[] tareas = this.area.split(" ");
+		//for (String x : tareas) {
+		//	this.arealist.add(x);
+		//}
 	}
+	
+	private void ReadDelivererModel(DelivererModel Me){
+		this.id = Me.getId();
+		this.username = Me.getUsername();
+		this.password = Me.getPassword();
+		this.access_lvl = Me.getAccess_lvl();
+		this.name = Me.getName();
+		this.number = Me.getName();
+		this.area = Me.getArea();
+		this.status = Me.getStatus();
+	}
+	
 
 	public void Create() {
 		DBDeliverer.AddDeliverer(this);
@@ -38,8 +79,8 @@ public class DelivererModel extends Model{
 		DBDeliverer.UpdateDeliverer(this);
 	}
 
-	public Model Read() {
-		return DBDeliverer.GetDeliverer(id);
+	public void Read() {
+		ReadDelivererModel(DBDeliverer.GetDeliverer(this.id));
 	}
 
 	public void Delete() {
@@ -52,6 +93,22 @@ public class DelivererModel extends Model{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
@@ -84,6 +141,14 @@ public class DelivererModel extends Model{
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public int getAccess_lvl() {
+		return access_lvl;
+	}
+
+	public void setAccess_lvl(int access_lvl) {
+		this.access_lvl = access_lvl;
 	}
 	
 	

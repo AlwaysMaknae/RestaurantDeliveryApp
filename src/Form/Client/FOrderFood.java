@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Model.ItemModel;
+import Model.RestaurantModel;
+import database.DBItem;
+import database.DBRestaurant;
+
 import Model.OrderModel;
 import Model.RestaurantModel;
 import utils.FAlerts;
 import utils.FTextField;
 
 public class FOrderFood extends FOrderFoodPage {
+<<<<<<< HEAD
 	
 	private FTextField address = new FTextField(20);
 	
@@ -44,8 +49,28 @@ public class FOrderFood extends FOrderFoodPage {
 
 		// Order.add("Enter date here");
 
-		ArrayList<Object> Menu = new ArrayList<Object>();
+=======
+	private ArrayList<ItemModel> MenuList;
+	private String order_items;
+	private float sum;
 
+	public FOrderFood() {
+
+		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
+
+		// ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+
+		ArrayList<Object> Restaurant = new ArrayList<Object>();
+
+		for (int i = 0; i < RestaurantList.size(); i++) {
+			Restaurant.add(RestaurantList.get(i).getName());
+		}
+
+>>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+		ArrayList<Object> Menu = new ArrayList<Object>();
+		ArrayList<Object> Order = new ArrayList<Object>();
+
+<<<<<<< HEAD
 		Menu.add("Hot Dog");
 		Menu.add("Pufferfish");
 
@@ -77,10 +102,39 @@ public class FOrderFood extends FOrderFoodPage {
 //				}else {
 //					FAlerts.Error("Selection Error", "Please select a Restaurant to order from.");
 //				}
+=======
+		ListPan.SetList(Restaurant);
+		// ListPan3.SetList(Order);
+
+		BTNRestaurant.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BTNRestaurant.setEnabled(false);
+
+				MenuList = DBItem.getAllItems(RestaurantList.get(ListPan.GetSelectedIndex()).getId());
+
+				for (int i = 0; i < MenuList.size(); i++) {
+					Menu.add(MenuList.get(i).getItem_dish());
+				}
+
+				ListPan2.SetList(Menu);
 
 			}
 		});
 
+		BTNMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				TFMeal.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_dish() + "");
+				TFPrice.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_price() + "");
+>>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
+			}
+
+		});
+
+<<<<<<< HEAD
 		BTNOrder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -154,9 +208,80 @@ public class FOrderFood extends FOrderFoodPage {
 		});
 
 	}
+=======
+		BTNAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				order_items = "(" + TFQuantity.getText() + "x)" + TFMeal.getText() + " : "
+						+ String.valueOf(Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText()))
+						+ "$";
+				Order.add(order_items);
+				ListPan3.SetList(Order);
+				sum += (Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText()));
+				TFTotal.setText(String.valueOf(sum));
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
+				// Restaurant Selection validation
+				// if(RESTAURANT IS SELECTED) {
+				// Menu Selection validation
+				// if(MENU IS SELECTED) {
+				// Quantity validation
+				// if(TFQuantity.getText().equals("") ||
+				// TFQuantity.getText().matches("[a-zA-Z]+") ||
+				// !TFQuantity.getText().matches("[0-9]+")) {
+				// FAlerts.Error("Quantity Error", "Please enter an appropriate
+				// number of meals.");
+				// }else {
+				// TODO ADD ORDER TO ORDERLIST
+				// TODO ADD PRICE TO TOTAL TEXTFIELDS
+				// FAlerts.Say("Add Meal Success", "Meal has been added to
+				// Order!");
+				// }
+
+				// }else {
+				// FAlerts.Error("Selection Error", "Please select a Menu to
+				// order from.");
+				// }
+
+				// }else {
+				// FAlerts.Error("Selection Error", "Please select a Restaurant
+				// to order from.");
+				// }
+			}
+		});
+
+		BTNOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+>>>>>>> 568a267047de508b1ba71ece30b4669afffeeaf9
+
+		BTNDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// TODO BTNDELETE DELETES THE MOST RECENT ORDER (WILL CHANGE.
+				// MAYBE).
+
+				// Empty List Validation
+				// if(ListPan3 != null && ListPan3.isEmpty()) {
+				// FAlerts.Error("Missing Order Error", "Missing Orders.");
+				// }else {
+				// if(FAlerts.Confirm("Order Deletion Confirmation", "Would you
+				// like to delete your recent Order?")) {
+
+				// TODO REMOVE ORDER FROM ORDERLIST AND ORDERLIST ARRAY.
+				// TODO REMOVE PRICE FROM TOTAL TEXTFIELD
+				// FAlerts.Say("Order Deleted", "Your Order was deleted!");
+				// }else {
+				// FAlerts.Say("Order Deletion Cancelled", "Deletion was
+				// cancelled successfully!");
+				// }
+				// }
+
+			}
+		});
 
 	}
 }
