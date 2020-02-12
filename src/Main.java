@@ -37,15 +37,13 @@ import utils.FormEntities;
 
 public class Main {
 	public static void main(String[] args) {
-
 		new DBConnecter();
-
 		DBConnecter.OpenConnection();
 		
 		new FOrderFood();
+
 		
-		//System.out.println(DBRestaurant.getAllRestaurants());
-		//System.out.println(DBOrder.GetOrder(58));
+
 	}
 
 }

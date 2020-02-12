@@ -13,7 +13,7 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 	
 	public FForm(){
 		this.setTitle("New FForm");
-		this.setSize(984,1080);
+		this.setSize(800,600);
 		this.setResizable(false);
 		
 		MenuBar = new FMainMenu();
