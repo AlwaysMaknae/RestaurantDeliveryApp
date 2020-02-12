@@ -45,8 +45,6 @@ public class UserModel extends Model {
 	}
 	
 
-
-	
 	//functions to call DBUser functions
 	public void Create() {
 		DBUser.AddUser(this);

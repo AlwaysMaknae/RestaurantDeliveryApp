@@ -7,19 +7,25 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
 
-public class FDoneDeliveryPage extends FForm {
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
-	protected JButton BTNSelect, BTNDone;
+public class FViewDeliveryGuyPage extends FForm {
+	
+	protected FButton BTNSelect, BTNComplete;
 	
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
+	
+	protected FListView ListPan;
 
-	public FDoneDeliveryPage() {
+	public FViewDeliveryGuyPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -44,8 +50,7 @@ public class FDoneDeliveryPage extends FForm {
 		FLabel ListOrderTitleLbl = new FLabel("Order");
 		ListTitlePan.add(ListOrderTitleLbl);
 
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(300, 905));
 		RestaurantListPan.add(ListPan);
 
@@ -55,7 +60,7 @@ public class FDoneDeliveryPage extends FForm {
 		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(300, 26));
 		RestaurantListButtonPan.add(BTNSelect);
 
@@ -76,8 +81,8 @@ public class FDoneDeliveryPage extends FForm {
 		TitlePan.setPreferredSize(new Dimension(250, 35));
 		InnerPan.add(TitlePan);
 		
-		FLabel DeliveryMadeLbl = new FLabel("Delivery Made");
-		TitlePan.add(DeliveryMadeLbl);
+		FLabel ViewDeliveryLbl = new FLabel("View Delivery");
+		TitlePan.add(ViewDeliveryLbl);
 		
 		JPanel ViewDeliveryInfoPan = new JPanel();
 		ViewDeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
@@ -128,9 +133,9 @@ public class FDoneDeliveryPage extends FForm {
 		ButtonPan.setPreferredSize(new Dimension(250, 25));
 		InnerPan.add(ButtonPan);
 		
-		BTNDone = new JButton("Delivery Done");
-		BTNDone.setPreferredSize(new Dimension(150, 25));
-		ButtonPan.add(BTNDone);
+		BTNComplete = new FButton("Complete Consultation");
+		BTNComplete.setPreferredSize(new Dimension(200, 25));
+		ButtonPan.add(BTNComplete);
 		
 		JPanel MainSpacePan2 = new JPanel();
 		MainSpacePan2.setPreferredSize(new Dimension(160, 975));
@@ -139,7 +144,6 @@ public class FDoneDeliveryPage extends FForm {
 
 		repaint();
 		revalidate();
-
 
 	}
 

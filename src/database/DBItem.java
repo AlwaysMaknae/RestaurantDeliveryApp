@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 //import com.mysql.jdbc.PreparedStatement;
-
 import Model.ItemModel;
 
 public class DBItem {
@@ -18,7 +17,7 @@ public class DBItem {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			stmt.next();
 			System.out.println(stmt.getString(2));
-			return new ItemModel(stmt.getString(1));
+			return new ItemModel(stmt.getString(2));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

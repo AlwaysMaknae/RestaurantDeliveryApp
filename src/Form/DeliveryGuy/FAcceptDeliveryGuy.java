@@ -1,11 +1,11 @@
-package Form.Restauranteur;
+package Form.DeliveryGuy;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FAcceptOrder extends FAcceptOrderPage{
-	
-	public FAcceptOrder() {
+public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage{
+
+	public FAcceptDeliveryGuy() {
 		// Empty Login Error Validation once actionlistener is implemented.
 
 		/*
@@ -32,7 +32,7 @@ public class FAcceptOrder extends FAcceptOrderPage{
 			}
 		});
 		
-		BTNAcceptOrder.addActionListener(new ActionListener() {			
+		BTNAccept.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -46,5 +46,5 @@ public class FAcceptOrder extends FAcceptOrderPage{
 		
 
 	}
-
+	
 }

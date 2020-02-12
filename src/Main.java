@@ -1,15 +1,20 @@
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import javax.swing.JFrame;
 import Form.AddClient.FAddClient;
-import Form.Admin.FAdmin;
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
 import Form.Client.FViewOrderFoodHistory;
-import Form.Delivery.FAddDeliveryGuy;
-import Form.Delivery.FDeleteDeliveryGuy;
-import Form.Delivery.FEditDeliveryGuy;
-import Form.DeliveryGuy.FAcceptDelivery;
-import Form.DeliveryGuy.FDoneDelivery;
-import Form.DeliveryGuy.FViewDelivery;
+import Form.Dashboard.FDashboard;
+import Form.Deliverers.FAddDeliverer;
+import Form.Deliverers.FDeleteDeliverer;
+import Form.Deliverers.FEditDeliverer;
+import Form.DeliveryGuy.FAcceptDeliveryGuy;
+import Form.DeliveryGuy.FDoneDeliveryGuy;
+import Form.DeliveryGuy.FViewDeliveryGuy;
+import Form.Client.FEditAccount;
 import Form.Login.FLogin;
 import Form.Manager.FViewRestaurantOrder;
 import Form.Menu.FAddMenu;
@@ -27,13 +32,14 @@ import Model.OrderModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
+import utils.FAlerts;
 import utils.FormEntities;
 
 public class Main {
-
 	public static void main(String[] args) {
 
 		new DBConnecter();
+
 		/*
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
@@ -48,7 +54,9 @@ public class Main {
 		//new FAddRestaurant();
 		//new FEditRestaurant();
 		//new FDeleteRestaurant();
-		//new FAddRestaurantMenu();
+		//new FAddRestaurantMenu();//VVVVVV
+		//TODO SHOW THIS JOPTION IF THE RESTAURANT HAS NO MENU!
+		//FAlerts.Error("Menu Error", "All restaurants do not have a Menu. \n Please select a restaurant to add a Menu.");
 		
 		/*
 		 * MENU FORM
@@ -60,14 +68,11 @@ public class Main {
 		
 		/*
 		 * DELIVERY FORM
-		 * ***NOTE*** FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY" WHILE
-		 * FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVERY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FAddDeliveryGuy();
-		//new FEditDeliveryGuy();
-		//new FDeleteDeliveryGuy();
+		//new FAddDeliverer();
+		//new FDeleteDeliverer();
+		new FEditDeliverer();
 		
 		/*
 		 * ADMIN ACCOUNT FORM
@@ -77,14 +82,11 @@ public class Main {
 		
 		/*
 		 * DELIVERYGUY ACCOUNT FORM
-		 * ***NOTE*** FORM.DELIVERYGUY JAVA CLASSES ARE CALLED "DELIVER" WHILE
-		 * FORM.DELIVERY JAVA CLASSES ARE CALLED "DELIVERYGUY". THIS WAS A BIG UH-OH
-		 * MADE BY DOM. PLEASE FORGIVE HIM.
 		 */
 		
-		//new FViewDelivery();
-		//new FAcceptDelivery();
-		//new FDoneDelivery();
+		//new FViewDeliveryGuy();
+		//new FAcceptDeliveryGuy();
+		//new FDoneDeliveryGuy();
 		
 		/*
 		 * RESTAURANTEUR ACCOUNT FORM
@@ -109,6 +111,29 @@ public class Main {
 		//new FViewOrderFoodHistory();
 		
 		
+		
+		//new FormEntities();
+
+		
+		
+		//FDashboard ff = new FDashboard();
+		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//new FormEntities();
+		
+		/*
+		FAlerts.Error("Error Test", "Testing the errors.");
+		
+		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
+			System.out.println("Yes");
+		} else {
+			System.out.println("No.");
+		}
+		
+		FAlerts.Say("title", "message");
+		
+		System.out.println(FAlerts.Ask("Question", "Why ?"));
+		
+		
 		DBConnecter.OpenConnection();
 		//UserModel jose = new UserModel("JJJJ", "yeey", 3);
 		//RestaurantModel tester = DBRestaurant.GetRestaurant(2);
@@ -129,6 +154,8 @@ public class Main {
 		//System.out.println(DBDeliverer.CompareArea(2, "J2K").get(0).getName());
 		
 		//DBRestaurant.UpdateRestaurant(tester);
+		*/
+		
 		
 		//ClientModel moodle = new ClientModel(10);
 		//moodle.Read();

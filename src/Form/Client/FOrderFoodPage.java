@@ -6,19 +6,24 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
+import utils.FTextField;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class FOrderFoodPage extends FForm {
 	
-	protected JTextField TFDeliveryTimeYMD, TFHour, TFMinute, TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
+	protected FTextField TFDeliveryTimeYMD, TFHour, TFMinute, TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
 	
-	protected JButton BTNAdd, BTNDelete, BTNOrder;
+	protected FButton BTNAdd, BTNDelete, BTNOrder;
 
-
+	protected FListView ListPan, ListPan2, ListPan3;
+	
 	public FOrderFoodPage() {
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -53,7 +58,7 @@ public class FOrderFoodPage extends FForm {
 		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
 		DeliveryInfoPan.add(DeliveryTimeYMDLbl);
 		
-		TFDeliveryTimeYMD = new JTextField();
+		TFDeliveryTimeYMD = new FTextField(0);
 		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
 		DeliveryInfoPan.add(TFDeliveryTimeYMD);
 		
@@ -66,14 +71,14 @@ public class FOrderFoodPage extends FForm {
 		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
 		DeliveryInfoPan.add(DeliveryTimeLbl);
 		
-		TFHour = new JTextField();
+		TFHour = new FTextField(0);
 		TFHour.setPreferredSize(new Dimension(20, 20));
 		DeliveryInfoPan.add(TFHour);
 		
 		FLabel HourLbl = new FLabel("H");
 		DeliveryInfoPan.add(HourLbl);
 		
-		TFMinute = new JTextField();
+		TFMinute = new FTextField(0);
 		TFMinute.setPreferredSize(new Dimension(20, 20));
 		DeliveryInfoPan.add(TFMinute);
 		
@@ -89,7 +94,7 @@ public class FOrderFoodPage extends FForm {
 		PostalCodeLbl.setPreferredSize(new Dimension(160, 14));
 		DeliveryInfoPan.add(PostalCodeLbl);
 		
-		TFPostalCode = new JTextField();
+		TFPostalCode = new FTextField(0);
 		TFPostalCode.setPreferredSize(new Dimension(75, 20));
 		DeliveryInfoPan.add(TFPostalCode);
 		
@@ -112,9 +117,8 @@ public class FOrderFoodPage extends FForm {
 		RestaurantTitleLbl.setText("Restaurant");
 		RestaurantListTitlePan.add(RestaurantTitleLbl);
 		
-		JPanel ListPan = new JPanel();
-		ListPan.setPreferredSize(new Dimension(250, 350));
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
+		ListPan.setPreferredSize(new Dimension(200, 350));
 		RestaurantListPan.add(ListPan);
 		
 		JPanel MenuListPan = new JPanel();
@@ -131,9 +135,8 @@ public class FOrderFoodPage extends FForm {
 		MenuListTitleLbl.setText("Menu");
 		MenuListTitlePan.add(MenuListTitleLbl);
 		
-		JPanel ListPan2 = new JPanel();
+		ListPan2 = new FListView();
 		ListPan2.setPreferredSize(new Dimension(200, 350));
-		ListPan2.setBackground(Color.RED);
 		MenuListPan.add(ListPan2);
 		
 		JPanel OrderInfoPan = new JPanel();
@@ -150,7 +153,7 @@ public class FOrderFoodPage extends FForm {
 		MealLbl.setPreferredSize(new Dimension(75, 14));
 		OrderInfoPan.add(MealLbl);
 		
-		TFMeal = new JTextField();
+		TFMeal = new FTextField(0);
 		TFMeal.setEnabled(false);
 		TFMeal.setPreferredSize(new Dimension(75, 20));
 		OrderInfoPan.add(TFMeal);
@@ -159,7 +162,7 @@ public class FOrderFoodPage extends FForm {
 		PriceLbl.setPreferredSize(new Dimension(75, 14));
 		OrderInfoPan.add(PriceLbl);
 		
-		TFPrice = new JTextField();
+		TFPrice = new FTextField(0);
 		TFPrice.setEnabled(false);
 		TFPrice.setPreferredSize(new Dimension(75, 20));
 		OrderInfoPan.add(TFPrice);
@@ -168,7 +171,7 @@ public class FOrderFoodPage extends FForm {
 		QuantityLbl.setPreferredSize(new Dimension(75, 14));
 		OrderInfoPan.add(QuantityLbl);
 		
-		TFQuantity = new JTextField();
+		TFQuantity = new FTextField(0);
 		TFQuantity.setPreferredSize(new Dimension(75, 20));
 		OrderInfoPan.add(TFQuantity);
 		
@@ -186,11 +189,11 @@ public class FOrderFoodPage extends FForm {
 		OrderInfoSpacePan3.setPreferredSize(new Dimension(175, 115));
 		OrderInfoPan.add(OrderInfoSpacePan3);
 		
-		BTNAdd = new JButton("Add");
+		BTNAdd = new FButton("Add");
 		BTNAdd.setPreferredSize(new Dimension(125, 25));
 		OrderInfoPan.add(BTNAdd);
 	
-		BTNDelete = new JButton("Delete");
+		BTNDelete = new FButton("Delete");
 		BTNDelete.setPreferredSize(new Dimension(125, 25));
 		OrderInfoPan.add(BTNDelete);
 		
@@ -207,9 +210,8 @@ public class FOrderFoodPage extends FForm {
 		FLabel OrderListTitleLbl = new FLabel("Order");
 		OrderListTitlePan.add(OrderListTitleLbl);
 		
-		JPanel ListPan3 = new JPanel();
+		ListPan3 = new FListView();
 		ListPan3.setPreferredSize(new Dimension(200, 350));
-		ListPan3.setBackground(Color.RED);
 		OrderListPan.add(ListPan3);
 		
 		JPanel PaymentPan = new JPanel();
@@ -220,7 +222,7 @@ public class FOrderFoodPage extends FForm {
 		FLabel TotalLbl = new FLabel("Total (no taxes): ");
 		PaymentPan.add(TotalLbl);
 		
-		TFTotal = new JTextField();
+		TFTotal = new FTextField(0);
 		TFTotal.setEnabled(false);
 		PaymentPan.add(TFTotal);
 		TFTotal.setColumns(10);
@@ -233,7 +235,7 @@ public class FOrderFoodPage extends FForm {
 		PaymentSpacePan.setPreferredSize(new Dimension(790, 1));
 		PaymentPan.add(PaymentSpacePan);
 		
-		BTNOrder = new JButton("Order");
+		BTNOrder = new FButton("Order");
 		BTNOrder.setPreferredSize(new Dimension(75, 25));
 		PaymentPan.add(BTNOrder);
 		

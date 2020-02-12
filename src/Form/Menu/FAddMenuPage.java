@@ -6,8 +6,11 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
+import utils.FTextField;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -15,9 +18,11 @@ import javax.swing.JTextField;
 
 public class FAddMenuPage extends FForm{
 	
-	protected JTextField TFItem;
-	protected JTextField TFPrice;
-	protected JButton BTNAddItem, BTNSelect, BTNCreateMenu;
+	protected FTextField TFItem;
+	protected FTextField TFPrice;
+	protected FButton BTNAddItem, BTNSelect, BTNCreateMenu;
+	
+	protected FListView ListPan, MenuItemListPan;
 
 	public FAddMenuPage() {
 		
@@ -44,8 +49,7 @@ public class FAddMenuPage extends FForm{
 	FLabel ListRestaurantTitleLbl = new FLabel("Restaurant");
 	ListTitlePan.add(ListRestaurantTitleLbl);
 	
-	JPanel ListPan = new JPanel();
-	ListPan.setBackground(Color.RED);
+	ListPan = new FListView();
 	ListPan.setPreferredSize(new Dimension(220, 905));
 	RestaurantListPan.add(ListPan);
 	
@@ -55,7 +59,7 @@ public class FAddMenuPage extends FForm{
 	RestaurantListButtonPan.setPreferredSize(new Dimension(220, 26));
 	RestaurantListPan.add(RestaurantListButtonPan);
 	
-	BTNSelect = new JButton("Select");
+	BTNSelect = new FButton("Select");
 	BTNSelect.setPreferredSize(new Dimension(220, 26));
 	RestaurantListButtonPan.add(BTNSelect);
 	
@@ -82,8 +86,7 @@ public class FAddMenuPage extends FForm{
 	SpacePan0.setPreferredSize(new Dimension(745, 1));
 	InnerPan.add(SpacePan0);
 	
-	JPanel MenuItemListPan = new JPanel();
-	MenuItemListPan.setBackground(Color.RED);
+	MenuItemListPan = new FListView();
 	MenuItemListPan.setPreferredSize(new Dimension(325, 600));
 	InnerPan.add(MenuItemListPan);
 	
@@ -97,7 +100,7 @@ public class FAddMenuPage extends FForm{
 	CreateMenuPan.setPreferredSize(new Dimension(325, 80));
 	InnerPan.add(CreateMenuPan);
 	
-	BTNCreateMenu = new JButton("Create Menu");
+	BTNCreateMenu = new FButton("Create Menu");
 	BTNCreateMenu.setPreferredSize(new Dimension(110, 25));
 	CreateMenuPan.add(BTNCreateMenu);
 	
@@ -123,7 +126,7 @@ public class FAddMenuPage extends FForm{
 	ItemLbl.setPreferredSize(new Dimension(45, 14));
 	AddItemPan.add(ItemLbl);
 	
-	TFItem = new JTextField();
+	TFItem = new FTextField(0);
 	TFItem.setPreferredSize(new Dimension(250, 20));
 	AddItemPan.add(TFItem);
 	
@@ -131,11 +134,11 @@ public class FAddMenuPage extends FForm{
 	PriceLbl.setPreferredSize(new Dimension(45, 14));
 	AddItemPan.add(PriceLbl);
 	
-	TFPrice = new JTextField();
+	TFPrice = new FTextField(0);
 	TFPrice.setPreferredSize(new Dimension(250, 20));
 	AddItemPan.add(TFPrice);
 	
-	BTNAddItem = new JButton("Add Item");
+	BTNAddItem = new FButton("Add Item");
 	BTNAddItem.setPreferredSize(new Dimension(85, 25));
 	AddItemPan.add(BTNAddItem);
 	

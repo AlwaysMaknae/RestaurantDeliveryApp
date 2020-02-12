@@ -7,18 +7,21 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FTextField;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class FAddClientPage extends FForm{
 	
-	protected JTextField TFNewUsername, TFNewPassword, TFConfirmPass, TFLastName, TFFirstName, TFAddress, TFEmail;
-	protected JTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFNewUsername, TFNewPassword, TFConfirmPass, TFLastName, TFFirstName, TFAddress, TFEmail;
+	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
-	protected JButton BTNSave;
+	protected FButton BTNSave, BTNReturn, BTNQuit, BTNVerify;
 	
 	
 	public FAddClientPage() {
@@ -62,7 +65,7 @@ public class FAddClientPage extends FForm{
 		NewUsernameLbl.setPreferredSize(new Dimension(125, 14));
 		CreateAccountPan.add(NewUsernameLbl);
 		
-		TFNewUsername = new JTextField();
+		TFNewUsername = new FTextField(0);
 		TFNewUsername.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFNewUsername);
 		
@@ -70,8 +73,8 @@ public class FAddClientPage extends FForm{
 		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(30, 10));
 		CreateAccountPan.add(SpacePan1);
-		
-		JButton BTNVerify = new JButton("Verify");
+	
+		BTNVerify = new FButton("Verify");
 		BTNVerify.setPreferredSize(new Dimension(70, 25));
 		CreateAccountPan.add(BTNVerify);
 		
@@ -85,7 +88,7 @@ public class FAddClientPage extends FForm{
 		NewPasswordLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(NewPasswordLbl);
 		
-		TFNewPassword = new JTextField();
+		TFNewPassword = new FTextField(0);
 		TFNewPassword.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFNewPassword);
 		
@@ -99,7 +102,7 @@ public class FAddClientPage extends FForm{
 		NewConfirmPassLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(NewConfirmPassLbl);
 		
-		TFConfirmPass = new JTextField();
+		TFConfirmPass = new FTextField(0);
 		TFConfirmPass.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFConfirmPass);
 		
@@ -113,7 +116,7 @@ public class FAddClientPage extends FForm{
 		LastNameLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(LastNameLbl);
 		
-		TFLastName = new JTextField();
+		TFLastName = new FTextField(0);
 		TFLastName.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFLastName);
 		
@@ -127,7 +130,7 @@ public class FAddClientPage extends FForm{
 		FirstNameLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(FirstNameLbl);
 		
-		TFFirstName = new JTextField();
+		TFFirstName = new FTextField(0);
 		TFFirstName.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFFirstName);
 		
@@ -141,7 +144,7 @@ public class FAddClientPage extends FForm{
 		AddressLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(AddressLbl);
 		
-		TFAddress = new JTextField();
+		TFAddress = new FTextField(0);
 		TFAddress.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFAddress);
 		
@@ -155,7 +158,7 @@ public class FAddClientPage extends FForm{
 		EmailLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(EmailLbl);
 		
-		TFEmail = new JTextField();
+		TFEmail = new FTextField(0);
 		TFEmail.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFEmail);
 		
@@ -174,7 +177,7 @@ public class FAddClientPage extends FForm{
 		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(BracketLbl);
 		
-		TFPhoneNum_1 = new JTextField();
+		TFPhoneNum_1 = new FTextField(0);
 		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
 		CreateAccountPan.add(TFPhoneNum_1);
 		
@@ -183,7 +186,7 @@ public class FAddClientPage extends FForm{
 		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(BracketLbl2);
 		
-		TFPhoneNum_2 = new JTextField();
+		TFPhoneNum_2 = new FTextField(0);
 		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
 		CreateAccountPan.add(TFPhoneNum_2);
 		
@@ -192,7 +195,7 @@ public class FAddClientPage extends FForm{
 		SpacePan9.setPreferredSize(new Dimension(5, 15));
 		CreateAccountPan.add(SpacePan9);
 		
-		TFPhoneNum_3 = new JTextField();
+		TFPhoneNum_3 = new FTextField(0);
 		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
 		CreateAccountPan.add(TFPhoneNum_3);
 		
@@ -213,15 +216,15 @@ public class FAddClientPage extends FForm{
 		SpacePan11.setPreferredSize(new Dimension(900, 15));
 		ButtonPan.add(SpacePan11);
 		
-		BTNSave = new JButton("Save");
+		BTNSave = new FButton("Save");
 		BTNSave.setPreferredSize(new Dimension(89, 28));
 		ButtonPan.add(BTNSave);
 		
-		JButton BTNReturn = new JButton("Return");
+		BTNReturn = new FButton("Return");
 		BTNReturn.setPreferredSize(new Dimension(89, 28));
 		ButtonPan.add(BTNReturn);
 		
-		JButton BTNQuit = new JButton("Quit");
+		BTNQuit = new FButton("Quit");
 		BTNQuit.setPreferredSize(new Dimension(89, 28));
 		ButtonPan.add(BTNQuit);
 		

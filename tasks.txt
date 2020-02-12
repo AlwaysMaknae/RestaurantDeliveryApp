@@ -1,0 +1,6 @@
+fetch all orders according to [client, restaurant]
+
+insertion encryption
+menu navigation ---
+login query 
+Session class [ FMenuNavigation ]

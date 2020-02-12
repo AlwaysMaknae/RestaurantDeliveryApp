@@ -11,13 +11,18 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
+import utils.FTextField;
 
 public class FOrderReadyPage extends FForm{
 
-	protected JButton BTNSelect;
-	protected JTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	protected FButton BTNSelect, BTNOrderReady;
+	protected FTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	
+	protected FListView ListPan;
 
 	public FOrderReadyPage() {
 
@@ -44,8 +49,7 @@ public class FOrderReadyPage extends FForm{
 		FLabel ListOrderTitleLbl = new FLabel("Order Accepted");
 		ListTitlePan.add(ListOrderTitleLbl);
 
-		JPanel ListPan = new JPanel();
-		ListPan.setBackground(Color.RED);
+		ListPan = new FListView();
 		ListPan.setPreferredSize(new Dimension(300, 905));
 		RestaurantListPan.add(ListPan);
 
@@ -55,7 +59,7 @@ public class FOrderReadyPage extends FForm{
 		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
-		BTNSelect = new JButton("Select");
+		BTNSelect = new FButton("Select");
 		BTNSelect.setPreferredSize(new Dimension(300, 26));
 		RestaurantListButtonPan.add(BTNSelect);
 
@@ -89,7 +93,7 @@ public class FOrderReadyPage extends FForm{
 		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
 		ViewOrderInfoPan1.add(DeliveryTimeYMDLbl);
 		
-		TFDeliveryTimeYMD = new JTextField();
+		TFDeliveryTimeYMD = new FTextField(0);
 		TFDeliveryTimeYMD.setEnabled(false);
 		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
 		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
@@ -103,7 +107,7 @@ public class FOrderReadyPage extends FForm{
 		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
 		ViewOrderInfoPan1.add(DeliveryTimeLbl);
 		
-		TFHour = new JTextField();
+		TFHour = new FTextField(0);
 		TFHour.setEnabled(false);
 		TFHour.setPreferredSize(new Dimension(20, 20));
 		ViewOrderInfoPan1.add(TFHour);
@@ -111,7 +115,7 @@ public class FOrderReadyPage extends FForm{
 		FLabel HourLbl = new FLabel("H");
 		ViewOrderInfoPan1.add(HourLbl);
 		
-		TFMinute = new JTextField();
+		TFMinute = new FTextField(0);
 		TFMinute.setEnabled(false);
 		TFMinute.setPreferredSize(new Dimension(20, 20));
 		ViewOrderInfoPan1.add(TFMinute);
@@ -128,7 +132,7 @@ public class FOrderReadyPage extends FForm{
 		PostalCodeLbl.setPreferredSize(new Dimension(160, 14));
 		ViewOrderInfoPan1.add(PostalCodeLbl);
 		
-		TFPostalCode = new JTextField();
+		TFPostalCode = new FTextField(0);
 		TFPostalCode.setEnabled(false);
 		TFPostalCode.setPreferredSize(new Dimension(75, 20));
 		ViewOrderInfoPan1.add(TFPostalCode);
@@ -156,7 +160,7 @@ public class FOrderReadyPage extends FForm{
 		SpacePan2.setPreferredSize(new Dimension(100, 10));
 		ViewOrderInfoPan2.add(SpacePan2);
 		
-		JButton BTNOrderReady = new JButton("Order Ready");
+		BTNOrderReady = new FButton("Order Ready");
 		BTNOrderReady.setPreferredSize(new Dimension(115, 23));
 		ViewOrderInfoPan2.add(BTNOrderReady);
 
