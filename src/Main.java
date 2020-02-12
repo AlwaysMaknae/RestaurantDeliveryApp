@@ -38,7 +38,7 @@ public class Main {
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
-		new FLogin();
+		//new FLogin();
 		//new FAddClient();
 		
 		/*
@@ -105,7 +105,7 @@ public class Main {
 
 		//new FEditAccount();
 		//new FDeleteAccount();
-		//new FOrderFood();
+		new FOrderFood();
 		//new FViewOrderFoodHistory();
 		
 		
@@ -130,9 +130,9 @@ public class Main {
 		
 		//DBRestaurant.UpdateRestaurant(tester);
 		
-		ClientModel moodle = new ClientModel(10);
-		moodle.Read();
-		System.out.println(moodle.getClient_email());
+		//ClientModel moodle = new ClientModel(10);
+		//moodle.Read();
+		//System.out.println(moodle.getClient_email());
 	}
 
 }
