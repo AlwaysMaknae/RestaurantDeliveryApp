@@ -4,87 +4,96 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import Model.ItemModel;
 import Model.RestaurantModel;
+import database.DBItem;
+import database.DBRestaurant;
 
-public class FOrderFood extends FOrderFoodPage{
-
+public class FOrderFood extends FOrderFoodPage {
+	private ArrayList<ItemModel> MenuList;
+	private String order_items;
+	private float sum;
 	public FOrderFood() {
-		// Empty Login Error Validation once actionlistener is implemented.
+		
 
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
+		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
 		
-		
-		
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
 		// ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
-		// ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
 
-
-		// RM = DBRestaurant.GetAllRestaurants();
 
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
+		
+		for (int i = 0; i < RestaurantList.size(); i++) {
+			Restaurant.add(RestaurantList.get(i).getName());
+		}
+		
+		
+		ArrayList<Object> Menu = new ArrayList<Object>();
+		ArrayList<Object> Order = new ArrayList<Object>();
 
-				Restaurant.add("Orange");
-				Restaurant.add("Apple");
-				Restaurant.add("Cherry");
-				Restaurant.add("Melon");
-				Restaurant.add("Cheese");
-
-		/*
-		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-		 */
-		
-		// ArrayList<Object> Order = new ArrayList<Object>();
-
-				// Order.add("Enter date here");
-		
-		
-		// ArrayList<Object> Menu = new ArrayList<Object>();
-
-				// Menu.add("Hot Dog");
-				// Menu.add("Pufferfish");
-		
-		
 		ListPan.SetList(Restaurant);
-		//ListPan2.SetList(Menu);
-		//ListPan3.SetList(Order);
+		// ListPan3.SetList(Order);
+
+		BTNRestaurant.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BTNRestaurant.setEnabled(false);
+
+				MenuList = DBItem.getAllItems(RestaurantList.get(ListPan.GetSelectedIndex()).getId());
+				
+				for (int i = 0; i < MenuList.size(); i++) {
+					Menu.add(MenuList.get(i).getItem_dish());
+				}
+
+				ListPan2.SetList(Menu);
+
+			}
+
+		});
 		
-		
-		
-		
-		
-		BTNAdd.addActionListener(new ActionListener() {		
+		BTNMenu.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TFMeal.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_dish() + "");
+				TFPrice.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_price() + "");
+				
+				
+			}
+			
+		});
+
+		BTNAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				order_items = "(" + TFQuantity.getText() + "x)" + TFMeal.getText() + " : " + String.valueOf(Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText())) + "$" ;
+				Order.add(order_items);
+				ListPan3.SetList(Order);
+				sum += (Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText()));
+				TFTotal.setText(String.valueOf(sum));
+			}
+		});
+
+		BTNOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				;;;;;;;;; 
+
+			}
+		});
+
+		BTNDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		BTNOrder.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		BTNDelete.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
+
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
 
 	}
 }
