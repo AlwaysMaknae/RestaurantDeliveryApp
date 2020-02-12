@@ -63,8 +63,24 @@ public class OrderModel extends Model {
 		this.price = price;
 		this.status = status;
 		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
 		this.client_id = client_id;
 		this.order_delivered = order_delivered;
+	}
+	
+	private void ReadOrderModel(OrderModel Me){
+		this.id = Me.getId();
+		this.address = Me.getAddress();
+		this.postal_code = Me.getPostal_code();
+		this.date = Me.getDate();
+		this.items = Me.getItems();
+		this.delivery_time = Me.getDelivery_time();
+		this.price = Me.getPrice();
+		this.status = Me.getStatus();
+		this.restaurant_id = Me.getRestaurant_id();
+		this.deliverer_id = Me.getDeliverer_id();
+		this.client_id = Me.getClient_id();
+		this.order_delivered = Me.getOrder_delivered();
 	}
 
 	public void Create() {
@@ -72,11 +88,11 @@ public class OrderModel extends Model {
 	}
 
 	public void Update() {
-		DBOrder.UpdareOrder(this);
+		ReadOrderModel(DBOrder.UpdareOrder(this));
 	}
 
-	public Model Read() {
-		return DBOrder.GetOrder(id);
+	public void Read() {
+		ReadOrderModel(DBOrder.GetOrder(this.id));
 	}
 
 	public void Delete() {

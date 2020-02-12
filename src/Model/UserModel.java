@@ -3,10 +3,11 @@ package Model;
 import database.DBUser;
 
 public class UserModel extends Model {
-	private String username;
-	private String password;
-	private int access_lvl;
-	private int id;
+	protected String username;
+	protected String password;
+	protected int access_lvl;
+	protected int id;
+	protected int status;
 	
 	//constructors and overloads
 	public UserModel(String username){
@@ -24,7 +25,16 @@ public class UserModel extends Model {
 		this.username = username;
 		this.access_lvl = access_lvl;
 	}
-	public UserModel(String username, String password, int access_lvl){
+	public UserModel(int id, String username, String password, int access_lvl, int status){
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.access_lvl = access_lvl;
+		this.status = status;
+	}
+	
+	public UserModel(int id, String username, String password, int access_lvl){
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.access_lvl = access_lvl;
@@ -46,8 +56,8 @@ public class UserModel extends Model {
 		DBUser.UpdateUser(this);
 	}
 
-	public Model Read() {
-		return DBUser.GetUser(this.username, this.password);
+	public void Read() {
+		
 	}
 
 	public void Delete() {
@@ -82,6 +92,12 @@ public class UserModel extends Model {
 	}
 	public void setAccess_lvl(int access_lvl) {
 		this.access_lvl = access_lvl;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

@@ -26,6 +26,23 @@ public class DBItem {
 
 	}
 	
+	public static ItemModel getItem(int item_id) {
+		String MyQuery = "SELECT * from items WHERE item_id='" + item_id
+				+ "'";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			stmt.next();
+			return new ItemModel(stmt.getInt(1), stmt.getString(2), stmt.getFloat(3), stmt.getInt(4), stmt.getInt(5));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	
+	
 	public static ArrayList<ItemModel> getAllItems(int restaurant_id){
 		String MyQuery = "SELECT * FROM items WHERE status=1 AND restaurant_id='" + restaurant_id + "'";
 		ResultSet stmt;

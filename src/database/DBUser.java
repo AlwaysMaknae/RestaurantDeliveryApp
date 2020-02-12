@@ -13,19 +13,34 @@ public class DBUser {
 
 	// function to read user
 	public static UserModel GetUser(String username, String password) {
-		String MyQuery = "SELECT * FROM users, clients, deliverers_login, managers, restaurateurs WHERE users.username='"
-				+ username + "' AND users.password='" + password + "' AND users.status=1 OR clients.client_username='"
-				+ username + "' AND clients.client_password='" + password
-				+ "' AND clients.status=1 OR deliverers_login.username='" + username
-				+ "' AND deliverers_login.password='" + password
-				+ "' AND deliverers_login.status=1 OR managers.username='" + username + "' AND managers.password='"
-				+ password + "' AND managers.status=1 OR restaurateurs.username='" + username
-				+ "' AND restaurateurs.password='" + password + "' AND restaurateurs.status=1";
-		ResultSet stmt;
+		String MyQuery = "SELECT user_id, username, password, access_lvl FROM users WHERE users.username=? AND users.password=? AND users.status=1"
+				+ " UNION " 
+				+ "SELECT deliverer_id, username, password, access_lvl FROM deliverers WHERE deliverers.username=? AND deliverers.password=? AND deliverers.status=1"
+				+ " UNION "
+				+ "SELECT manager_id, username, password, access_lvl FROM managers WHERE managers.username=? AND managers.password=? AND managers.status=1"
+				+ " UNION "
+				+ "SELECT restaurateur_id, username, password, access_lvl FROM restaurateurs WHERE restaurateurs.username=? AND restaurateurs.password=? AND restaurateurs.status=1"
+				+ " UNION "
+				+ "SELECT client_id, client_username, client_password, access_lvl FROM clients WHERE clients.client_username=? AND clients.client_password=? AND clients.status=1";
+		ResultSet resultset;
+		PreparedStatement stmt;
 		try {
-			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
-			while (stmt.next()) {
-				return new UserModel(stmt.getString(2), stmt.getString(3), stmt.getInt(4));
+			stmt = DBConnecter.Connect.prepareStatement(MyQuery);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			stmt.setString(3, username);
+			stmt.setString(4, password);
+			stmt.setString(5, username);
+			stmt.setString(6, password);
+			stmt.setString(7, username);
+			stmt.setString(8, password);
+			stmt.setString(9, username);
+			stmt.setString(10, password);
+
+			resultset = stmt.executeQuery();
+			while (resultset.next()) {
+
+				return new UserModel(resultset.getInt(1), resultset.getString(2), resultset.getString(3), resultset.getInt("access_lvl"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

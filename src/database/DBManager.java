@@ -23,6 +23,20 @@ public class DBManager {
 		}
 
 	}
+	
+	public static ManagerModel getManager(int id) {
+		String MyQuery = "SELECT * from managers WHERE manager_id='" + id + "'";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			stmt.next();
+			return new ManagerModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getInt(5), stmt.getInt(6));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	// function to add manager
 

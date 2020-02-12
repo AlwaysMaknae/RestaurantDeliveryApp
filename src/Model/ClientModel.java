@@ -74,7 +74,7 @@ public class ClientModel extends Model {
 	}
 
 	public void Update() {
-		DBClient.UpdateClient(this);
+		ReadClientModel(DBClient.UpdateClient(this));
 	}
 
 	public void Read() {

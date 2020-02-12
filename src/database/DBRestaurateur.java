@@ -23,6 +23,23 @@ public class DBRestaurateur {
 		}
 
 	}
+	
+	public static RestaurateurModel getRestaurant(int id) {
+		String MyQuery = "SELECT * from restaurants WHERE restaurant_id='" + id
+				+ "'";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			if (stmt.next())
+				return new RestaurateurModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getInt(4), stmt.getInt(5), stmt.getInt(6));
+			else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	// function to add restaurateur
 

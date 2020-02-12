@@ -38,7 +38,7 @@ public class Main {
 		 * LOGIN & CREATE NEW ACCOUNT
 		 */
 		
-		//new FLogin();
+		new FLogin();
 		//new FAddClient();
 		
 		/*
