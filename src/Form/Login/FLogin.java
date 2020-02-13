@@ -3,15 +3,14 @@ package Form.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
+import Form.AddClient.FAddClient;
 import Form.Dashboard.FDashboard;
 import Model.AccesLevel;
 import Model.Model;
-import Model.UserModel;
 import database.DBUser;
 import database.Session;
 import utils.FAlerts;
+import utils.Navigator;
 
 public class FLogin extends FLoginView {
 
@@ -50,7 +49,7 @@ public class FLogin extends FLoginView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// Opens the AddClientClass
+				Navigator.Register(Me);
 
 			}
 		});
@@ -58,11 +57,7 @@ public class FLogin extends FLoginView {
 		BTNQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				Session.Quit();
-
-
-				// Closes Application
+				Navigator.Quit();
 			}
 		});
 

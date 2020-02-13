@@ -15,7 +15,7 @@ import database.Session;
 public class FForm extends JFrame implements ActionListener, WindowListener{
 	
 	protected FMainMenu MenuBar;
-	private FForm Me;
+	protected FForm Me;
 	
 	public FForm(){
 		this.setTitle("New FForm");
@@ -43,7 +43,14 @@ public class FForm extends JFrame implements ActionListener, WindowListener{
 	public void windowClosed(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) { Navigator.Quit(); }
+	public void windowClosing(WindowEvent e) { 
+		if(Session.AccesType.equals("")) {
+			Navigator.Quit();
+		} else {
+			this.dispose();
+			new FDashboard();
+		}
+	}
 
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
