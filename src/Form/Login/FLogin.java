@@ -83,7 +83,6 @@ public class FLogin extends FLoginView {
 					
 					this.dispose();
 					new FDashboard();
-	
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();

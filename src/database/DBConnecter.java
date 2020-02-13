@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public abstract class DBConnecter{
 	
 	public static Connection Connect;
-	private static String host = "jdbc:mysql://localhost/restaurantdelivery";
+	private static String host = "jdbc:mysql://localhost/restaurantdelivery?serverTimezone=America/New_York";
 	private static String username = "root";
 	private static String password = "";
 	
