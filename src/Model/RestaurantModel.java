@@ -1,8 +1,10 @@
 package Model;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import database.DBRestaurant;
+import utils.FHoursComboBox;
 
 public class RestaurantModel extends Model{
 	private int id;
@@ -12,6 +14,11 @@ public class RestaurantModel extends Model{
 	private String hours;
 	private String areas;
 	private ArrayList<String> arealist;
+	
+	
+	private LocalTime[] openings = new LocalTime[7];
+	private LocalTime[] closings = new LocalTime[7];
+	
 	private int status;
 	
 	//constructors and overloads
@@ -28,6 +35,7 @@ public class RestaurantModel extends Model{
 		for (String x : tareas) {
 			this.arealist.add(x);
 		}
+		SetTimes();
 	}
 	public RestaurantModel(String name, String address, String number, String hours, String areas){
 		this.name = name;
@@ -35,11 +43,12 @@ public class RestaurantModel extends Model{
 		this.number = number;
 		this.hours = hours;
 		this.areas = areas;
-		/*this.arealist = new ArrayList<String>();
+		this.arealist = new ArrayList<String>();
+		SetTimes();
 		String[] tareas = this.areas.split(" ");
 		for (String x : tareas) {
 			this.arealist.add(x);
-		}*/
+		}
 	}
 	public RestaurantModel(int id){
 		this.id = id;
@@ -72,7 +81,18 @@ public class RestaurantModel extends Model{
 		this.hours = Me.getHours();
 		this.areas = Me.getAreas();
 		this.status = Me.getStatus();
+		SetTimes();
 		
+	}
+	
+	private void SetTimes(){
+		String[] tea = this.hours.split(" ");
+		for (int i = 0; i < openings.length; i++) {
+			openings[i] = FHoursComboBox.FindTime(tea[i]);
+		}
+		for (int i = 0; i < closings.length; i++) {
+			closings[i] = FHoursComboBox.FindTime(tea[i+openings.length]);
+		}
 	}
 	
 	public void Create() {

@@ -149,10 +149,6 @@ public class FMainMenu extends JMenuBar {
 			}
 		});
 		
-		
-		
-		
-		
 		//dman
 		JMenu deliveryGuy = new JMenu("Delivery Guy");
 		//add,edit,delete
