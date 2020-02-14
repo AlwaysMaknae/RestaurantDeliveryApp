@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import Model.ClientModel;
 import Model.UserModel;
 import utils.FAlerts;
+import utils.Navigator;
 
 public class FAddClient extends FAddClientPage {
 
@@ -112,7 +113,7 @@ public class FAddClient extends FAddClientPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// RETURN TO LOGIN SCREEN
+				Navigator.Login(Me);
 
 			}
 		});
@@ -121,7 +122,7 @@ public class FAddClient extends FAddClientPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// CLOSE APPLICATION
+				Navigator.Quit();
 
 			}
 		});

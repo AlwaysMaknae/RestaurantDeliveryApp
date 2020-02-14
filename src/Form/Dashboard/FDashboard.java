@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 import database.DBConnecter;
+import utils.Navigator;
 
 public class FDashboard extends FDashboardPage{
 
@@ -23,9 +24,7 @@ public class FDashboard extends FDashboardPage{
 	
 	@Override
 	public void windowClosing(WindowEvent e) {
-		DBConnecter.CloseConnection();
-		System.out.println("DB Connection Closed");
-		System.exit(0);
+		Navigator.Quit();
 	}
 	
 }

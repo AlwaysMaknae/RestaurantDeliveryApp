@@ -9,6 +9,7 @@ public class FHoursComboBox extends JComboBox<Object> {
 	
 	private int end = 23;
 	private int start = 0;
+
 	
 	public FHoursComboBox(){
 		init();

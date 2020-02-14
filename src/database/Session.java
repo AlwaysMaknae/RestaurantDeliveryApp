@@ -21,16 +21,6 @@ public abstract class Session {
 	
 	public static void Login(Model Client){
 		Session.User = Client;
-		
-		/*
-		 * TransTyping 
-		 * 
-		 * ManagerModel m = new ManagerModel(User.getId());
-		 * m.Read();
-		 * System.out.println(m.getRestaurant_id());
-		 * 
-		*/
-		
 	}
 	
 	public static Model GetUser(){
