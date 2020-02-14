@@ -24,30 +24,32 @@ public class FOrderFood extends FOrderFoodPage {
 	private boolean exit = false;
 	private int InitFlag, Flag;
 
-//	public FOrderFood() {
-//
-//		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-//		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
-//		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
-//
-//		// RM = DBRestaurant.GetAllRestaurants();
-//
-//		ArrayList<Object> Restaurant = new ArrayList<Object>();
-//
-//		Restaurant.add("Orange");
-//		Restaurant.add("Apple");
-//		Restaurant.add("Cherry");
-//		Restaurant.add("Melon");
-//		Restaurant.add("Cheese");
-//
-//		/*
-//		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-//		 */
-//
-//		ArrayList<Object> Order = new ArrayList<Object>();
-//
-//		// Order.add("Enter date here");
+/*	
+	public FOrderFood() {
 
+		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
+		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
+
+		// RM = DBRestaurant.GetAllRestaurants();
+
+		ArrayList<Object> Restaurant = new ArrayList<Object>();
+
+		Restaurant.add("Orange");
+		Restaurant.add("Apple");
+		Restaurant.add("Cherry");
+		Restaurant.add("Melon");
+		Restaurant.add("Cheese");
+
+		
+		  for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
+		 
+
+		ArrayList<Object> Order = new ArrayList<Object>();
+
+		// Order.add("Enter date here");
+		
+*/	
 	private ArrayList<ItemModel> MenuList;
 	private String order_items;
 	private float sum;

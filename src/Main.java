@@ -6,6 +6,7 @@ import Form.AddClient.FAddClient;
 import Form.Client.FDeleteAccount;
 import Form.Client.FEditAccount;
 import Form.Client.FOrderFood;
+import Form.Client.FOrderFoodPage;
 import Form.Client.FViewOrderFoodHistory;
 import Form.Dashboard.FDashboard;
 import Form.Deliverers.FAddDeliverer;
@@ -71,7 +72,7 @@ public class Main {
 		Session.AccesType = "";
 		
 		Navigator.Login(null);
-
+		//new FOrderFoodPage();
 	
 	}
 
