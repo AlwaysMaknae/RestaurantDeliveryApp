@@ -13,7 +13,7 @@ import utils.FAlerts;
 import utils.Navigator;
 
 public class FLogin extends FLoginView {
-
+	public static int logged_id;
 	public FLogin() {
 
 		BTNConnect.addActionListener(this);
@@ -75,7 +75,8 @@ public class FLogin extends FLoginView {
 					
 					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
 					Session.Login(Trying);
-					
+					logged_id = Trying.getId();
+							
 					this.dispose();
 					new FDashboard();
 				}

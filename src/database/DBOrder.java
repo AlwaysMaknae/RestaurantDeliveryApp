@@ -52,7 +52,7 @@ public class DBOrder {
 	}
 	
 	public static ArrayList<OrderModel> getOrderbyRestaurant(int id) {
-		String MyQuery = "SELECT * FROM orders WHERE orders.restaurant_id='" + id + "'";
+		String MyQuery = "SELECT * FROM orders WHERE orders.restaurant_id='" + id + "' AND order_status='NOT READY'";
 		ResultSet stmt;
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		try {
@@ -92,33 +92,6 @@ public class DBOrder {
 	}
 
 	// function to add order
-	public static OrderModel AddOrder(String address, String postal_code,
-			String date, String item, String delivery_time, float price,
-			String status, int restaurant_id, int deliverer_id, int client_id,
-			int delivered) {
-		String MyQuery = "{CALL create_order(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-		java.sql.PreparedStatement stmt;
-		try {
-			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setString(1, address);
-			stmt.setString(2, postal_code);
-			stmt.setString(3, date);
-			stmt.setString(4, item);
-			stmt.setString(5, delivery_time);
-			stmt.setFloat(6, price);
-			stmt.setString(7, status);
-			stmt.setInt(8, restaurant_id);
-			stmt.setInt(9, deliverer_id);
-			stmt.setInt(10, client_id);
-			stmt.setInt(11, delivered);
-			stmt.executeUpdate();
-			return new OrderModel(stmt.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-	}
 
 	public static OrderModel AddOrder(OrderModel orderModel) {
 		String address = orderModel.getAddress();
@@ -129,13 +102,10 @@ public class DBOrder {
 		float price = orderModel.getPrice();
 		String status = orderModel.getOrder_status();
 		int restaurant_id = orderModel.getRestaurant_id();
-		int deliverer_id = orderModel.getDeliverer_id();
 		int client_id = orderModel.getClient_id();
-		int order_delivered = orderModel.getOrder_delivered();
-		String MyQuery = "{CALL create_order(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_order(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
-			System.out.println(deliverer_id);
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setString(1, address);
 			stmt.setString(2, postal_code);
@@ -145,9 +115,7 @@ public class DBOrder {
 			stmt.setFloat(6, price);
 			stmt.setString(7, status);
 			stmt.setInt(8, restaurant_id);
-			stmt.setInt(9, deliverer_id);
-			stmt.setInt(10, client_id);
-			stmt.setInt(11, order_delivered);
+			stmt.setInt(9, client_id);
 			stmt.executeUpdate();
 			return new OrderModel(stmt.toString());
 		} catch (SQLException e) {

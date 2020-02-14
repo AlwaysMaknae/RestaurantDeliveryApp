@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import Form.Deliverers.FAddDeliverer;
 import Model.ClientModel;
+import database.DBClient;
 import utils.FAlerts;
 
 public class FDeleteAccount extends FDeleteAccountPage{
@@ -13,6 +14,7 @@ public class FDeleteAccount extends FDeleteAccountPage{
 	public FDeleteAccount() {
 		
 		//TODO GET THE INFORMATION OF THE CURRENT ACCOUNT AND PUT IT IN THE APPROPRIATE TEXTFIELDS
+		//DBClient.GetAllClient(id)
 		
 		BTNDelete.addActionListener(new ActionListener() {		
 			@Override

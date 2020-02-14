@@ -43,8 +43,7 @@ public class Main {
 		Session.AccesType = "";
 		
 		Navigator.Login(null);
-
-	
+		
 	}
 
 }
