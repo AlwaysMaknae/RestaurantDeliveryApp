@@ -26,7 +26,7 @@ public class FMainMenu extends JMenuBar {
 	protected JMenuItem ro_accept, ro_ready;
 	
 	//Manager
-	protected JMenuItem ma_vorder;
+	protected JMenuItem ma_vorder, ma_editmenu, ma_createmenu, ma_deletemenu, ma_editrestaurant;
 	
 	
 	//Deli Menu
@@ -143,7 +143,6 @@ public class FMainMenu extends JMenuBar {
 		} else if(UserType.equals("Restaurateur")) {
 		
 		//Restaurateur
-		//File
 		/*Order
 		 * Accept Order
 		 * Order Ready
@@ -157,7 +156,6 @@ public class FMainMenu extends JMenuBar {
 		
 		} else if (UserType.equals("Manager") ) {
 		//Manager
-		//File
 		/*Order
 		 * View Restaurant Orders
 		 * */
