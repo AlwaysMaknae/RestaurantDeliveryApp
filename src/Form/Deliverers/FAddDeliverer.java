@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Model.DelivererModel;
-import jdk.nashorn.internal.scripts.JO;
 import utils.FAlerts;
 import utils.FTextField;
 

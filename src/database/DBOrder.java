@@ -127,7 +127,7 @@ public class DBOrder {
 		String items = orderModel.getItems();
 		String delivery_time = orderModel.getDelivery_time();
 		float price = orderModel.getPrice();
-		String status = orderModel.getStatus();
+		String status = orderModel.getOrder_status();
 		int restaurant_id = orderModel.getRestaurant_id();
 		int deliverer_id = orderModel.getDeliverer_id();
 		int client_id = orderModel.getClient_id();
@@ -192,7 +192,7 @@ public class DBOrder {
 		String items = orderModel.getItems();
 		String delivery_time = orderModel.getDelivery_time();
 		float price = orderModel.getPrice();
-		String status = orderModel.getStatus();
+		String status = orderModel.getOrder_status();
 		int restaurant_id = orderModel.getRestaurant_id();
 		int deliverer_id = orderModel.getDeliverer_id();
 		int client_id = orderModel.getClient_id();

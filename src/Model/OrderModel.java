@@ -10,7 +10,7 @@ public class OrderModel extends Model {
 	private String items;
 	private String delivery_time;
 	private float price;
-	private String status;
+	private String order_status;
 	private int restaurant_id;
 	private int deliverer_id;
 	private int client_id;
@@ -44,7 +44,7 @@ public class OrderModel extends Model {
 		this.items = items;
 		this.delivery_time = time;
 		this.price = price;
-		this.status = status;
+		this.order_status = status;
 		this.restaurant_id = restaurant_id;
 		this.deliverer_id = deliverer_id;
 		this.client_id = client_id;
@@ -61,7 +61,7 @@ public class OrderModel extends Model {
 		this.items = items;
 		this.delivery_time = time;
 		this.price = price;
-		this.status = status;
+		this.order_status = status;
 		this.restaurant_id = restaurant_id;
 		this.deliverer_id = deliverer_id;
 		this.client_id = client_id;
@@ -76,7 +76,7 @@ public class OrderModel extends Model {
 		this.items = Me.getItems();
 		this.delivery_time = Me.getDelivery_time();
 		this.price = Me.getPrice();
-		this.status = Me.getStatus();
+		this.order_status = Me.getOrder_status();
 		this.restaurant_id = Me.getRestaurant_id();
 		this.deliverer_id = Me.getDeliverer_id();
 		this.client_id = Me.getClient_id();
@@ -155,12 +155,12 @@ public class OrderModel extends Model {
 		this.delivery_time = delivery_time;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getOrder_status() {
+		return order_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setOrder_status(String status) {
+		this.order_status = status;
 	}
 
 	public int getRestaurant_id() {

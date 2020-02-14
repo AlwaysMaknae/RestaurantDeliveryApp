@@ -1,6 +1,13 @@
 fetch all orders according to [client, restaurant]
 
 insertion encryption
-menu navigation ---
+--- menu navigation ---
 login query 
 Session class [ FMenuNavigation ]
+
+
+Form Working
+
+
+Array List from Split Text, toString back (Area Code and Item Fk)
+Find a Solution for Opening Times

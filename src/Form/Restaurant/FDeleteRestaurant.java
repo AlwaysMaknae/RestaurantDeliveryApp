@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Model.RestaurantModel;
+import database.DBRestaurant;
 import utils.FAlerts;
 
 public class FDeleteRestaurant extends FDeleteRestaurantPage{
@@ -16,16 +17,15 @@ public class FDeleteRestaurant extends FDeleteRestaurantPage{
 		//TODO Make DeleteRestaurant linked with the selected Restaurant 
 		//DeleteRestaurant = (RestaurantModel) ListPan.GetSelectedItem();
 		
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
+		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
 		// RM = DBRestaurant.GetAllRestaurants();
 
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
-
-		Restaurant.add("Orange");
-		Restaurant.add("Apple");
-		Restaurant.add("Cherry");
-		Restaurant.add("Melon");
-		Restaurant.add("Cheese");
+		for (RestaurantModel rr : RestaurantList) {
+			Restaurant.add("" + rr.getId() + " : " + rr.getName() );
+		}
+		
+		
 
 		/*
 		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }

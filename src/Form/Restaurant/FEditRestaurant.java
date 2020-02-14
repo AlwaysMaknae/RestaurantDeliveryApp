@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
+
 import Model.RestaurantModel;
+import database.DBRestaurant;
 
 public class FEditRestaurant extends FEditRestaurantPage {
 
@@ -14,22 +17,16 @@ public class FEditRestaurant extends FEditRestaurantPage {
 	public FEditRestaurant() {
 	
 
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		// RM = DBRestaurant.GetAllRestaurants();
+		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
 
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
-
-		Restaurant.add("Orange");
-		Restaurant.add("Apple");
-		Restaurant.add("Cherry");
-		Restaurant.add("Melon");
-		Restaurant.add("Cheese");
-
-		/*
-		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-		 */
+		for (RestaurantModel rr : RestaurantList) {
+			Restaurant.add("" + rr.getId() + " : " + rr.getName() );
+		}
 
 		ListPan.SetList(Restaurant);
+		BTNDeliverySave.addActionListener(this);
+		
 
 		BTNSelect.addActionListener(new ActionListener() {
 			@Override
@@ -133,6 +130,17 @@ public class FEditRestaurant extends FEditRestaurantPage {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
+		System.out.println();
+		System.out.println("Opening Times");
+		for (JComboBox<String> CB : Fcb_open) {
+			System.out.print(CB.getSelectedItem() + " - ");
+		}
+		System.out.println();
+		System.out.println("Closing Times");
+		for (JComboBox<String> CB : Fcb_close) {
+			System.out.print(CB.getSelectedItem() + " - ");
+		}
+		
 	}
 
 }

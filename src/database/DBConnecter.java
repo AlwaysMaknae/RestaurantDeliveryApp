@@ -4,19 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnecter{
-	public static Object stmt;
-
-	public static Connection Connect;
+public abstract class DBConnecter{
 	
-	private static String host = "jdbc:mysql://localhost/restaurantdelivery";
+	public static Connection Connect;
+	private static String host = "jdbc:mysql://localhost/restaurantdelivery?serverTimezone=America/New_York";
 	private static String username = "root";
 	private static String password = "";
-	
-	public DBConnecter() {
-		//Getter and setter for string properties
-		
-	}
 	
 	public static void OpenConnection(){
 		try {

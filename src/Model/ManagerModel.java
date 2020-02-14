@@ -10,10 +10,10 @@ public class ManagerModel extends UserModel {
 		this.restaurant_id = restaurant_id;
 	}
 	
-	public ManagerModel(int id, String username, String password, int restaurant_id, int access_lvl) {
-		super(id, username, password, access_lvl);
-		this.restaurant_id = restaurant_id;
+	public ManagerModel(int id, String username, String password, int access_lvl, int status) {
+		super(id, username, password, access_lvl, status);
 	}
+	
 	
 	public ManagerModel(String username, String password) {
 		super(username, password);
@@ -22,7 +22,6 @@ public class ManagerModel extends UserModel {
 	public ManagerModel(String username) {
 		super(username);
 	}
-	
 	public ManagerModel(int id){
 		super(id);
 	}
@@ -35,19 +34,20 @@ public class ManagerModel extends UserModel {
 		this.access_lvl = Me.getAccess_lvl();
 		this.status = Me.getStatus();
 	}
-	
+	@Override
 	public void Create() {
 		DBManager.AddManager(this);
 	}
-
+	@Override
 	public void Update() {
 		ReadManagerModel(DBManager.UpdateManager(this));
 	}
 
+	@Override
 	public void Read() {
 		ReadManagerModel(DBManager.getManager(this.id));
 	}
-
+	@Override
 	public void Delete() {
 		DBManager.DeleteManager(this.id);
 	}	

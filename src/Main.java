@@ -32,18 +32,19 @@ import Model.OrderModel;
 import Model.RestaurantModel;
 import Model.UserModel;
 import database.*;
-import utils.FAlerts;
+//import utils.FAlerts;
 import utils.FormEntities;
+import utils.Navigator;
 
 public class Main {
 	public static void main(String[] args) {
-		new DBConnecter();
+
 		DBConnecter.OpenConnection();
+		Session.AccesType = "";
 		
-		new FOrderFood();
+		Navigator.Login(null);
 
-		
-
+	
 	}
 
 }

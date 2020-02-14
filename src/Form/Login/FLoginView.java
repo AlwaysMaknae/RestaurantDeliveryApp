@@ -1,21 +1,21 @@
 package Form.Login;
 
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
-import java.awt.Dimension;
 import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.Component;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
+import utils.FButton;
 import utils.FForm;
-import java.awt.Font;
-import utils.*;
+import utils.FLabel;
+import utils.FTextField;
 
 public class FLoginView extends FForm{
 	
 	protected FTextField TFUsername;
-	protected FTextField TFPassword;
+	protected JPasswordField TFPassword;
 	
 	protected FButton BTNConnect, BTNClientNew, BTNQuit;
 	
@@ -66,7 +66,7 @@ public class FLoginView extends FForm{
 		FLabel PasswordLbl = new FLabel("Password:");
 		LoginPan.add(PasswordLbl);
 		
-		TFPassword = new FTextField(20);
+		TFPassword = new JPasswordField(20);
 		TFPassword.setPreferredSize(new Dimension(200, 18));
 		LoginPan.add(TFPassword);
 		

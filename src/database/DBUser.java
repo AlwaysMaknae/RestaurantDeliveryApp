@@ -14,6 +14,8 @@ import Model.UserModel;
 public class DBUser {
 
 	// function to read user
+
+
 	public static UserModel GetUser(String username, String password) {
 		String MyQuery = "SELECT user_id, username, password, access_lvl FROM users WHERE users.username=? AND users.password=? AND users.status=1"
 				+ " UNION " 
@@ -52,7 +54,7 @@ public class DBUser {
 	}
 	
 	public static UserModel getUser(int id) {
-		String MyQuery = "SELECT * from users WHERE user_id='" + id +"' AND clients.status=1";
+		String MyQuery = "SELECT * from users WHERE user_id='" + id +"' AND users.status=1";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
