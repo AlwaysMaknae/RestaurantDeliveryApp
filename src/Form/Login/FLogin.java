@@ -3,15 +3,14 @@ package Form.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
+import Form.AddClient.FAddClient;
 import Form.Dashboard.FDashboard;
 import Model.AccesLevel;
 import Model.Model;
-import Model.UserModel;
 import database.DBUser;
 import database.Session;
 import utils.FAlerts;
+import utils.Navigator;
 
 public class FLogin extends FLoginView {
 
@@ -60,7 +59,7 @@ public class FLogin extends FLoginView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// Opens the AddClientClass
+				Navigator.Register(Me);
 
 			}
 		});
@@ -68,11 +67,7 @@ public class FLogin extends FLoginView {
 		BTNQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				Session.Quit();
-
-
-				// Closes Application
+				Navigator.Quit();
 			}
 		});
 
@@ -83,21 +78,30 @@ public class FLogin extends FLoginView {
 
 		if(TFUsername.getText().length() > 0){
 			try {
+<<<<<<< HEAD
 				UserModel Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
 				if (Trying.getPassword() == null || Trying.getUsername() == null) {
 					FAlerts.Error("Login Error", "Login Failed, check credentials.");
+=======
+				Model Trying = DBUser.GetUser(TFUsername.getText(), String.valueOf(TFPassword.getPassword()));
+				if (Trying == null) {
+					FAlerts.Error("Login", "Login Failed, chek credentials.");
+>>>>>>> 042e3620d6b1ad71c19191b47b222175724c4b99
 				} else {
-					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
-					Session.Login(AccesLevel.GetInstance(Trying.getAccess_lvl(), Trying.getId()) );
 					
-					System.out.println();
+					Session.AccesType = AccesLevel.GetType(Trying.getAccess_lvl());
+					Session.Login(Trying);
 					
 					this.dispose();
 					new FDashboard();
-	
 				}
 			} catch (Exception e2) {
+<<<<<<< HEAD
 				FAlerts.Error("Login Error", "Login Failed, check credentials.");
+=======
+				e2.printStackTrace();
+				FAlerts.Error("Login", "Login Failed, chek credentials.");
+>>>>>>> 042e3620d6b1ad71c19191b47b222175724c4b99
 			}
 
 		}

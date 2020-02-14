@@ -7,6 +7,24 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import Form.Client.FDeleteAccount;
+import Form.Client.FEditAccount;
+import Form.Client.FOrderFood;
+import Form.Client.FViewOrderFoodHistory;
+import Form.Deliverers.FAddDeliverer;
+import Form.Deliverers.FDeleteDeliverer;
+import Form.Deliverers.FEditDeliverer;
+import Form.DeliveryGuy.FAcceptDeliveryGuy;
+import Form.DeliveryGuy.FDoneDeliveryGuy;
+import Form.DeliveryGuy.FViewDeliveryGuy;
+import Form.Manager.FViewRestaurantOrder;
+import Form.Menu.FAddMenu;
+import Form.Menu.FDeleteMenu;
+import Form.Menu.FEditMenu;
+import Form.Restaurant.FAddRestaurant;
+import Form.Restaurant.FEditRestaurant;
+import Form.Restauranteur.FAcceptOrder;
+import Form.Restauranteur.FOrderReady;
 import database.Session;
 
 public class FMainMenu extends JMenuBar {
@@ -26,7 +44,7 @@ public class FMainMenu extends JMenuBar {
 	protected JMenuItem ro_accept, ro_ready;
 	
 	//Manager
-	protected JMenuItem ma_vorder;
+	protected JMenuItem ma_vorder, ma_editmenu, ma_createmenu, ma_deletemenu, ma_editrestaurant;
 	
 	
 	//Deli Menu
@@ -48,10 +66,8 @@ public class FMainMenu extends JMenuBar {
 		file_quit = new JMenuItem("Quit");
 		file.add(file_disconnect);
 		file.add(file_quit);
-		
 		this.add(file);
-		
-		// File Menu
+
 		file_disconnect.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -68,10 +84,6 @@ public class FMainMenu extends JMenuBar {
 		});
 		
 		
-		
-		
-		
-		
 		if(UserType.equals("Admin")){
 		//rest menu
 		JMenu restaurant = new JMenu("Restaurant");
@@ -84,17 +96,28 @@ public class FMainMenu extends JMenuBar {
 		restaurant.add(r_delete);
 		
 		r_add.addActionListener( new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				new FAddRestaurant();
+				link.dispose();
+			}
+		});
+		r_edit.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FEditRestaurant();
+				link.dispose();
+			}
+		});
+		r_delete.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FEditRestaurant();
+				link.dispose();
 			}
 		});
 		
-		
-		
-		
-		
+
 		//menu menu
 		JMenu mmenu = new JMenu("Menu");
 		//add,edit,delete
@@ -104,6 +127,31 @@ public class FMainMenu extends JMenuBar {
 		mmenu.add(m_add);
 		mmenu.add(m_edit);
 		mmenu.add(m_delete);
+		m_add.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FAddMenu();
+				link.dispose();
+			}
+		});
+		m_edit.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FEditMenu();
+				link.dispose();
+			}
+		});
+		m_delete.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FDeleteMenu();
+				link.dispose();
+			}
+		});
+		
+		
+		
+		
 		
 		//dman
 		JMenu deliveryGuy = new JMenu("Delivery Guy");
@@ -114,6 +162,27 @@ public class FMainMenu extends JMenuBar {
 		deliveryGuy.add(d_add);
 		deliveryGuy.add(d_edit);
 		deliveryGuy.add(d_delete);
+		d_add.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FAddDeliverer();
+				link.dispose();
+			}
+		});
+		d_edit.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FEditDeliverer();
+				link.dispose();
+			}
+		});
+		d_delete.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FDeleteDeliverer();
+				link.dispose();
+			}
+		});
 		
 		//AdminMenu
 		this.add(restaurant);
@@ -139,11 +208,32 @@ public class FMainMenu extends JMenuBar {
 		d_livery.add(dl_accept);
 		d_livery.add(dl_conf);
 		this.add(d_livery);
+		dl_view.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FViewDeliveryGuy();
+				link.dispose();
+			}
+		});
+		dl_accept.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FAcceptDeliveryGuy();
+				link.dispose();
+			}
+		});
+		dl_conf.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FDoneDeliveryGuy();
+				link.dispose();
+			}
+		});
 		
+
 		} else if(UserType.equals("Restaurateur")) {
 		
 		//Restaurateur
-		//File
 		/*Order
 		 * Accept Order
 		 * Order Ready
@@ -155,9 +245,24 @@ public class FMainMenu extends JMenuBar {
 		r_order.add(ro_ready);
 		this.add(r_order);
 		
+		ro_accept.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FAcceptOrder();
+				link.dispose();
+			}
+		});
+		ro_ready.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FOrderReady();
+				link.dispose();
+			}
+		});
+		
+
 		} else if (UserType.equals("Manager") ) {
 		//Manager
-		//File
 		/*Order
 		 * View Restaurant Orders
 		 * */
@@ -166,7 +271,14 @@ public class FMainMenu extends JMenuBar {
 		manager_order.add(ma_vorder);
 		this.add(manager_order);
 		
-		
+		manager_order.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FViewRestaurantOrder();
+				link.dispose();
+			}
+		});
+
 		//Client
 		//File
 		/*Account : 
@@ -188,6 +300,21 @@ public class FMainMenu extends JMenuBar {
 		c_account.add(ca_close);
 		this.add(c_account);
 		
+		ca_edit.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FEditAccount();
+				link.dispose();
+			}
+		});
+		ca_close.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FDeleteAccount();
+				link.dispose();
+			}
+		});
+		
 		JMenu c_orders = new JMenu("Client:Orders");
 		co_order = new JMenuItem("Order Food");
 		co_history = new JMenuItem("Order History");
@@ -195,6 +322,21 @@ public class FMainMenu extends JMenuBar {
 		c_orders.add(co_history);
 		this.add(c_orders);
 		
+		co_order.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FOrderFood();
+				link.dispose();
+			}
+		});
+		co_history.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FViewOrderFoodHistory();
+				link.dispose();
+			}
+		});
+
 		} else {
 			//Going Out
 			//FAlerts.Error("User Error", "User not found.");

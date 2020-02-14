@@ -54,7 +54,7 @@ public class DBUser {
 	}
 	
 	public static UserModel getUser(int id) {
-		String MyQuery = "SELECT * from users WHERE user_id='" + id +"' AND clients.status=1";
+		String MyQuery = "SELECT * from users WHERE user_id='" + id +"' AND users.status=1";
 		ResultSet stmt;
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);

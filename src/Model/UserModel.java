@@ -20,6 +20,12 @@ public class UserModel extends Model {
 		this.username = username;
 		this.access_lvl = access_lvl;
 	}
+	
+	public UserModel(int id, String username, String password){
+		this.id = id;
+		this.username = username;
+		this.password = password;
+	}
 	public UserModel(int id, String username, String password, int access_lvl, int status){
 		this.id = id;
 		this.username = username;

@@ -1,8 +1,6 @@
 package utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import Form.AddClient.FAddClient;
 import Form.Dashboard.FDashboard;
 import Form.Login.FLogin;
 import database.Session;
@@ -28,9 +26,15 @@ public abstract class Navigator {
 		if(link != null)
 			link.dispose();
 	}
+	public static void Register(FForm link){
+		new FAddClient();
+		if(link != null)
+			link.dispose();
+	}
 	public static void Dashboard(FForm link){
 		new FDashboard();
 		link.dispose();
 	}
+	
 	
 }

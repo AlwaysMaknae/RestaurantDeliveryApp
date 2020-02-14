@@ -25,7 +25,7 @@ public class DBRestaurateur {
 	}
 	
 	public static RestaurateurModel getRestaurant(int id) {
-		String MyQuery = "SELECT * from restaurants WHERE restaurant_id='" + id
+		String MyQuery = "SELECT * from restaurateurs WHERE restaurateur_id='" + id
 				+ "'";
 		ResultSet stmt;
 		try {

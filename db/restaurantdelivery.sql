@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2020 at 04:49 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 13 fév. 2020 à 21:44
+-- Version du serveur :  8.0.18
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurantdelivery`
+-- Base de données :  `restaurantdelivery`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procédures
 --
 DROP PROCEDURE IF EXISTS `create_client`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `create_client` (IN `client_username` VARCHAR(20), IN `client_password` VARCHAR(50), IN `client_last_name` VARCHAR(50), IN `client_first_name` VARCHAR(50), IN `client_address` VARCHAR(50), IN `client_email` VARCHAR(64), IN `client_number` VARCHAR(12), IN `status` INT)  BEGIN
@@ -179,7 +179,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- Structure de la table `clients`
 --
 
 DROP TABLE IF EXISTS `clients`;
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `clients`
+-- Déchargement des données de la table `clients`
 --
 
 INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `client_last_name`, `client_first_name`, `client_address`, `client_email`, `client_number`, `access_lvl`, `status`) VALUES
@@ -209,7 +209,7 @@ INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `clien
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deliverers`
+-- Structure de la table `deliverers`
 --
 
 DROP TABLE IF EXISTS `deliverers`;
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `deliverers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `deliverers`
+-- Déchargement des données de la table `deliverers`
 --
 
 INSERT INTO `deliverers` (`deliverer_id`, `username`, `password`, `access_lvl`, `deliverer_name`, `deliverer_number`, `deliverer_area`, `status`) VALUES
@@ -237,7 +237,7 @@ INSERT INTO `deliverers` (`deliverer_id`, `username`, `password`, `access_lvl`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Structure de la table `items`
 --
 
 DROP TABLE IF EXISTS `items`;
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `items`
+-- Déchargement des données de la table `items`
 --
 
 INSERT INTO `items` (`item_id`, `item_dish`, `item_price`, `restaurant_id`, `status`) VALUES
@@ -262,7 +262,7 @@ INSERT INTO `items` (`item_id`, `item_dish`, `item_price`, `restaurant_id`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `managers`
+-- Structure de la table `managers`
 --
 
 DROP TABLE IF EXISTS `managers`;
@@ -277,17 +277,17 @@ CREATE TABLE IF NOT EXISTS `managers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `managers`
+-- Déchargement des données de la table `managers`
 --
 
 INSERT INTO `managers` (`manager_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
 (11, 'Santa', '123123', 2, 1, 1),
-(12, 'Claus', '1234', 2, 3, 1);
+(12, 'Claus', '1234', 2, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structure de la table `orders`
 --
 
 DROP TABLE IF EXISTS `orders`;
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `orders`
+-- Déchargement des données de la table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `order_address`, `order_postal_code`, `order_date`, `order_items`, `order_delivery_time`, `order_price`, `order_status`, `restaurant_id`, `deliverer_id`, `client_id`, `order_delivered`) VALUES
@@ -319,7 +319,7 @@ INSERT INTO `orders` (`order_id`, `order_address`, `order_postal_code`, `order_d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restaurants`
+-- Structure de la table `restaurants`
 --
 
 DROP TABLE IF EXISTS `restaurants`;
@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `restaurants` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `restaurants`
+-- Déchargement des données de la table `restaurants`
 --
 
 INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_address`, `restaurant_number`, `restaurant_hours`, `restaurant_areas`, `status`) VALUES
@@ -345,7 +345,7 @@ INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_addre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restaurateurs`
+-- Structure de la table `restaurateurs`
 --
 
 DROP TABLE IF EXISTS `restaurateurs`;
@@ -360,18 +360,18 @@ CREATE TABLE IF NOT EXISTS `restaurateurs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `restaurateurs`
+-- Déchargement des données de la table `restaurateurs`
 --
 
 INSERT INTO `restaurateurs` (`restaurateur_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
-(11, 'Gordon', '123123', 1, 1, 1),
-(12, 'Ramesoy', '123', 2, 1, 1),
-(13, 'Carl', '1232', 1, 1, 0);
+(11, 'Gordon', '123123', 1, 2, 1),
+(12, 'Ramesoy', '123', 2, 2, 1),
+(13, 'Carl', '1232', 1, 2, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -385,12 +385,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `access_lvl`, `status`) VALUES
-(15, 'JJJ', '123123', 1, 1),
-(16, 'admin', 'admin', 1, 1);
+(15, 'JJJ', '123123', 4, 1),
+(16, 'admin', 'admin', 4, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

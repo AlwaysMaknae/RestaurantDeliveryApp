@@ -72,7 +72,11 @@ public class Main {
 		Session.AccesType = "";
 		
 		Navigator.Login(null);
+<<<<<<< HEAD
 		//new FOrderFoodPage();
+=======
+		new FormEntities();
+>>>>>>> 042e3620d6b1ad71c19191b47b222175724c4b99
 	
 	}
 

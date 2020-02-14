@@ -11,8 +11,8 @@ public class RestaurateurModel extends UserModel {
 		this.restaurant_id = restaurant_id;
 	}
 	
-	public RestaurateurModel(String username, String password) {
-		super(username, password);
+	public RestaurateurModel(int id, String username, String password) {
+		super(id, username, password);
 	}
 	
 	public RestaurateurModel(String username) {
