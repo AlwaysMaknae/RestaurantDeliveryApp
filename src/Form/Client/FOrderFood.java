@@ -36,7 +36,8 @@ public class FOrderFood extends FOrderFoodPage {
 		ArrayList<Object> Menu = new ArrayList<Object>();
 
 		TFPostalCode.SetMask("L#L");
-
+		TFQuantity.SetInteger();
+		
 		BTNArea.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -84,18 +85,22 @@ public class FOrderFood extends FOrderFoodPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (TFQuantity == null || isNumeric(TFQuantity.getText()) == false) {
-					System.out.println("yeet");
-				} else {
-					order_items = "(" + TFQuantity.getText() + "x)" + TFMeal.getText() + ": " + String.valueOf(
-							Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText())) + "$";
-
+				if (TFQuantity.IsValid() && TFQuantity.GetContent().length() <=2) {
+					order_items = "(" + Math.abs(Integer.parseInt(TFQuantity.GetContent())) + "x)" + TFMeal.getText() + ": " + String.valueOf(
+							Float.parseFloat(TFPrice.getText()) * Math.abs(Integer.parseInt(TFQuantity.GetContent()))) + "$";
+					
+					TFQuantity.setText(""+Math.abs(Integer.parseInt(TFQuantity.GetContent())));
+					
 					Order.add(order_items);
 					ListPan3.SetList(Order);
-					sum += (Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.getText()));
+					sum += (Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.GetContent()));
 					TFTotal.setText(String.valueOf(sum));
-
+					
 					System.out.println(Order);
+				} else {
+					TFQuantity.SetInvalid();
+					//alert boi time
+					System.out.println("yeet");
 				}
 
 				// Restaurant Selection validation

@@ -15,6 +15,8 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
+import Form.Client.FOrderFood;
+
 public class FTextField extends JFormattedTextField {
 		
 		/**
@@ -30,6 +32,7 @@ public class FTextField extends JFormattedTextField {
 			this.setColumns(Columns);
 			this.setFont(new Font(this.getFont().getFontName(), Font.PLAIN, 12));
 			this.setPreferredSize( new Dimension(20,29));
+			
 			
 			this.mask = "";
 			this.Valid = false;
@@ -106,5 +109,11 @@ public class FTextField extends JFormattedTextField {
 				this.setText(History);
 				return History;
 			}
+		}
+		
+		public void SetInvalid(){
+			this.Valid = false;
+			this.setText("");
+			IsValid();
 		}
 }
