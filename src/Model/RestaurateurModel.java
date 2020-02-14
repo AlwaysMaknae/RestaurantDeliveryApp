@@ -1,6 +1,5 @@
 package Model;
 
-import database.DBManager;
 import database.DBRestaurateur;
 
 public class RestaurateurModel extends UserModel {
@@ -45,7 +44,7 @@ public class RestaurateurModel extends UserModel {
 	}
 
 	public void Delete() {
-		DBManager.DeleteManager(this.id);
+		DBRestaurateur.DeleteRestaurateur(this.id);
 	}	
 
 	public int getRestaurant_id() {
