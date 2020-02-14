@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 
 public class FHoursComboBox extends JComboBox<Object> {
 	
-	private int end = 22;
+	private int end = 23;
 	
 	public FHoursComboBox(){
 		for (int i = 0; i <= end; i++) {
