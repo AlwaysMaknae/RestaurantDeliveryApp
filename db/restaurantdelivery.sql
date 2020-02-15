@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 13 fév. 2020 à 21:44
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 14, 2020 at 04:34 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `restaurantdelivery`
+-- Database: `restaurantdelivery`
 --
 
 DELIMITER $$
 --
--- Procédures
+-- Procedures
 --
 DROP PROCEDURE IF EXISTS `create_client`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `create_client` (IN `client_username` VARCHAR(20), IN `client_password` VARCHAR(50), IN `client_last_name` VARCHAR(50), IN `client_first_name` VARCHAR(50), IN `client_address` VARCHAR(50), IN `client_email` VARCHAR(64), IN `client_number` VARCHAR(12), IN `status` INT)  BEGIN
@@ -50,11 +50,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `create_manager` (IN `username` VARC
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_order`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_order` (IN `order_address` VARCHAR(200), IN `order_postal_code` VARCHAR(7), IN `order_date` DATETIME, IN `order_items` TEXT, IN `order_delivery_time` TIME, IN `order_price` FLOAT, IN `order_status` VARCHAR(9), IN `restaurant_id` INT, IN `deliverer_id` INT, IN `client_id` INT, IN `order_delivered` TINYINT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_order` (IN `order_address` VARCHAR(200), IN `order_postal_code` VARCHAR(7), IN `order_date` DATETIME, IN `order_items` TEXT, IN `order_delivery_time` TIME, IN `order_price` FLOAT, IN `order_status` VARCHAR(9), IN `restaurant_id` INT, IN `client_id` INT)  BEGIN
 	INSERT INTO orders(order_address, order_postal_code, order_date, order_items, order_delivery_time, order_price, order_status, restaurant_id,
-						deliverer_id, client_id, order_delivered)
+						 client_id)
 		VALUES(order_address, order_postal_code, order_date, order_items, order_delivery_time, order_price, order_status, restaurant_id,
-						deliverer_id, client_id, order_delivered);
+						 client_id);
 	END$$
 
 DROP PROCEDURE IF EXISTS `create_restaurant`$$
@@ -179,7 +179,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `clients`
+-- Table structure for table `clients`
 --
 
 DROP TABLE IF EXISTS `clients`;
@@ -198,18 +198,17 @@ CREATE TABLE IF NOT EXISTS `clients` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `clients`
+-- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`client_id`, `client_username`, `client_password`, `client_last_name`, `client_first_name`, `client_address`, `client_email`, `client_number`, `access_lvl`, `status`) VALUES
-(10, 'JJJ', '123123', 'Wen', 'Jose', '6565 Rue Bye Bitch', 'email@myemail.com', '545-555-5555', 0, 1),
 (11, 'Jose', '1234', 'Wenny', 'Joses', '6565 Rue Bye Bitches', 'email@myemail.com', '544-544-5444', 0, 1),
 (12, 'Frank', '123123', 'Frank', 'Franku', '6565 Rue Bye Bitchesas', 'myhotmail@outdated.ca', '555-999-9999', 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `deliverers`
+-- Table structure for table `deliverers`
 --
 
 DROP TABLE IF EXISTS `deliverers`;
@@ -226,18 +225,18 @@ CREATE TABLE IF NOT EXISTS `deliverers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `deliverers`
+-- Dumping data for table `deliverers`
 --
 
 INSERT INTO `deliverers` (`deliverer_id`, `username`, `password`, `access_lvl`, `deliverer_name`, `deliverer_number`, `deliverer_area`, `status`) VALUES
 (1, 'Klaus', '123', 3, 'James', '333-333-3333', 'H1L', 1),
-(2, 'Santa', '123', 3, 'Kaid', '545-673-3234', 'H5K I0O K2L L6P A8A A7A J2K', 1),
-(3, 'Claus', '123123', 3, 'kLAUS', '232-222-2322', 'H4K I5O K1L L2P A5A A6A', 1);
+(2, 'James', '123', 3, 'Kaid', '545-673-3234', 'H5K I0O K2L L6P A8A A7A J2K', 1),
+(3, 'Zack', '123123', 3, 'kLAUS', '232-222-2322', 'H4K I5O K1L L2P A5A A6A', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `items`
+-- Table structure for table `items`
 --
 
 DROP TABLE IF EXISTS `items`;
@@ -251,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `items`
+-- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`item_id`, `item_dish`, `item_price`, `restaurant_id`, `status`) VALUES
@@ -262,7 +261,7 @@ INSERT INTO `items` (`item_id`, `item_dish`, `item_price`, `restaurant_id`, `sta
 -- --------------------------------------------------------
 
 --
--- Structure de la table `managers`
+-- Table structure for table `managers`
 --
 
 DROP TABLE IF EXISTS `managers`;
@@ -277,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `managers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `managers`
+-- Dumping data for table `managers`
 --
 
 INSERT INTO `managers` (`manager_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
@@ -287,7 +286,7 @@ INSERT INTO `managers` (`manager_id`, `username`, `password`, `restaurant_id`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `orders`
+-- Table structure for table `orders`
 --
 
 DROP TABLE IF EXISTS `orders`;
@@ -295,31 +294,38 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_address` varchar(200) NOT NULL,
   `order_postal_code` varchar(7) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `order_date` date NOT NULL,
   `order_items` text NOT NULL,
   `order_delivery_time` time DEFAULT NULL,
   `order_price` float NOT NULL,
   `order_status` varchar(9) NOT NULL DEFAULT 'NOT READY',
   `restaurant_id` int(11) UNSIGNED NOT NULL,
-  `deliverer_id` int(10) UNSIGNED NOT NULL,
+  `deliverer_id` int(10) UNSIGNED DEFAULT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
   `order_delivered` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `order_address`, `order_postal_code`, `order_date`, `order_items`, `order_delivery_time`, `order_price`, `order_status`, `restaurant_id`, `deliverer_id`, `client_id`, `order_delivered`) VALUES
-(58, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
-(59, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
-(60, 'address2', 'postal', '2020-02-10 12:12:00', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0);
+(58, 'address2', 'postal', '2020-02-10', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
+(59, 'address2', 'postal', '2020-02-10', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
+(60, 'address2', 'postal', '2020-02-10', 'items', '12:12:12', 32.2, 'NOT READY', 1, 1, 3, 0),
+(61, 'yeeter', 'g2a2j3', '2020-02-14', 'Cheese String 23$', NULL, 23, 'NOT READY', 2, 1, 10, 0),
+(62, '6565 Rue Bye Bitches', 'H7K', '2020-03-15', 'utils.FListView[,0,30,200x350,invalid,layout=java.awt.BorderLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=200,height=350]]', '15:00:00', 21.99, 'NOT READY', 2, NULL, 0, 0),
+(63, '6565 Rue Bye Bitches', 'H4K', '2020-03-15', '[(2x)Fried Ginger Chicken: 45.98$]', '15:30:00', 22.99, 'NOT READY', 2, NULL, 0, 0),
+(64, '6565 Rue Bye Bitches', 'H4K', '2020-03-15', '[(2x)Fried Ginger Chicken: 45.98$, (2x)Fried Ginger Chicken: 45.98$, (2x)Fried Ginger Chicken: 45.98$]', '15:30:00', 22.99, 'NOT READY', 2, NULL, 0, 0),
+(65, '6565 Rue Bye Bitches', 'H8K', '2020-03-15', '[(20x)Fried Spicu Chicken: 439.8$]', '15:30:00', 21.99, 'NOT READY', 2, NULL, 0, 0),
+(66, '6565 Rue Bye Bitches', 'J8K', '2020-03-20', '[(2x)Fried Spicu Chicken: 43.98$]', '15:20:00', 21.99, 'NOT READY', 2, NULL, 0, 0),
+(67, '6565 Rue Bye Bitches', 'h2k', '2020-03-20', '[(2x)Fried Spicu Chicken: 43.98$, (3x)Fried Spicu Chicken: 65.97$]', '15:00:00', 21.99, 'NOT READY', 2, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `restaurants`
+-- Table structure for table `restaurants`
 --
 
 DROP TABLE IF EXISTS `restaurants`;
@@ -332,20 +338,22 @@ CREATE TABLE IF NOT EXISTS `restaurants` (
   `restaurant_areas` varchar(200) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`restaurant_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `restaurants`
+-- Dumping data for table `restaurants`
 --
 
 INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_address`, `restaurant_number`, `restaurant_hours`, `restaurant_areas`, `status`) VALUES
 (1, 'Master Shef', '5555 Rue Master, J2J 1K6, SH, CA', '151-655-2131', '', 'H6K H2K H9K K9K A0A A9A F9A F1A G9W X9A', 1),
-(2, 'CHeese factory', '', '', '', 'J2K K9K J8A O9Q Q5A', 1);
+(2, 'CHeese factory', '', '', '', 'J2K K9K J8A O9Q Q5A', 1),
+(4, 'George Town', '222 REU WHY NOT', '555-555-5552', '', 'H5K A1K', 1),
+(5, 'Nima Town', '222 REU WHY NOT', '555-555-5552', '', 'H5K A1K', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `restaurateurs`
+-- Table structure for table `restaurateurs`
 --
 
 DROP TABLE IF EXISTS `restaurateurs`;
@@ -360,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `restaurateurs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `restaurateurs`
+-- Dumping data for table `restaurateurs`
 --
 
 INSERT INTO `restaurateurs` (`restaurateur_id`, `username`, `password`, `restaurant_id`, `access_lvl`, `status`) VALUES
@@ -371,7 +379,7 @@ INSERT INTO `restaurateurs` (`restaurateur_id`, `username`, `password`, `restaur
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -385,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `access_lvl`, `status`) VALUES

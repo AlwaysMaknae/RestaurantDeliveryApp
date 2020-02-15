@@ -22,7 +22,7 @@ public class FOrderFoodPage extends FForm {
 	
 	protected FTextField TFDeliveryTimeYMD, TFHour, TFMinute, TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
 	
-	protected FButton BTNAdd, BTNDelete, BTNOrder, BTNRestaurant, BTNMenu, BTNCancel;
+	protected FButton BTNAdd, BTNDelete, BTNOrder, BTNRestaurant, BTNMenu, BTNCancel, BTNArea;
 
 	protected FListView ListPan, ListPan2, ListPan3;
 	
@@ -40,7 +40,7 @@ public class FOrderFoodPage extends FForm {
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel OrderFoodInfoPan = new JPanel();
-		OrderFoodInfoPan.setPreferredSize(new Dimension(260, 135));
+		OrderFoodInfoPan.setPreferredSize(new Dimension(280, 145));
 		OrderFoodInfoPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(OrderFoodInfoPan);
 		
@@ -54,7 +54,7 @@ public class FOrderFoodPage extends FForm {
 		OrderFoodTitlePan.add(OrderFoodLbl);
 		
 		JPanel DeliveryInfoPan = new JPanel();
-		DeliveryInfoPan.setPreferredSize(new Dimension(260, 90));
+		DeliveryInfoPan.setPreferredSize(new Dimension(400, 100));
 		DeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
 		OrderFoodInfoPan.add(DeliveryInfoPan);
 		
@@ -90,16 +90,19 @@ public class FOrderFoodPage extends FForm {
 		
 		JPanel SpacePan1 = new JPanel();
 		SpacePan1.setBackground(Color.LIGHT_GRAY);
-		SpacePan1.setPreferredSize(new Dimension(250, 1));
+		SpacePan1.setPreferredSize(new Dimension(400, 1));
 		DeliveryInfoPan.add(SpacePan1);
 		
 		FLabel PostalCodeLbl = new FLabel("Postal Code : ");
-		PostalCodeLbl.setPreferredSize(new Dimension(160, 14));
+		PostalCodeLbl.setPreferredSize(new Dimension(80, 14));
 		DeliveryInfoPan.add(PostalCodeLbl);
 		
 		TFPostalCode = new FTextField(0);
 		TFPostalCode.setPreferredSize(new Dimension(75, 20));
 		DeliveryInfoPan.add(TFPostalCode);
+		
+		BTNArea = new FButton("Set Area");
+		DeliveryInfoPan.add(BTNArea);
 		
 		JPanel MainSpacePan0 = new JPanel();
 		MainSpacePan0.setBackground(Color.LIGHT_GRAY);

@@ -50,6 +50,22 @@ public class OrderModel extends Model {
 		this.client_id = client_id;
 		this.order_delivered = order_delivered;
 	}
+	
+	public OrderModel( String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			 int client_id) {
+		this.address = address;
+		this.postal_code = posta_code;
+		this.date = date;
+		this.items = items;
+		this.delivery_time = time;
+		this.price = price;
+		this.order_status = status;
+		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
+		this.client_id = client_id;
+		this.order_delivered = order_delivered;
+	}
 
 	public OrderModel(int id, String address, String posta_code, String date,
 			String items, String time, float price, String status, int restaurant_id,

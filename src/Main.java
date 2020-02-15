@@ -28,6 +28,7 @@ import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
 import Model.ClientModel;
 import Model.ManagerModel;
+import Model.Model;
 import Model.OrderModel;
 import Model.RestaurantModel;
 import Model.UserModel;
@@ -43,8 +44,7 @@ public class Main {
 		Session.AccesType = "";
 		
 		Navigator.Login(null);
-		//new FormEntities();
-	
+		
 	}
 
 }

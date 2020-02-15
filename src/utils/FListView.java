@@ -67,5 +67,9 @@ public class FListView extends JPanel {
 		ScrollPane.setPreferredSize(ListScrollerDimension);
 	}
 	
+	public boolean isEmpty(){
+		return this.List.size() == 0;
+	}
+	
 
 }
