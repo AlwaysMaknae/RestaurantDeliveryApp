@@ -139,7 +139,10 @@ public class DBRestaurant {
 			stmt.setString(5, hours);
 			stmt.setString(6, areas);
 			stmt.executeUpdate();
-			return new RestaurantModel(stmt.toString());
+			
+			RestaurantModel rs = new RestaurantModel(id, stmt.toString());
+			rs.Read();
+			return rs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
