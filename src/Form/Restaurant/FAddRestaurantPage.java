@@ -28,11 +28,13 @@ public class FAddRestaurantPage extends FForm{
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	protected FTextField TFDeliveryArea;
 	
-	protected JTextArea JTADeliveryArea;
+	protected FListView JTADeliveryArea;
 	
 	protected FButton BTNDeliverySave, BTNDeleteDeliveryArea, BTNAddDeliveryArea, BTNModifyAll; 
 	
-	protected JComboBox Fcb[] = new JComboBox[7];
+	protected JComboBox Fcb_open[] = new JComboBox[7];
+	protected JComboBox Fcb_close[] = new JComboBox[7];
+	
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
 	
@@ -220,9 +222,9 @@ public class FAddRestaurantPage extends FForm{
 		OpeningTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(OpeningTimePan);
 		
-		for(int i = 0; i < Fcb.length; i++) {
-			Fcb[i] = new FHoursComboBox();
-			OpeningTimePan.add(Fcb[i]);
+		for(int i = 0; i < Fcb_open.length; i++) {
+			Fcb_open[i] = new FHoursComboBox();
+			OpeningTimePan.add(Fcb_open[i]);
 			JPanel FcbSpacer = new JPanel();
 			FcbSpacer.setPreferredSize(new Dimension(100, 8));
 			FcbSpacer.setBackground(Color.LIGHT_GRAY);
@@ -239,9 +241,9 @@ public class FAddRestaurantPage extends FForm{
 		ClosingTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(ClosingTimePan);
 		
-		for(int i = 0; i < Fcb.length; i++) {
-			Fcb[i] = new FHoursComboBox();
-			ClosingTimePan.add(Fcb[i]);
+		for(int i = 0; i < Fcb_close.length; i++) {
+			Fcb_close[i] = new FHoursComboBox();
+			ClosingTimePan.add(Fcb_close[i]);
 			JPanel FcbSpacer2 = new JPanel();
 			FcbSpacer2.setPreferredSize(new Dimension(100, 8));
 			FcbSpacer2.setBackground(Color.LIGHT_GRAY);
@@ -280,7 +282,7 @@ public class FAddRestaurantPage extends FForm{
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
-		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new FListView();
 		JTADeliveryArea.setEnabled(false);
 		JTADeliveryArea.setBorder(new LineBorder(Color.GRAY));
 		JTADeliveryArea.setPreferredSize(new Dimension(460, 125));

@@ -37,13 +37,24 @@ public class FEditRestaurant extends FEditRestaurantPage {
 //				TODO: Make the Listpan, get selected item (& index if needed). 
 //				When BTNSelect is clicked, get data of the selected restaurant and display the info in the textfields
 				
+				System.out.println();
+				System.out.println("Opening Times");
+				
+				for (int i = 0; i < Fcb_open.length; i++) {
+					//Setup Openings
+				}
+				
+				for (int j = 0; j < Fcb_close.length; j++) {
+					//Setup Closings
+				}
+				
+				
 			}
 		});
 		
 		BTNModifyAll.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				// Modify all Comboboxes depending on what the first Combobox is set to.
 				
 			}
@@ -128,19 +139,6 @@ public class FEditRestaurant extends FEditRestaurantPage {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-
-		System.out.println();
-		System.out.println("Opening Times");
-		for (JComboBox<String> CB : Fcb_open) {
-			System.out.print(CB.getSelectedItem() + " - ");
-		}
-		System.out.println();
-		System.out.println("Closing Times");
-		for (JComboBox<String> CB : Fcb_close) {
-			System.out.print(CB.getSelectedItem() + " - ");
-		}
-		
-	}
+	public void actionPerformed(ActionEvent arg0) {}
 
 }

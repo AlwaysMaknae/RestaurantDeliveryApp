@@ -85,14 +85,28 @@ public class RestaurantModel extends Model{
 		
 	}
 	
-	private void SetTimes(){
+	public void SetTimes(){
 		String[] tea = this.hours.split(" ");
 		for (int i = 0; i < openings.length; i++) {
-			openings[i] = FHoursComboBox.FindTime(tea[i]);
+			openings[i] = RestaurantModel.FindTime(tea[i]);
 		}
 		for (int i = 0; i < closings.length; i++) {
-			closings[i] = FHoursComboBox.FindTime(tea[i+openings.length]);
+			closings[i] = RestaurantModel.FindTime(tea[i+openings.length]);
 		}
+	}
+	
+	public void SyncTimes() {
+		
+		String sync = "";
+		
+		for (LocalTime h : openings) {
+			sync += h + " ";
+		}
+		for (LocalTime h : closings) {
+			sync += h + " ";
+		}
+		this.setHours(sync);
+		
 	}
 	
 	public void Create() {
@@ -109,6 +123,10 @@ public class RestaurantModel extends Model{
 
 	public void Delete() {
 		DBRestaurant.DeleteRestaurant(this.id);
+	}
+	
+	public static LocalTime FindTime(String item){
+		return LocalTime.parse((CharSequence) item);
 	}
 	
 	//Getters and Setters
@@ -171,6 +189,18 @@ public class RestaurantModel extends Model{
 	}
 	public void setArealist(ArrayList<String> arealist) {
 		this.arealist = arealist;
+	}
+	public LocalTime[] getOpenings() {
+		return openings;
+	}
+	public void setOpenings(LocalTime[] openings) {
+		this.openings = openings;
+	}
+	public LocalTime[] getClosings() {
+		return closings;
+	}
+	public void setClosings(LocalTime[] closings) {
+		this.closings = closings;
 	}
 
 }
