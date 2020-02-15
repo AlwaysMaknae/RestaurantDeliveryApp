@@ -52,9 +52,11 @@ public class RestaurantModel extends Model{
 	}
 	public RestaurantModel(int id){
 		this.id = id;
+		this.arealist = new ArrayList<String>();
 	}
 	public RestaurantModel(String name){
 		this.name = name;
+		this.arealist = new ArrayList<String>();
 	}
 	/*public RestaurantModel(int id, String name, int yes){
 		this.id = id;
@@ -70,6 +72,7 @@ public class RestaurantModel extends Model{
 	public RestaurantModel(int id, String name){
 		this.id = id;
 		this.name = name;
+		this.arealist = new ArrayList<String>();
 	}
 	
 	
@@ -80,6 +83,7 @@ public class RestaurantModel extends Model{
 		this.number = Me.getNumber();
 		this.hours = Me.getHours();
 		this.areas = Me.getAreas();
+		this.arealist = new ArrayList<String>();
 		this.status = Me.getStatus();
 		SetTimes();
 		
@@ -127,6 +131,13 @@ public class RestaurantModel extends Model{
 	
 	public static LocalTime FindTime(String item){
 		return LocalTime.parse((CharSequence) item);
+	}
+	
+	public void SyncAreas() {
+		this.areas = "";
+		for (String a : arealist) {
+			this.areas += a + " ";
+		}
 	}
 	
 	//Getters and Setters
@@ -201,6 +212,9 @@ public class RestaurantModel extends Model{
 	}
 	public void setClosings(LocalTime[] closings) {
 		this.closings = closings;
+	}
+	public boolean isOpenAt(LocalTime time) {
+		return true;
 	}
 
 }
