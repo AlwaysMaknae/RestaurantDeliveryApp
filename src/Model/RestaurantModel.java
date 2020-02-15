@@ -87,15 +87,24 @@ public class RestaurantModel extends Model{
 		this.status = Me.getStatus();
 		SetTimes();
 		
+		String[] tareas = this.areas.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
+		
 	}
 	
 	public void SetTimes(){
 		String[] tea = this.hours.split(" ");
-		for (int i = 0; i < openings.length; i++) {
-			openings[i] = RestaurantModel.FindTime(tea[i]);
-		}
-		for (int i = 0; i < closings.length; i++) {
-			closings[i] = RestaurantModel.FindTime(tea[i+openings.length]);
+		if(tea.length >= 14) {
+			for (int i = 0; i < openings.length; i++) {
+				if(tea[i] != "")
+					openings[i] = RestaurantModel.FindTime(tea[i]);
+			}
+			for (int i = 0; i < closings.length; i++) {
+				if(tea[i+openings.length] != "")
+					closings[i] = RestaurantModel.FindTime(tea[i+openings.length]);
+			}
 		}
 	}
 	

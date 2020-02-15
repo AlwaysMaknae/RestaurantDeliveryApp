@@ -27,8 +27,7 @@ public class FAddRestaurant extends FAddRestaurantPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// Modify all Comboboxes depending on what the first Combobox is set to.
-				
+				//Modify all Comboboxes depending on what the first Combobox is set to.
 				for (int i = 1; i < Fcb_open.length; i++) {
 					Fcb_open[i].setSelectedIndex(Fcb_open[0].getSelectedIndex());
 				}
@@ -78,6 +77,7 @@ public class FAddRestaurant extends FAddRestaurantPage {
 				
 				NewRestaurant.setHours("");
 				boolean cbTimesError = true;
+				
 				
 				for (int i = 0; i < Fcb_open.length; i++) {
 					NewRestaurant.setHours(NewRestaurant.getHours()  + Fcb_open[i].getSelectedItem()  + " ");

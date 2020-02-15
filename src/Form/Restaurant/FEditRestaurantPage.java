@@ -25,14 +25,14 @@ public class FEditRestaurantPage extends FForm{
 	
 	protected FTextField TFRestaurantName;
 	protected FTextField TFRestaurantAddress;
-	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFPhoneNum;
 	protected FTextField TFDeliveryArea;
 	protected FButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliverySave;
 	
-	protected JTextArea JTADeliveryArea;
+	protected FListView JTADeliveryArea;
 	
-	protected JComboBox Fcb_open[] = new JComboBox[7];
-	protected JComboBox Fcb_close[] = new JComboBox[7];
+	protected FHoursComboBox Fcb_open[] = new FHoursComboBox[7];
+	protected FHoursComboBox Fcb_close[] = new FHoursComboBox[7];
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
 	protected FListView ListPan;
@@ -132,32 +132,10 @@ public class FEditRestaurantPage extends FForm{
 		PhoneNumLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		RestaurantInfoPan.add(PhoneNumLbl);
 		
-		FLabel BracketLbl = new FLabel("(");
-		BracketLbl.setPreferredSize(new Dimension(5, 14));
-		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
-		RestaurantInfoPan.add(BracketLbl);
+		TFPhoneNum = new FTextField(0);
+		TFPhoneNum.setPreferredSize(new Dimension(120, 18));
+		RestaurantInfoPan.add(TFPhoneNum);
 		
-		TFPhoneNum_1 = new FTextField(0);
-		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
-		RestaurantInfoPan.add(TFPhoneNum_1);
-		
-		FLabel BracketLbl2 = new FLabel(")");
-		BracketLbl2.setPreferredSize(new Dimension(5, 14));
-		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
-		RestaurantInfoPan.add(BracketLbl2);
-		
-		TFPhoneNum_2 = new FTextField(0);
-		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
-		RestaurantInfoPan.add(TFPhoneNum_2);
-		
-		JPanel SpacePan3 = new JPanel();
-		SpacePan3.setBackground(Color.LIGHT_GRAY);
-		SpacePan3.setPreferredSize(new Dimension(5, 15));
-		RestaurantInfoPan.add(SpacePan3);
-		
-		TFPhoneNum_3 = new FTextField(0);
-		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
-		RestaurantInfoPan.add(TFPhoneNum_3);
 		
 		JPanel SpacePan4 = new JPanel();
 		SpacePan4.setPreferredSize(new Dimension(90, 15));
@@ -309,7 +287,7 @@ public class FEditRestaurantPage extends FForm{
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
-		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new FListView();
 		JTADeliveryArea.setBorder(new LineBorder(Color.GRAY));
 		JTADeliveryArea.setPreferredSize(new Dimension(460, 125));
 		DeliveryPan.add(JTADeliveryArea);
