@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -17,7 +18,8 @@ import utils.FTextField;
 
 public class FEditAccountPage extends FForm{
 
-	protected FTextField TFNewUsername, TFOldPassword, TFNewPassword, TFConfirmPass, TFLastName, TFFirstName, TFAddress, TFEmail;
+	protected FTextField TFNewUsername, TFLastName, TFFirstName, TFAddress, TFEmail;
+	JPasswordField TFOldPassword, TFNewPassword, TFConfirmPass;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
 	protected FButton BTNVerify, BTNSave;
@@ -100,7 +102,7 @@ public class FEditAccountPage extends FForm{
 		TextFieldSpacePan1.setPreferredSize(new Dimension(50, 10));
 		CreateAccountPan.add(TextFieldSpacePan1);
 		
-		TFOldPassword = new FTextField(0);
+		TFOldPassword = new JPasswordField(0);
 		TFOldPassword.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFOldPassword);
 		
@@ -125,7 +127,7 @@ public class FEditAccountPage extends FForm{
 		TextFieldSPacePan3.setPreferredSize(new Dimension(50, 10));
 		CreateAccountPan.add(TextFieldSPacePan3);
 		
-		TFNewPassword = new FTextField(0);
+		TFNewPassword = new JPasswordField(0);
 		TFNewPassword.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFNewPassword);
 		
@@ -145,7 +147,7 @@ public class FEditAccountPage extends FForm{
 		NewConfirmPassLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(NewConfirmPassLbl);
 		
-		TFConfirmPass = new FTextField(0);
+		TFConfirmPass = new JPasswordField(0);
 		TFConfirmPass.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFConfirmPass);
 		

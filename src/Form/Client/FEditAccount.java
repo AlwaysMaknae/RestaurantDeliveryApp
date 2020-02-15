@@ -1,118 +1,150 @@
 package Form.Client;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+
 import Model.ClientModel;
+import database.DBClient;
+import database.Session;
 import utils.FAlerts;
+import utils.Navigator;
 
-public class FEditAccount extends FEditAccountPage{
+public class FEditAccount extends FEditAccountPage {
 
-	private ClientModel UpdateClient;
+	private ClientModel UpdateClient = new ClientModel(Session.GetUser().getId());;
 	private boolean Existing = true;
 
-	
 	public FEditAccount() {
+		UpdateClient.Read();
+		BTNVerify.setEnabled(false);
+		TFNewUsername.setEnabled(false);
+		TFPhoneNum_1.setEnabled(false);
+		TFPhoneNum_2.setEnabled(false);
+		TFPhoneNum_3.setEnabled(false);
 		
-		BTNSave.addActionListener(new ActionListener() {		
+		
+
+		TFNewUsername.setText(UpdateClient.getClient_username());
+		TFLastName.setText(UpdateClient.getClient_last_name());
+		TFFirstName.setText(UpdateClient.getClient_first_name());
+		TFAddress.setText(UpdateClient.getClient_address());
+		TFEmail.setText(UpdateClient.getClient_email());
+
+		String phone = UpdateClient.getClient_number();
+		TFPhoneNum_1.setText(phone.substring(0, 3));
+		TFPhoneNum_2.setText(phone.substring(4, 7));
+		TFPhoneNum_3.setText(phone.substring(8, 12));
+
+		BTNSave.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// Empty Account Info
-
-				if (!TFNewUsername.IsValid() || !TFNewPassword.IsValid() || !TFConfirmPass.IsValid()
-						|| !TFLastName.IsValid() || !TFFirstName.IsValid() || !TFAddress.IsValid() || !TFEmail.IsValid()
-						|| !TFPhoneNum_1.IsValid() || !TFPhoneNum_2.IsValid() || !TFPhoneNum_3.IsValid()) {
-					
-					FAlerts.Error("New Account Error", "New Account missing information");
-
-				}else{
-
-//					UpdateClient.setClient_username(TFNewUsername.getText());
-//					UpdateClient.setClient_password(TFNewPassword.getText());
-//					UpdateClient.setClient_password(TFConfirmPass.getText());
-//					UpdateClient.setClient_last_name(TFLastName.getText());
-//					UpdateClient.setClient_first_name(TFFirstName.getText());
-//					UpdateClient.setClient_address(TFAddress.getText());
-//					UpdateClient.setClient_email(TFEmail.getText());
-//					UpdateClient.setClient_number(TFPhoneNum_1.getText() + TFPhoneNum_2.getText() + TFPhoneNum_3.getText());
-//					UpdateClient.setClient_status(IDK ASK FRANK);
-//				 	private int id;
-//					database query
-//					UpdateClient.Update();
-//					FAlerts.Say("New Account", "Account has been made!");
-					
-				// MAKE THE FRAME AND GO BACK TO DASHBOARD
-
-					FAlerts.Say("Test", "This is just an RP message saying it works @ 10%! efficency!");
-				}
-
-				// Bypassing Existing Account verification...verification.
-
-//				if(Existing = true) {
-//					FAlerts.Error("New Account Error", "New Account information already exists");
-
-//				}else {
-				// MAKE THE FRAME AND GO BACK TO LOGIN SCREEN
-
-//				}
+				if (TFEmail.getText().matches("(.*)@(.*).com")==false || TFEmail.getText().length() > 64)
+					TFEmail.SetInvalid();
 				
-			}
-		});
-		
-		BTNVerify.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				if (TFAddress.getText().length() < 7 || TFAddress.getText().length() > 50 )
+					TFAddress.SetInvalid();
 				
-				// Empty Account Info
+				if (TFLastName.getText().length() < 2 || TFLastName.getText().length() > 50)
+					TFLastName.SetInvalid();
+				
+				if (TFFirstName.getText().length() < 2 || TFFirstName.getText().length() > 50)
+					TFFirstName.SetInvalid();
+				
 
-				if (!TFNewUsername.IsValid() || !TFNewPassword.IsValid() || !TFConfirmPass.IsValid()
-						|| !TFLastName.IsValid() || !TFFirstName.IsValid() || !TFAddress.IsValid() || !TFEmail.IsValid()
-						|| !TFPhoneNum_1.IsValid() || !TFPhoneNum_2.IsValid() || !TFPhoneNum_3.IsValid()) {
+				if (!TFLastName.IsValid() || !TFFirstName.IsValid() || !TFAddress.IsValid() || !TFEmail.IsValid()) {
 
-					FAlerts.Error("New Account Error", "New Account missing information");
+					FAlerts.Error("Invalid Input Field", "Invalid Info");
+
 				} else {
 
-					// Existing Account verification.
+					if (UpdateClient.getClient_password().equals(String.valueOf(TFOldPassword.getPassword()))) {
 
-//					if(USERNAME EXISTS) {	
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account Username already exists");
+						TFOldPassword.setBorder(BorderFactory.createLineBorder(Color.GREEN));
 
-//					}else if(FIRST NAME EXISTS){
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account First Name already exists");
+						if (String.valueOf(TFNewPassword.getPassword()).contentEquals("")
+								&& String.valueOf(TFConfirmPass.getPassword()).contentEquals("")) {
+							TFNewPassword.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+							TFConfirmPass.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+							UpdateClient.setClient_username(TFNewUsername.getText());
+							UpdateClient.setClient_password(String.valueOf(TFOldPassword.getPassword()));
+							UpdateClient.setClient_last_name(TFLastName.getText());
+							UpdateClient.setClient_first_name(TFFirstName.getText());
+							UpdateClient.setClient_address(TFAddress.getText());
+							UpdateClient.setClient_email(TFEmail.getText());
+							UpdateClient.setClient_number(TFPhoneNum_1.getText() + "-" + TFPhoneNum_2.getText() + "-"
+									+ TFPhoneNum_3.getText());
 
-//					}else if(LAST NAME EXISTS){
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account Last Name already exists");
+							boolean answer = FAlerts.Confirm("Confirm Submission",
+									"Username: " + UpdateClient.getClient_username() + "\nLast Name: "
+											+ UpdateClient.getClient_last_name() + "\nFirst Name: "
+											+ UpdateClient.getClient_first_name() + "\nAddress: "
+											+ UpdateClient.getClient_address() + "\nEmail: "
+											+ UpdateClient.getClient_email() + "\nPhone Number: "
+											+ UpdateClient.getClient_number());
 
-//					}else if(ADDRESS EXISTS){
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account Address already exists");
+							if (answer == true) {
+								FAlerts.Say("Confirm Submission", "Account has been updated!");
+								UpdateClient.Update();
+								Navigator.Dashboard(Me);
+							}
+						} else if (String.valueOf(TFNewPassword.getPassword())
+								.contentEquals(String.valueOf(TFConfirmPass.getPassword()))
+								&& !String.valueOf(TFNewPassword.getPassword()).contentEquals("")
+								&& !String.valueOf(TFConfirmPass.getPassword()).contentEquals("")
+								&& String.valueOf(TFNewPassword.getPassword()).length() < 50
+								&& String.valueOf(TFNewPassword.getPassword()).length() > 2) {
 
-//					}else if(EMAIL EXISTS){
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account Email already exists");
+							TFNewPassword.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+							TFConfirmPass.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+							UpdateClient.setClient_username(TFNewUsername.getText());
+							UpdateClient.setClient_password(String.valueOf(TFConfirmPass.getPassword()));
+							UpdateClient.setClient_last_name(TFLastName.getText());
+							UpdateClient.setClient_first_name(TFFirstName.getText());
+							UpdateClient.setClient_address(TFAddress.getText());
+							UpdateClient.setClient_email(TFEmail.getText());
+							UpdateClient.setClient_number(TFPhoneNum_1.getText() + "-" + TFPhoneNum_2.getText() + "-"
+									+ TFPhoneNum_3.getText());
 
-//					}else if(PHONE NUMBER EXISTS){
-//						Existing = True;
-//						FAlerts.Error("New Account Error", "Account Phone Number already exists");
+							boolean answer = FAlerts.Confirm("Confirm Submission",
+									"Username: " + UpdateClient.getClient_username() + "\nLast Name: "
+											+ UpdateClient.getClient_last_name() + "\nFirst Name: "
+											+ UpdateClient.getClient_first_name() + "\nAddress: "
+											+ UpdateClient.getClient_address() + "\nEmail: "
+											+ UpdateClient.getClient_email() + "\nPhone Number: "
+											+ UpdateClient.getClient_number());
 
-//					}else {
-//						Existing = False;
-//						FAlerts.Say("New Account", "Account is valid!");
-//					}
-					FAlerts.Say("Test", "This is just an RP message saying it works @ 10%! efficency!");
+							if (answer == true) {
+								FAlerts.Say("Confirm Submission", "Account has been updated!");
+								UpdateClient.Update();
+								Navigator.Dashboard(Me);
+							}
+						} else {
+							TFNewPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+							TFConfirmPass.setBorder(BorderFactory.createLineBorder(Color.RED));
+						}
+
+					} else {
+						TFOldPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+					}
+
 				}
-				
 			}
 		});
-		
+
+		BTNVerify.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
 
 	}
 }
