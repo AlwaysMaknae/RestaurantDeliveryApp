@@ -99,7 +99,7 @@ public class DBRestaurant {
 		String areas = restaurantModel.getAreas();
 		int status = restaurantModel.getStatus();
 
-		String MyQuery = "{CALL create_restuarant(?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_restaurant(?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
