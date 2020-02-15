@@ -98,16 +98,14 @@ public class FTextField extends JFormattedTextField {
 			}else if(this.StringLength > 0) {
 				if( History.length() >= this.StringLength){
 					this.Valid = true;
-					this.setText(History);
-					return History;
+					return this.getText();
 				} else {
 					this.Valid = false;
 					return "";	
 				}
 			}else {
 				this.Valid = true;
-				this.setText(History);
-				return History;
+				return this.getText();
 			}
 		}
 		

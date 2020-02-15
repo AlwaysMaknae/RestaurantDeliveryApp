@@ -47,6 +47,7 @@ public class FAddRestaurant extends FAddRestaurantPage {
 					if(TFDeliveryArea.IsValid()) {
 						DeliveryAreas.add(TFDeliveryArea.GetContent());
 						JTADeliveryArea.SetList( DeliveryAreas );
+						TFDeliveryArea.setText("");
 					}else{
 						FAlerts.Error("Delivery Area Error", "Invalid Delivery Area");
 					}
@@ -95,8 +96,13 @@ public class FAddRestaurant extends FAddRestaurantPage {
 				}else if(JTADeliveryArea.isEmpty()){
 					FAlerts.Error("Delivery Area Error", "Missing Delivery Area");
 				}else {
-				if(FAlerts.Confirm("Confirm", " Restaurant Name: " + TFRestaurantName.GetContent() + "\n Restaurant Address: "
-						+ TFRestaurantAddress.GetContent() + "\n Phone Number: " + TFPhoneNum.GetContent() + "\n"
+					
+					for (Object j : DeliveryAreas) {
+						NewRestaurant.getArealist().add((String) j);
+					}NewRestaurant.SyncAreas();
+					
+				if(FAlerts.Confirm("Confirm", " Restaurant Name: " + TFRestaurantName.getText() + "\n Restaurant Address: "
+						+ TFRestaurantAddress.getText() + "\n Phone Number: " + TFPhoneNum.GetContent() + "\n"
 						+ "\n Opening Hours"
 						+ "\n Sunday:   " + Fcb_open[0].getSelectedItem() + " to " + Fcb_close[0].getSelectedItem() 
 						+ "\n Monday:   " + Fcb_open[1].getSelectedItem() + " to " + Fcb_close[1].getSelectedItem() 
@@ -105,23 +111,17 @@ public class FAddRestaurant extends FAddRestaurantPage {
 						+ "\n Thursday: " + Fcb_open[4].getSelectedItem() + " to " + Fcb_close[4].getSelectedItem()
 						+ "\n Friday:   " + Fcb_open[5].getSelectedItem() + " to " + Fcb_close[5].getSelectedItem()
 						+ "\n Saturday: " + Fcb_open[6].getSelectedItem() + " to " + Fcb_close[6].getSelectedItem() + "\n" 
-						// + "\n Postal Code covered by this Restaurant: \n" + JTADeliveryArea.getText() + "\n" 
+						+ "\n Postal Code covered by this Restaurant: \n" + NewRestaurant.getAreas() + "\n" 
 						+ "\n Would you like to save this restaurant?")){
 
 				NewRestaurant.setName(TFRestaurantName.GetContent());
 				NewRestaurant.setAddress(TFRestaurantAddress.GetContent());
 				NewRestaurant.setNumber(TFPhoneNum.GetContent());
+				NewRestaurant.setStatus(1);
 				
-				
-				for (Object j : DeliveryAreas) {
-					NewRestaurant.getArealist().add((String) j);
-				}
-				NewRestaurant.SyncAreas();
-
-				//System.out.println("Testing Create Restaurant ");
 				NewRestaurant.Create();
 				}
-				}
+			}
 			}
 		});
 		}
