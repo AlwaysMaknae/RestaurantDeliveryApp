@@ -22,6 +22,7 @@ import Form.Menu.FAddMenu;
 import Form.Menu.FDeleteMenu;
 import Form.Menu.FEditMenu;
 import Form.Restaurant.FAddRestaurant;
+import Form.Restaurant.FDeleteRestaurant;
 import Form.Restaurant.FEditRestaurant;
 import Form.Restauranteur.FAcceptOrder;
 import Form.Restauranteur.FOrderReady;
@@ -112,7 +113,7 @@ public class FMainMenu extends JMenuBar {
 		r_delete.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FEditRestaurant();
+				new FDeleteRestaurant();
 				link.dispose();
 			}
 		});

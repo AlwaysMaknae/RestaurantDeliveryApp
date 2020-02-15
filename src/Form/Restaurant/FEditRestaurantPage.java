@@ -337,8 +337,6 @@ public class FEditRestaurantPage extends FForm{
 		MainPan.add(RestaurantListSpacerPan);
 		RestaurantListSpacerPan.setPreferredSize(new Dimension(125, 970));
 		
-		
-		
 		repaint();
 		revalidate();
 		

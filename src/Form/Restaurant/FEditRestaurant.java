@@ -18,9 +18,9 @@ public class FEditRestaurant extends FEditRestaurantPage {
 	
 	public FEditRestaurant() {
 	
-
+		UpdateRestaurant = null;
+		
 		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
-
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
 		for (RestaurantModel rr : RestaurantList) {
 			Restaurant.add("" + rr.getId() + " : " + rr.getName() );
@@ -65,7 +65,7 @@ public class FEditRestaurant extends FEditRestaurantPage {
 				}
 				
 				JTADeliveryArea.SetList(DeliveryAreas);
-				
+
 				
 			}
 		});
@@ -118,6 +118,11 @@ public class FEditRestaurant extends FEditRestaurantPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				if(UpdateRestaurant == null) {
+					FAlerts.Say("Edit Restaurant", "Please Select a Restaurant to Edit");
+					return;
+				}
+				
 				UpdateRestaurant.setHours("");
 				boolean cbTimesError = true;
 				
@@ -165,7 +170,6 @@ public class FEditRestaurant extends FEditRestaurantPage {
 					
 					}
 				}
-				
 			}
 		});
 
