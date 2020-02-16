@@ -22,7 +22,19 @@ public class DBOrder {
 
 			resultset = stmt.executeQuery();
 			while (resultset.next()){
-				return new OrderModel(resultset.getString(2));
+				return new OrderModel(
+						resultset.getInt(1), 
+						resultset.getString(2),
+						resultset.getString(3), 
+						resultset.getString(4),
+						resultset.getString(5), 
+						resultset.getString(6), 
+						resultset.getFloat(7), 
+						resultset.getString(8),
+						resultset.getInt(9), 
+						resultset.getInt(10), 
+						resultset.getInt(11), 
+						resultset.getInt(12));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,11 +50,19 @@ public class DBOrder {
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			while (stmt.next()) {
-				orders.add(new OrderModel(stmt.getInt(1), stmt.getString(2),
-						stmt.getString(3), stmt.getString(4),
-						stmt.getString(5), stmt.getString(6), stmt.getFloat(7), stmt.getString(8),
-						stmt.getInt(9), stmt.getInt(10), stmt.getInt(11), stmt
-								.getInt(12)));
+				orders.add(new OrderModel(
+						stmt.getInt(1), 
+						stmt.getString(2),
+						stmt.getString(3), 
+						stmt.getString(4),
+						stmt.getString(5), 
+						stmt.getString(6), 
+						stmt.getFloat(7), 
+						stmt.getString(8),
+						stmt.getInt(9), 
+						stmt.getInt(10), 
+						stmt.getInt(11), 
+						stmt.getInt(12)));
 			}
 			return orders;
 		} catch (SQLException e) {

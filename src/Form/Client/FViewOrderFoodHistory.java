@@ -5,23 +5,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Model.OrderModel;
+import database.DBOrder;
+import database.Session;
 
 public class FViewOrderFoodHistory extends FViewOrderFoodHistoryPage{
 
 	public FViewOrderFoodHistory() {
-		// Empty Login Error Validation once actionlistener is implemented.
 
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
-		
-		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
-		
+		ArrayList<OrderModel> OrderList = DBOrder.getOrderbyClient(Session.GetUser().getId());
 		ArrayList<Object> Order = new ArrayList<Object>();
 
 		// Order.add(ENTER DETAILS HERE);
+		
+		for (OrderModel o : OrderList) {
+			Order.add("-" + o.getDate() + " : " + o.getDelivery_time() + ": " + o.getPrice() + "$");
+		}
+		
 
 		ListPan.SetList(Order);
 		
@@ -29,10 +28,23 @@ public class FViewOrderFoodHistory extends FViewOrderFoodHistoryPage{
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-//				Select aN oRDER and press SELECT. This transfers the info into the correct textfields.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected order and place them into the correct Textfields.
+				if(ListPan.GetSelectedIndex() > -1) {
+					OrderModel CurrentOrder = OrderList.get(ListPan.GetSelectedIndex());
+					TFDeliveryTime.setText( CurrentOrder.getDate() + " : " + CurrentOrder.getDelivery_time() );
+					TFAddress.setText(CurrentOrder.getAddress());
+					TFStatus.setText(CurrentOrder.getOrder_status());
+					
+					
+					String[] at = CurrentOrder.getItems().split("\n");
+					ArrayList<Object> arl = new ArrayList<Object>();
+					
+					for (String s : at) {
+						arl.add(s);
+					}
+					
+					JTAMealOrder.SetList(arl);
+					
+				}
 				
 			}
 		});
