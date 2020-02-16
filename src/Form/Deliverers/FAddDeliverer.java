@@ -1,46 +1,75 @@
 package Form.Deliverers;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 import Model.DelivererModel;
+import database.DBClient;
 import utils.FAlerts;
 import utils.FTextField;
+import utils.Navigator;
 
 public class FAddDeliverer extends FAddDelivererPage {
 
 	private FTextField username = new FTextField(20);
 	private FTextField password = new FTextField(20);
 	private FTextField confirmpass = new FTextField(20);
-	
+
 	private boolean exit = false;
+	private boolean Existing = true;
 	private int flag;
-	
-	private ArrayList<String> DeliveryArea;
+
+	private ArrayList<Object> DeliveryAreas;
 	private Object[] message = { "Username", username, "Password", password, "Confirm Password", confirmpass };
-	
 	private DelivererModel NewDeliveryMan;
 
 	public FAddDeliverer() {
 
 		NewDeliveryMan = new DelivererModel("");
+
+		DeliveryAreas = new ArrayList<Object>();
+		TFDeliveryArea.SetMask("L#L");
 		
-		BTNAddDeliveryArea.addActionListener(new ActionListener() {
+		TFPhoneNum_1.SetMask("###");
+		TFPhoneNum_2.SetMask("###");
+		TFPhoneNum_3.SetMask("####");
+
+		BTNVerify.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// No more than 3 characters verification.
-//				if(TFDeliveryArea HAS MORE THAN 3 CHARACTERS) {
-//					FAlerts.Error("Delivery Area Error", "Unknown Delivery Area");
+				// Existing Account verification.
 
-//				}else{
-//					DeliveryArea.add(TFDeliveryArea.getText());
-//					JTADeliveryArea.setText(DeliveryArea);
+				if (DBClient.CheckUser(TFNewUsername.getText()) != null) {
+					Existing = true;
+					FAlerts.Error("New Account Error", "Account Username already exists");
+					TFNewUsername.SetInvalid();
 
-//				}
+				} else {
+					Existing = false;
+					FAlerts.Say("New Account", "Username is valid!");
+
+					TFNewUsername.IsValid();
+				}
+
+			}
+		});
+
+		BTNAddDeliveryArea.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (TFDeliveryArea.IsValid()) {
+					DeliveryAreas.add(TFDeliveryArea.GetContent());
+					JTADeliveryArea.SetList(DeliveryAreas);
+					TFDeliveryArea.setText("");
+				} else {
+					FAlerts.Error("Delivery Area Error", "Invalid Delivery Area");
+				}
 
 			}
 		});
@@ -49,18 +78,14 @@ public class FAddDeliverer extends FAddDelivererPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// Empty JTA Delivery Area verification
-//				if(JTADeliveryArea.getText().equals("")) {
-//					FAlerts.Error("Delivery Area Error", "No Delivery Areas present");
+				if (JTADeliveryArea.isEmpty()) {
+					FAlerts.Error("Delete Area Error", "List is Empty");
+				}
 
-//				}else {
-				// Deletes the most recently added Delivery Area
-//					DeliveryArea.remove(DeliveryArea.size() - 1);
-//				
-
-//				}
-//              repaint();
-//				revalidate();
+				if (JTADeliveryArea.GetSelectedIndex() > -1) {
+					DeliveryAreas.remove(JTADeliveryArea.GetSelectedIndex());
+					JTADeliveryArea.SetList(DeliveryAreas);
+				}
 
 			}
 		});
@@ -69,59 +94,64 @@ public class FAddDeliverer extends FAddDelivererPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				if (Existing == true) {
+					TFNewUsername.SetInvalid();
+				}else
+					TFNewUsername.IsValid();			
 
+				if (TFName.getText().length() < 2 || TFName.getText().length() > 50)
+					TFName.SetInvalid();
+
+				if (TFPhoneNum_1.getText().length() < 3 || TFPhoneNum_2.getText().length() < 3 || TFPhoneNum_3.getText().length() < 4) {
+					TFPhoneNum_1.SetInvalid();
+					TFPhoneNum_2.SetInvalid();
+					TFPhoneNum_3.SetInvalid();
+				}
 				
-				// Empty Fields verification
-//				if (!TFName.IsValid() || !TFPhoneNum_1.IsValid() || !TFPhoneNum_2.IsValid()
-//						|| !TFPhoneNum_3.IsValid()) {
-//					FAlerts.Error("Info Error", "Missing Fields");
+				if (JTADeliveryArea.isEmpty()) {
+					FAlerts.Error("Delivery Area Error", "Missing Delivery Area");
 
-					// Empty JTA Delivery Area verification
-//				} else if (JTADeliveryArea.getText().trim().length() == 0) {
-//					FAlerts.Error("Delivery Area Error", "Missing Delivery Area");
+				}else if (!TFNewUsername.IsValid() || !TFName.IsValid() || !TFPhoneNum_1.IsValid() || !TFPhoneNum_2.IsValid() || !TFPhoneNum_3.IsValid()) {
+					FAlerts.Error("Invalid Input Field", "Invalid Info");
 
-//				} else {
-//					if (FAlerts.Confirm("Save Confirm",
-//							" Name: " + TFName.getText() + "/n Telephone Number: (" + TFPhoneNum_1.getText() + ") "
-//									+ TFPhoneNum_2.getText() + " - " + TFPhoneNum_3.getText()
-//									+ "\n Postal Code covered by this delivery man: \n" + DeliveryArea + "\n" + "\n Would you like to save this delivery man?")) {
-
-//						if(FAlerts.AskDeliverer("Create new Delivery Guy", message)) {
-					
-//								do{
-//										if(username.getText().equals("") || password.getText().equals("") || confirmpass.getText().equals("")) {
-//												FAlerts.Error("Missing info Error", "Missing fields");
-//												flag = JOptionPane.showConfirmDialog(null, message, "Create new Delivery Guy", JOptionPane.YES_NO_OPTION);	
-//										}else {
-//												NewDeliveryMan.setId(IDK ASK FRANK);
-//												NewDeliveryMan.setName(username.getText());
-//												NewDeliveryMan.setArea(SET IT TO THE ARRAYLIST);
-//												NewDeliveryMan.setNumber(TFPhoneNum_1.getText() + TFPhoneNum_2.getText() + TFPhoneNum_3.getText());
-//												NewDeliveryMan.setStatus(IDK ASK FRANK);
-							
-//												NewDeliveryMan.Create();
-							
-//												FAlerts.Say("Added Deliverer", "Added Delivery Guy Successfully!");
-//												exit = true;
-//										}
-										
-//										if(flag == JOptionPane.NO_OPTION || flag == JOptionPane.CLOSED_OPTION) {
-//											exit = true;
-//										}
+				} else {
+					if (String.valueOf(TFPassword.getPassword())
+							.contentEquals(String.valueOf(TFConfirmPass.getPassword()))
+							&& !String.valueOf(TFPassword.getPassword()).contentEquals("")
+							&& !String.valueOf(TFConfirmPass.getPassword()).contentEquals("")
+							&& String.valueOf(TFPassword.getPassword()).length() < 50
+							&& String.valueOf(TFPassword.getPassword()).length() > 2) {
 						
-//								}while(!exit); 
+						for (Object j : DeliveryAreas) {
+							NewDeliveryMan.getArealist().add((String) j);
+						}
+						NewDeliveryMan.SyncAreas();
 
-//									FAlerts.Say("New Deliverer Cancelled", "New Delivery Man has been successfully cancelled!");
-						
-//						}else {
-//							FAlerts.Say("New Deliverer Cancelled", "New Delivery Man has been successfully cancelled!");
-//						}
+						TFPassword.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+						TFConfirmPass.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+						NewDeliveryMan.setUsername(TFNewUsername.getText());
+						NewDeliveryMan.setPassword(String.valueOf(TFConfirmPass.getPassword()));
+						NewDeliveryMan.setName(TFName.getText());
+						NewDeliveryMan.setNumber(
+								TFPhoneNum_1.getText() + "-" + TFPhoneNum_2.getText() + "-" + TFPhoneNum_3.getText());
 
-//					}else {
-//						FAlerts.Say("Save Cancelled", "Save has been successfully cancelled!");
-//					}
-//				}
+						boolean answer = FAlerts.Confirm("Confirm Submission",
+								"Username: " + NewDeliveryMan.getUsername() + "\nName: "
+										+ NewDeliveryMan.getName() + "\nPhone Number: "
+										+ NewDeliveryMan.getNumber() + "\nDelivery Areas: "
+										+ NewDeliveryMan.getArea()) ;
 
+						if (answer == true) {
+							FAlerts.Say("Confirm Submission", "Account has been created!");
+							NewDeliveryMan.Create();
+							Navigator.Dashboard(Me);
+						}
+					} else {
+						TFPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+						TFConfirmPass.setBorder(BorderFactory.createLineBorder(Color.RED));
+					}
+
+				}
 			}
 		});
 

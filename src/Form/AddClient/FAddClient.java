@@ -37,7 +37,7 @@ public class FAddClient extends FAddClientPage {
 
 					}else {
 					Existing = false;
-					FAlerts.Say("New Account", "Account is valid!");
+					FAlerts.Say("New Account", "Username is valid!");
 
 					TFNewUsername.IsValid();
 				}
