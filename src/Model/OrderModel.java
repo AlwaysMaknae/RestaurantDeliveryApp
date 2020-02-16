@@ -15,6 +15,10 @@ public class OrderModel extends Model {
 	private int deliverer_id;
 	private int client_id;
 	private int order_delivered;
+	
+	
+	public static final String NOT_READY = "NOT READY";
+	//All the order states;
 
 	public OrderModel(int id) {
 		this.id = id;

@@ -3,6 +3,8 @@ package Form.Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import com.mysql.cj.xdevapi.Client;
@@ -26,12 +28,14 @@ public class FOrderFood extends FOrderFoodPage {
 	private ArrayList<RestaurantModel> RestaurantList;
 	private String order_items;
 	private float sum;
-	private ClientModel current_client = new ClientModel(Session.GetUser().getId());
+	private ClientModel current_client;
 
 	public FOrderFood() {
 		BTNDelete.setEnabled(false);
 		
+		current_client = new ClientModel(Session.GetUser().getId());
 		current_client.Read();
+		
 		ArrayList<Object> Order = new ArrayList<Object>();
 		ArrayList<Object> Menu = new ArrayList<Object>();
 
@@ -58,7 +62,12 @@ public class FOrderFood extends FOrderFoodPage {
 		BTNRestaurant.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				
+				if(ListPan.GetSelectedIndex() < 0) {
+					FAlerts.Error("Ordering", "please select a restaurant");
+					return;
+				}
+				
 				MenuList = DBItem.getAllItems(RestaurantList.get(ListPan.GetSelectedIndex()).getId());
 
 				for (int i = 0; i < MenuList.size(); i++) {
@@ -96,39 +105,10 @@ public class FOrderFood extends FOrderFoodPage {
 					sum += (Float.parseFloat(TFPrice.getText()) * Float.parseFloat(TFQuantity.GetContent()));
 					TFTotal.setText(String.valueOf(sum));
 					
-					System.out.println(Order);
 				} else {
 					TFQuantity.SetInvalid();
-					//alert boi time
-					System.out.println("yeet");
 				}
 
-				// Restaurant Selection validation
-				// if(RESTAURANT IS SELECTED) {
-				// Menu Selection validation
-				// if(MENU IS SELECTED) {
-				// Quantity validation
-				// if(TFQuantity.getText().equals("") ||
-				// TFQuantity.getText().matches("[a-zA-Z]+") ||
-				// !TFQuantity.getText().matches("[0-9]+")) {
-				// FAlerts.Error("Quantity Error", "Please enter an appropriate
-				// number of meals.");
-				// }else {
-				// TODO ADD ORDER TO ORDERLIST
-				// TODO ADD PRICE TO TOTAL TEXTFIELDS
-				// FAlerts.Say("Add Meal Success", "Meal has been added to
-				// Order!");
-				// }
-
-				// }else {
-				// FAlerts.Error("Selection Error", "Please select a Menu to
-				// order from.");
-				// }
-
-				// }else {
-				// FAlerts.Error("Selection Error", "Please select a Restaurant
-				// to order from.");
-				// }
 				if (MenuList.isEmpty() == false) {
 					BTNRestaurant.setEnabled(false);
 					BTNArea.setEnabled(false);
@@ -140,16 +120,56 @@ public class FOrderFood extends FOrderFoodPage {
 		BTNOrder.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				LocalTime d_time = LocalTime.now().plusHours(CBDeliveryTime.getSelectedIndex());
+				d_time = d_time.truncatedTo(ChronoUnit.HOURS);
+				
+				String o_adress = current_client.getClient_address();
+				String o_date;
+				if(d_time.isBefore(LocalTime.now())) {
+					o_date = Session.GetDateFormated(true);
+				} else {
+					o_date = Session.GetDateFormated();
+					
+				}
+				
 
-				DBOrder.AddOrder(new OrderModel(current_client.getClient_address(), TFPostalCode.getText(),
-						TFDeliveryTimeYMD.getText(), Order.toString(),
-						TFHour.getText() + ":" + TFMinute.getText() + ":00", Float.parseFloat(TFPrice.getText()),
-						"NOT READY", RestaurantList.get(ListPan.GetSelectedIndex()).getId(), current_client.getId()));
-
-				// FAlerts.Say("Order Deletion Cancelled", "Order was ordered in
-				// the correct order without any order from anyone
-				// successfully!");
-				// Navigator.Dashboard(Me);
+				if(ListPan.GetSelectedIndex() > -1) {
+					RestaurantModel cRest = new RestaurantModel(RestaurantList.get(ListPan.GetSelectedIndex()).getId());
+					cRest.Read();
+					
+					if(!cRest.isOpenAt(d_time)) {
+						FAlerts.Say("Ordering", "Sorry, " + cRest.getName() + " is closed at that time.");
+					} else if(FAlerts.Confirm("Confirm Order", "Confirm order. : \n" + ListOut(Order) + "\n" + "Total : "+sum+"$")) {
+						
+						if(!FAlerts.Confirm("Delivery", "Deliver to your profile Address ?")){
+							o_adress = FAlerts.Ask("Ordering", "Enter full adress of Delivery");
+							if( o_adress ==  null ){ return; }
+						}
+						
+						if(!FAlerts.Confirm("Confirm Delivery", "Delivery Information : \n" + 
+								"Target Order Time : " + o_date + " " + d_time + "\n" +
+								"Address : " + o_adress + "\n" +
+								"Deliverer to this Adress ?"
+						)) {return;}
+						
+						
+						FAlerts.Say("Payment", "The amount due is : " + sum + "$");
+						
+						DBOrder.AddOrder(new OrderModel(
+								o_adress,
+								TFPostalCode.getText(),
+								o_date, 
+								ListOut(Order),
+								d_time.toString(),
+								sum,
+								OrderModel.NOT_READY, 
+								RestaurantList.get(ListPan.GetSelectedIndex()).getId(), 
+								current_client.getClient_id()
+								));
+						
+						Navigator.Dashboard(Me);
+					}
+				}
 			}
 		});
 
@@ -207,6 +227,15 @@ public class FOrderFood extends FOrderFoodPage {
 
 		});
 
+	}
+	
+	private String ListOut(ArrayList<Object> order) {
+		String oo = "";
+		
+		for (Object s : order) {
+			oo += s + "\n";
+		}
+		return oo;
 	}
 
 	public static boolean isNumeric(final String str) {

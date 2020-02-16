@@ -58,7 +58,7 @@ public class ClientModel extends Model {
 	
 	private void ReadClientModel(ClientModel Me){
 
-		this.client_id = Me.client_id;
+		this.client_id = Me.getClient_id();
 		this.client_id = Me.getClient_id();
 		this.client_username = Me.getClient_username();
 		this.client_password = Me.getClient_password();

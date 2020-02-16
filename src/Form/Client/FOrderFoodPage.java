@@ -3,11 +3,14 @@ package Form.Client;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.time.LocalTime;
+import java.time.ZoneId;
 
 import javax.swing.JPanel;
 
 import utils.FButton;
 import utils.FForm;
+import utils.FHoursComboBox;
 import utils.FLabel;
 import utils.FListView;
 import utils.FTextField;
@@ -20,7 +23,9 @@ import javax.swing.SwingConstants;
 
 public class FOrderFoodPage extends FForm {
 	
-	protected FTextField TFDeliveryTimeYMD, TFHour, TFMinute, TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
+	protected FTextField TFPostalCode, TFMeal, TFPrice, TFQuantity, TFTotal;
+	
+	protected FHoursComboBox CBDeliveryTime;
 	
 	protected FButton BTNAdd, BTNDelete, BTNOrder, BTNRestaurant, BTNMenu, BTNCancel, BTNArea;
 
@@ -58,12 +63,11 @@ public class FOrderFoodPage extends FForm {
 		DeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
 		OrderFoodInfoPan.add(DeliveryInfoPan);
 		
-		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
+		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time : ");
 		DeliveryInfoPan.add(DeliveryTimeYMDLbl);
 		
-		TFDeliveryTimeYMD = new FTextField(0);
-		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
-		DeliveryInfoPan.add(TFDeliveryTimeYMD);
+		CBDeliveryTime = new FHoursComboBox( LocalTime.now(ZoneId.of("America/New_York")).getHour() );
+		DeliveryInfoPan.add(CBDeliveryTime);
 		
 		JPanel SpacePan0 = new JPanel();
 		SpacePan0.setBackground(Color.LIGHT_GRAY);
@@ -73,20 +77,6 @@ public class FOrderFoodPage extends FForm {
 		FLabel DeliveryTimeLbl = new FLabel("Delivery Time : ");
 		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
 		DeliveryInfoPan.add(DeliveryTimeLbl);
-		
-		TFHour = new FTextField(0);
-		TFHour.setPreferredSize(new Dimension(20, 20));
-		DeliveryInfoPan.add(TFHour);
-		
-		FLabel HourLbl = new FLabel("H");
-		DeliveryInfoPan.add(HourLbl);
-		
-		TFMinute = new FTextField(0);
-		TFMinute.setPreferredSize(new Dimension(20, 20));
-		DeliveryInfoPan.add(TFMinute);
-		
-		FLabel MinuteLbl = new FLabel("M");
-		DeliveryInfoPan.add(MinuteLbl);
 		
 		JPanel SpacePan1 = new JPanel();
 		SpacePan1.setBackground(Color.LIGHT_GRAY);

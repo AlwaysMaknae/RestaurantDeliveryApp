@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 import database.DBRestaurant;
+import database.Session;
 import utils.FHoursComboBox;
 
 public class RestaurantModel extends Model{
@@ -223,7 +224,16 @@ public class RestaurantModel extends Model{
 		this.closings = closings;
 	}
 	public boolean isOpenAt(LocalTime time) {
-		return true;
+		
+		LocalTime now = LocalTime.now();
+		int CurrentDay = Session.GetDayOfWeek();
+		
+		if(time.isBefore(now)) {
+			CurrentDay+=1;
+			CurrentDay%=7;
+		}
+		
+		return (this.openings[CurrentDay].isBefore(time) && this.closings[CurrentDay].isAfter(time));
 	}
 
 }
