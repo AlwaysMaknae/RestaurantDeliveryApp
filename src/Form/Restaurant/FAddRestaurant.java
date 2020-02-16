@@ -34,8 +34,6 @@ public class FAddRestaurant extends FAddRestaurantPage {
 				for (int i = 1; i < Fcb_close.length; i++) {
 					Fcb_close[i].setSelectedIndex(Fcb_close[0].getSelectedIndex());
 				}
-				
-
 			}
 		});
 

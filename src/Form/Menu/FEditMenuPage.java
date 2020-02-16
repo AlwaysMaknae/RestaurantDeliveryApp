@@ -19,7 +19,7 @@ public class FEditMenuPage extends FForm{
 
 	protected FTextField TFItem;
 	protected FTextField TFPrice;
-	protected FButton BTNAddItem, BTNSelect, BTNEditMenu, BTNEditItem, BTNDeleteItem;
+	protected FButton BTNAddItem, BTNSelect, BTNSelectMenuItem, BTNEditItem, BTNDeleteItem;
 	
 	protected FListView ListPan, MenuItemListPan;
 	
@@ -100,9 +100,9 @@ public class FEditMenuPage extends FForm{
 		EditMenuPan.setPreferredSize(new Dimension(325, 80));
 		InnerPan.add(EditMenuPan);
 		
-		BTNEditMenu = new FButton("Edit Menu");
-		BTNEditMenu.setPreferredSize(new Dimension(110, 25));
-		EditMenuPan.add(BTNEditMenu);
+		BTNSelectMenuItem = new FButton("Selent Menu Item");
+		BTNSelectMenuItem.setPreferredSize(new Dimension(110, 25));
+		EditMenuPan.add(BTNSelectMenuItem);
 		
 		JPanel SpacePan2 = new JPanel();
 		SpacePan2.setBackground(Color.LIGHT_GRAY);

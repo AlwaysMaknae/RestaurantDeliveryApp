@@ -6,44 +6,35 @@ import java.util.ArrayList;
 
 import Model.ItemModel;
 import Model.RestaurantModel;
+import database.DBItem;
+import database.DBRestaurant;
 import utils.FAlerts;
 
 public class FEditMenu extends FEditMenuPage {
 
-	private ItemModel UpdateMenuItem;
-	private ItemModel DeleteMenuItem;
+	private ArrayList<ItemModel> UpdateMenuList;
 	private ArrayList<Float> ArrayPrice;
+	private ArrayList<RestaurantModel> RestaurantList;
+	
+	private RestaurantModel CurrentRestaurant;
 
 	public FEditMenu() {
 		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
 		
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
+		RestaurantList = new ArrayList<RestaurantModel>();
 		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
 
-		// RM = DBRestaurant.GetAllRestaurants();
+		RestaurantList = DBRestaurant.getAllRestaurants();
+		
 
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
 
-		Restaurant.add("Orange");
-		Restaurant.add("Apple");
-		Restaurant.add("Cherry");
-		Restaurant.add("Melon");
-		Restaurant.add("Cheese");
-
-		/*
-		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-		 */
+		  for (RestaurantModel r : RestaurantList) { 
+			  Restaurant.add(r.getName()); 
+		  }
+		 
 
 		ArrayList<Object> Menu = new ArrayList<Object>();
-
-		Menu.add("Hot Dog");
-		Menu.add("Pufferfish");
 
 		ListPan.SetList(Restaurant);
 		MenuItemListPan.SetList(Menu);
@@ -78,27 +69,30 @@ public class FEditMenu extends FEditMenuPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-//				Select a restaurant and press SELECT. This transfers the info into the correct textfields which can be edited.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected restaurant and the appropriate Menu items
+				if( ListPan.GetSelectedIndex() > -1 ) {
+					CurrentRestaurant = RestaurantList.get(ListPan.GetSelectedIndex());
+					
+					UpdateMenuList = DBItem.getAllItems(CurrentRestaurant.getId());
+					
+					Menu.clear();
+					
+					for (ItemModel iT : UpdateMenuList) {
+						Menu.add("" + iT.getItem_dish() + " : " + iT.getItem_price() );
+					}
+					
+					MenuItemListPan.SetList(Menu);
+
+				}
+				
 				
 			}
 		}); 
 		
-		BTNEditMenu.addActionListener(new ActionListener() {	
+		BTNSelectMenuItem.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// Empty Menu validation
-				
-//				if (MenuItemListPan.GetSelectedIndex() < 0) {
-//					FAlerts.Error("Empty Menu Error", "Please add items to Menu before creating a Menu.");
-//				} else {
-
-//					if(//TODO DISPLAY A FALERT THAT DISPLAYS THE ITEM NAME AND PRICE AS WELL AS A CONFIRMATION
-					//IF THE USER WANTS TO EDIT THE MENU. IF HE DOES ACCEPT EDIT THE MENU ITEMS TO THE DATA BASE
-					//VIA THE ITEMMODEL AND ITEMDB, IF HE DOESNT ACCEPT SHOW A POPUP OF THE CANCELATION.
-//							) {
+				if (MenuItemListPan.GetSelectedIndex() > -1) {
 						
 //				UpdateMenuItem.getItem_id();
 //				UpdateMenuItem.setItem_dish(Menu.toString());
@@ -107,12 +101,8 @@ public class FEditMenu extends FEditMenuPage {
 //				UpdateMenuItem.setStatus(I DONT KNOW ASK FRANK);
 						
 //				UpdateMenuItem.Update();
-						
-//					}else {
-//						FAlerts.Say("Cancel Success", "Menu has been successfully cancelled!");
-//					}
 					
-//				}
+				}
 				
 			}
 		}); 
