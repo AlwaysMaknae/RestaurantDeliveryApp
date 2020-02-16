@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -54,7 +56,8 @@ public class FTextField extends JFormattedTextField {
 		}
 		public void SetDecimal() {
 			//oof#2
-			this.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat())));
+			this.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("#.00",
+                    DecimalFormatSymbols.getInstance(Locale.US)))));
 		}
 		public void SetDate() {
 			//oof#2

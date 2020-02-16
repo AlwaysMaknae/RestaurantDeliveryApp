@@ -20,6 +20,7 @@ public class FEditMenuPage extends FForm{
 	protected FTextField TFItem;
 	protected FTextField TFPrice;
 	protected FButton BTNAddItem, BTNSelect, BTNSelectMenuItem, BTNEditItem, BTNDeleteItem;
+	protected FLabel TitleLbl;
 	
 	protected FListView ListPan, MenuItemListPan;
 	
@@ -78,7 +79,7 @@ public class FEditMenuPage extends FForm{
 		TitleSpacePan.setPreferredSize(new Dimension(325, 3));
 		TitlePan.add(TitleSpacePan);
 		
-		FLabel TitleLbl = new FLabel("Edit Menu");
+		TitleLbl = new FLabel("Edit Menu");
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -142,7 +143,7 @@ public class FEditMenuPage extends FForm{
 		BTNAddItem.setPreferredSize(new Dimension(85, 25));
 		EditItemPan.add(BTNAddItem);
 		
-		BTNEditItem = new FButton("Edit Item");
+		BTNEditItem = new FButton("Update Item");
 		BTNEditItem.setPreferredSize(new Dimension(85, 25));
 		EditItemPan.add(BTNEditItem);
 		

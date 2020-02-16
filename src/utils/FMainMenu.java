@@ -121,31 +121,13 @@ public class FMainMenu extends JMenuBar {
 
 		//menu menu
 		JMenu mmenu = new JMenu("Menu");
-		//add,edit,delete
-		m_add = new JMenuItem("Add Menu");
-		m_edit = new JMenuItem("Edit Menu");
-		m_delete = new JMenuItem("Delete Menu");
-		mmenu.add(m_add);
+		//edit
+		m_edit = new JMenuItem("Manage Menus");
 		mmenu.add(m_edit);
-		mmenu.add(m_delete);
-		m_add.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new FAddMenu();
-				link.dispose();
-			}
-		});
 		m_edit.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new FEditMenu();
-				link.dispose();
-			}
-		});
-		m_delete.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new FDeleteMenu();
 				link.dispose();
 			}
 		});
@@ -268,13 +250,29 @@ public class FMainMenu extends JMenuBar {
 		manager_order.add(ma_vorder);
 		this.add(manager_order);
 		
-		manager_order.addActionListener( new ActionListener() {
+		ma_vorder.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new FViewRestaurantOrder();
 				link.dispose();
 			}
 		});
+		
+		//menu menu
+				JMenu mmenu = new JMenu("Manager:Menu");
+				//edit
+				m_edit = new JMenuItem("Manage Menus");
+				mmenu.add(m_edit);
+				m_edit.addActionListener( new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new FEditMenu();
+						link.dispose();
+					}
+				});
+				this.add(mmenu);
+		
+		
 
 		//Client
 		//File

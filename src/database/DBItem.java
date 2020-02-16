@@ -50,7 +50,7 @@ public class DBItem {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			
 			while(stmt.next()){
-				items.add(new ItemModel(stmt.getInt(1), stmt.getString(2), stmt.getFloat(3)));
+				items.add(new ItemModel(stmt.getInt(1), stmt.getString(2), stmt.getFloat(3), stmt.getInt(4), stmt.getInt(5)));
 			}		
 			return items;
 		} catch (SQLException e) {

@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import Model.AccesLevel;
 import Model.ItemModel;
+import Model.ManagerModel;
 import Model.RestaurantModel;
 import database.DBItem;
 import database.DBRestaurant;
+import database.Session;
 import utils.FAlerts;
 
 public class FEditMenu extends FEditMenuPage {
@@ -15,26 +18,42 @@ public class FEditMenu extends FEditMenuPage {
 	private ArrayList<ItemModel> UpdateMenuList;
 	private ArrayList<Float> ArrayPrice;
 	private ArrayList<RestaurantModel> RestaurantList;
+	private ArrayList<Object> Menu;
 	
 	private RestaurantModel CurrentRestaurant;
+	private ItemModel UpdateMenuItem;
 
 	public FEditMenu() {
 		// Empty Login Error Validation once actionlistener is implemented.
 		
 		RestaurantList = new ArrayList<RestaurantModel>();
+		
 		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
-
-		RestaurantList = DBRestaurant.getAllRestaurants();
+		ArrayList<Object> Restaurant = new ArrayList<Object>();
+		
+		Menu = new ArrayList<Object>();
+		TFPrice.SetDecimal();
+		
+		if (Session.AccesType == AccesLevel.GetType(AccesLevel.ADMIN) ) {
+			RestaurantList = DBRestaurant.getAllRestaurants();
+			
+		} else if(Session.AccesType == AccesLevel.GetType(AccesLevel.MANAGER)) {
+			ManagerModel user = new ManagerModel(Session.GetUser().getId());
+			user.Read();
+			CurrentRestaurant = DBRestaurant.GetRestaurant(user.getRestaurant_id());
+			RestaurantList.add(CurrentRestaurant);
+			TitleLbl.setText("Edit Menu : " + CurrentRestaurant.getName());
+			UpdateMenuItemList();
+		}
 		
 
-		ArrayList<Object> Restaurant = new ArrayList<Object>();
 
 		  for (RestaurantModel r : RestaurantList) { 
 			  Restaurant.add(r.getName()); 
 		  }
 		 
 
-		ArrayList<Object> Menu = new ArrayList<Object>();
+
 
 		ListPan.SetList(Restaurant);
 		MenuItemListPan.SetList(Menu);
@@ -43,24 +62,31 @@ public class FEditMenu extends FEditMenuPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// TODO Add item to the Menu of the Restaurant.
+				//Add item to the Menu of the Restaurant.
+				if(ListPan.GetSelectedIndex() < 0) {
+					return;
+				}
 
-				// Empty Textfields validation
+				if(TFItem.IsValid() && TFPrice.IsValid()) {					
+					float price = Float.parseFloat(TFPrice.GetContent());
+					
+					ItemModel newIT = new ItemModel(
+							CurrentRestaurant.getId(),
+							TFItem.GetContent(),
+							price);
 
-//				if(!TFItem.IsValid() || !TFPrice.IsValid()) {
-
-//					FAlerts.Error("Missing Info Error", "Missing information");
-
-				// Selected Restaurant Validation
-//				}else if(RESTAURANT IN SCROLLPANE IS SELECTED){
-
-//					ArrayPrice.set(GET SPECIFIED PRICE DEPEDNING ON WHICH ITEM WAS SELECTED, Float.parseFloat(TFPrice.getText()));
-//					FAlerts.Say("Item Success", "Item successfully added to Menu!");
-
-//				}else {
-
-//					FAlerts.Error("Selection Error", "Please select a Restaurant.");
-//				}
+					if(FAlerts.Confirm("Create Item Menu", 
+					"Add this item To " + CurrentRestaurant.getName() + " ?" + 
+					"\n" + newIT.getItem_dish() + " for " + newIT.getItem_price())
+							) {		
+						newIT.setStatus(1);
+						newIT.Create();
+						UpdateMenuItemList();
+					}
+					
+				}else {
+					FAlerts.Error("Missing Info Error", "Missing Item information.");
+				}
 				
 			}
 		});
@@ -71,16 +97,9 @@ public class FEditMenu extends FEditMenuPage {
 				
 				if( ListPan.GetSelectedIndex() > -1 ) {
 					CurrentRestaurant = RestaurantList.get(ListPan.GetSelectedIndex());
+					TitleLbl.setText("Edit Menu : " + CurrentRestaurant.getName());
 					
-					UpdateMenuList = DBItem.getAllItems(CurrentRestaurant.getId());
-					
-					Menu.clear();
-					
-					for (ItemModel iT : UpdateMenuList) {
-						Menu.add("" + iT.getItem_dish() + " : " + iT.getItem_price() );
-					}
-					
-					MenuItemListPan.SetList(Menu);
+					UpdateMenuItemList();
 
 				}
 				
@@ -93,15 +112,15 @@ public class FEditMenu extends FEditMenuPage {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (MenuItemListPan.GetSelectedIndex() > -1) {
-						
-//				UpdateMenuItem.getItem_id();
-//				UpdateMenuItem.setItem_dish(Menu.toString());
-//				UpdateMenuItem.setItem_price(Float.parseFloat(ArrayPrice.toString()));
-//				UpdateMenuItem.setRestaurant_id(ListPan.GetSelectedIndex());
-//				UpdateMenuItem.setStatus(I DONT KNOW ASK FRANK);
-						
-//				UpdateMenuItem.Update();
+				
+				UpdateMenuItem = UpdateMenuList.get(MenuItemListPan.GetSelectedIndex());
+				
+				TFItem.setText( UpdateMenuItem.getItem_dish() );
+				TFPrice.setText(UpdateMenuItem.getItem_price() + "");
+				
 					
+				} else {
+					FAlerts.Say("Edit Menu", "Choose an item to Select.");
 				}
 				
 			}
@@ -112,19 +131,25 @@ public class FEditMenu extends FEditMenuPage {
 			public void actionPerformed(ActionEvent e) {
 				
 				// Selected Restaurant Validation
-				
-//				if(RESTAURANT IN SCROLLPANE IS SELECTED){
-
-//					ListPan.GetSelectedIndex();
-//					ListPan.GetSelectedItem();
-				
-//					TFItem.setText(ListPan.GetSelectedItem().toString());
-//					TFPrice.setText(GET SPECIFIED PRICE DEPEDNING ON THE ID OF THE ITEM SELECTED);
-
-//				}else {
-
-//					FAlerts.Error("Selection Error", "Please select a Restaurant.");
-//				}
+				if (MenuItemListPan.GetSelectedIndex() > -1 && UpdateMenuItem != null) {
+					// Wait No this is edit
+					if(TFItem.IsValid() && TFPrice.IsValid()) {
+						
+						String msg = "Update " + UpdateMenuItem.getItem_dish() + " : " + UpdateMenuItem.getItem_price();
+						msg+= "\n to \n";
+						msg+= TFItem.GetContent() + " : " + TFPrice.GetContent();
+						
+						if(FAlerts.Confirm("Confirm Update", msg)) {
+							float price = Float.parseFloat(TFPrice.GetContent());
+							UpdateMenuItem.setItem_dish(TFItem.GetContent());
+							UpdateMenuItem.setItem_price(price);
+							UpdateMenuItem.Update();
+							UpdateMenuItemList();
+						}
+					}else {
+						FAlerts.Error("Item Info Error", "Chek Item information.");
+					}
+				}
 				
 				
 				
@@ -135,38 +160,24 @@ public class FEditMenu extends FEditMenuPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//Restaurant is selected validation
-				
-//				if(RESTAURANT IS SELECTED) {
-					//Menu Has Items validation
-
-//					if(MenuItemListPan.GetSelectedIndex() < 0) {
-						//Item is selected validation
+				// Selected Restaurant Validation
+				if (MenuItemListPan.GetSelectedIndex() > -1 && UpdateMenuItem != null) {
+					// Wait No this is edit
+					if(TFItem.IsValid() && TFPrice.IsValid()) {
 						
-//						if(ITEM IS SELECTED) {
-							
-//							if(FAlerts.Confirm("Deletion Confirmation", "Would you like to delete" + "PUT ITEM NAME AND PRICE HERE")) {
-//								int ID = MenuItemListPan.GetSelectedIndex();				
-//								DeleteMenuItem.Delete(ID);
-//								Menu.remove(ID);
-								
-//								repaint();
-//								revalidate();
-//							}else {
-//								FAlerts.Say("Deletion Cancelled", "Deletion was successfully cancelled!");
-//							}
-							
-//						}else {
-//							FAlerts.Error("Selection Error", "Please select an item to delete.");
+						String msg = "Delete  " + UpdateMenuItem.getItem_dish() + " : " + UpdateMenuItem.getItem_price();
+						msg+= " ? \n";
+						
+						if(FAlerts.Confirm("Confirm Delete", msg)) {
+							UpdateMenuItem.Delete();
+							UpdateMenuItem = null;
+							UpdateMenuItemList();
+						}
+					}else {
+						FAlerts.Error("Item Info Error", "Chek Item information.");
+					}
 
-//						}
-//					}else {
-//						FAlerts.Error("Empty Menu Error", "Please add item to Menu to delete.");
-
-//					}
-//				}else {
-//					FAlerts.Error("Selection Error", "Please select a Restaurant.");
-//				}
+				}
 			}
 		});	
 	}
@@ -174,6 +185,22 @@ public class FEditMenu extends FEditMenuPage {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
+	}
+	
+	
+	private void UpdateMenuItemList() {
+		UpdateMenuList = DBItem.getAllItems(CurrentRestaurant.getId());
+		
+		Menu.clear();
+		
+		for (ItemModel iT : UpdateMenuList) {
+			Menu.add(iT.getItem_dish() + " : " + iT.getItem_price() );
+		}
+		
+		MenuItemListPan.SetList(Menu);
+		TFItem.setText("");
+		TFPrice.setText("");
+		
 	}
 
 }
