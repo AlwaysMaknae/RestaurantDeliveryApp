@@ -22,6 +22,7 @@ public class FDeleteDelivererPage extends FForm {
 
 	protected FTextField TFName, TFDeliveryArea;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FListView JTADeliveryArea;
 
 	protected FButton BTNSelect, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeleteAll;
 	
@@ -172,11 +173,10 @@ public class FDeleteDelivererPage extends FForm {
 		DeliveryInfoSpacePan.setPreferredSize(new Dimension(425, 1));
 		DeliveryInfoPan.add(DeliveryInfoSpacePan);
 
-		JTextArea JTADeliveryArea = new JTextArea();
-		JTADeliveryArea.setEnabled(false);
+		JTADeliveryArea = new FListView();
 		JTADeliveryArea.setPreferredSize(new Dimension(400, 100));
 		JTADeliveryArea.setBorder(new LineBorder(new Color(128, 128, 128)));
-		JTADeliveryArea.setLineWrap(true);
+		JTADeliveryArea.setEnabled(false);
 		DeliveryInfoPan.add(JTADeliveryArea);
 
 		JPanel DeliverySpacePan2 = new JPanel();

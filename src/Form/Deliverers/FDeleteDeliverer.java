@@ -6,61 +6,69 @@ import java.util.ArrayList;
 
 import Model.DelivererModel;
 import Model.RestaurantModel;
+import database.DBDeliverer;
 import utils.FAlerts;
+import utils.Navigator;
 
 public class FDeleteDeliverer extends FDeleteDelivererPage{
-
+	private ArrayList<Object> DeliveryAreas = null;
 	private DelivererModel DeleteDeliveryMan;
+	private ArrayList<DelivererModel> DelivererList;
 	
 	public FDeleteDeliverer() {
 		
-		ArrayList<DelivererModel> DelivererList = new ArrayList<DelivererModel>();
+		DeleteDeliveryMan = null;
 
+		DelivererList = new ArrayList<DelivererModel>();
 		ArrayList<Object> Deliverer = new ArrayList<Object>();
 
-		Deliverer.add("Jeff");
-		Deliverer.add("Geoff");
-		Deliverer.add("Jeph");
-		Deliverer.add("Geoph");
+		DelivererList = DBDeliverer.getAllDeliverers();
 
+		for (int i = 0; i < DelivererList.size(); i++) {
+			Deliverer.add(DelivererList.get(i).getName());
+		}
 
 		ListPan.SetList(Deliverer);
 		
-		BTNSelect.addActionListener(new ActionListener() {		
+		BTNSelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-//				Select a delivery guy and press SELECT. This transfers the info into the correct textfields.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected delivery guy and display the info in the textfields
-				
+				if (ListPan.GetSelectedIndex() < 0) {
+					FAlerts.Error("Ordering", "please select a restaurant");
+					return;
+				}
+				DeleteDeliveryMan = DelivererList.get(ListPan.GetSelectedIndex());
+				DeleteDeliveryMan.Read();
+
+				TFName.setText(DeleteDeliveryMan.getName());
+
+				String phone = DeleteDeliveryMan.getNumber();
+				TFPhoneNum_1.setText(phone.substring(0, 3));
+				TFPhoneNum_2.setText(phone.substring(4, 7));
+				TFPhoneNum_3.setText(phone.substring(8, 12));
+
+				DeliveryAreas = new ArrayList<Object>();
+				for (String s : DeleteDeliveryMan.getArealist()) {
+					DeliveryAreas.add(s);
+				}
+
+				JTADeliveryArea.SetList(DeliveryAreas);
 			}
 		});
+
 		
-		BTNDeleteAll.addActionListener(new ActionListener() {			
+		BTNDeleteAll.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//Delivery man is selected validation
-				
-//				if(DELIVERY MAN IS SELECTED) {
-//					if(FAlerts.Confirm("Deletion Confirmation", "Would you like to fire: " + ListPan.GetSelectedItem().toString() + "?")) {
-						
-//						int ID = ListPan.GetSelectedIndex();				
-//						DeleteDeliveryMan.Delete(ID);		
-//						ListPan.remove(ID);
+				if(FAlerts.Confirm("Account Deletion Confirmation", "Are you sure you want to delete this Account?")==true) {
 					
-//						repaint();
-//						revalidate();
-//						FAlerts.Say("Deletion Complete", "Delivery Man successfully fired!");
-						
-//					}else {
-//						FAlerts.Say("Deletion Cancelled", "Deletion has been successfully cancelled!");
-//					}
+					DeleteDeliveryMan.Delete();
+					FAlerts.Say("Account Deletion Complete", "Account has been deleted successfully!");
+
+					Navigator.Disconnect(Me);
 					
-//				}else {
-//					FAlerts.Error("Selection Error", "Please select a Delivery Man to delete.");
-//				}
+				}
 				
 			}
 		});

@@ -23,7 +23,7 @@ public class FEditDelivererPage extends FForm {
 	protected FTextField TFName, TFDeliveryArea;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
-	protected JTextArea JTADeliveryArea;
+	protected FListView JTADeliveryArea;
 
 	protected FButton BTNSelect, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
 
@@ -171,10 +171,10 @@ public class FEditDelivererPage extends FForm {
 		DeliveryInfoSpacePan.setPreferredSize(new Dimension(425, 1));
 		DeliveryInfoPan.add(DeliveryInfoSpacePan);
 
-		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new FListView();
 		JTADeliveryArea.setPreferredSize(new Dimension(400, 100));
 		JTADeliveryArea.setBorder(new LineBorder(new Color(128, 128, 128)));
-		JTADeliveryArea.setLineWrap(true);
+		JTADeliveryArea.setEnabled(false);
 		DeliveryInfoPan.add(JTADeliveryArea);
 
 		JPanel DeliverySpacePan2 = new JPanel();
