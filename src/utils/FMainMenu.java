@@ -204,20 +204,11 @@ public class FMainMenu extends JMenuBar {
 			/*
 			 * Order Accept Order Order Ready
 			 */
-			JMenu r_order = new JMenu("Restaurateur:Order");
-			ro_accept = new JMenuItem("Accept Order");
+			JMenu r_order = new JMenu("Restaurateur:Orders");
 			ro_ready = new JMenuItem("Order Ready");
-			r_order.add(ro_accept);
 			r_order.add(ro_ready);
 			this.add(r_order);
 
-			ro_accept.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					new FAcceptOrder();
-					link.dispose();
-				}
-			});
 			ro_ready.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

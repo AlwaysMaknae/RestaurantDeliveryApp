@@ -2,36 +2,62 @@ package Form.Restauranteur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import Model.AccesLevel;
+import Model.DelivererModel;
+import Model.DeliveryStatus;
+import Model.OrderModel;
+import Model.RestaurateurModel;
+import database.DBOrder;
+import database.Session;
+import utils.FAlerts;
+import utils.Navigator;
 
 public class FOrderReady extends FOrderReadyPage{
+	
+	RestaurateurModel TheGuy;
+	OrderModel TheOrder;
+	private ArrayList<OrderModel> OrderList;
+	private ArrayList<Object> OrderDisplay;
 
 	public FOrderReady() {
 		// Empty Login Error Validation once actionlistener is implemented.
-
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
+		OrderList = new ArrayList<OrderModel>();
+		OrderDisplay = new ArrayList<Object>();
 		
-//		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		//GetDeliveryGuy
+		//For all Areas get DeliverysByArea ?
+		
+		
+		if (Session.AccesType == AccesLevel.GetType(AccesLevel.RESTAURATEUR)) {
+			TheGuy = new RestaurateurModel(Session.GetUser().getId());
+			TheGuy.Read();
+		} else {
+			Navigator.Dashboard(Me);
+		}
+		
+		OrderList = DBOrder.getOrderbyRestaurant(TheGuy.getRestaurant_id(), true );
+		
+		for (OrderModel ord : OrderList) {
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " -> " + ord.getPostal_code() );
+		}
 
-
-//		ArrayList<Object> Order = new ArrayList<Object>();
-
-//		Order.add("Enter date here");
-
-
-//		ListPan.SetList(Order);
+		ListPan.SetList(OrderDisplay);
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-//				Select aN Order and press SELECT. This transfers the info into the correct Labels.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected restaurant and display the info in the Labels.
-				
+				if(ListPan.GetSelectedIndex() > -1 ) {
+					TheOrder = OrderList.get(ListPan.GetSelectedIndex());
+					
+					TFDeliveryDate.setText(TheOrder.getDate());
+					TFTime.setText(TheOrder.getDelivery_time());
+					TFPostalCode.setText(TheOrder.getPostal_code());
+					
+					JTAMealOrder.setText(TheOrder.getItems());
+				}
 			}
 		});
 		
@@ -39,22 +65,19 @@ public class FOrderReady extends FOrderReadyPage{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//Selected Order Verification
-				
-//				if(ORDER IS SELECTED) {
+				if(ListPan.GetSelectedIndex() > -1 && TheOrder != null) {
 
-//					if(FAlerts.Confirm("Order Ready Confirmation", "Is the order ready to be delivered?")) {
+					if(FAlerts.Confirm("Order Ready Confirmation", "Is the order ready to be delivered?")) {
 
-			// TODO SEND THE ORDER TO DELIVERYGUY VIEW ORDER LIST AND ADD IT TO RESTAURANTS ORDERLIST
+						TheOrder.setOrder_status( DeliveryStatus.READY );
+						TheOrder.Update();
 			
-//						FAlerts.Say("Order Ready", "Order has been delivered to Delivery Man!");
-//					}else {
-//						FAlerts.Say("Order Ready Cancelled", "Order Ready confirmation has been cancelled successfully!");
-//					}
+						FAlerts.Say("Order Ready", "Order is Ready for Pickup.");
+					}
 
-//				}else {
-//					FAlerts.Error("Selection Error", "Please select an Order.");
-//				}
+				}else {
+					FAlerts.Error("Selection Error", "Please select an Order to Ready.");
+				}
 				
 			}
 		});

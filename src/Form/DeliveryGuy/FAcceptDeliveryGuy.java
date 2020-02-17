@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Model.AccesLevel;
 import Model.DelivererModel;
+import Model.DeliveryStatus;
 import Model.OrderModel;
 import Model.RestaurantModel;
 import database.DBOrder;
@@ -75,6 +76,7 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 					if(FAlerts.Confirm("Accept Order Confirmation", "Would you like to accept this order?")) {
 						
 						TheOrder.setDeliverer_id( TheGuy.getId() );
+						TheOrder.setOrder_status(DeliveryStatus.IN_TRANSIT);
 						TheOrder.Update();
 						
 						FAlerts.Say("Accepted Order", "Order has been Accepted!");

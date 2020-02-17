@@ -77,7 +77,18 @@ public class DBOrder {
 	}
 
 	public static ArrayList<OrderModel> getOrderbyRestaurant(int id) {
-		String MyQuery = "SELECT * FROM orders WHERE orders.restaurant_id='" + id + "' AND order_status='NOT READY'";
+		return getOrderbyRestaurant(id, false);
+	}
+	public static ArrayList<OrderModel> getOrderbyRestaurant(int id, boolean ready_care) {
+		String MyQuery = "SELECT * FROM orders WHERE orders.restaurant_id='" + id + "'";
+		
+		if(ready_care) {
+			MyQuery += " AND order_status='NOT READY'";
+		}
+		
+		MyQuery += " AND orders.order_delivered = '0'";
+		
+		
 		ResultSet stmt;
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		try {
@@ -205,7 +216,13 @@ public class DBOrder {
 			stmt.setFloat(7, price);
 			stmt.setString(8, status);
 			stmt.setInt(9, restaurant_id);
-			stmt.setInt(10, deliverer_id);
+			
+			if(deliverer_id <= 0) {
+				stmt.setNull(10, deliverer_id);
+			} else {
+				stmt.setInt(10, deliverer_id);
+			}
+			
 			stmt.setInt(11, client_id);
 			stmt.setInt(12, order_delivered);
 			stmt.executeUpdate();
