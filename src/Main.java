@@ -43,9 +43,8 @@ public class Main {
 		DBConnecter.OpenConnection();
 		Session.AccesType = "";
 		
-		//Navigator.Login(null);
+		Navigator.Login(null);
 		
-		new FDeleteDeliverer();
 	}
 
 }
