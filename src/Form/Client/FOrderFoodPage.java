@@ -45,7 +45,7 @@ public class FOrderFoodPage extends FForm {
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel OrderFoodInfoPan = new JPanel();
-		OrderFoodInfoPan.setPreferredSize(new Dimension(280, 145));
+		OrderFoodInfoPan.setPreferredSize(new Dimension(280, 155));
 		OrderFoodInfoPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(OrderFoodInfoPan);
 		
@@ -59,7 +59,7 @@ public class FOrderFoodPage extends FForm {
 		OrderFoodTitlePan.add(OrderFoodLbl);
 		
 		JPanel DeliveryInfoPan = new JPanel();
-		DeliveryInfoPan.setPreferredSize(new Dimension(400, 100));
+		DeliveryInfoPan.setPreferredSize(new Dimension(400, 110));
 		DeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
 		OrderFoodInfoPan.add(DeliveryInfoPan);
 		

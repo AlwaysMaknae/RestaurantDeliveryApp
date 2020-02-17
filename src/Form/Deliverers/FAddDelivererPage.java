@@ -44,7 +44,7 @@ public class FAddDelivererPage extends FForm{
 		
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(425, 35));
+		TitlePan.setPreferredSize(new Dimension(425, 55));
 		MainPan.add(TitlePan);
 		
 		JPanel TitleSpacePan = new JPanel();
@@ -53,6 +53,7 @@ public class FAddDelivererPage extends FForm{
 		TitlePan.add(TitleSpacePan);
 		
 		FLabel TitleLbl = new FLabel("Add new Delivery Man");
+		TitleLbl.setFont(TitleLbl.getFont().deriveFont(TitleLbl.getFont().getSize() + 20f));
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -154,6 +155,7 @@ public class FAddDelivererPage extends FForm{
 		MainPan.add(DeliveryInfoPan);
 		
 		FLabel DeliveryAreaTitleLbl = new FLabel("Delivery Area");
+		DeliveryAreaTitleLbl.setFont(DeliveryAreaTitleLbl.getFont().deriveFont(DeliveryAreaTitleLbl.getFont().getSize() + 20f));
 		DeliveryInfoPan.add(DeliveryAreaTitleLbl);
 		
 		JPanel DeliveryInfoSpacePan = new JPanel();
@@ -180,10 +182,6 @@ public class FAddDelivererPage extends FForm{
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryInfoPan.add(TFDeliveryArea);
 		
-		BTNAddDeliveryArea = new FButton("Add Delivery Area");
-		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
-		DeliveryInfoPan.add(BTNAddDeliveryArea);
-		
 		JPanel DeliverySpacePan3 = new JPanel();
 		DeliverySpacePan3.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
@@ -193,18 +191,18 @@ public class FAddDelivererPage extends FForm{
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNDeleteDeliveryArea);
 		
+		BTNAddDeliveryArea = new FButton("Add Delivery Area");
+		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
+		DeliveryInfoPan.add(BTNAddDeliveryArea);
+		
 		JPanel DeliverySpacePan4 = new JPanel();
 		DeliverySpacePan4.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan4.setPreferredSize(new Dimension(600, 2));
 		DeliveryInfoPan.add(DeliverySpacePan4);
 		
-		JPanel DeliverySpacePan5 = new JPanel();
-		DeliverySpacePan5.setPreferredSize(new Dimension(30, 2));
-		DeliverySpacePan5.setBackground(Color.LIGHT_GRAY);
-		DeliveryInfoPan.add(DeliverySpacePan5);
-		
 		BTNSaveDeliveryArea = new FButton("Save");
-		BTNSaveDeliveryArea.setPreferredSize(new Dimension(80, 28));
+		BTNSaveDeliveryArea.setFont(BTNSaveDeliveryArea.getFont().deriveFont(BTNSaveDeliveryArea.getFont().getSize() + 20f));
+		BTNSaveDeliveryArea.setPreferredSize(new Dimension(300, 50));
 		DeliveryInfoPan.add(BTNSaveDeliveryArea);
 
 		repaint();

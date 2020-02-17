@@ -14,6 +14,7 @@ import utils.FForm;
 import utils.FLabel;
 import utils.FListView;
 import utils.FTextField;
+import java.awt.Font;
 
 public class FEditMenuPage extends FForm{
 
@@ -51,17 +52,18 @@ public class FEditMenuPage extends FForm{
 		ListTitlePan.add(ListRestaurantTitleLbl);
 		
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(220, 905));
+		ListPan.setPreferredSize(new Dimension(220, 850));
 		RestaurantListPan.add(ListPan);
 		
 		JPanel RestaurantListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
 		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(220, 26));
+		RestaurantListButtonPan.setPreferredSize(new Dimension(220, 85));
 		RestaurantListPan.add(RestaurantListButtonPan);
 		
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(220, 26));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(220, 85));
 		RestaurantListButtonPan.add(BTNSelect);
 		
 		JPanel InnerPan = new JPanel();
@@ -74,12 +76,8 @@ public class FEditMenuPage extends FForm{
 		TitlePan.setPreferredSize(new Dimension(325, 40));
 		InnerPan.add(TitlePan);
 		
-		JPanel TitleSpacePan = new JPanel();
-		TitleSpacePan.setBackground(Color.LIGHT_GRAY);
-		TitleSpacePan.setPreferredSize(new Dimension(325, 3));
-		TitlePan.add(TitleSpacePan);
-		
 		TitleLbl = new FLabel("Edit Menu");
+		TitleLbl.setFont(TitleLbl.getFont().deriveFont(TitleLbl.getFont().getSize() + 20f));
 		TitlePan.add(TitleLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -88,7 +86,7 @@ public class FEditMenuPage extends FForm{
 		InnerPan.add(SpacePan0);
 		
 		MenuItemListPan = new FListView();
-		MenuItemListPan.setPreferredSize(new Dimension(325, 600));
+		MenuItemListPan.setPreferredSize(new Dimension(325, 400));
 		InnerPan.add(MenuItemListPan);
 		
 		JPanel SpacePan1 = new JPanel();
@@ -102,7 +100,9 @@ public class FEditMenuPage extends FForm{
 		InnerPan.add(EditMenuPan);
 		
 		BTNSelectMenuItem = new FButton("Selent Menu Item");
-		BTNSelectMenuItem.setPreferredSize(new Dimension(110, 25));
+		BTNSelectMenuItem.setFont(BTNSelectMenuItem.getFont().deriveFont(BTNSelectMenuItem.getFont().getSize() + 20f));
+		BTNSelectMenuItem.setText("Select Menu Item");
+		BTNSelectMenuItem.setPreferredSize(new Dimension(300, 50));
 		EditMenuPan.add(BTNSelectMenuItem);
 		
 		JPanel SpacePan2 = new JPanel();
@@ -116,6 +116,7 @@ public class FEditMenuPage extends FForm{
 		InnerPan.add(EditItemPan);
 		
 		FLabel EditItemLbl = new FLabel("Edit Item");
+		EditItemLbl.setFont(EditItemLbl.getFont().deriveFont(EditItemLbl.getFont().getSize() + 20f));
 		EditItemPan.add(EditItemLbl);
 		
 		JPanel ItemSpacePan = new JPanel();

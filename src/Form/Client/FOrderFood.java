@@ -6,16 +6,10 @@ import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
-<<<<<<< HEAD
 import javax.swing.JOptionPane;
-
-=======
 import com.mysql.cj.xdevapi.Client;
-
 import Form.Login.FLogin;
 import Model.ClientModel;
->>>>>>> bdf3b1b9e5216a03bd7173258ed4a58e2cfbd93c
 import Model.ItemModel;
 import Model.RestaurantModel;
 import database.DBClient;
@@ -26,11 +20,9 @@ import database.Session;
 import Model.OrderModel;
 import Model.RestaurantModel;
 import utils.FAlerts;
-<<<<<<< HEAD
 import utils.FTextField;
-=======
 import utils.Navigator;
->>>>>>> bdf3b1b9e5216a03bd7173258ed4a58e2cfbd93c
+
 
 public class FOrderFood extends FOrderFoodPage {
 
@@ -93,8 +85,6 @@ public class FOrderFood extends FOrderFoodPage {
 				RestaurantList = DBRestaurant.getRestaurantByArea(TFPostalCode.getText());
 				ArrayList<Object> Restaurant = new ArrayList<Object>();
 
-<<<<<<< HEAD
-
 		ArrayList<Object> Menu = new ArrayList<Object>();
 		ArrayList<Object> Order = new ArrayList<Object>();
 
@@ -104,7 +94,7 @@ public class FOrderFood extends FOrderFoodPage {
 		ListPan.SetList(Restaurant);
 		ListPan2.SetList(Menu);
 		ListPan3.SetList(Order);
-=======
+
 				for (int i = 0; i < RestaurantList.size(); i++) {
 					Restaurant.add(RestaurantList.get(i).getName());
 				}
@@ -112,7 +102,6 @@ public class FOrderFood extends FOrderFoodPage {
 
 			}
 		});
->>>>>>> bdf3b1b9e5216a03bd7173258ed4a58e2cfbd93c
 
 		BTNRestaurant.addActionListener(new ActionListener() {
 			@Override

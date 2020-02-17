@@ -41,47 +41,14 @@ import utils.Navigator;
 public class Main {
 	public static void main(String[] args) {
 
-		//new FEditAccount();
-		//new FDeleteAccount();
-		//new FOrderFood();
-		//new FViewOrderFoodHistory();
-		
-		
-		
-		//new FormEntities();
-
-		
-		
-		//FDashboard ff = new FDashboard();
-		//ff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//new FormEntities();
-		
-		/*
-		FAlerts.Error("Error Test", "Testing the errors.");
-		
-		if(FAlerts.Confirm("Testing Confirm", "Testing the confirming of the thing")){
-			System.out.println("Yes");
-		} else {
-			System.out.println("No.");
-		}
-		
-		FAlerts.Say("title", "message");
-		
-		System.out.println(FAlerts.Ask("Question", "Why ?"));
-*/
 		DBConnecter.OpenConnection();
 		Session.AccesType = "";
 		
 		Navigator.Login(null);
-<<<<<<< HEAD
-		//new FOrderFoodPage();
-		new FormEntities();
 
-	
-=======
 		
-		
->>>>>>> bdf3b1b9e5216a03bd7173258ed4a58e2cfbd93c
+
+
 	}
 
 }
