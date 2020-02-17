@@ -22,12 +22,8 @@ public class FOrderReady extends FOrderReadyPage{
 	private ArrayList<Object> OrderDisplay;
 
 	public FOrderReady() {
-		// Empty Login Error Validation once actionlistener is implemented.
 		OrderList = new ArrayList<OrderModel>();
 		OrderDisplay = new ArrayList<Object>();
-		
-		//GetDeliveryGuy
-		//For all Areas get DeliverysByArea ?
 		
 		
 		if (Session.AccesType == AccesLevel.GetType(AccesLevel.RESTAURATEUR)) {

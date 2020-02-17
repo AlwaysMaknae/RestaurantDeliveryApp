@@ -29,7 +29,7 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 		
 		
 		//GetDeliveryGuy
-		//For all Areas get DeliverysByArea ?
+		//For all Areas get DeliverysByArea
 		
 		
 		if (Session.AccesType == AccesLevel.GetType(AccesLevel.DELIVERY_GUY)) {
@@ -42,7 +42,7 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 		OrderList = DBOrder.getOrderbyAreas(TheGuy.getArea());
 		
 		for (OrderModel ord : OrderList) {
-			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " -> " + ord.getPostal_code() );
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code() + " ¬" +ord.getOrder_status() );
 		}
 
 		ListPan.SetList(OrderDisplay);

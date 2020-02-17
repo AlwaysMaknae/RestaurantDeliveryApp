@@ -83,7 +83,7 @@ public class DBOrder {
 		String MyQuery = "SELECT * FROM orders WHERE orders.restaurant_id='" + id + "'";
 		
 		if(ready_care) {
-			MyQuery += " AND order_status='NOT READY'";
+			MyQuery += " AND order_status='"+DeliveryStatus.NOT_READY+"'";
 		}
 		
 		MyQuery += " AND orders.order_delivered = '0'";
@@ -106,7 +106,15 @@ public class DBOrder {
 	}
 
 	public static ArrayList<OrderModel> getOrderbyDeliveryGuy(int id) {
+		return getOrderbyDeliveryGuy(id, false);
+	}
+	public static ArrayList<OrderModel> getOrderbyDeliveryGuy(int id, boolean transit_care) {
 		String MyQuery = "SELECT * FROM orders WHERE orders.deliverer_id='" + id + "'";
+		
+		if(transit_care) {
+			MyQuery+= " AND order_status='"+ DeliveryStatus.IN_TRANSIT+"'";
+		}
+		
 		ResultSet stmt;
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		try {
@@ -126,7 +134,6 @@ public class DBOrder {
 	// function to add order
 
 	public static OrderModel AddOrder(OrderModel orderModel) {
-		int id = orderModel.getId();
 		String address = orderModel.getAddress();
 		String postal_code = orderModel.getPostal_code();
 		String date = orderModel.getDate();
@@ -135,25 +142,20 @@ public class DBOrder {
 		float price = orderModel.getPrice();
 		String status = orderModel.getOrder_status();
 		int restaurant_id = orderModel.getRestaurant_id();
-		int deliverer_id = orderModel.getDeliverer_id();
 		int client_id = orderModel.getClient_id();
-		int order_delivered = orderModel.getOrder_delivered();
-		String MyQuery = "{CALL update_order(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_order(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
-			stmt.setInt(1, id);
-			stmt.setString(2, address);
-			stmt.setString(3, postal_code);
-			stmt.setString(4, date);
-			stmt.setString(5, items);
-			stmt.setString(6, delivery_time);
-			stmt.setFloat(7, price);
-			stmt.setString(8, status);
-			stmt.setInt(9, restaurant_id);
-			stmt.setInt(10, deliverer_id);
-			stmt.setInt(11, client_id);
-			stmt.setInt(12, order_delivered);
+			stmt.setString(1, address);
+			stmt.setString(2, postal_code);
+			stmt.setString(3, date);
+			stmt.setString(4, items);
+			stmt.setString(5, delivery_time);
+			stmt.setFloat(6, price);
+			stmt.setString(7, status);
+			stmt.setInt(8, restaurant_id);
+			stmt.setInt(9, client_id);
 			stmt.executeUpdate();
 			return new OrderModel(stmt.toString());
 		} catch (SQLException e) {

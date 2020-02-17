@@ -149,7 +149,7 @@ public class FOrderFood extends FOrderFoodPage {
 						if(!FAlerts.Confirm("Confirm Delivery", "Delivery Information : \n" + 
 								"Target Order Time : " + o_date + " " + d_time + "\n" +
 								"Address : " + o_adress + "\n" +
-								"Deliverer to this Adress ?"
+								"Confirm this Delivery ?"
 						)) {return;}
 						
 						

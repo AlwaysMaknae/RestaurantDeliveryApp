@@ -1,5 +1,6 @@
 package utils;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -26,11 +27,12 @@ public class FForm extends JFrame implements ActionListener, WindowListener, Key
 		
 		this.addWindowListener(this);
 		this.setJMenuBar( MenuBar );
-		this.setLocationRelativeTo(null); 
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.setLocation( new Point(0,0));
+		//this.setLocationRelativeTo(null); 
 		 
 		Me = this;
 		this.addKeyListener(this);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
 	}
 
