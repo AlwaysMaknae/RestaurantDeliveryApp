@@ -108,7 +108,7 @@ public class OrderModel extends Model {
 	}
 
 	public void Update() {
-		ReadOrderModel(DBOrder.UpdareOrder(this));
+		ReadOrderModel(DBOrder.UpdateOrder(this));
 	}
 
 	public void Read() {
