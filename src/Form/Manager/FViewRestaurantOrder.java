@@ -36,14 +36,17 @@ public class FViewRestaurantOrder extends FViewRestaurantOrderPage {
 		BTNSelect2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Orderz = OrderList.get(ListPan2.GetSelectedIndex());
-				Orderz.Read();
 				
-				TFDeliveryTimeYMD.setText(Orderz.getDate());
-				TFHour.setText(Orderz.getDelivery_time());
-				TFPostalCode.setText(Orderz.getPostal_code());
-				
-				JTAMealOrder.setText(Orderz.getItems());
+				if(ListPan2.GetSelectedIndex() > -1){
+					Orderz = OrderList.get(ListPan2.GetSelectedIndex());
+					Orderz.Read();
+					
+					TFDeliveryTimeYMD.setText(Orderz.getDate());
+					TFHour.setText(Orderz.getDelivery_time());
+					TFPostalCode.setText(Orderz.getPostal_code());
+					
+					JTAMealOrder.setText(Orderz.getItems());
+				}
 			}
 		});
 
