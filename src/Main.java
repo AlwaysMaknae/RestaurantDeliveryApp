@@ -45,8 +45,7 @@ public class Main {
 		
 		//Navigator.Login(null);
 		
-		new FEditDeliverer();
-		
+		new FDeleteDeliverer();
 	}
 
 }

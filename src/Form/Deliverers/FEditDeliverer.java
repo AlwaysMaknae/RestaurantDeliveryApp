@@ -147,7 +147,7 @@ public class FEditDeliverer extends FEditDelivererPage {
 					if (answer == true) {
 						FAlerts.Say("Confirm Submission", UpdateDeliveryMan.getName() + "'s info has been updated!");
 						UpdateDeliveryMan.Update();
-						// Navigator.Dashboard(Me);
+						Navigator.Dashboard(Me);
 					}
 
 				}
