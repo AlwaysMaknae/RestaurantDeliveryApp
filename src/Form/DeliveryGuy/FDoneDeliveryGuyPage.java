@@ -13,6 +13,7 @@ import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
 import utils.FListView;
+import java.awt.Font;
 
 public class FDoneDeliveryGuyPage extends FForm {
 
@@ -52,55 +53,54 @@ public class FDoneDeliveryGuyPage extends FForm {
 		ListTitlePan.add(ListOrderTitleLbl);
 
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(300, 905));
+		ListPan.setPreferredSize(new Dimension(300, 850));
 		RestaurantListPan.add(ListPan);
 
 		JPanel RestaurantListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
 		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
+		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 85));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(300, 26));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(300, 85));
 		RestaurantListButtonPan.add(BTNSelect);
-
-		JPanel MainSpacePan = new JPanel();
-		MainSpacePan.setBackground(Color.LIGHT_GRAY);
-		MainSpacePan.setPreferredSize(new Dimension(160, 975));
-		MainPan.add(MainSpacePan);
 
 		JPanel InnerPan = new JPanel();
 		InnerPan.setBackground(Color.LIGHT_GRAY);
-		InnerPan.setPreferredSize(new Dimension(325, 975));
+		InnerPan.setPreferredSize(new Dimension(625, 975));
 		MainPan.add(InnerPan);
 		
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
 		FlowLayout fl_TitlePan = (FlowLayout) TitlePan.getLayout();
 		fl_TitlePan.setVgap(10);
-		TitlePan.setPreferredSize(new Dimension(250, 35));
+		TitlePan.setPreferredSize(new Dimension(600, 55));
 		InnerPan.add(TitlePan);
 		
 		FLabel DeliveryMadeLbl = new FLabel("Delivery Made");
+		DeliveryMadeLbl.setFont(DeliveryMadeLbl.getFont().deriveFont(DeliveryMadeLbl.getFont().getSize() + 20f));
 		TitlePan.add(DeliveryMadeLbl);
 		
 		JPanel ViewDeliveryInfoPan = new JPanel();
 		ViewDeliveryInfoPan.setBackground(Color.LIGHT_GRAY);
 		FlowLayout flowLayout_1 = (FlowLayout) ViewDeliveryInfoPan.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		ViewDeliveryInfoPan.setPreferredSize(new Dimension(250, 110));
+		ViewDeliveryInfoPan.setPreferredSize(new Dimension(600, 150));
 		InnerPan.add(ViewDeliveryInfoPan);
 		
 		OrderLbl = new FLabel("Order # : " + OrderNum);
+		OrderLbl.setFont(OrderLbl.getFont().deriveFont(OrderLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(OrderLbl);
 		
 		JPanel SpacePan0 = new JPanel();
 		SpacePan0.setBackground(Color.LIGHT_GRAY);
-		SpacePan0.setPreferredSize(new Dimension(250, 1));
+		SpacePan0.setPreferredSize(new Dimension(400, 1));
 		ViewDeliveryInfoPan.add(SpacePan0);
 		
 		RestaurantLbl = new FLabel("Restaurant # : " + RestaurantNum);
+		RestaurantLbl.setFont(RestaurantLbl.getFont().deriveFont(RestaurantLbl.getFont().getSize() + 12f));
 		RestaurantLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		ViewDeliveryInfoPan.add(RestaurantLbl);
 		
@@ -110,6 +110,7 @@ public class FDoneDeliveryGuyPage extends FForm {
 		ViewDeliveryInfoPan.add(SpacePan1);
 		
 		DeliveryAddressLbl = new FLabel("Delivery Address: " + DeliveryAddress);
+		DeliveryAddressLbl.setFont(DeliveryAddressLbl.getFont().deriveFont(DeliveryAddressLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(DeliveryAddressLbl);
 		
 		JPanel SpacePan2 = new JPanel();
@@ -118,6 +119,7 @@ public class FDoneDeliveryGuyPage extends FForm {
 		ViewDeliveryInfoPan.add(SpacePan2);
 		
 		DeliveryPostalCodeLbl = new FLabel("Delivery Postal Code: " + DeliveryPostalCode);
+		DeliveryPostalCodeLbl.setFont(DeliveryPostalCodeLbl.getFont().deriveFont(DeliveryPostalCodeLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(DeliveryPostalCodeLbl);
 		
 		JPanel SpacePan3 = new JPanel();
@@ -129,19 +131,14 @@ public class FDoneDeliveryGuyPage extends FForm {
 		ButtonPan.setBackground(Color.LIGHT_GRAY);
 		FlowLayout flowLayout_2 = (FlowLayout) ButtonPan.getLayout();
 		flowLayout_2.setHgap(2);
-		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		flowLayout_2.setVgap(0);
-		ButtonPan.setPreferredSize(new Dimension(250, 25));
+		ButtonPan.setPreferredSize(new Dimension(600, 50));
 		InnerPan.add(ButtonPan);
 		
 		BTNDone = new FButton("Delivery Done");
-		BTNDone.setPreferredSize(new Dimension(150, 25));
+		BTNDone.setFont(BTNDone.getFont().deriveFont(BTNDone.getFont().getSize() + 20f));
+		BTNDone.setPreferredSize(new Dimension(250, 50));
 		ButtonPan.add(BTNDone);
-		
-		JPanel MainSpacePan2 = new JPanel();
-		MainSpacePan2.setPreferredSize(new Dimension(160, 975));
-		MainSpacePan2.setBackground(Color.LIGHT_GRAY);
-		MainPan.add(MainSpacePan2);
 
 		repaint();
 		revalidate();

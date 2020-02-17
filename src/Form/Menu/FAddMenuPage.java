@@ -15,6 +15,7 @@ import utils.FTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class FAddMenuPage extends FForm {
 
@@ -51,17 +52,18 @@ public class FAddMenuPage extends FForm {
 		ListTitlePan.add(ListRestaurantTitleLbl);
 
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(220, 905));
+		ListPan.setPreferredSize(new Dimension(220, 850));
 		RestaurantListPan.add(ListPan);
 
 		JPanel RestaurantListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
 		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(220, 26));
+		RestaurantListButtonPan.setPreferredSize(new Dimension(220, 85));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(220, 26));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(220, 85));
 		RestaurantListButtonPan.add(BTNSelect);
 
 		JPanel InnerPan = new JPanel();

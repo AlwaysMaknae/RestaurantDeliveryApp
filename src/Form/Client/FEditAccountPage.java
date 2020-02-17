@@ -39,9 +39,10 @@ public class FEditAccountPage extends FForm{
 		JPanel TopPan = new JPanel();
 		MainPan.add(TopPan);
 		TopPan.setBackground(Color.LIGHT_GRAY);
-		TopPan.setPreferredSize(new Dimension(975, 30));
+		TopPan.setPreferredSize(new Dimension(975, 50));
 		
 		FLabel EditAccountLbl = new FLabel("Open New Account");
+		EditAccountLbl.setFont(EditAccountLbl.getFont().deriveFont(EditAccountLbl.getFont().getSize() + 20f));
 		EditAccountLbl.setText("Edit Account");
 		TopPan.add(EditAccountLbl);
 		
@@ -302,19 +303,13 @@ public class FEditAccountPage extends FForm{
 		JPanel BotButtonPan = new JPanel();
 		FlowLayout fl_BotButtonPan = (FlowLayout) BotButtonPan.getLayout();
 		fl_BotButtonPan.setVgap(0);
-		fl_BotButtonPan.setAlignment(FlowLayout.RIGHT);
-		BotButtonPan.setPreferredSize(new Dimension(650, 30));
+		BotButtonPan.setPreferredSize(new Dimension(650, 50));
 		BotButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(BotButtonPan);
 		
 		BTNSave = new FButton("Save");
-		BTNSave.setPreferredSize(new Dimension(90, 25));
+		BTNSave.setPreferredSize(new Dimension(200, 36));
 		BotButtonPan.add(BTNSave);
-		
-		JPanel SpacePan11 = new JPanel();
-		SpacePan11.setPreferredSize(new Dimension(25, 10));
-		SpacePan11.setBackground(Color.LIGHT_GRAY);
-		BotButtonPan.add(SpacePan11);
 		
 		repaint();
 		revalidate();

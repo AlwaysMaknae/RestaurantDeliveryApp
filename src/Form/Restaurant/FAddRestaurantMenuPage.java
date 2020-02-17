@@ -18,6 +18,7 @@ import utils.FHoursComboBox;
 import utils.FLabel;
 import utils.FListView;
 import utils.FTextField;
+import java.awt.Font;
 
 public class FAddRestaurantMenuPage extends FForm{
 
@@ -41,7 +42,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		
 		JPanel MainPan = new JPanel();
 		MainPan.setBackground(Color.LIGHT_GRAY);
-		MainPan.setPreferredSize(new Dimension(975, 975));
+		MainPan.setPreferredSize(new Dimension(975, 985));
 		getContentPane().add(MainPan);
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -59,18 +60,19 @@ public class FAddRestaurantMenuPage extends FForm{
 		ListTitlePan.add(RestaurantListLbl);
 		
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(220, 895));
+		ListPan.setPreferredSize(new Dimension(220, 850));
 		RestaurantListPan.add(ListPan);
 		
 		JPanel ListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) ListButtonPan.getLayout();
 		flowLayout.setVgap(0);
 		ListButtonPan.setBackground(Color.LIGHT_GRAY);
-		ListButtonPan.setPreferredSize(new Dimension(220, 33));
+		ListButtonPan.setPreferredSize(new Dimension(220, 75));
 		RestaurantListPan.add(ListButtonPan);
 		
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(220, 30));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(220, 75));
 		ListButtonPan.add(BTNSelect);
 		
 		JPanel InnerPan = new JPanel();
@@ -80,7 +82,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(600, 40));
+		TitlePan.setPreferredSize(new Dimension(600, 60));
 		InnerPan.add(TitlePan);
 		
 		JPanel TitleSpacePan = new JPanel();
@@ -89,6 +91,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		TitlePan.add(TitleSpacePan);
 		
 		FLabel TitleLbl = new FLabel("Edit Restaurant");
+		TitleLbl.setFont(TitleLbl.getFont().deriveFont(TitleLbl.getFont().getSize() + 20f));
 		TitlePan.add(TitleLbl);
 		
 		JPanel RestaurantInfoPan = new JPanel();
@@ -165,7 +168,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		
 		JPanel TitlePan2 = new JPanel();
 		TitlePan2.setBackground(Color.LIGHT_GRAY);
-		TitlePan2.setPreferredSize(new Dimension(600, 35));
+		TitlePan2.setPreferredSize(new Dimension(600, 45));
 		InnerPan.add(TitlePan2);
 		
 		JPanel TitleSpacePan2 = new JPanel();
@@ -174,6 +177,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		TitlePan2.add(TitleSpacePan2);
 		
 		FLabel OpenTimeLbl = new FLabel("Opening Time");
+		OpenTimeLbl.setFont(OpenTimeLbl.getFont().deriveFont(OpenTimeLbl.getFont().getSize() + 12f));
 		TitlePan2.add(OpenTimeLbl);
 		
 		JPanel OpenTimePan = new JPanel();
@@ -304,6 +308,7 @@ public class FAddRestaurantMenuPage extends FForm{
 		InnerPan.add(DeliveryPan);
 		
 		FLabel lblNewLabel = new FLabel("Delivery Area");
+		lblNewLabel.setFont(lblNewLabel.getFont().deriveFont(lblNewLabel.getFont().getSize() + 12f));
 		DeliveryPan.add(lblNewLabel);
 		
 		JPanel DeliverySpacePan = new JPanel();
@@ -336,11 +341,6 @@ public class FAddRestaurantMenuPage extends FForm{
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryPan.add(TFDeliveryArea);
 		
-		BTNAddDeliveryArea = new FButton("Add Delivery Area");
-		BTNAddDeliveryArea.setEnabled(false);
-		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
-		DeliveryPan.add(BTNAddDeliveryArea);
-		
 		JPanel DeliverySpacePan3 = new JPanel();
 		DeliverySpacePan3.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
@@ -351,18 +351,19 @@ public class FAddRestaurantMenuPage extends FForm{
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryPan.add(BTNDeleteDeliveryArea);
 		
+		BTNAddDeliveryArea = new FButton("Add Delivery Area");
+		BTNAddDeliveryArea.setEnabled(false);
+		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
+		DeliveryPan.add(BTNAddDeliveryArea);
+		
 		JPanel DeliverySpacePan4 = new JPanel();
 		DeliverySpacePan4.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan4.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan4);
 		
-		JPanel DeliverySpacePan5 = new JPanel();
-		DeliverySpacePan5.setPreferredSize(new Dimension(90, 2));
-		DeliverySpacePan5.setBackground(Color.LIGHT_GRAY);
-		DeliveryPan.add(DeliverySpacePan5);
-		
 		BTNRestaurantCreateMenu = new FButton("Create Menu");
-		BTNRestaurantCreateMenu.setPreferredSize(new Dimension(120, 28));
+		BTNRestaurantCreateMenu.setFont(BTNRestaurantCreateMenu.getFont().deriveFont(BTNRestaurantCreateMenu.getFont().getSize() + 18f));
+		BTNRestaurantCreateMenu.setPreferredSize(new Dimension(300, 40));
 		DeliveryPan.add(BTNRestaurantCreateMenu);
 
 		JPanel RestaurantListSpacerPan = new JPanel();

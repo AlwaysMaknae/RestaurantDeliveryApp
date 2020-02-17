@@ -17,6 +17,7 @@ import utils.FForm;
 import utils.FLabel;
 import utils.FListView;
 import utils.FTextField;
+import java.awt.Font;
 
 public class FDeleteDelivererPage extends FForm {
 
@@ -55,17 +56,18 @@ public class FDeleteDelivererPage extends FForm {
 		ListTitlePan.add(ListDeliveryGuyTitleLbl);
 
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(300, 905));
+		ListPan.setPreferredSize(new Dimension(300, 850));
 		RestaurantListPan.add(ListPan);
 
 		JPanel RestaurantListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
 		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
+		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 85));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(300, 26));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(300, 85));
 		RestaurantListButtonPan.add(BTNSelect);
 
 		JPanel MainSpacePan = new JPanel();
@@ -80,7 +82,7 @@ public class FDeleteDelivererPage extends FForm {
 
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(425, 35));
+		TitlePan.setPreferredSize(new Dimension(425, 55));
 		InnerPan.add(TitlePan);
 
 		JPanel TitleSpacePan = new JPanel();
@@ -89,6 +91,7 @@ public class FDeleteDelivererPage extends FForm {
 		TitlePan.add(TitleSpacePan);
 
 		FLabel TitleLbl = new FLabel("Delete Delivery Man");
+		TitleLbl.setFont(TitleLbl.getFont().deriveFont(TitleLbl.getFont().getSize() + 20f));
 		TitlePan.add(TitleLbl);
 
 		JPanel SpacePan0 = new JPanel();
@@ -166,6 +169,7 @@ public class FDeleteDelivererPage extends FForm {
 		InnerPan.add(DeliveryInfoPan);
 
 		FLabel DeliveryAreaTitleLbl = new FLabel("Delivery Area");
+		DeliveryAreaTitleLbl.setFont(DeliveryAreaTitleLbl.getFont().deriveFont(DeliveryAreaTitleLbl.getFont().getSize() + 20f));
 		DeliveryInfoPan.add(DeliveryAreaTitleLbl);
 
 		JPanel DeliveryInfoSpacePan = new JPanel();
@@ -193,11 +197,6 @@ public class FDeleteDelivererPage extends FForm {
 		TFDeliveryArea.setPreferredSize(new Dimension(30, 18));
 		DeliveryInfoPan.add(TFDeliveryArea);
 
-		BTNAddDeliveryArea = new FButton("Add Delivery Area");
-		BTNAddDeliveryArea.setEnabled(false);
-		BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
-		DeliveryInfoPan.add(BTNAddDeliveryArea);
-
 		JPanel DeliverySpacePan3 = new JPanel();
 		DeliverySpacePan3.setBackground(Color.LIGHT_GRAY);
 		DeliverySpacePan3.setPreferredSize(new Dimension(600, 2));
@@ -207,6 +206,11 @@ public class FDeleteDelivererPage extends FForm {
 		BTNDeleteDeliveryArea.setEnabled(false);
 		BTNDeleteDeliveryArea.setPreferredSize(new Dimension(150, 28));
 		DeliveryInfoPan.add(BTNDeleteDeliveryArea);
+		
+				BTNAddDeliveryArea = new FButton("Add Delivery Area");
+				BTNAddDeliveryArea.setEnabled(false);
+				BTNAddDeliveryArea.setPreferredSize(new Dimension(150, 28));
+				DeliveryInfoPan.add(BTNAddDeliveryArea);
 
 		JPanel DeliverySpacePan4 = new JPanel();
 		DeliverySpacePan4.setBackground(Color.LIGHT_GRAY);
@@ -214,7 +218,8 @@ public class FDeleteDelivererPage extends FForm {
 		DeliveryInfoPan.add(DeliverySpacePan4);
 
 		BTNDeleteAll = new FButton("Delete");
-		BTNDeleteAll.setPreferredSize(new Dimension(400, 28));
+		BTNDeleteAll.setFont(BTNDeleteAll.getFont().deriveFont(BTNDeleteAll.getFont().getSize() + 20f));
+		BTNDeleteAll.setPreferredSize(new Dimension(300, 50));
 		DeliveryInfoPan.add(BTNDeleteAll);
 
 		JPanel MainSpacePan2 = new JPanel();

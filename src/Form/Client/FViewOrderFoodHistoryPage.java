@@ -15,6 +15,8 @@ import utils.FForm;
 import utils.FLabel;
 import utils.FListView;
 import utils.FTextField;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class FViewOrderFoodHistoryPage extends FForm{
 
@@ -51,39 +53,35 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		ListTitlePan.add(YourOrderListTitleLbl);
 
 		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(300, 905));
+		ListPan.setPreferredSize(new Dimension(300, 850));
 		RestaurantListPan.add(ListPan);
 
 		JPanel RestaurantListButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
 		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
+		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 85));
 		RestaurantListPan.add(RestaurantListButtonPan);
 
 		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(300, 26));
+		BTNSelect.setFont(BTNSelect.getFont().deriveFont(BTNSelect.getFont().getStyle() & ~Font.BOLD, BTNSelect.getFont().getSize() + 36f));
+		BTNSelect.setPreferredSize(new Dimension(300, 85));
 		//BTNSelect.SetType("Good");
 		RestaurantListButtonPan.add(BTNSelect);
-		
-
-		JPanel MainSpacePan = new JPanel();
-		MainSpacePan.setBackground(Color.LIGHT_GRAY);
-		MainSpacePan.setPreferredSize(new Dimension(160, 975));
-		MainPan.add(MainSpacePan);
 
 		JPanel InnerPan = new JPanel();
 		InnerPan.setBackground(Color.LIGHT_GRAY);
-		InnerPan.setPreferredSize(new Dimension(325, 975));
+		InnerPan.setPreferredSize(new Dimension(625, 975));
 		MainPan.add(InnerPan);
 		
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
 		FlowLayout fl_TitlePan = (FlowLayout) TitlePan.getLayout();
 		fl_TitlePan.setVgap(10);
-		TitlePan.setPreferredSize(new Dimension(250, 35));
+		TitlePan.setPreferredSize(new Dimension(600, 55));
 		InnerPan.add(TitlePan);
 		
 		FLabel ViewOrderLbl = new FLabel("Order Ready");
+		ViewOrderLbl.setFont(ViewOrderLbl.getFont().deriveFont(ViewOrderLbl.getFont().getSize() + 20f));
 		ViewOrderLbl.setText("View Order");
 		TitlePan.add(ViewOrderLbl);
 		
@@ -91,7 +89,7 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		ViewOrderInfoPan1.setBackground(Color.LIGHT_GRAY);
 		FlowLayout fl_ViewOrderInfoPan1 = (FlowLayout) ViewOrderInfoPan1.getLayout();
 		fl_ViewOrderInfoPan1.setAlignment(FlowLayout.LEFT);
-		ViewOrderInfoPan1.setPreferredSize(new Dimension(250, 110));
+		ViewOrderInfoPan1.setPreferredSize(new Dimension(600, 110));
 		InnerPan.add(ViewOrderInfoPan1);
 		
 		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time : ");
@@ -100,7 +98,7 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		
 		TFDeliveryTime = new FTextField(0);
 		TFDeliveryTime.setEnabled(false);
-		TFDeliveryTime.setPreferredSize(new Dimension(100, 20));
+		TFDeliveryTime.setPreferredSize(new Dimension(400, 20));
 		ViewOrderInfoPan1.add(TFDeliveryTime);
 		
 		FLabel DeliveryTimeLbl = new FLabel("Delivery Address : ");
@@ -110,7 +108,7 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		
 		TFAddress = new FTextField(0);
 		TFAddress.setEnabled(false);
-		TFAddress.setPreferredSize(new Dimension(100, 20));
+		TFAddress.setPreferredSize(new Dimension(400, 20));
 		ViewOrderInfoPan1.add(TFAddress);
 		
 		FLabel DeliveryStatusLbl = new FLabel("Delivery Status : ");
@@ -120,37 +118,28 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		
 		TFStatus = new FTextField(0);
 		TFStatus.setEnabled(false);
-		TFStatus.setPreferredSize(new Dimension(100, 20));
+		TFStatus.setPreferredSize(new Dimension(400, 20));
 		ViewOrderInfoPan1.add(TFStatus);
-		
-		
-		JPanel SpacePan1 = new JPanel();
-		SpacePan1.setBackground(Color.LIGHT_GRAY);
-		SpacePan1.setPreferredSize(new Dimension(250, 1));
-		ViewOrderInfoPan1.add(SpacePan1);
 		
 		
 		JPanel ViewOrderInfoPan2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) ViewOrderInfoPan2.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		ViewOrderInfoPan2.setPreferredSize(new Dimension(250, 350));
+		ViewOrderInfoPan2.setPreferredSize(new Dimension(600, 350));
 		ViewOrderInfoPan2.setBackground(Color.LIGHT_GRAY);
 		InnerPan.add(ViewOrderInfoPan2);
 		
 		FLabel MealOrderLbl = new FLabel("Meal in Order");
-		MealOrderLbl.setPreferredSize(new Dimension(240, 14));
+		MealOrderLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		MealOrderLbl.setHorizontalTextPosition(SwingConstants.CENTER);
+		MealOrderLbl.setFont(MealOrderLbl.getFont().deriveFont(MealOrderLbl.getFont().getSize() + 20f));
+		MealOrderLbl.setPreferredSize(new Dimension(600, 30));
 		ViewOrderInfoPan2.add(MealOrderLbl);
 		
 		JTAMealOrder = new FListView();
 		JTAMealOrder.setBorder(new LineBorder(Color.GRAY));
 		JTAMealOrder.setEnabled(false);
-		JTAMealOrder.setPreferredSize(new Dimension(240, 285));
+		JTAMealOrder.setPreferredSize(new Dimension(600, 285));
 		ViewOrderInfoPan2.add(JTAMealOrder);
-
-		JPanel MainSpacePan2 = new JPanel();
-		MainSpacePan2.setPreferredSize(new Dimension(160, 975));
-		MainSpacePan2.setBackground(Color.LIGHT_GRAY);
-		MainPan.add(MainSpacePan2);
 
 		repaint();
 		revalidate();

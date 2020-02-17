@@ -44,11 +44,12 @@ public class FAddClientPage extends FForm{
 		TitlePan.setPreferredSize(new Dimension(975, 50));
 		
 		FLabel LoginTitleLbl = new FLabel("Open New Account");
+		LoginTitleLbl.setFont(LoginTitleLbl.getFont().deriveFont(LoginTitleLbl.getFont().getSize() + 20f));
 		TitlePan.add(LoginTitleLbl);
 		
 		JPanel AccountDetailsPan = new JPanel();
 		AccountDetailsPan.setBackground(Color.LIGHT_GRAY);
-		AccountDetailsPan.setPreferredSize(new Dimension(975, 420));
+		AccountDetailsPan.setPreferredSize(new Dimension(975, 360));
 		MainPan.add(AccountDetailsPan);
 		AccountDetailsPan.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		
@@ -208,8 +209,7 @@ public class FAddClientPage extends FForm{
 		
 		JPanel ButtonPan = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) ButtonPan.getLayout();
-		flowLayout.setAlignment(FlowLayout.RIGHT);
-		ButtonPan.setPreferredSize(new Dimension(800, 60));
+		ButtonPan.setPreferredSize(new Dimension(800, 100));
 		ButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(ButtonPan);
 		
@@ -219,15 +219,15 @@ public class FAddClientPage extends FForm{
 		ButtonPan.add(SpacePan11);
 		
 		BTNSave = new FButton("Save");
-		BTNSave.setPreferredSize(new Dimension(89, 28));
+		BTNSave.setPreferredSize(new Dimension(200, 36));
 		ButtonPan.add(BTNSave);
 		
 		BTNReturn = new FButton("Return");
-		BTNReturn.setPreferredSize(new Dimension(89, 28));
+		BTNReturn.setPreferredSize(new Dimension(200, 36));
 		ButtonPan.add(BTNReturn);
 		
 		BTNQuit = new FButton("Quit");
-		BTNQuit.setPreferredSize(new Dimension(89, 28));
+		BTNQuit.setPreferredSize(new Dimension(200, 36));
 		ButtonPan.add(BTNQuit);
 		
 		repaint();

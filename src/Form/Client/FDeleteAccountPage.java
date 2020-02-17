@@ -37,9 +37,10 @@ public class FDeleteAccountPage extends FForm {
 		JPanel TopPan = new JPanel();
 		MainPan.add(TopPan);
 		TopPan.setBackground(Color.LIGHT_GRAY);
-		TopPan.setPreferredSize(new Dimension(975, 30));
+		TopPan.setPreferredSize(new Dimension(975, 50));
 		
 		FLabel DeleteAccountLbl = new FLabel("Open New Account");
+		DeleteAccountLbl.setFont(DeleteAccountLbl.getFont().deriveFont(DeleteAccountLbl.getFont().getSize() + 20f));
 		DeleteAccountLbl.setText("Delete Account");
 		TopPan.add(DeleteAccountLbl);
 		
@@ -307,19 +308,13 @@ public class FDeleteAccountPage extends FForm {
 		JPanel BotButtonPan = new JPanel();
 		FlowLayout fl_BotButtonPan = (FlowLayout) BotButtonPan.getLayout();
 		fl_BotButtonPan.setVgap(0);
-		fl_BotButtonPan.setAlignment(FlowLayout.RIGHT);
-		BotButtonPan.setPreferredSize(new Dimension(650, 30));
+		BotButtonPan.setPreferredSize(new Dimension(650, 50));
 		BotButtonPan.setBackground(Color.LIGHT_GRAY);
 		MainPan.add(BotButtonPan);
 		
 		BTNDelete = new FButton("Delete");
-		BTNDelete.setPreferredSize(new Dimension(90, 25));
+		BTNDelete.setPreferredSize(new Dimension(200, 36));
 		BotButtonPan.add(BTNDelete);
-		
-		JPanel SpacePan11 = new JPanel();
-		SpacePan11.setPreferredSize(new Dimension(100, 10));
-		SpacePan11.setBackground(Color.LIGHT_GRAY);
-		BotButtonPan.add(SpacePan11);
 		
 		repaint();
 		revalidate();

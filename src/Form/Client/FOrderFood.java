@@ -6,9 +6,8 @@ import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
 import com.mysql.cj.xdevapi.Client;
-
 import Form.Login.FLogin;
 import Model.ClientModel;
 import Model.ItemModel;
@@ -21,9 +20,44 @@ import database.Session;
 import Model.OrderModel;
 import Model.RestaurantModel;
 import utils.FAlerts;
+import utils.FTextField;
 import utils.Navigator;
 
+
 public class FOrderFood extends FOrderFoodPage {
+
+	private FTextField address = new FTextField(20);
+
+	private Object[] message = { "Please enter the full address of delivery", address };
+	private boolean exit = false;
+	private int InitFlag, Flag;
+
+/*	
+	public FOrderFood() {
+
+		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
+		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ArrayList<ItemModel> MenuList = new ArrayList<ItemModel>();
+
+		// RM = DBRestaurant.GetAllRestaurants();
+
+		ArrayList<Object> Restaurant = new ArrayList<Object>();
+
+		Restaurant.add("Orange");
+		Restaurant.add("Apple");
+		Restaurant.add("Cherry");
+		Restaurant.add("Melon");
+		Restaurant.add("Cheese");
+
+		
+		  for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
+		 
+
+		ArrayList<Object> Order = new ArrayList<Object>();
+
+		// Order.add("Enter date here");
+		
+*/	
 	private ArrayList<ItemModel> MenuList;
 	private ArrayList<RestaurantModel> RestaurantList;
 	private String order_items;
@@ -50,6 +84,16 @@ public class FOrderFood extends FOrderFoodPage {
 
 				RestaurantList = DBRestaurant.getRestaurantByArea(TFPostalCode.getText());
 				ArrayList<Object> Restaurant = new ArrayList<Object>();
+
+		ArrayList<Object> Menu = new ArrayList<Object>();
+		ArrayList<Object> Order = new ArrayList<Object>();
+
+		Menu.add("Hot Dog");
+		Menu.add("Pufferfish");
+
+		ListPan.SetList(Restaurant);
+		ListPan2.SetList(Menu);
+		ListPan3.SetList(Order);
 
 				for (int i = 0; i < RestaurantList.size(); i++) {
 					Restaurant.add(RestaurantList.get(i).getName());
@@ -86,9 +130,85 @@ public class FOrderFood extends FOrderFoodPage {
 				TFMeal.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_dish() + "");
 				TFPrice.setText(MenuList.get(ListPan2.GetSelectedIndex()).getItem_price() + "");
 
+
 			}
 
 		});
+
+
+		BTNOrder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// Empty Info Validation
+
+//				if(!TFDeliveryTimeYMD.IsValid() || !TFHour.isValid() || !TFMinute.IsValid() || !TFPostalCode.IsValid()) {
+//					FAlerts.Error("Missing Info Error", "Missing Fields.");
+//				}else {
+//					if(ListPan3 != null && ListPan3.isEmpty()) {
+//						FAlerts.Error("Missing Order Error", "Missing Orders.");
+//					}else {
+//						InitFlag = FAlerts.ConfirmOrder("Order Confirmation", "Would you like to Order?", JOptionPane.YES_NO_OPTION);
+//							if (InitFlag == JOptionPane.YES_OPTION) {
+//								if (FAlerts.AskOrder("Address Confirmation", message)) {
+
+//									if (FAlerts.Confirm("Order Confirmation", "Would you like to Order to this address?")) {
+
+										// SEND THE ORDER TO THE RESTAURANTER ORDER AND TO ORDER HISTORY LIKE UBEREATS
+										// HAHAHAHHAHA
+//										FAlerts.Say("Order Successful", "Your Order was successful!");
+//										exit = true;
+//									} else {
+//										address.setText("");
+//										FAlerts.Say("Order Cancelled", "Your Order was cancelled successfully!");
+//										do {
+											// Flag = JOptionPane.showConfirmDialog(null, "Would you like to Order?", "Order
+											// Confirmation", JOptionPane.YES_NO_OPTION);
+//											Flag = FAlerts.ConfirmOrder("Order Confirmation", "Would you like to Order?", JOptionPane.YES_NO_OPTION);
+
+//											if (Flag == JOptionPane.NO_OPTION) {
+//												exit = true;
+//											}
+
+//										} while (!exit);
+
+//									}
+//								} else {
+//									FAlerts.Say("Order Cancelled", "Your Order was cancelled successfully!");
+//								}
+//							} else {
+//								FAlerts.Say("Order Cancelled", "Your Order was cancelled successfully!");
+//						}
+//					}
+//				}
+
+			}
+		});
+
+		BTNDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// TODO BTNDELETE DELETES THE MOST RECENT ORDER (WILL CHANGE. MAYBE).
+
+				// Empty List Validation
+//				if(ListPan3 != null && ListPan3.isEmpty()) {
+//					FAlerts.Error("Missing Order Error", "Missing Orders.");
+//				}else {
+//					if(FAlerts.Confirm("Order Deletion Confirmation", "Would you like to delete your recent Order?")) {
+
+				// TODO REMOVE ORDER FROM ORDERLIST AND ORDERLIST ARRAY.
+				// TODO REMOVE PRICE FROM TOTAL TEXTFIELD
+//						FAlerts.Say("Order Deleted", "Your Order was deleted!");
+//					}else {
+//						FAlerts.Say("Order Deletion Cancelled", "Deletion was cancelled successfully!");
+//					}
+//				}
+
+			}
+		});
+
+	
 
 		BTNAdd.addActionListener(new ActionListener() {
 			@Override
@@ -172,6 +292,7 @@ public class FOrderFood extends FOrderFoodPage {
 				}
 			}
 		});
+
 
 		BTNDelete.addActionListener(new ActionListener() {
 			@Override
