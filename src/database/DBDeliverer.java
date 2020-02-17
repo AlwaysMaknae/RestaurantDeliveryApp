@@ -24,7 +24,6 @@ public class DBDeliverer {
 			return null;
 		}
 		return null;
-
 	}
 	
 	public static ArrayList<DelivererModel> getDelivererByArea(String area){
@@ -38,7 +37,15 @@ public class DBDeliverer {
 
 			resultset = stmt.executeQuery();
 			while(resultset.next()){
-				deliverer.add(new DelivererModel(resultset.getInt(1), resultset.getString(2)));
+				deliverer.add(new DelivererModel(
+						resultset.getInt(1),
+						resultset.getString(2),
+						resultset.getString(3),
+						resultset.getInt(4),
+						resultset.getString(5),
+						resultset.getString(6),
+						resultset.getString(7),
+						resultset.getInt(8)));
 			}		
 			return deliverer;
 		} catch (SQLException e) {

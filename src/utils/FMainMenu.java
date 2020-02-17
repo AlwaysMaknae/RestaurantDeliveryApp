@@ -271,6 +271,40 @@ public class FMainMenu extends JMenuBar {
 					}
 				});
 				this.add(mmenu);
+				
+				
+				//dman
+				JMenu deliveryGuy = new JMenu("Delivery Guy");
+				//add,edit,delete
+				d_add = new JMenuItem("Add Delivery Guy");
+				d_edit = new JMenuItem("Edit Delivery Guy");
+				d_delete = new JMenuItem("Delete Delivery Guy");
+				deliveryGuy.add(d_add);
+				deliveryGuy.add(d_edit);
+				deliveryGuy.add(d_delete);
+				d_add.addActionListener( new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new FAddDeliverer();
+						link.dispose();
+					}
+				});
+				d_edit.addActionListener( new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new FEditDeliverer();
+						link.dispose();
+					}
+				});
+				d_delete.addActionListener( new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new FDeleteDeliverer();
+						link.dispose();
+					}
+				});
+				
+				this.add(deliveryGuy);
 		
 		
 
