@@ -28,7 +28,8 @@ public class FViewRestaurantOrder extends FViewRestaurantOrderPage {
 		OrderList = DBOrder.getOrderbyRestaurant(user.getRestaurant_id());
 
 		for (int i = 0; i < OrderList.size(); i++) {
-			Order.add("Order #" + OrderList.get(i).getId() + " - " + OrderList.get(i).getDate() + " - " + OrderList.get(i).getDelivery_time() + " - Area:" + OrderList.get(i).getPostal_code());
+			Order.add("Order #" + OrderList.get(i).getId() + " - " + OrderList.get(i).getDate() + " - " + 
+		OrderList.get(i).getDelivery_time() + ":" + OrderList.get(i).getPostal_code() + "¬" + OrderList.get(i).getOrder_status());
 		}
 
 		ListPan2.SetList(Order);

@@ -88,7 +88,7 @@ public class DBOrder {
 			MyQuery += " AND order_status='"+DeliveryStatus.NOT_READY+"'";
 		}
 		
-		MyQuery += " AND orders.order_delivered = '0'";
+		MyQuery += " AND orders.order_status != '"+DeliveryStatus.DONE+"'";
 		
 		
 		ResultSet stmt;
@@ -209,6 +209,7 @@ public class DBOrder {
 		int order_delivered = orderModel.getOrder_delivered();
 		String MyQuery = "{CALL update_order(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
+		
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
 			stmt.setInt(1, id);
@@ -229,6 +230,8 @@ public class DBOrder {
 			
 			stmt.setInt(11, client_id);
 			stmt.setInt(12, order_delivered);
+			
+			
 			stmt.executeUpdate();
 			return new OrderModel(stmt.toString());
 		} catch (SQLException e) {

@@ -33,13 +33,7 @@ public class FOrderReady extends FOrderReadyPage{
 			Navigator.Dashboard(Me);
 		}
 		
-		OrderList = DBOrder.getOrderbyRestaurant(TheGuy.getRestaurant_id(), true );
-		
-		for (OrderModel ord : OrderList) {
-			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " -> " + ord.getPostal_code() );
-		}
-
-		ListPan.SetList(OrderDisplay);
+		UpdateOList();
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
@@ -68,6 +62,7 @@ public class FOrderReady extends FOrderReadyPage{
 						TheOrder.setOrder_status( DeliveryStatus.READY );
 						TheOrder.Update();
 			
+						UpdateOList();
 						FAlerts.Say("Order Ready", "Order is Ready for Pickup.");
 					}
 
@@ -80,10 +75,17 @@ public class FOrderReady extends FOrderReadyPage{
 		
 		
 	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		
 
+	public void UpdateOList() {
+		OrderList = DBOrder.getOrderbyRestaurant(TheGuy.getRestaurant_id(), true );
+		
+		OrderDisplay.clear();
+		
+		for (OrderModel ord : OrderList) {
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code() + "¬" + ord.getOrder_status() );
+		}
+
+		ListPan.SetList(OrderDisplay);
 	}
 	
 }

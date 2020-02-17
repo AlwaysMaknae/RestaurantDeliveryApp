@@ -112,7 +112,7 @@ public class OrderModel extends Model {
 	}
 
 	public void Read() {
-		ReadOrderModel(DBOrder.GetOrder(this.id));
+		ReadOrderModel(DBOrder.GetOrder(this.getId()));
 	}
 
 	public void Delete() {

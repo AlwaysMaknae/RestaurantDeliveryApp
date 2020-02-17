@@ -1,4 +1,4 @@
-Upddate List form OrderReady on Sbubmit
+Upddate List form OrderReady on Sbubmit : Done
 
 Accept, Case already Accepted
 UpdateList once accepted.

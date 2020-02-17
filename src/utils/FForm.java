@@ -1,6 +1,8 @@
 package utils;
 
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -27,8 +29,11 @@ public class FForm extends JFrame implements ActionListener, WindowListener, Key
 		
 		this.addWindowListener(this);
 		this.setJMenuBar( MenuBar );
-		this.setLocation( new Point(0,0));
-		//this.setLocationRelativeTo(null); 
+		
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, 0);
+		
 		 
 		Me = this;
 		this.addKeyListener(this);

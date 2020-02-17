@@ -33,7 +33,7 @@ public class FOrderFoodPage extends FForm {
 	
 	public FOrderFoodPage() {
 
-		setSize(900, 700);
+		setSize(900, 720);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setTitle("Food Ordering Software");
@@ -238,10 +238,11 @@ public class FOrderFoodPage extends FForm {
 		PaymentPan.add(PaymentSpacePan);
 		
 		BTNOrder = new FButton("Order");
-		BTNOrder.setPreferredSize(new Dimension(75, 25));
+		BTNOrder.setPreferredSize(new Dimension(100, 30));
 		PaymentPan.add(BTNOrder);
 		
 		BTNCancel = new FButton("Cancel");
+		BTNOrder.setPreferredSize(new Dimension(100, 30));
 		PaymentPan.add(BTNCancel);
 		
 		repaint();

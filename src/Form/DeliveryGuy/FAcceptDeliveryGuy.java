@@ -39,13 +39,7 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 			Navigator.Dashboard(Me);
 		}
 		
-		OrderList = DBOrder.getOrderbyAreas(TheGuy.getArea());
-		
-		for (OrderModel ord : OrderList) {
-			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code() + " ¬" +ord.getOrder_status() );
-		}
-
-		ListPan.SetList(OrderDisplay);
+		UpdateOList();
 
 		BTNSelect.addActionListener(new ActionListener() {
 			@Override
@@ -74,15 +68,11 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 				// Order selection verification
 				if(ListPan.GetSelectedIndex() > -1 && TheOrder!=null ) {
 					if(FAlerts.Confirm("Accept Order Confirmation", "Would you like to accept this order?")) {
-						
-						TheOrder.setDeliverer_id( TheGuy.getId() );
-						TheOrder.setOrder_status(DeliveryStatus.IN_TRANSIT);
-						TheOrder.Update();
-						
-						FAlerts.Say("Accepted Order", "Order has been Accepted!");
-						
-						Navigator.Dashboard(Me);
-						
+							TheOrder.setDeliverer_id( TheGuy.getId() );
+							TheOrder.setOrder_status(DeliveryStatus.IN_TRANSIT);
+							TheOrder.Update();
+							FAlerts.Say("Accepted Order", "Order has been Accepted!");
+							UpdateOList();
 					}
 				}else {
 					FAlerts.Error("Selection Error", "Please select an Order to accept");
@@ -91,6 +81,18 @@ public class FAcceptDeliveryGuy extends FAcceptDeliveryGuyPage {
 			}
 		});
 
+	}
+	
+	private void UpdateOList() {
+		OrderList = DBOrder.getOrderbyAreas(TheGuy.getArea());
+		
+		OrderDisplay.clear();
+		
+		for (OrderModel ord : OrderList) {
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code() + " ¬" +ord.getOrder_status() );
+		}
+
+		ListPan.SetList(OrderDisplay);
 	}
 
 }

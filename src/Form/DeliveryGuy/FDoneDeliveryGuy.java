@@ -35,13 +35,7 @@ public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 			Navigator.Dashboard(Me);
 		}
 		
-		OrderList = DBOrder.getOrderbyDeliveryGuy(TheGuy.getId(), true);
-		
-		for (OrderModel ord : OrderList) {
-			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code()  + " ¬ " + ord.getOrder_status() );
-		}
-
-		ListPan.SetList(OrderDisplay);
+		UpdateOList();
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
@@ -70,13 +64,15 @@ public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 				if(ListPan.GetSelectedIndex() > -1 && TheOrder!=null ) {
 					if(FAlerts.Confirm("Confirm Delivery", "Confirm this Delivery ?")) {
 						
-						TheOrder.setDeliverer_id( TheGuy.getId() );
+						
+
+
 						TheOrder.setOrder_status(DeliveryStatus.DONE);
 						TheOrder.Update();
 						
 						FAlerts.Say("Delivery Confirmed", "Delivery is Done.");
 						
-						Navigator.Dashboard(Me);
+						UpdateOList();
 						
 					}
 				}else {
@@ -87,10 +83,17 @@ public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 		});
 		
 	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	private void UpdateOList() {
+		OrderList = DBOrder.getOrderbyAreas(TheGuy.getArea());
 		
+		OrderDisplay.clear();
+		
+		for (OrderModel ord : OrderList) {
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code() + " ¬" +ord.getOrder_status() );
+		}
 
+		ListPan.SetList(OrderDisplay);
 	}
+
 
 }
