@@ -148,6 +148,7 @@ public class RestaurantModel extends Model{
 		for (String a : arealist) {
 			this.areas += a + " ";
 		}
+		this.areas = this.areas.substring(0, this.areas.length() - 1);
 	}
 	
 	//Getters and Setters

@@ -98,6 +98,7 @@ public class DelivererModel extends Model{
 		for (String a : arealist) {
 			this.area += a + " ";
 		}
+		this.area = this.area.substring(0, this.area.length() - 1);
 	}
 
 	public int getId() {

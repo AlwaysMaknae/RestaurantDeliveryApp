@@ -39,10 +39,14 @@ public class DBOrder {
 
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		String RegAreas = areas.replace(" ", "|");
+		
+		System.out.println(RegAreas);
 
 		String MyQuery = "SELECT * FROM orders WHERE orders.order_postal_code REGEXP '" + RegAreas + "' "
 				+ "AND orders.deliverer_id IS NULL " + "AND orders.order_status = '" + DeliveryStatus.READY + "'";
 		ResultSet stmt;
+		
+		
 		try {
 			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
 			while (stmt.next()) {
