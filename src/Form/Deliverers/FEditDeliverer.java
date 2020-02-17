@@ -76,6 +76,15 @@ public class FEditDeliverer extends FEditDelivererPage {
 					DeliveryAreas.add(TFDeliveryArea.GetContent());
 					JTADeliveryArea.SetList(DeliveryAreas);
 					TFDeliveryArea.setText("");
+
+					UpdateDeliveryMan.setArea(DeliveryAreas.toString());
+
+					strings = new ArrayList<>(DeliveryAreas.size());
+					for (Object object : DeliveryAreas) {
+						strings.add(Objects.toString(object, null));
+					}
+
+					UpdateDeliveryMan.setArealist(strings);
 				} else {
 					FAlerts.Error("Delivery Area Error", "Invalid Delivery Area");
 				}
@@ -99,7 +108,7 @@ public class FEditDeliverer extends FEditDelivererPage {
 
 					strings = new ArrayList<>(DeliveryAreas.size());
 					for (Object object : DeliveryAreas) {
-					    strings.add(Objects.toString(object, null));
+						strings.add(Objects.toString(object, null));
 					}
 
 					UpdateDeliveryMan.setArealist(strings);

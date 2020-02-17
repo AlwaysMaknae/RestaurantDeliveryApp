@@ -105,8 +105,7 @@ public class DBDeliverer {
 		String name = delivererModel.getName();
 		String number = delivererModel.getNumber();
 		String area = delivererModel.getArea();
-		int status = delivererModel.getStatus();
-		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_deliverer(?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
@@ -115,7 +114,6 @@ public class DBDeliverer {
 			stmt.setString(3, name);
 			stmt.setString(4, number);
 			stmt.setString(5, area);
-			stmt.setInt(6, status);
 			stmt.executeUpdate();
 			return new DelivererModel(stmt.toString());
 		} catch (SQLException e) {
