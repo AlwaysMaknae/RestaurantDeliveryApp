@@ -21,7 +21,7 @@ public class FAcceptOrder extends FAcceptOrderPage {
 
 		ListPan.SetList(Order);
 		
-		BTNSelect.addActionListener(new ActionListener() {		
+		BTNSelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
