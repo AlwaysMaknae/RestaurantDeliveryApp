@@ -1,13 +1,7 @@
-fetch all orders according to [client, restaurant]
+Upddate List form OrderReady on Sbubmit
 
-insertion encryption
---- menu navigation ---
-login query 
-Session class [ FMenuNavigation ]
+Accept, Case already Accepted
+UpdateList once accepted.
 
+Manager Orders not Done + Status in List
 
-Form Working
-
-
-Array List from Split Text, toString back (Area Code and Item Fk)
-Find a Solution for Opening Times
