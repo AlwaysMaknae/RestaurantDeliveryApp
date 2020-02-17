@@ -28,6 +28,7 @@ public class FEditRestaurantPage extends FForm{
 	protected FTextField TFPhoneNum;
 	protected FTextField TFDeliveryArea;
 	protected FButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliverySave;
+	protected FLabel TitleLbl;
 	
 	protected FListView JTADeliveryArea;
 	
@@ -93,7 +94,7 @@ public class FEditRestaurantPage extends FForm{
 		TitleSpacePan.setPreferredSize(new Dimension(600, 5));
 		TitlePan.add(TitleSpacePan);
 		
-		FLabel TitleLbl = new FLabel("Edit Restaurant");
+		TitleLbl = new FLabel("Edit Restaurant");
 		TitlePan.add(TitleLbl);
 		
 		JPanel RestaurantInfoPan = new JPanel();

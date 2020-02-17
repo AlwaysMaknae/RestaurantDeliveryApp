@@ -6,28 +6,49 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
+import Model.AccesLevel;
+import Model.ManagerModel;
 import Model.RestaurantModel;
 import database.DBRestaurant;
+import database.Session;
 import utils.FAlerts;
 import utils.FHoursComboBox;
 
 public class FEditRestaurant extends FEditRestaurantPage {
 
 	private ArrayList<Object> DeliveryAreas;
+	ArrayList<RestaurantModel> RestaurantList;
 	private RestaurantModel UpdateRestaurant;
 	
 	public FEditRestaurant() {
 	
 		UpdateRestaurant = null;
-		
-		ArrayList<RestaurantModel> RestaurantList = DBRestaurant.getAllRestaurants();
+
 		ArrayList<Object> Restaurant = new ArrayList<Object>();
+		RestaurantList = new ArrayList<RestaurantModel>();
+		
+		TFPhoneNum.SetMask("###-###-####");
+		TFDeliveryArea.SetMask("L#L");
+		
+		
+		if (Session.AccesType == AccesLevel.GetType(AccesLevel.ADMIN) ) {
+			RestaurantList = DBRestaurant.getAllRestaurants();
+			
+		} else if(Session.AccesType == AccesLevel.GetType(AccesLevel.MANAGER)) {
+			ManagerModel user = new ManagerModel(Session.GetUser().getId());
+			user.Read();
+			UpdateRestaurant = DBRestaurant.GetRestaurant(user.getRestaurant_id());
+			RestaurantList.add(UpdateRestaurant);
+			TitleLbl.setText("Edit Menu : " + UpdateRestaurant.getName());
+			
+			PopulateFromSetModel();
+		}
+		
 		for (RestaurantModel rr : RestaurantList) {
 			Restaurant.add("" + rr.getId() + " : " + rr.getName() );
 		}
 		
-		TFPhoneNum.SetMask("###-###-####");
-		TFDeliveryArea.SetMask("L#L");
+		
 		ListPan.SetList(Restaurant);
 		
 		BTNDeliverySave.addActionListener(this);
@@ -37,34 +58,14 @@ public class FEditRestaurant extends FEditRestaurantPage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				UpdateRestaurant = RestaurantList.get(ListPan.GetSelectedIndex());
-				UpdateRestaurant.Read();
-				
-				TFRestaurantName.setText( UpdateRestaurant.getName() );
-				TFRestaurantAddress.setText(UpdateRestaurant.getAddress());
-				TFPhoneNum.setText(UpdateRestaurant.getNumber()); 
-				DeliveryAreas = new ArrayList<Object>();
-				
-				if(UpdateRestaurant.getOpenings()[0] != null) {
-					for (int i = 0; i < Fcb_open.length; i++) {
-						//Setup Openings
-						Fcb_open[i].setSelectedFromText(UpdateRestaurant.getOpenings()[i].toString());
-					}
+				if(ListPan.GetSelectedIndex() > 0) {
+					UpdateRestaurant = RestaurantList.get(ListPan.GetSelectedIndex());
+					UpdateRestaurant.Read();
+					PopulateFromSetModel();
 					
-					for (int i = 0; i < Fcb_close.length; i++) {
-						Fcb_close[i].setSelectedFromText(UpdateRestaurant.getClosings()[i].toString());
-					}
 				} else {
-					for (FHoursComboBox cx : Fcb_open) {cx.setSelectedIndex(0);}
-					for (FHoursComboBox cx : Fcb_close) {cx.setSelectedIndex(0);}
+					FAlerts.Say("Restaurant Edit", "Select a Restaurant to Edit");
 				}
-
-				
-				for (String s : UpdateRestaurant.getArealist()) {
-					DeliveryAreas.add(s);
-				}
-				
-				JTADeliveryArea.SetList(DeliveryAreas);
 
 				
 			}
@@ -175,7 +176,36 @@ public class FEditRestaurant extends FEditRestaurantPage {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {}
+	private void PopulateFromSetModel() {
+		
+		TFRestaurantName.setText( UpdateRestaurant.getName() );
+		TFRestaurantAddress.setText(UpdateRestaurant.getAddress());
+		TFPhoneNum.setText(UpdateRestaurant.getNumber()); 
+		DeliveryAreas = new ArrayList<Object>();
+		
+		if(UpdateRestaurant.getOpenings()[0] != null) {
+			for (int i = 0; i < Fcb_open.length; i++) {
+				//Setup Openings
+				Fcb_open[i].setSelectedFromText(UpdateRestaurant.getOpenings()[i].toString());
+			}
+			
+			for (int i = 0; i < Fcb_close.length; i++) {
+				Fcb_close[i].setSelectedFromText(UpdateRestaurant.getClosings()[i].toString());
+			}
+		} else {
+			for (FHoursComboBox cx : Fcb_open) {cx.setSelectedIndex(0);}
+			for (FHoursComboBox cx : Fcb_close) {cx.setSelectedIndex(0);}
+		}
+		
+		
+		for (String s : UpdateRestaurant.getArealist()) {
+			DeliveryAreas.add(s);
+		}
+		
+		JTADeliveryArea.SetList(DeliveryAreas);
+		
+	}
+	
+	
 
 }

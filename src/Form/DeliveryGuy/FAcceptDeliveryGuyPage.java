@@ -21,6 +21,8 @@ public class FAcceptDeliveryGuyPage extends FForm {
 	protected int OrderNum = 0, RestaurantNum = 0;
 	protected String DeliveryAddress = " ", DeliveryPostalCode = " ";
 
+	protected FLabel OrderLbl, RestaurantLbl, DeliveryAddressLbl, DeliveryPostalCodeLbl;
+	
 	protected FListView ListPan;
 	
 	public FAcceptDeliveryGuyPage() {
@@ -90,7 +92,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		ViewDeliveryInfoPan.setPreferredSize(new Dimension(250, 110));
 		InnerPan.add(ViewDeliveryInfoPan);
 		
-		FLabel OrderLbl = new FLabel("Order # : " + OrderNum);
+		OrderLbl = new FLabel("Order # : " + OrderNum);
 		ViewDeliveryInfoPan.add(OrderLbl);
 		
 		JPanel SpacePan0 = new JPanel();
@@ -98,7 +100,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		SpacePan0.setPreferredSize(new Dimension(250, 1));
 		ViewDeliveryInfoPan.add(SpacePan0);
 		
-		FLabel RestaurantLbl = new FLabel("Restaurant # : " + RestaurantNum);
+		RestaurantLbl = new FLabel("Restaurant # : " + RestaurantNum);
 		RestaurantLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		ViewDeliveryInfoPan.add(RestaurantLbl);
 		
@@ -107,7 +109,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		SpacePan1.setPreferredSize(new Dimension(250, 1));
 		ViewDeliveryInfoPan.add(SpacePan1);
 		
-		FLabel DeliveryAddressLbl = new FLabel("Delivery Address: " + DeliveryAddress);
+		DeliveryAddressLbl = new FLabel("Delivery Address: " + DeliveryAddress);
 		ViewDeliveryInfoPan.add(DeliveryAddressLbl);
 		
 		JPanel SpacePan2 = new JPanel();
@@ -115,7 +117,7 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		SpacePan2.setPreferredSize(new Dimension(250, 1));
 		ViewDeliveryInfoPan.add(SpacePan2);
 		
-		FLabel DeliveryPostalCodeLbl = new FLabel("Delivery Postal Code: " + DeliveryPostalCode);
+		DeliveryPostalCodeLbl = new FLabel("Delivery Postal Code: " + DeliveryPostalCode);
 		ViewDeliveryInfoPan.add(DeliveryPostalCodeLbl);
 		
 		JPanel SpacePan3 = new JPanel();

@@ -48,9 +48,9 @@ public class FEditMenu extends FEditMenuPage {
 		
 
 
-		  for (RestaurantModel r : RestaurantList) { 
-			  Restaurant.add(r.getName()); 
-		  }
+		 for (RestaurantModel r : RestaurantList) { 
+			 Restaurant.add(r.getName()); 
+		 }
 		 
 
 
