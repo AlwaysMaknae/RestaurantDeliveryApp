@@ -11,23 +11,24 @@ public class DelivererModel extends Model{
 	private String name;
 	private String number;
 	private String area;
-	//private ArrayList<String> arealist;
+	private ArrayList<String> arealist;
 	private int access_lvl;
 	private int status;
 	
 	public DelivererModel(int id){
 		this.id = id;
-		//this.arealist = new ArrayList<String>();
+		this.arealist = new ArrayList<String>();
 	}
 	
 	public DelivererModel(String name){
 		this.name = name;
-		//this.arealist = new ArrayList<String>();
+		this.arealist = new ArrayList<String>();
 	}
 	
 	public DelivererModel(int id, String name){
 		this.id = id;
 		this.name = name;
+		this.arealist = new ArrayList<String>();
 	}
 	
 	public DelivererModel(String username, String password, String name, String number, String area){
@@ -36,11 +37,11 @@ public class DelivererModel extends Model{
 		this.name = name;
 		this.number = number;
 		this.area = area;
-		//this.arealist = new ArrayList<String>();
-		//String[] tareas = this.area.split(" ");
-		//for (String x : tareas) {
-		//	this.arealist.add(x);
-		//}
+		this.arealist = new ArrayList<String>();
+		String[] tareas = this.area.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
 	}
 	
 	public DelivererModel(int id, String username, String password, int access_lvl, String name, String number, String area, int status){
@@ -52,11 +53,11 @@ public class DelivererModel extends Model{
 		this.area = area;
 		this.access_lvl = access_lvl;
 		this.status = status;
-		//this.arealist = new ArrayList<String>();
-		//String[] tareas = this.area.split(" ");
-		//for (String x : tareas) {
-		//	this.arealist.add(x);
-		//}
+		this.arealist = new ArrayList<String>();
+		String[] tareas = this.area.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
 	}
 	
 	private void ReadDelivererModel(DelivererModel Me){
@@ -65,9 +66,14 @@ public class DelivererModel extends Model{
 		this.password = Me.getPassword();
 		this.access_lvl = Me.getAccess_lvl();
 		this.name = Me.getName();
-		this.number = Me.getName();
+		this.number = Me.getNumber();
 		this.area = Me.getArea();
 		this.status = Me.getStatus();
+		this.arealist = new ArrayList<String>();
+		String[] tareas = this.area.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
 	}
 	
 
@@ -85,6 +91,13 @@ public class DelivererModel extends Model{
 
 	public void Delete() {
 		DBDeliverer.DeleteDeliverer(id);
+	}
+	
+	public void SyncAreas() {
+		this.area = "";
+		for (String a : arealist) {
+			this.area += a + " ";
+		}
 	}
 
 	public int getId() {
@@ -151,6 +164,11 @@ public class DelivererModel extends Model{
 		this.access_lvl = access_lvl;
 	}
 	
-	
+	public ArrayList<String> getArealist() {
+		return arealist;
+	}
+	public void setArealist(ArrayList<String> arealist) {
+		this.arealist = arealist;
+	}
 
 }

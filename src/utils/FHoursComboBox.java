@@ -2,6 +2,7 @@ package utils;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.time.LocalTime;
 
 import javax.swing.JComboBox;
 
@@ -26,15 +27,22 @@ public class FHoursComboBox extends JComboBox<Object> {
 		this.setPreferredSize( new Dimension(70,32) );
 	}
 	
-	public boolean setSelectedFromText(String time){
+	public int setSelectedFromText(String time){
 		
 		for(int i=0; i<this.getItemCount();i++){
 			if(this.getItemAt(i).equals(time)){
 				this.setSelectedIndex(i);
-				return true;
+				return i;
 			}
 		}
-		return false;
+		return -1;
 		
+	}
+	public LocalTime GetTime(){
+		return LocalTime.parse((CharSequence) this.getSelectedItem());
+	}
+	
+	public static LocalTime FindTime(String item){
+		return LocalTime.parse((CharSequence) item);
 	}
 }

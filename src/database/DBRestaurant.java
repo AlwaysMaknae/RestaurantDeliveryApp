@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Model.DelivererModel;
 import Model.RestaurantModel;
 
 public class DBRestaurant {
@@ -27,6 +28,25 @@ public class DBRestaurant {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+
+	
+	public static RestaurantModel getRestaurants(int id) {
+		String MyQuery = "SELECT * FROM restaurants WHERE restaurant_id='" + id + "' AND status=1";
+		ResultSet stmt;
+		try {
+			stmt = DBConnecter.Connect.createStatement().executeQuery(MyQuery);
+			
+			if (stmt.next())
+				return new RestaurantModel(stmt.getInt(1), stmt.getString(2), stmt.getString(3), stmt.getString(4), stmt.getString(5), stmt.getString(6), stmt.getInt(7));
+			else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 	
 	
@@ -99,7 +119,7 @@ public class DBRestaurant {
 		String areas = restaurantModel.getAreas();
 		int status = restaurantModel.getStatus();
 
-		String MyQuery = "{CALL create_restuarant(?, ?, ?, ?, ?, ?)}";
+		String MyQuery = "{CALL create_restaurant(?, ?, ?, ?, ?, ?)}";
 		java.sql.PreparedStatement stmt;
 		try {
 			stmt = DBConnecter.Connect.prepareCall(MyQuery);
@@ -139,7 +159,10 @@ public class DBRestaurant {
 			stmt.setString(5, hours);
 			stmt.setString(6, areas);
 			stmt.executeUpdate();
-			return new RestaurantModel(stmt.toString());
+			
+			RestaurantModel rs = new RestaurantModel(id, stmt.toString());
+			rs.Read();
+			return rs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

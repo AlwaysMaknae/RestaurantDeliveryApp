@@ -19,7 +19,7 @@ import utils.FTextField;
 public class FViewOrderFoodHistoryPage extends FForm{
 
 	protected FButton BTNSelect;
-	protected FTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	protected FTextField TFDeliveryTime, TFAddress, TFStatus;
 	
 	protected FListView ListPan, JTAMealOrder;
 	
@@ -94,52 +94,41 @@ public class FViewOrderFoodHistoryPage extends FForm{
 		ViewOrderInfoPan1.setPreferredSize(new Dimension(250, 110));
 		InnerPan.add(ViewOrderInfoPan1);
 		
-		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
+		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time : ");
+		DeliveryTimeYMDLbl.setPreferredSize( new Dimension(120,14));
 		ViewOrderInfoPan1.add(DeliveryTimeYMDLbl);
 		
-		TFDeliveryTimeYMD = new FTextField(0);
-		TFDeliveryTimeYMD.setEnabled(false);
-		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
-		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
+		TFDeliveryTime = new FTextField(0);
+		TFDeliveryTime.setEnabled(false);
+		TFDeliveryTime.setPreferredSize(new Dimension(100, 20));
+		ViewOrderInfoPan1.add(TFDeliveryTime);
 		
-		JPanel SpacePan0 = new JPanel();
-		SpacePan0.setBackground(Color.LIGHT_GRAY);
-		SpacePan0.setPreferredSize(new Dimension(250, 1));
-		ViewOrderInfoPan1.add(SpacePan0);
-		
-		FLabel DeliveryTimeLbl = new FLabel("Delivery Time : ");
-		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
+		FLabel DeliveryTimeLbl = new FLabel("Delivery Address : ");
+		DeliveryTimeLbl.setPreferredSize( new Dimension(120,14));
 		ViewOrderInfoPan1.add(DeliveryTimeLbl);
 		
-		TFHour = new FTextField(0);
-		TFHour.setEnabled(false);
-		TFHour.setPreferredSize(new Dimension(20, 20));
-		ViewOrderInfoPan1.add(TFHour);
 		
-		FLabel HourLbl = new FLabel("H");
-		ViewOrderInfoPan1.add(HourLbl);
+		TFAddress = new FTextField(0);
+		TFAddress.setEnabled(false);
+		TFAddress.setPreferredSize(new Dimension(100, 20));
+		ViewOrderInfoPan1.add(TFAddress);
 		
-		TFMinute = new FTextField(0);
-		TFMinute.setEnabled(false);
-		TFMinute.setPreferredSize(new Dimension(20, 20));
-		ViewOrderInfoPan1.add(TFMinute);
+		FLabel DeliveryStatusLbl = new FLabel("Delivery Status : ");
+		DeliveryStatusLbl.setPreferredSize( new Dimension(120,14));
+		ViewOrderInfoPan1.add(DeliveryStatusLbl);
 		
-		FLabel MinuteLbl = new FLabel("M");
-		ViewOrderInfoPan1.add(MinuteLbl);
+		
+		TFStatus = new FTextField(0);
+		TFStatus.setEnabled(false);
+		TFStatus.setPreferredSize(new Dimension(100, 20));
+		ViewOrderInfoPan1.add(TFStatus);
+		
 		
 		JPanel SpacePan1 = new JPanel();
 		SpacePan1.setBackground(Color.LIGHT_GRAY);
 		SpacePan1.setPreferredSize(new Dimension(250, 1));
 		ViewOrderInfoPan1.add(SpacePan1);
 		
-		FLabel PostalCodeLbl = new FLabel("Postal Code : ");
-		PostalCodeLbl.setPreferredSize(new Dimension(160, 14));
-		ViewOrderInfoPan1.add(PostalCodeLbl);
-		
-		TFPostalCode = new FTextField(0);
-		TFPostalCode.setEnabled(false);
-		TFPostalCode.setPreferredSize(new Dimension(75, 20));
-		ViewOrderInfoPan1.add(TFPostalCode);
 		
 		JPanel ViewOrderInfoPan2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) ViewOrderInfoPan2.getLayout();

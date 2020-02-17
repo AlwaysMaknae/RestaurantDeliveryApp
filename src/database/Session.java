@@ -10,6 +10,7 @@ public abstract class Session {
 	private static Model User;
 	public static String AccesType;
 	public static Date Now = new Date();
+	private static Calendar cal = Calendar.getInstance(); 
 	
 	public static void Create(Model Client){
 		Session.User = Client;
@@ -28,9 +29,23 @@ public abstract class Session {
 	}
 	
 	public static int GetDayOfWeek(){
-		Calendar d = Calendar.getInstance();
-		d.setTime(Session.Now);
-		return d.get(Calendar.DAY_OF_WEEK);
+		cal.setTime(Session.Now);
+		return cal.get(Calendar.DAY_OF_WEEK);
+	}
+	
+	public static String GetDateFormated() {
+		return cal.get(Calendar.YEAR) +"-"+ cal.get(Calendar.MONTH) +"-"+cal.get(Calendar.DATE) + "";
+	}
+	public static String GetDateFormated(boolean tomorrow) {
+		if(tomorrow)
+			cal.add(Calendar.DATE, 1);
+		
+		String res = cal.get(Calendar.YEAR) +"-"+ cal.get(Calendar.MONTH) +"-"+cal.get(Calendar.DATE) + "";
+		
+		if(tomorrow)
+			cal.add(Calendar.DATE, -1);
+		
+		return  res;
 	}
 	
 	

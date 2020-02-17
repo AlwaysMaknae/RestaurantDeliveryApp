@@ -20,9 +20,10 @@ import utils.FTextField;
 public class FOrderReadyPage extends FForm{
 
 	protected FButton BTNSelect, BTNOrderReady;
-	protected FTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
+	protected FTextField TFDeliveryDate, TFTime, TFPostalCode;
 	
 	protected FListView ListPan;
+	protected JTextArea JTAMealOrder;
 
 	public FOrderReadyPage() {
 
@@ -91,13 +92,14 @@ public class FOrderReadyPage extends FForm{
 		ViewOrderInfoPan1.setPreferredSize(new Dimension(250, 110));
 		InnerPan.add(ViewOrderInfoPan1);
 		
-		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Time (yyyy/mm/dd) : ");
+		FLabel DeliveryTimeYMDLbl = new FLabel("Delivery Date : ");
+		DeliveryTimeYMDLbl.setPreferredSize(new Dimension(160, 14));
 		ViewOrderInfoPan1.add(DeliveryTimeYMDLbl);
 		
-		TFDeliveryTimeYMD = new FTextField(0);
-		TFDeliveryTimeYMD.setEnabled(false);
-		TFDeliveryTimeYMD.setPreferredSize(new Dimension(75, 20));
-		ViewOrderInfoPan1.add(TFDeliveryTimeYMD);
+		TFDeliveryDate = new FTextField(0);
+		TFDeliveryDate.setEnabled(false);
+		TFDeliveryDate.setPreferredSize(new Dimension(75, 20));
+		ViewOrderInfoPan1.add(TFDeliveryDate);
 		
 		JPanel SpacePan0 = new JPanel();
 		SpacePan0.setBackground(Color.LIGHT_GRAY);
@@ -105,24 +107,14 @@ public class FOrderReadyPage extends FForm{
 		ViewOrderInfoPan1.add(SpacePan0);
 		
 		FLabel DeliveryTimeLbl = new FLabel("Delivery Time : ");
-		DeliveryTimeLbl.setPreferredSize(new Dimension(165, 14));
+		DeliveryTimeLbl.setPreferredSize(new Dimension(160, 14));
 		ViewOrderInfoPan1.add(DeliveryTimeLbl);
 		
-		TFHour = new FTextField(0);
-		TFHour.setEnabled(false);
-		TFHour.setPreferredSize(new Dimension(20, 20));
-		ViewOrderInfoPan1.add(TFHour);
+		TFTime = new FTextField(0);
+		TFTime.setEnabled(false);
+		TFTime.setPreferredSize(new Dimension(75, 20));
+		ViewOrderInfoPan1.add(TFTime);
 		
-		FLabel HourLbl = new FLabel("H");
-		ViewOrderInfoPan1.add(HourLbl);
-		
-		TFMinute = new FTextField(0);
-		TFMinute.setEnabled(false);
-		TFMinute.setPreferredSize(new Dimension(20, 20));
-		ViewOrderInfoPan1.add(TFMinute);
-		
-		FLabel MinuteLbl = new FLabel("M");
-		ViewOrderInfoPan1.add(MinuteLbl);
 		
 		JPanel SpacePan1 = new JPanel();
 		SpacePan1.setBackground(Color.LIGHT_GRAY);
@@ -149,7 +141,7 @@ public class FOrderReadyPage extends FForm{
 		MealOrderLbl.setPreferredSize(new Dimension(240, 14));
 		ViewOrderInfoPan2.add(MealOrderLbl);
 		
-		JTextArea JTAMealOrder = new JTextArea();
+		JTAMealOrder = new JTextArea();
 		JTAMealOrder.setBorder(new LineBorder(Color.GRAY));
 		JTAMealOrder.setLineWrap(true);
 		JTAMealOrder.setEnabled(false);

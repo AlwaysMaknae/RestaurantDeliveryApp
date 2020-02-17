@@ -1,8 +1,11 @@
 package Model;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import database.DBRestaurant;
+import database.Session;
+import utils.FHoursComboBox;
 
 public class RestaurantModel extends Model{
 	private int id;
@@ -12,6 +15,11 @@ public class RestaurantModel extends Model{
 	private String hours;
 	private String areas;
 	private ArrayList<String> arealist;
+	
+	
+	private LocalTime[] openings = new LocalTime[7];
+	private LocalTime[] closings = new LocalTime[7];
+	
 	private int status;
 	
 	//constructors and overloads
@@ -28,6 +36,7 @@ public class RestaurantModel extends Model{
 		for (String x : tareas) {
 			this.arealist.add(x);
 		}
+		SetTimes();
 	}
 	public RestaurantModel(String name, String address, String number, String hours, String areas){
 		this.name = name;
@@ -35,17 +44,20 @@ public class RestaurantModel extends Model{
 		this.number = number;
 		this.hours = hours;
 		this.areas = areas;
-		/*this.arealist = new ArrayList<String>();
+		this.arealist = new ArrayList<String>();
+		SetTimes();
 		String[] tareas = this.areas.split(" ");
 		for (String x : tareas) {
 			this.arealist.add(x);
-		}*/
+		}
 	}
 	public RestaurantModel(int id){
 		this.id = id;
+		this.arealist = new ArrayList<String>();
 	}
 	public RestaurantModel(String name){
 		this.name = name;
+		this.arealist = new ArrayList<String>();
 	}
 	/*public RestaurantModel(int id, String name, int yes){
 		this.id = id;
@@ -61,6 +73,7 @@ public class RestaurantModel extends Model{
 	public RestaurantModel(int id, String name){
 		this.id = id;
 		this.name = name;
+		this.arealist = new ArrayList<String>();
 	}
 	
 	
@@ -71,7 +84,42 @@ public class RestaurantModel extends Model{
 		this.number = Me.getNumber();
 		this.hours = Me.getHours();
 		this.areas = Me.getAreas();
+		this.arealist = new ArrayList<String>();
 		this.status = Me.getStatus();
+		SetTimes();
+		
+		String[] tareas = this.areas.split(" ");
+		for (String x : tareas) {
+			this.arealist.add(x);
+		}
+		
+	}
+	
+	public void SetTimes(){
+		String[] tea = this.hours.split(" ");
+		if(tea.length >= 14) {
+			for (int i = 0; i < openings.length; i++) {
+				if(tea[i] != "")
+					openings[i] = RestaurantModel.FindTime(tea[i]);
+			}
+			for (int i = 0; i < closings.length; i++) {
+				if(tea[i+openings.length] != "")
+					closings[i] = RestaurantModel.FindTime(tea[i+openings.length]);
+			}
+		}
+	}
+	
+	public void SyncTimes() {
+		
+		String sync = "";
+		
+		for (LocalTime h : openings) {
+			sync += h + " ";
+		}
+		for (LocalTime h : closings) {
+			sync += h + " ";
+		}
+		this.setHours(sync);
 		
 	}
 	
@@ -89,6 +137,17 @@ public class RestaurantModel extends Model{
 
 	public void Delete() {
 		DBRestaurant.DeleteRestaurant(this.id);
+	}
+	
+	public static LocalTime FindTime(String item){
+		return LocalTime.parse((CharSequence) item);
+	}
+	
+	public void SyncAreas() {
+		this.areas = "";
+		for (String a : arealist) {
+			this.areas += a + " ";
+		}
 	}
 	
 	//Getters and Setters
@@ -151,6 +210,30 @@ public class RestaurantModel extends Model{
 	}
 	public void setArealist(ArrayList<String> arealist) {
 		this.arealist = arealist;
+	}
+	public LocalTime[] getOpenings() {
+		return openings;
+	}
+	public void setOpenings(LocalTime[] openings) {
+		this.openings = openings;
+	}
+	public LocalTime[] getClosings() {
+		return closings;
+	}
+	public void setClosings(LocalTime[] closings) {
+		this.closings = closings;
+	}
+	public boolean isOpenAt(LocalTime time) {
+		
+		LocalTime now = LocalTime.now();
+		int CurrentDay = Session.GetDayOfWeek();
+		
+		if(time.isBefore(now)) {
+			CurrentDay+=1;
+			CurrentDay%=7;
+		}
+		
+		return (this.openings[CurrentDay].isBefore(time) && this.closings[CurrentDay].isAfter(time));
 	}
 
 }

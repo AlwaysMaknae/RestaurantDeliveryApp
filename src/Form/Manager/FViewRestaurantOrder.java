@@ -6,75 +6,52 @@ import java.util.ArrayList;
 
 import Model.OrderModel;
 import Model.RestaurantModel;
+import Model.DelivererModel;
+import Model.ManagerModel;
+import database.DBOrder;
+import database.DBRestaurant;
+import database.Session;
 
-public class FViewRestaurantOrder extends FViewRestaurantOrderPage{
+public class FViewRestaurantOrder extends FViewRestaurantOrderPage {
+	private ArrayList<OrderModel> OrderList;
+	private OrderModel Orderz;
 
 	public FViewRestaurantOrder() {
-		// Empty Login Error Validation once actionlistener is implemented.
 
-		/*
-		 * if(TFUsername.getText().equals("") || TFPassword.getText().equals("")) {
-		 * JOptionPane.showMessageDialog(this, "Username or Password is incorrect!",
-		 * "Login Error", JOptionPane.ERROR_MESSAGE); }
-		 */
-		
-		ArrayList<RestaurantModel> RestaurantList = new ArrayList<RestaurantModel>();
-		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		ManagerModel user = new ManagerModel(Session.GetUser().getId());
+		user.Read();
 
-		// RM = DBRestaurant.GetAllRestaurants();
+		OrderList = new ArrayList<OrderModel>();
 
-		ArrayList<Object> Restaurant = new ArrayList<Object>();
-
-		Restaurant.add("Orange");
-		Restaurant.add("Apple");
-		Restaurant.add("Cherry");
-		Restaurant.add("Melon");
-		Restaurant.add("Cheese");
-
-		/*
-		 * for (RestaurantModel r : RestaurantList) { Fruits.add(r.getName()); }
-		 */
-		
 		ArrayList<Object> Order = new ArrayList<Object>();
 
-		//Order.add(ENTER ORDER DATE HERE);
-		
-		
-		ListPan.SetList(Restaurant);
+		OrderList = DBOrder.getOrderbyRestaurant(user.getRestaurant_id());
+
+		for (int i = 0; i < OrderList.size(); i++) {
+			Order.add("Order #" + OrderList.get(i).getId() + " - " + OrderList.get(i).getDate() + " - " + OrderList.get(i).getDelivery_time() + " - Area:" + OrderList.get(i).getPostal_code());
+		}
+
 		ListPan2.SetList(Order);
 
-		
-		BTNSelect.addActionListener(new ActionListener() {		
+		BTNSelect2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Orderz = OrderList.get(ListPan2.GetSelectedIndex());
+				Orderz.Read();
 				
-				//FOR RESTAURANT
+				TFDeliveryTimeYMD.setText(Orderz.getDate());
+				TFHour.setText(Orderz.getDelivery_time());
+				TFPostalCode.setText(Orderz.getPostal_code());
 				
-//				Select a Restaurant and press SELECT. This correlates with the Orderlist.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected restaurant and display the Orders tied with the specific Restaurant.
-				
+				JTAMealOrder.setText(Orderz.getItems());
 			}
 		});
-		
-		BTNSelect2.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				//FOR ORDER
-				
-//				Select an Order and press SELECT. This transfers the info into the correct textfields.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected order and display the info in the textfields.
-				
-			}
-		});
-		
-	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		
 
 	}
-	
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+
+	}
+
 }

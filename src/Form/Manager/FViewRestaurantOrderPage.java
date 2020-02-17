@@ -21,6 +21,8 @@ public class FViewRestaurantOrderPage extends FForm {
 	protected FButton BTNSelect, BTNSelect2;
 	protected FTextField TFDeliveryTimeYMD, TFHour, TFPostalCode, TFMinute;
 	
+	protected JTextArea JTAMealOrder;
+	
 	protected FListView ListPan, ListPan2;
 
 	public FViewRestaurantOrderPage() {
@@ -35,34 +37,6 @@ public class FViewRestaurantOrderPage extends FForm {
 		MainPan.setPreferredSize(new Dimension(975, 975));
 		getContentPane().add(MainPan);
 		MainPan.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JPanel RestaurantListPan = new JPanel();
-		RestaurantListPan.setBackground(Color.LIGHT_GRAY);
-		RestaurantListPan.setPreferredSize(new Dimension(300, 975));
-		MainPan.add(RestaurantListPan);
-
-		JPanel ListTitlePan = new JPanel();
-		ListTitlePan.setPreferredSize(new Dimension(300, 20));
-		ListTitlePan.setBackground(Color.LIGHT_GRAY);
-		RestaurantListPan.add(ListTitlePan);
-
-		FLabel ListRestaurantTitleLbl = new FLabel("Order");
-		ListRestaurantTitleLbl.setText("Restaurant");
-		ListTitlePan.add(ListRestaurantTitleLbl);
-
-		ListPan = new FListView();
-		ListPan.setPreferredSize(new Dimension(300, 905));
-		RestaurantListPan.add(ListPan);
-
-		JPanel RestaurantListButtonPan = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) RestaurantListButtonPan.getLayout();
-		flowLayout.setVgap(0);
-		RestaurantListButtonPan.setPreferredSize(new Dimension(300, 26));
-		RestaurantListPan.add(RestaurantListButtonPan);
-
-		BTNSelect = new FButton("Select");
-		BTNSelect.setPreferredSize(new Dimension(300, 26));
-		RestaurantListButtonPan.add(BTNSelect);
 
 		JPanel RestaurantOrderListPan = new JPanel();
 		RestaurantOrderListPan.setBackground(Color.LIGHT_GRAY);
@@ -139,19 +113,8 @@ public class FViewRestaurantOrderPage extends FForm {
 
 		TFHour = new FTextField(0);
 		TFHour.setEnabled(false);
-		TFHour.setPreferredSize(new Dimension(20, 20));
+		TFHour.setPreferredSize(new Dimension(60, 20));
 		ViewOrderInfoPan1.add(TFHour);
-
-		FLabel HourLbl = new FLabel("H");
-		ViewOrderInfoPan1.add(HourLbl);
-
-		TFMinute = new FTextField(0);
-		TFMinute.setEnabled(false);
-		TFMinute.setPreferredSize(new Dimension(20, 20));
-		ViewOrderInfoPan1.add(TFMinute);
-
-		FLabel MinuteLbl = new FLabel("M");
-		ViewOrderInfoPan1.add(MinuteLbl);
 
 		JPanel SpacePan1 = new JPanel();
 		SpacePan1.setBackground(Color.LIGHT_GRAY);
@@ -178,9 +141,9 @@ public class FViewRestaurantOrderPage extends FForm {
 		MealOrderLbl.setPreferredSize(new Dimension(240, 14));
 		ViewOrderInfoPan2.add(MealOrderLbl);
 
-		JTextArea JTAMealOrder = new JTextArea();
-		JTAMealOrder.setBorder(new LineBorder(Color.GRAY));
-		JTAMealOrder.setLineWrap(true);
+		JTAMealOrder = new JTextArea();
+		JTAMealOrder.setPreferredSize(new Dimension(400, 100));
+		JTAMealOrder.setBorder(new LineBorder(new Color(128, 128, 128)));
 		JTAMealOrder.setEnabled(false);
 		JTAMealOrder.setPreferredSize(new Dimension(240, 285));
 		ViewOrderInfoPan2.add(JTAMealOrder);

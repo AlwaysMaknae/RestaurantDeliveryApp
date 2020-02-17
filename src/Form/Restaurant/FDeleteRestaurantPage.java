@@ -24,14 +24,15 @@ public class FDeleteRestaurantPage extends FForm{
 
 	protected FTextField TFRestaurantName;
 	protected FTextField TFRestaurantAddress;
-	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
+	protected FTextField TFPhoneNum;
 	protected FTextField TFDeliveryArea;
 	protected FButton BTNSelect, BTNModifyAll, BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNDeliveryRestaurantDelete;
 	
-	protected JComboBox Fcb[] = new JComboBox[7];
+	protected FHoursComboBox Fcb_open[] = new FHoursComboBox[7];
+	protected FHoursComboBox Fcb_close[] = new FHoursComboBox[7];
 	protected String days[] = { "Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday", "Sunday" };
 	
-	protected FListView ListPan;
+	protected FListView ListPan, JTADeliveryArea;
 	
 	public FDeleteRestaurantPage() {
 		
@@ -130,35 +131,11 @@ public class FDeleteRestaurantPage extends FForm{
 		PhoneNumLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		RestaurantInfoPan.add(PhoneNumLbl);
 		
-		FLabel BracketLbl = new FLabel("(");
-		BracketLbl.setPreferredSize(new Dimension(5, 14));
-		BracketLbl.setHorizontalAlignment(SwingConstants.LEFT);
-		RestaurantInfoPan.add(BracketLbl);
 		
-		TFPhoneNum_1 = new FTextField(0);
-		TFPhoneNum_1.setEnabled(false);
-		TFPhoneNum_1.setPreferredSize(new Dimension(25, 18));
-		RestaurantInfoPan.add(TFPhoneNum_1);
-		
-		FLabel BracketLbl2 = new FLabel(")");
-		BracketLbl2.setPreferredSize(new Dimension(5, 14));
-		BracketLbl2.setHorizontalAlignment(SwingConstants.LEFT);
-		RestaurantInfoPan.add(BracketLbl2);
-		
-		TFPhoneNum_2 = new FTextField(0);
-		TFPhoneNum_2.setEnabled(false);
-		TFPhoneNum_2.setPreferredSize(new Dimension(25, 18));
-		RestaurantInfoPan.add(TFPhoneNum_2);
-		
-		JPanel SpacePan3 = new JPanel();
-		SpacePan3.setBackground(Color.LIGHT_GRAY);
-		SpacePan3.setPreferredSize(new Dimension(5, 15));
-		RestaurantInfoPan.add(SpacePan3);
-		
-		TFPhoneNum_3 = new FTextField(0);
-		TFPhoneNum_3.setEnabled(false);
-		TFPhoneNum_3.setPreferredSize(new Dimension(30, 18));
-		RestaurantInfoPan.add(TFPhoneNum_3);
+		TFPhoneNum = new FTextField(0);
+		TFPhoneNum.setEnabled(false);
+		TFPhoneNum.setPreferredSize(new Dimension(120, 18));
+		RestaurantInfoPan.add(TFPhoneNum);
 		
 		JPanel SpacePan4 = new JPanel();
 		SpacePan4.setPreferredSize(new Dimension(90, 15));
@@ -250,10 +227,10 @@ public class FDeleteRestaurantPage extends FForm{
 		OpeningTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(OpeningTimePan);
 		
-		for(int i = 0; i < Fcb.length; i++) {
-			Fcb[i] = new FHoursComboBox();
-			Fcb[i].setEnabled(false);
-			OpeningTimePan.add(Fcb[i]);
+		for(int i = 0; i < Fcb_open.length; i++) {
+			Fcb_open[i] = new FHoursComboBox();
+			Fcb_open[i].setEnabled(false);
+			OpeningTimePan.add(Fcb_open[i]);
 			JPanel FcbSpacer = new JPanel();
 			FcbSpacer.setPreferredSize(new Dimension(100, 8));
 			FcbSpacer.setBackground(Color.LIGHT_GRAY);
@@ -270,10 +247,10 @@ public class FDeleteRestaurantPage extends FForm{
 		ClosingTimePan.setPreferredSize(new Dimension(100, 365));
 		OpenTimePan.add(ClosingTimePan);
 		
-		for(int i = 0; i < Fcb.length; i++) {
-			Fcb[i] = new FHoursComboBox();
-			Fcb[i].setEnabled(false);
-			ClosingTimePan.add(Fcb[i]);
+		for(int i = 0; i < Fcb_close.length; i++) {
+			Fcb_close[i] = new FHoursComboBox();
+			Fcb_close[i].setEnabled(false);
+			ClosingTimePan.add(Fcb_close[i]);
 			JPanel FcbSpacer2 = new JPanel();
 			FcbSpacer2.setPreferredSize(new Dimension(100, 8));
 			FcbSpacer2.setBackground(Color.LIGHT_GRAY);
@@ -313,11 +290,10 @@ public class FDeleteRestaurantPage extends FForm{
 		DeliverySpacePan.setPreferredSize(new Dimension(600, 2));
 		DeliveryPan.add(DeliverySpacePan);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEnabled(false);
-		textArea.setBorder(new LineBorder(Color.GRAY));
-		textArea.setPreferredSize(new Dimension(460, 125));
-		DeliveryPan.add(textArea);
+		JTADeliveryArea = new FListView();
+		JTADeliveryArea.setBorder(new LineBorder(Color.GRAY));
+		JTADeliveryArea.setPreferredSize(new Dimension(460, 125));
+		DeliveryPan.add(JTADeliveryArea);
 		
 		JPanel JTASpacePan2 = new JPanel();
 		JTASpacePan2.setBackground(Color.LIGHT_GRAY);
@@ -363,7 +339,7 @@ public class FDeleteRestaurantPage extends FForm{
 		DeliverySpacePan5.setBackground(Color.LIGHT_GRAY);
 		DeliveryPan.add(DeliverySpacePan5);
 		
-		BTNDeliveryRestaurantDelete = new FButton("Delete");
+		BTNDeliveryRestaurantDelete = new FButton("Delete this Restaurant");
 		BTNDeliveryRestaurantDelete.setPreferredSize(new Dimension(150, 28));
 		DeliveryPan.add(BTNDeliveryRestaurantDelete);
 

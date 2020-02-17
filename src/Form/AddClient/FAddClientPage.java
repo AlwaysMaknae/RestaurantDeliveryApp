@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import utils.FButton;
 import utils.FForm;
@@ -18,7 +19,8 @@ import javax.swing.SwingConstants;
 
 public class FAddClientPage extends FForm{
 	
-	protected FTextField TFNewUsername, TFNewPassword, TFConfirmPass, TFLastName, TFFirstName, TFAddress, TFEmail;
+	protected FTextField TFNewUsername, TFLastName, TFFirstName, TFAddress, TFEmail;
+	protected JPasswordField TFNewPassword, TFConfirmPass;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
 	protected FButton BTNSave, BTNReturn, BTNQuit, BTNVerify;
@@ -88,7 +90,7 @@ public class FAddClientPage extends FForm{
 		NewPasswordLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(NewPasswordLbl);
 		
-		TFNewPassword = new FTextField(0);
+		TFNewPassword = new JPasswordField(0);
 		TFNewPassword.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFNewPassword);
 		
@@ -102,7 +104,7 @@ public class FAddClientPage extends FForm{
 		NewConfirmPassLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		CreateAccountPan.add(NewConfirmPassLbl);
 		
-		TFConfirmPass = new FTextField(0);
+		TFConfirmPass = new JPasswordField(0);
 		TFConfirmPass.setPreferredSize(new Dimension(250, 18));
 		CreateAccountPan.add(TFConfirmPass);
 		

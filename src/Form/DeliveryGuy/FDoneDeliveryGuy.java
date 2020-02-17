@@ -4,27 +4,61 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import Model.AccesLevel;
+import Model.DelivererModel;
+import Model.DeliveryStatus;
 import Model.OrderModel;
+import Model.RestaurantModel;
+import database.DBOrder;
+import database.DBRestaurant;
+import database.Session;
+import utils.FAlerts;
+import utils.Navigator;
 
 public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 	
+	DelivererModel TheGuy;
+	OrderModel TheOrder;
+	private ArrayList<OrderModel> OrderList;
+	private ArrayList<Object> OrderDisplay;
+	
 	public FDoneDeliveryGuy() {
+
+		OrderList = new ArrayList<OrderModel>();
+		OrderDisplay = new ArrayList<Object>();
 		
-		ArrayList<OrderModel> OrderList = new ArrayList<OrderModel>();
+		
+		if (Session.AccesType == AccesLevel.GetType(AccesLevel.DELIVERY_GUY)) {
+			TheGuy = new DelivererModel(Session.GetUser().getId());
+			TheGuy.Read();
+		} else {
+			Navigator.Dashboard(Me);
+		}
+		
+		OrderList = DBOrder.getOrderbyDeliveryGuy(TheGuy.getId(), true);
+		
+		for (OrderModel ord : OrderList) {
+			OrderDisplay.add("" + ord.getDate() + " - " + ord.getDelivery_time() + " : " + ord.getPostal_code()  + " ¬ " + ord.getOrder_status() );
+		}
 
-
-		ArrayList<Object> Order = new ArrayList<Object>();
-
-
-		ListPan.SetList(Order);
+		ListPan.SetList(OrderDisplay);
 		
 		BTNSelect.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-//				Select aN Order and press SELECT. This transfers the info into the correct Labels.
-//				TODO: Make the Listpan, get selected item (& index if needed). 
-//				When BTNSelect is clicked, get data of the selected restaurant and display the info in the Labels.
+				if(ListPan.GetSelectedIndex() > -1) {
+					
+					TheOrder = OrderList.get( ListPan.GetSelectedIndex() );
+					OrderLbl.setText("Order # :" + TheOrder.getId()+"");
+					
+					
+					RestaurantModel cR = DBRestaurant.GetRestaurant( TheOrder.getRestaurant_id() );
+					RestaurantLbl.setText( "Restaurant : " + cR.getName() );
+					DeliveryAddressLbl.setText("Delivery Address : "+TheOrder.getAddress()+"");
+					DeliveryPostalCodeLbl.setText("Delivery Postal Code : " + TheOrder.getPostal_code());
+					
+				}
 				
 			}
 		});
@@ -32,23 +66,23 @@ public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 		BTNDone.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//Order selection verification
+				// Order selection verification
+				if(ListPan.GetSelectedIndex() > -1 && TheOrder!=null ) {
+					if(FAlerts.Confirm("Confirm Delivery", "Confirm this Delivery ?")) {
 						
-//				if(ORDER IS SELECTED) {
+						TheOrder.setDeliverer_id( TheGuy.getId() );
+						TheOrder.setOrder_status(DeliveryStatus.DONE);
+						TheOrder.Update();
+						
+						FAlerts.Say("Delivery Confirmed", "Delivery is Done.");
+						
+						Navigator.Dashboard(Me);
+						
+					}
+				}else {
+					FAlerts.Error("Selection Error", "Please select an Order to Confirm.");
+				}
 				
-//				if(FAlerts.Confirm("Done Order Confirmation", "Would you like to confirm the delivery of this order?")) {
-					
-					//TODO SEND THE ORDER TO THE MARK AS READY ORDERLIST IN FORDERREADY.JAVA
-					
-//					FAlerts.Say("Done Order Accepted", "Order has been delivered!");
-//				}else {
-//					FAlerts.Say("Done Order Cancelled", "Confirm delivery as been successfully cancelled!");
-//				}
-				
-//			}else {
-//				FAlerts.Error("Selection Error", "Please select an Order.");
-//			}
 			}
 		});
 		

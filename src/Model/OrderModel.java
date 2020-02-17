@@ -15,6 +15,10 @@ public class OrderModel extends Model {
 	private int deliverer_id;
 	private int client_id;
 	private int order_delivered;
+	
+	
+	public static final String NOT_READY = "NOT READY";
+	//All the order states;
 
 	public OrderModel(int id) {
 		this.id = id;
@@ -38,6 +42,22 @@ public class OrderModel extends Model {
 	public OrderModel( String address, String posta_code, String date,
 			String items, String time, float price, String status, int restaurant_id,
 			int deliverer_id, int client_id, int order_delivered) {
+		this.address = address;
+		this.postal_code = posta_code;
+		this.date = date;
+		this.items = items;
+		this.delivery_time = time;
+		this.price = price;
+		this.order_status = status;
+		this.restaurant_id = restaurant_id;
+		this.deliverer_id = deliverer_id;
+		this.client_id = client_id;
+		this.order_delivered = order_delivered;
+	}
+	
+	public OrderModel( String address, String posta_code, String date,
+			String items, String time, float price, String status, int restaurant_id,
+			 int client_id) {
 		this.address = address;
 		this.postal_code = posta_code;
 		this.date = date;
@@ -88,7 +108,7 @@ public class OrderModel extends Model {
 	}
 
 	public void Update() {
-		ReadOrderModel(DBOrder.UpdareOrder(this));
+		ReadOrderModel(DBOrder.UpdateOrder(this));
 	}
 
 	public void Read() {

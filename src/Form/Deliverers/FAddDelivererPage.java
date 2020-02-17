@@ -5,10 +5,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import utils.FButton;
 import utils.FForm;
 import utils.FLabel;
+import utils.FListView;
 import utils.FTextField;
 
 import javax.swing.JButton;
@@ -20,12 +22,13 @@ import javax.swing.border.LineBorder;
 
 public class FAddDelivererPage extends FForm{
 	
-	protected FTextField TFName, TFDeliveryArea;
+	protected FTextField TFName, TFDeliveryArea, TFNewUsername;
+	protected JPasswordField TFPassword, TFConfirmPass;
 	protected FTextField TFPhoneNum_1, TFPhoneNum_2, TFPhoneNum_3;
 	
-	protected JTextArea JTADeliveryArea;
+	protected FListView JTADeliveryArea;
 	
-	protected FButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea;
+	protected FButton BTNAddDeliveryArea, BTNDeleteDeliveryArea, BTNSaveDeliveryArea, BTNVerify;
 
 	public FAddDelivererPage() {
 		
@@ -59,7 +62,7 @@ public class FAddDelivererPage extends FForm{
 		
 		JPanel InfoPan = new JPanel();
 		InfoPan.setBackground(Color.LIGHT_GRAY);
-		InfoPan.setPreferredSize(new Dimension(425, 65));
+		InfoPan.setPreferredSize(new Dimension(500, 140));
 		MainPan.add(InfoPan);
 		
 		FLabel NameLbl = new FLabel("Name:");
@@ -69,6 +72,34 @@ public class FAddDelivererPage extends FForm{
 		TFName = new FTextField(0);
 		TFName.setPreferredSize(new Dimension(285, 20));
 		InfoPan.add(TFName);
+		
+		FLabel Usernamelbl = new FLabel("Username:");
+		Usernamelbl.setPreferredSize(new Dimension(110, 14));
+		InfoPan.add(Usernamelbl);
+		
+		TFNewUsername = new FTextField(0);
+		TFNewUsername.setPreferredSize(new Dimension(210, 20));
+		InfoPan.add(TFNewUsername);
+		
+		BTNVerify = new FButton("Verify");
+		BTNVerify.setPreferredSize(new Dimension(70, 25));
+		InfoPan.add(BTNVerify);
+		
+		FLabel Passwordlbl = new FLabel("Password:");
+		Passwordlbl.setPreferredSize(new Dimension(110, 14));
+		InfoPan.add(Passwordlbl);
+		
+		TFPassword = new JPasswordField(0);
+		TFPassword.setPreferredSize(new Dimension(285, 20));
+		InfoPan.add(TFPassword);
+		
+		FLabel CPasswordlbl = new FLabel("Confirm Password:");
+		CPasswordlbl.setPreferredSize(new Dimension(110, 14));
+		InfoPan.add(CPasswordlbl);
+		
+		TFConfirmPass = new JPasswordField(0);
+		TFConfirmPass.setPreferredSize(new Dimension(285, 20));
+		InfoPan.add(TFConfirmPass);
 		
 		JPanel InfoSpacePan = new JPanel();
 		InfoSpacePan.setBackground(Color.LIGHT_GRAY);
@@ -130,10 +161,10 @@ public class FAddDelivererPage extends FForm{
 		DeliveryInfoSpacePan.setPreferredSize(new Dimension(425, 1));
 		DeliveryInfoPan.add(DeliveryInfoSpacePan);
 		
-		JTADeliveryArea = new JTextArea();
+		JTADeliveryArea = new FListView();
 		JTADeliveryArea.setPreferredSize(new Dimension(400, 100));
 		JTADeliveryArea.setBorder(new LineBorder(new Color(128, 128, 128)));
-		JTADeliveryArea.setLineWrap(true);
+		JTADeliveryArea.setEnabled(false);
 		DeliveryInfoPan.add(JTADeliveryArea);
 		
 		JPanel DeliverySpacePan2 = new JPanel();

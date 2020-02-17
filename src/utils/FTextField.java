@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -14,6 +16,8 @@ import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
+
+import Form.Client.FOrderFood;
 
 public class FTextField extends JFormattedTextField {
 		
@@ -30,6 +34,7 @@ public class FTextField extends JFormattedTextField {
 			this.setColumns(Columns);
 			this.setFont(new Font(this.getFont().getFontName(), Font.PLAIN, 12));
 			this.setPreferredSize( new Dimension(20,29));
+			
 			
 			this.mask = "";
 			this.Valid = false;
@@ -51,7 +56,8 @@ public class FTextField extends JFormattedTextField {
 		}
 		public void SetDecimal() {
 			//oof#2
-			this.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat())));
+			this.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("#.00",
+                    DecimalFormatSymbols.getInstance(Locale.US)))));
 		}
 		public void SetDate() {
 			//oof#2
@@ -95,16 +101,20 @@ public class FTextField extends JFormattedTextField {
 			}else if(this.StringLength > 0) {
 				if( History.length() >= this.StringLength){
 					this.Valid = true;
-					this.setText(History);
-					return History;
+					return this.getText();
 				} else {
 					this.Valid = false;
 					return "";	
 				}
 			}else {
 				this.Valid = true;
-				this.setText(History);
-				return History;
+				return this.getText();
 			}
+		}
+		
+		public void SetInvalid(){
+			this.Valid = false;
+			this.setText("");
+			IsValid();
 		}
 }

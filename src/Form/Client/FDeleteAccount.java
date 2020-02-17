@@ -5,27 +5,40 @@ import java.awt.event.ActionListener;
 
 import Form.Deliverers.FAddDeliverer;
 import Model.ClientModel;
+import database.DBClient;
+import database.Session;
 import utils.FAlerts;
+import utils.Navigator;
 
 public class FDeleteAccount extends FDeleteAccountPage{
 
-	private ClientModel DeleteClient;
+	private ClientModel DeleteClient = new ClientModel(Session.GetUser().getId());;
 	public FDeleteAccount() {
 		
-		//TODO GET THE INFORMATION OF THE CURRENT ACCOUNT AND PUT IT IN THE APPROPRIATE TEXTFIELDS
+		DeleteClient.Read();
+		
+		TFNewUsername.setText(DeleteClient.getClient_username());
+		TFLastName.setText(DeleteClient.getClient_last_name());
+		TFFirstName.setText(DeleteClient.getClient_first_name());
+		TFAddress.setText(DeleteClient.getClient_address());
+		TFEmail.setText(DeleteClient.getClient_email());
+
+		String phone = DeleteClient.getClient_number();
+		TFPhoneNum_1.setText(phone.substring(0, 3));
+		TFPhoneNum_2.setText(phone.substring(4, 7));
+		TFPhoneNum_3.setText(phone.substring(8, 12));
 		
 		BTNDelete.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(FAlerts.Confirm("Account Deletion Confirmation", "Are you sure you want to delete this Account?")) {
+				if(FAlerts.Confirm("Account Deletion Confirmation", "Are you sure you want to delete this Account?")==true) {
 					
 					DeleteClient.Delete();
 					FAlerts.Say("Account Deletion Complete", "Account has been deleted successfully!");
-					//TODO RETURN TO THE LOGIN PAGE
+
+					Navigator.Disconnect(Me);
 					
-				}else {
-					FAlerts.Say("Account Deletion Cancelled", "Deletion of this account has been cancelled successfully!");
 				}
 				
 			}
