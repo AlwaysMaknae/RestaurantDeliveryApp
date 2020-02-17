@@ -66,7 +66,7 @@ public class DelivererModel extends Model{
 		this.password = Me.getPassword();
 		this.access_lvl = Me.getAccess_lvl();
 		this.name = Me.getName();
-		this.number = Me.getName();
+		this.number = Me.getNumber();
 		this.area = Me.getArea();
 		this.status = Me.getStatus();
 		this.arealist = new ArrayList<String>();
