@@ -84,7 +84,7 @@ public class FDoneDeliveryGuy extends FDoneDeliveryGuyPage{
 		
 	}
 	private void UpdateOList() {
-		OrderList = DBOrder.getOrderbyAreas(TheGuy.getArea());
+		OrderList = DBOrder.getOrderbyDeliveryGuy(TheGuy.getId());
 		
 		OrderDisplay.clear();
 		

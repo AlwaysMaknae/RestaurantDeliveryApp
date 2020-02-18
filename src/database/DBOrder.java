@@ -117,6 +117,8 @@ public class DBOrder {
 			MyQuery+= " AND order_status='"+ DeliveryStatus.IN_TRANSIT+"'";
 		}
 		
+		MyQuery += " AND orders.order_status != '"+DeliveryStatus.DONE+"'";
+		
 		ResultSet stmt;
 		ArrayList<OrderModel> orders = new ArrayList<OrderModel>();
 		try {

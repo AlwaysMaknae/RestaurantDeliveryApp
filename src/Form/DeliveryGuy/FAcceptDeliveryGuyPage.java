@@ -91,41 +91,25 @@ public class FAcceptDeliveryGuyPage extends FForm {
 		InnerPan.add(ViewDeliveryInfoPan);
 		
 		OrderLbl = new FLabel("Order # : " + OrderNum);
+		OrderLbl.setPreferredSize(new Dimension(600, 30));
 		OrderLbl.setFont(OrderLbl.getFont().deriveFont(OrderLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(OrderLbl);
 		
-		JPanel SpacePan0 = new JPanel();
-		SpacePan0.setBackground(Color.LIGHT_GRAY);
-		SpacePan0.setPreferredSize(new Dimension(400, 1));
-		ViewDeliveryInfoPan.add(SpacePan0);
-		
 		RestaurantLbl = new FLabel("Restaurant # : " + RestaurantNum);
+		RestaurantLbl.setPreferredSize(new Dimension(600, 30));
 		RestaurantLbl.setFont(RestaurantLbl.getFont().deriveFont(RestaurantLbl.getFont().getSize() + 12f));
-		RestaurantLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		RestaurantLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		ViewDeliveryInfoPan.add(RestaurantLbl);
 		
-		JPanel SpacePan1 = new JPanel();
-		SpacePan1.setBackground(Color.LIGHT_GRAY);
-		SpacePan1.setPreferredSize(new Dimension(250, 1));
-		ViewDeliveryInfoPan.add(SpacePan1);
-		
 		DeliveryAddressLbl = new FLabel("Delivery Address: " + DeliveryAddress);
+		DeliveryAddressLbl.setPreferredSize(new Dimension(600, 30));
 		DeliveryAddressLbl.setFont(DeliveryAddressLbl.getFont().deriveFont(DeliveryAddressLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(DeliveryAddressLbl);
 		
-		JPanel SpacePan2 = new JPanel();
-		SpacePan2.setBackground(Color.LIGHT_GRAY);
-		SpacePan2.setPreferredSize(new Dimension(250, 1));
-		ViewDeliveryInfoPan.add(SpacePan2);
-		
 		DeliveryPostalCodeLbl = new FLabel("Delivery Postal Code: " + DeliveryPostalCode);
+		DeliveryPostalCodeLbl.setPreferredSize(new Dimension(600, 30));
 		DeliveryPostalCodeLbl.setFont(DeliveryPostalCodeLbl.getFont().deriveFont(DeliveryPostalCodeLbl.getFont().getSize() + 12f));
 		ViewDeliveryInfoPan.add(DeliveryPostalCodeLbl);
-		
-		JPanel SpacePan3 = new JPanel();
-		SpacePan3.setBackground(Color.LIGHT_GRAY);
-		SpacePan3.setPreferredSize(new Dimension(250, 1));
-		ViewDeliveryInfoPan.add(SpacePan3);
 		
 		JPanel ButtonPan = new JPanel();
 		ButtonPan.setBackground(Color.LIGHT_GRAY);

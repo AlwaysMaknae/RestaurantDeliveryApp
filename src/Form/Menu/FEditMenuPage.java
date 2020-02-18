@@ -73,7 +73,7 @@ public class FEditMenuPage extends FForm{
 		
 		JPanel TitlePan = new JPanel();
 		TitlePan.setBackground(Color.LIGHT_GRAY);
-		TitlePan.setPreferredSize(new Dimension(325, 40));
+		TitlePan.setPreferredSize(new Dimension(720, 40));
 		InnerPan.add(TitlePan);
 		
 		TitleLbl = new FLabel("Edit Menu");
